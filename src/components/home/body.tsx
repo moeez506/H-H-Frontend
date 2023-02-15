@@ -20,13 +20,14 @@ import Button from "../Button";
 const Body = () => {
   return (
     <>
-      <div className="grid grid-cols-2 content-center mt-24">
-        <div className="flex items-center justify-center">
-          <img src={first} alt="not image found" />
-        </div>
-        <div>
+      <div className="flex items-center justify-center mt-24 px-20 mobile:flex-wrap tabletOnly:flex-wrap">
+        {/* <div className="w-full"> */}
+          <img src={first} alt="not image found" className=""/>
+        {/* </div> */}
+        
+        <div className="px-10">
           <h1 className="text-[65px] font-semibold">Welcome to H & H</h1>
-          <p className="text-2xl pr-64">
+          <p className="text-2xl">
             What is H&H the full acronym is Holding Hands Community Network
             Organization .This is a Community Owned Organization with the Head
             Office located in Toronto ,Ontario , Canada .The goal of this
@@ -37,7 +38,7 @@ const Body = () => {
             communities around the world through Connect the community
             initiative.
           </p>
-          <Button />
+          <Button text="Read More"/>
         </div>
       </div>
       <div className="mt-36">
@@ -54,7 +55,9 @@ const Body = () => {
           </div>
         </div>
       </div>
-      <div className="mt-44">
+      <div className="bg-rectangle3 bg-no-repeat bg-cover h-full mt-44">
+        <br />
+        <br />
         <p className="text-center text-3xl text-text-grey">What We Provide</p>
         <h1 className="text-orange text-6xl text-center font-semibold">
           Our Services
@@ -63,8 +66,8 @@ const Body = () => {
           We will therefore act as an pivotal engine to accelerate and assist
           members ,groups, association in the following domains.
         </p>
-        <div className="flex flex-row mt-12">
-          <div className="border-4 rounded-2xl border-orange h-[430px] w-[316px] bg-white flex justify-center flex-col items-center mx-24 hover:text-white ">
+        <div className="flex flex-row mt-12 mobile:flex-col tabletOnly:flex-col">
+          <div className="border-4 rounded-2xl border-orange h-[510px] w-[350px] bg-white flex justify-center flex-col items-center mx-24 hover:text-white ">
             <img src={death}/>
             <h1 className="text-orange text-2xl font-extrabold">
               Death Relief Fund
@@ -78,7 +81,7 @@ const Body = () => {
               VIEW DETAILS
             </button>
           </div>
-          <div className="border-4 rounded-2xl border-orange h-[430px] w-[316px] bg-white flex justify-center flex-col items-center mx-24 hover:text-white ">
+          <div className="border-4 rounded-2xl border-orange h-[510px] w-[350px] bg-white flex justify-center flex-col items-center mx-24 hover:text-white ">
             <img src={health}/>
             <h1 className="text-orange text-2xl font-extrabold text-center">
               Critical Health Relief Fund
@@ -92,7 +95,7 @@ const Body = () => {
               VIEW DETAILS
             </button>
           </div>
-          <div className="border-4 rounded-2xl border-orange h-[430px] w-[316px] bg-white flex justify-center flex-col items-center mx-24 hover:text-white ">
+          <div className="border-4 rounded-2xl border-orange h-[510px] w-[350px] bg-white flex justify-center flex-col items-center mx-24 hover:text-white ">
             <img src={education}/>
             <h1 className="text-orange text-2xl font-extrabold text-center">
               Educational Support Fund
@@ -106,7 +109,7 @@ const Body = () => {
               VIEW DETAILS
             </button>
           </div>
-          <div className="border-4 rounded-2xl border-orange h-[430px] w-[316px] bg-white flex justify-center flex-col items-center mx-24 hover:text-white ">
+          <div className="border-4 rounded-2xl border-orange h-[510px] w-[350px] bg-white flex justify-center flex-col items-center mx-24 hover:text-white ">
             <img src={community} />
             <h1 className="text-orange text-2xl font-extrabold text-center">
               Connect The Community Initiative
@@ -122,13 +125,13 @@ const Body = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-2 content-center mt-24">
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center mt-24 px-20 mobile:flex-wrap tabletOnly:flex-wrap">
+      {/* <div className="flex items-center justify-center"> */}
           <img src={second} alt="not image found" />
-        </div>
-        <div>
+        {/* </div> */}
+        <div className="px-10">
           <h1 className="text-[65px] font-semibold">Benefits of H & H</h1>
-          <ul className="list-disc text-2xl pr-48">
+          <ul className="list-disc text-2xl">
             <li>
               Death Relief Fund disbursed amount goal will be $15,000 CAD
               approximately 6 million francs to help relieve financial stress to
@@ -164,8 +167,8 @@ const Body = () => {
         </div>
       </div>
       <div className="flex justify-center items-center ">
-      <div className=" bg-rectangle1 bg-no-repeat flex justify-center mt-12 h-[400px] w-[65%]">
-        <div>
+      <div className=" bg-rectangle1 bg-no-repeat flex justify-center mt-12 h-full w-[65%] mobile:flex-wrap tabletOnly:flex-wrap">
+        <div className="mt-20">
           <h1 className="text-3xl text-orange font-semibold">
             H&H Relief Assistance
           </h1>
@@ -181,7 +184,7 @@ const Body = () => {
             <li>Access to connect the community initiative program</li>
           </ul>
         </div>
-        <div>
+        <div className="mt-20">
           <h1 className="text-3xl text-orange font-semibold">
             Your Group Sinking Funds
           </h1>
@@ -193,13 +196,13 @@ const Body = () => {
         </div>
       </div>
       </div>
-      <div className="grid grid-cols-2 content-center mt-24">
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center mt-24 px-20 mobile:flex-wrap tabletOnly:flex-wrap">
+      {/* <div className="flex items-center justify-center"> */}
           <img src={third} alt="not image found" />
-        </div>
-        <div>
+        {/* </div> */}
+        <div className="px-10">
           <h1 className="text-[65px] font-semibold">Our Mission</h1>
-          <p className="text-2xl pr-64">
+          <p className="text-2xl">
             What is H&H the full acronym is Holding Hands Community Network
             Organization .This is a Community Owned Organization with the Head
             Office located in Toronto ,Ontario , Canada .The goal of this

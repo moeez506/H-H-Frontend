@@ -11,7 +11,7 @@ const ProgramBody = () => {
   return (
     <>
       <div className="bg-about h-[500px] bg-no-repeat bg-cover mb-2"></div>
-      <div className="bg-program h-[760px] bg-cover bg-no-repeat grid grid-cols-2">
+      <div className="bg-program h-[760px] bg-cover bg-no-repeat grid grid-cols-2 tabletOnly:">
         <div className="flex flex-col justify-center items-center mr-20 ml-72">
           <div className="flex">
             <div>
@@ -61,11 +61,11 @@ const ProgramBody = () => {
             death is a death to the community and as such we call on each member
             to act with compassion and commitment.
           </p>
-          <Button />
+          <Button text="Contact Us"/>
         </div>
       </div>
-      <div className="fles justify-center items-center">
-      <div className="bg-rectangle3 h-[740px] bg-no-repeat bg-cover mt-10 w-[70%]">
+      <div className="flex justify-center items-center">
+      <div className="bg-rectangle3 flex flex-col justify-center items-center h-[740px] bg-no-repeat bg-cover mt-10 px-20 w-[70%]">
         <div>
           <h1 className="text-4xl font-semibold">
             Critical Health Relief Fund
@@ -95,6 +95,8 @@ const ProgramBody = () => {
             Health Relief Funding?
           </p>
         </div>
+        <br />
+        <br />
         <div className="flex">
           <div>
             <h1 className="text-3xl font-semibold">
@@ -157,7 +159,7 @@ const ProgramBody = () => {
               <br></br> All members are eligible for Educational Support Fund
             </p>
             <br></br>
-            <Button />
+            <Button text="Contact Us"/>
           </div>
         </div>
       </div>
@@ -192,7 +194,7 @@ const ProgramBody = () => {
           <div className="ml-32">
             <img src={community} alt="image not loaded" />
             <br></br>
-            <Button />
+            <Button text="Contact Us"/>
           </div>
         </div>
       </div>

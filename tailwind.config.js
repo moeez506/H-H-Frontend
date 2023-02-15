@@ -11,7 +11,7 @@ module.exports = {
        'text-grey': '#71726F'
       },
       backgroundImage: (theme) =>({
-        'hero-pattern': "url('/src/assets/img.jpg')",
+        'hero-pattern': "url('/src/assets/Rectangle 2.png')",
         'rectangle1': "url('/src/assets/Rectangle 29.png')",
         'rectangle2': "url('/src/assets/Rectangle 32.png')",
         'rectangle3': "url('/src/assets/Rectangle 71.png')",
@@ -21,6 +21,19 @@ module.exports = {
         'contact': "url('/src/assets/Rectangle 52.png')"
         
       })
+    },
+    screens: {
+      'mobile': {'max': '480px'},
+      'tablet': {'max':'1023px'},
+
+      'tabletOnly': {'min':'481px', 'max':'1023px'},
+      // => @media (min-width: 640px) { ... }
+
+      'laptop': '1024px',
+      // => @media (min-width: 1024px) { ... }
+
+      'desktop': '1400px',
+      // => @media (min-width: 1280px) { ... }
     },
   },
   plugins: [],

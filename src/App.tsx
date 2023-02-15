@@ -7,8 +7,8 @@ import {
 } from "react-router-dom";
 import Contact from "./components/contact";
 import Footer from "./components/footer";
-import Header from "./components/header";
-import Navbar from "./components/navbar";
+// import Header from "./components/header";
+// import Navbar from "./components/navbar";
 import ContactUS from "./pages/Contact";
 
 import Programs from "./pages/Programs";
@@ -19,8 +19,8 @@ import Home from "./pages/home";
 function App() {
   return (
     <>
-    <Header />
-    <Navbar />
+    {/* <Header /> */}
+    {/* <Navbar /> */}
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />

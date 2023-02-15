@@ -1,24 +1,24 @@
 /* eslint-disable prettier/prettier */
 import React from "react";
-import Heroboxes from "../home/heroboxes";
+
 import first from "../../assets/4.png"
 import third from "../../assets/5.png"
 import forth from "../../assets/6.png"
-// import sixth from "../../assets/7.png"
+import sixth from "../../assets/Ellipse 2.png"
 import second from "../../assets/Rectangle 41.png"
-
+import fifth from "../../assets/Ellipse 1.png"
 const Aboutbody = () => {
   return (
     <>
-      <div className="bg-about h-[500px] mb-2"></div>
-      <div className="grid grid-cols-2 content-center te mt-24">
-        <div className="flex items-center justify-center">
+      <div className="bg-about h-[500px] mb-2 bg-no-repeat bg-cover"></div>
+      <div className="flex items-center justify-center mt-24 px-20 mobile:flex-wrap tabletOnly:flex-wrap">
+        {/* <div className="flex items-center justify-center"> */}
           <img src={first} alt="no image found" />
-        </div>
-        <div>
+        {/* </div> */}
+        <div className="px-20">
           
           <h1 className="text-4xl font-semibold">Holding Hands Community</h1>
-          <p className="text-base pr-96 mt-8">
+          <p className="text-base mt-8">
             What is H&H the full acronym is Holding Hands Community Network
             Organization .This is a Community Owned Organization with the Head
             Office located in Toronto ,Ontario , Canada .The goal of this
@@ -100,7 +100,7 @@ const Aboutbody = () => {
           therefore eligible to get Critical Health Relief Funding?
         </p>
       </div>
-      <div className="grid grid-cols-2 content-center mt-24">
+      <div className="flex items-center justify-center mt-24 px-20 mobile:flex-wrap tabletOnly:flex-wrap">
         <div className="pl-56">
           <h1 className="text-4xl font-semibold">
             Eligibility Criteria For Critical<br></br> Relief Fund
@@ -113,7 +113,7 @@ const Aboutbody = () => {
             </li>
             <li>Has proven medical Report</li>
           </ul>
-          <p className="text-base pr-64">
+          <p className="text-base ">
             All claims for Critical Health Relief Funding must be announced
             through the association executive team .Upon each announcement H&H
             would do its internal and external verifications and proceed with
@@ -121,9 +121,9 @@ const Aboutbody = () => {
             .Members do not need to contribute for Critical Health Relief Fund
           </p>
         </div>
-        <div className="flex items-center justify-center">
-          <img src={second} alt="no image found" />
-        </div>
+        {/* <div className="flex items-center justify-center"> */}
+          <img src={second} alt="no image found" className="pr-32"/>
+        {/* </div> */}
       </div>
       <div className="bg-community h-[570px] mt-5 text-center">
         <h1 className="text-4xl font-semibold text-white pt-12">
@@ -165,8 +165,8 @@ const Aboutbody = () => {
         <h1 className="text-4xl font-semibold text-orange text-center underline-offset-8 decoration-orange">
           Connect The Community Initiative
         </h1>
-
-        <div className="grid grid-cols-2 content-center mt-12">
+        
+        <div className="flex items-center justify-center mt-24 px-20 mobile:flex-wrap tabletOnly:flex-wrap">
           <div className="pl-56">
             <p className="text-base pr-64">
               With H&H Connect The Community Initiative, members would be able
@@ -184,17 +184,17 @@ const Aboutbody = () => {
               Holding each other’s hands in times good and bad times.
             </p>
           </div>
-          <div className="flex items-center justify-center">
-          <img src={third} alt="no image found" />
-        </div>
+          
+          <img src={third} alt="no image found" className="pr-32"/>
+        
         </div>
       </div>
-      <div className="grid grid-cols-2 content-center mt-24">
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center mt-24 ml-20 px-20 mobile:flex-wrap tabletOnly:flex-wrap">
+      
           <img src={forth} alt="no image found" />
-        </div>
-        <div>
-          <p className="text-base pr-96 mt-8">
+        
+        <div className="px-20">
+          <p className="text-base mt-8">
             Each member is encouraged to use this platform as a point of contact
             to introduce his or her business to the community. All businesses
             are welcome.<br></br>
@@ -215,9 +215,9 @@ const Aboutbody = () => {
         <h1 className="text-4xl font-semibold text-orange text-center underline-offset-8 decoration-orange">
           Connect The Community Initiative
         </h1>
-        <div className="flex justify-center items-center mt-16">
+        <div className="flex justify-center items-center mt-16 mobile:flex-wrap tabletOnly:flex-wrap">
           <div>
-            <Heroboxes />
+          <img src={fifth} alt="no image found" />
             <h1 className="text-4xl font-semibold text-orange mt-10">Eligibility</h1>
             <ul className="list-disc text-base mt-8">
               <li>Associations ,Groups ( “Njangi “ ,Veterans, Meetings)</li>
@@ -231,7 +231,7 @@ const Aboutbody = () => {
             </button>
           </div>
           <div>
-            <Heroboxes />
+            <img src={sixth} alt="no image found" />
             <h1 className="text-4xl font-semibold text-orange mt-10">
               Registration process
             </h1>
