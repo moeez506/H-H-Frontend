@@ -11,11 +11,11 @@ const Aboutbody = () => {
   return (
     <>
       <div className="bg-about h-[500px] mb-2 bg-no-repeat bg-cover"></div>
-      <div className="flex items-center justify-center mt-24 px-20 mobile:flex-wrap tabletOnly:flex-wrap">
+      <div className="flex items-center justify-center mt-24 px-20 mobile:flex-wrap mobile:px-0 tabletOnly:flex-wrap">
         {/* <div className="flex items-center justify-center"> */}
           <img src={first} alt="no image found" />
         {/* </div> */}
-        <div className="px-20">
+        <div className="px-20 mobile:px-0">
           
           <h1 className="text-4xl font-semibold">Holding Hands Community</h1>
           <p className="text-base mt-8">
@@ -37,7 +37,7 @@ const Aboutbody = () => {
           </ul>
         </div>
       </div>
-      <div className="p-10 px-56">
+      <div className="p-10 px-56 tabletOnly:px-0 mobile:px-0">
         <h1 className="text-4xl font-semibold text-orange">
           Holding Hands Community
         </h1>
@@ -76,7 +76,7 @@ const Aboutbody = () => {
         <h1 className="text-4xl font-semibold text-orange text-center underline-offset-8 decoration-orange">
           Critical Health Relief Fund
         </h1>
-        <p className="text-center px-56 mt-6">
+        <p className="text-center px-56 mt-6 tabletOnly:px-0 mobile:px-0">
           Registered members will be able to benefit from our Critical Health
           Relief Fund .This Fund is aimed at assisting members who are
           critically sick , have been diagnosed with a terminal or life
@@ -100,8 +100,8 @@ const Aboutbody = () => {
           therefore eligible to get Critical Health Relief Funding?
         </p>
       </div>
-      <div className="flex items-center justify-center mt-24 px-20 mobile:flex-wrap tabletOnly:flex-wrap">
-        <div className="pl-56">
+      <div className="flex items-center justify-center mt-24 px-20 mobile:flex-wrap  tabletOnly:flex-wrap mobile:px-0" >
+        <div className="pl-56 tabletOnly:pl-0 mobile:pl-0">
           <h1 className="text-4xl font-semibold">
             Eligibility Criteria For Critical<br></br> Relief Fund
           </h1>
@@ -122,14 +122,14 @@ const Aboutbody = () => {
           </p>
         </div>
         {/* <div className="flex items-center justify-center"> */}
-          <img src={second} alt="no image found" className="pr-32"/>
+          <img src={second} alt="no image found" className="pr-32 mobile:pr-0"/>
         {/* </div> */}
       </div>
-      <div className="bg-community h-[570px] mt-5 text-center">
+      <div className="bg-community bg-no-repeat bg-cover h-full mt-5 text-center">
         <h1 className="text-4xl font-semibold text-white pt-12">
           Holding Hands Community
         </h1>
-        <p className="text-white px-64 mt-8">
+        <p className="text-white px-64 mt-8 tabletOnly:px-0 mobile:px-0">
           Education is Key that unlocks Endless potentials. Educational Support
           Fund is aim in assisting members or their family members achieve the
           educational goal. Not everyone in our communities are privileged to
@@ -166,9 +166,9 @@ const Aboutbody = () => {
           Connect The Community Initiative
         </h1>
         
-        <div className="flex items-center justify-center mt-24 px-20 mobile:flex-wrap tabletOnly:flex-wrap">
-          <div className="pl-56">
-            <p className="text-base pr-64">
+        <div className="flex items-center justify-center mt-12 px-20 mobile:flex-wrap mobile:px-0 tabletOnly:flex-wrap">
+          <div className="pl-56 tabletOnly:pl-0 mobile:pl-0">
+            <p className="text-base pr-64 tabletOnly:pr-0 mobile:pr-0">
               With H&H Connect The Community Initiative, members would be able
               to benefit from a wide range of exposure. One of the objectives of
               H&H is to bring communities together Brining the diaspora
@@ -185,15 +185,15 @@ const Aboutbody = () => {
             </p>
           </div>
           
-          <img src={third} alt="no image found" className="pr-32"/>
+          <img src={third} alt="no image found" className="pr-32 tabletOnly:pr-0 mobile:pr-0"/>
         
         </div>
       </div>
-      <div className="flex items-center justify-center mt-24 ml-20 px-20 mobile:flex-wrap tabletOnly:flex-wrap">
+      <div className="flex items-center justify-center mt-24 ml-20 px-20 mobile:flex-wrap mobile:px-0 mobile:ml-0 tabletOnly:flex-wrap tabletOnly:ml-0">
       
           <img src={forth} alt="no image found" />
         
-        <div className="px-20">
+        <div className="px-20 tabletOnly:px-0 mobile:px-0">
           <p className="text-base mt-8">
             Each member is encouraged to use this platform as a point of contact
             to introduce his or her business to the community. All businesses

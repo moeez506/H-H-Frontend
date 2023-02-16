@@ -18,6 +18,7 @@ module.exports = {
         'about': "url('/src/assets/image 3.png')",
         'community': "url('/src/assets/Rectangle 40.png')",
         'program' : "url('/src/assets/Rectangle 70.png')",
+        'program-hero' : "url('/src/assets/image 4.png')",
         'contact': "url('/src/assets/Rectangle 52.png')"
         
       })

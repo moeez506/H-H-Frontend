@@ -20,12 +20,12 @@ import Button from "../Button";
 const Body = () => {
   return (
     <>
-      <div className="flex items-center justify-center mt-24 px-20 mobile:flex-wrap tabletOnly:flex-wrap">
+      <div className="flex items-center justify-center mt-24 px-20 mobile:flex-wrap mobile:px-0 tabletOnly:flex-wrap">
         {/* <div className="w-full"> */}
           <img src={first} alt="not image found" className=""/>
         {/* </div> */}
         
-        <div className="px-10">
+        <div className="px-10 mobile:px-0">
           <h1 className="text-[65px] font-semibold">Welcome to H & H</h1>
           <p className="text-2xl">
             What is H&H the full acronym is Holding Hands Community Network
@@ -66,7 +66,7 @@ const Body = () => {
           We will therefore act as an pivotal engine to accelerate and assist
           members ,groups, association in the following domains.
         </p>
-        <div className="flex flex-row mt-12 mobile:flex-col tabletOnly:flex-col">
+        <div className="flex flex-row mt-12 mobile:flex-col tabletOnly:flex-col tabletOnly:items-center">
           <div className="border-4 rounded-2xl border-orange h-[510px] w-[350px] bg-white flex justify-center flex-col items-center mx-24 hover:text-white ">
             <img src={death}/>
             <h1 className="text-orange text-2xl font-extrabold">
@@ -124,6 +124,8 @@ const Body = () => {
             </button>
           </div>
         </div>
+        <br />
+        <br />
       </div>
       <div className="flex items-center justify-center mt-24 px-20 mobile:flex-wrap tabletOnly:flex-wrap">
       {/* <div className="flex items-center justify-center"> */}

@@ -4,15 +4,15 @@ import death1 from "../assets/Rectangle 64.png";
 import death2 from "../assets/Rectangle 65.png";
 import health from "../assets/Rectangle 41.png";
 import community from "../assets/Rectangle 74.png"
+import female from "../assets/female.png"
 import Button from "./Button";
-import Heroboxes from "./home/heroboxes";
 
 const ProgramBody = () => {
   return (
     <>
-      <div className="bg-about h-[500px] bg-no-repeat bg-cover mb-2"></div>
-      <div className="bg-program h-[760px] bg-cover bg-no-repeat grid grid-cols-2 tabletOnly:">
-        <div className="flex flex-col justify-center items-center mr-20 ml-72">
+      <div className="bg-program-hero h-[500px] bg-no-repeat bg-cover mb-2"></div>
+      <div className="bg-program h-full bg-cover bg-no-repeat grid grid-cols-2 tabletOnly:flex flex-col mobile:flex ">
+        <div className="flex flex-col justify-center items-center mr-20 ml-72 tabletOnly:ml-0 mobile:ml-0 ">
           <div className="flex">
             <div>
               <img src="" alt="" />
@@ -36,7 +36,7 @@ const ProgramBody = () => {
         </div>
         <div className="mt-10">
           <h1 className="text-4xl font-semibold">Death Relief Fund</h1>
-          <p className="text-base pr-80">
+          <p className="text-base pr-80 tabletOnly:pr-0 mobile:pr-0">
             As an Organization we do understand our community needs assistance.
             Death comes unannounced and neither is anyone prepared when death
             knocks. This is the more reason why we have to be prepared at all
@@ -65,7 +65,7 @@ const ProgramBody = () => {
         </div>
       </div>
       <div className="flex justify-center items-center">
-      <div className="bg-rectangle3 flex flex-col justify-center items-center h-[740px] bg-no-repeat bg-cover mt-10 px-20 w-[70%]">
+      <div className="bg-rectangle3 flex flex-col justify-center items-center h-full bg-no-repeat bg-cover mt-10 px-20 w-[70%] tabletOnly:p-10 tabletOnly:w-[90%] mobile:p-8 mobile:w-full">
         <div>
           <h1 className="text-4xl font-semibold">
             Critical Health Relief Fund
@@ -97,7 +97,7 @@ const ProgramBody = () => {
         </div>
         <br />
         <br />
-        <div className="flex">
+        <div className="flex tabletOnly:flex-col mobile:flex-col">
           <div>
             <h1 className="text-3xl font-semibold">
               Eligibility Criteria For Critical Relief Fund
@@ -126,10 +126,14 @@ const ProgramBody = () => {
         <h1 className="text-5xl font-semibold text-center">
           Educational Support Fund
         </h1>
-        <div className="grid grid-cols-2 mt-10">
-          <Heroboxes />
+        <div className="grid grid-cols-2 mt-10 tabletOnly:flex flex-col mobile:flex ">
+          <div className="flex justify-center items-center pb-20">
+          <img src={female} alt="no image found" />
+
+          </div>
+          
           <div>
-            <p className="pr-72">
+            <p className="pr-72 tabletOnly:pr-0 mobile:pr-0">
               <strong>Education</strong> is Key that unlocks Endless potentials
               . Educational Support Fund aims in assisting members or their
               family members achieve their educational goals. Not everyone in
@@ -163,12 +167,12 @@ const ProgramBody = () => {
           </div>
         </div>
       </div>
-      <div className="bg-orange h-[800px] mt-10 justify-center items-center flex flex-col">
+      <div className="bg-orange h-full mt-10 justify-center items-center flex flex-col">
         <h1 className="text-5xl font-bold text-white text-center">
           Connect The Community Initiative
         </h1>
-        <div className="bg-white h-[645px] rounded-lg w-[80%] mt-8 grid grid-cols-2 justify-center items-center">
-          <p className="px-24">
+        <div className="bg-white h-full rounded-lg w-[80%] mt-8 grid grid-cols-2 justify-center items-center tabletOnly:flex flex-col-reverse mobile:flex">
+          <p className="px-24 tabletOnly:px-0 mobile:px-0">
             With H&H Connect The Community Initiative, members would be able to
             benefit from a wide range of exposure. One of the objectives of H&H
             is to bring communities together Brining the diaspora community with
@@ -191,7 +195,7 @@ const ProgramBody = () => {
             communicate any social trips for members to be able to prepare if
             they have to travel out of their jurisdiction or country.
           </p>
-          <div className="ml-32">
+          <div className="ml-32 tabletOnly:ml-0 mobile:ml-0">
             <img src={community} alt="image not loaded" />
             <br></br>
             <Button text="Contact Us"/>
