@@ -5,10 +5,10 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import Contact from "./components/contact";
-import Footer from "./components/footer";
+// import Contact from "./components/contact";
+// import Footer from "./components/footer";
 // import Header from "./components/header";
-// import Navbar from "./components/navbar";
+import Navbar from "./components/navbar";
 import ContactUS from "./pages/Contact";
 
 import Programs from "./pages/Programs";
@@ -20,7 +20,7 @@ function App() {
   return (
     <>
     {/* <Header /> */}
-    {/* <Navbar /> */}
+    <Navbar />
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
@@ -28,8 +28,8 @@ function App() {
       <Route path="/programs" element={<Programs />} />
     </Routes>
 
-    <Contact />
-    <Footer />
+    {/* <Contact /> */}
+    {/* <Footer /> */}
     
     </>  
 

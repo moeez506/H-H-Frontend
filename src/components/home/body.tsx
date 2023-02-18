@@ -20,14 +20,14 @@ import Button from "../Button";
 const Body = () => {
   return (
     <>
-      <div className="flex items-center justify-center mt-24 px-20 mobile:flex-wrap mobile:px-0 tabletOnly:flex-wrap">
+      <div className="flex items-center justify-center mt-24 px-20 mobile:flex-wrap mobile:px-5 tabletOnly:flex-wrap">
         {/* <div className="w-full"> */}
           <img src={first} alt="not image found" className=""/>
         {/* </div> */}
         
         <div className="px-10 mobile:px-0">
-          <h1 className="text-[65px] font-semibold">Welcome to H & H</h1>
-          <p className="text-2xl">
+          <h1 className="text-[65px] font-semibold mobile:text-5xl">Welcome to H & H</h1>
+          <p className="text-2xl mobile:text-lg">
             What is H&H the full acronym is Holding Hands Community Network
             Organization .This is a Community Owned Organization with the Head
             Office located in Toronto ,Ontario , Canada .The goal of this
@@ -42,8 +42,8 @@ const Body = () => {
         </div>
       </div>
       <div className="mt-36">
-        <div className="h-[450px] bg-gradient-to-b from-orange to-yellow flex items-center justify-center">
-          <div className="border-4 rounded-2xl border-white h-[550px] w-[450px] bg-white flex justify-center flex-col items-center shadow-black shadow-xl pb-[50px]">
+        <div className="h-[450px] w-full bg-gradient-to-b from-orange to-yellow flex items-center justify-center">
+          <div className="border-4 rounded-2xl border-white h-[550px] w-[450px] bg-white flex justify-center flex-col items-center shadow-black shadow-xl pb-[50px] mobile:m-8">
             <img src={donate}/>
             <h1 className="text-orange text-6xl font-semibold">Donation</h1>
             <p className="text-center text-3xl text-text-grey">
@@ -55,7 +55,7 @@ const Body = () => {
           </div>
         </div>
       </div>
-      <div className="bg-rectangle3 bg-no-repeat bg-cover h-full mt-44">
+      <div className="bg-rectangle3 bg-no-repeat bg-cover h-full w-full mt-44 mobile:bg-rectangle3-responsive tabletOnly:bg-rectangle3-responsive ">
         <br />
         <br />
         <p className="text-center text-3xl text-text-grey">What We Provide</p>
@@ -66,8 +66,8 @@ const Body = () => {
           We will therefore act as an pivotal engine to accelerate and assist
           members ,groups, association in the following domains.
         </p>
-        <div className="flex flex-row mt-12 mobile:flex-col tabletOnly:flex-col tabletOnly:items-center">
-          <div className="border-4 rounded-2xl border-orange h-[510px] w-[350px] bg-white flex justify-center flex-col items-center mx-24 hover:text-white ">
+        <div className="flex flex-row mt-12 mobile:flex-col mobile:items-center tabletOnly:flex-col tabletOnly:items-center">
+          <div className="border-4 rounded-2xl border-orange h-[510px] w-[350px] bg-white flex justify-center flex-col items-center mx-24 hover:text-white mobile:m-3 tabletOnly:m-3">
             <img src={death}/>
             <h1 className="text-orange text-2xl font-extrabold">
               Death Relief Fund
@@ -81,7 +81,7 @@ const Body = () => {
               VIEW DETAILS
             </button>
           </div>
-          <div className="border-4 rounded-2xl border-orange h-[510px] w-[350px] bg-white flex justify-center flex-col items-center mx-24 hover:text-white ">
+          <div className="border-4 rounded-2xl border-orange h-[510px] w-[350px] bg-white flex justify-center flex-col items-center mx-24 hover:text-white mobile:m-3 tabletOnly:m-3">
             <img src={health}/>
             <h1 className="text-orange text-2xl font-extrabold text-center">
               Critical Health Relief Fund
@@ -95,7 +95,7 @@ const Body = () => {
               VIEW DETAILS
             </button>
           </div>
-          <div className="border-4 rounded-2xl border-orange h-[510px] w-[350px] bg-white flex justify-center flex-col items-center mx-24 hover:text-white ">
+          <div className="border-4 rounded-2xl border-orange h-[510px] w-[350px] bg-white flex justify-center flex-col items-center mx-24 hover:text-white mobile:m-3 tabletOnly:m-3">
             <img src={education}/>
             <h1 className="text-orange text-2xl font-extrabold text-center">
               Educational Support Fund
@@ -109,7 +109,7 @@ const Body = () => {
               VIEW DETAILS
             </button>
           </div>
-          <div className="border-4 rounded-2xl border-orange h-[510px] w-[350px] bg-white flex justify-center flex-col items-center mx-24 hover:text-white ">
+          <div className="border-4 rounded-2xl border-orange h-[510px] w-[350px] bg-white flex justify-center flex-col items-center mx-24 hover:text-white mobile:m-3 tabletOnly:m-3">
             <img src={community} />
             <h1 className="text-orange text-2xl font-extrabold text-center">
               Connect The Community Initiative
@@ -127,13 +127,13 @@ const Body = () => {
         <br />
         <br />
       </div>
-      <div className="flex items-center justify-center mt-24 px-20 mobile:flex-wrap tabletOnly:flex-wrap">
+      <div className="flex items-center justify-center mt-24 px-20 mobile:flex-wrap mobile:px-0 tabletOnly:flex-wrap">
       {/* <div className="flex items-center justify-center"> */}
           <img src={second} alt="not image found" />
         {/* </div> */}
-        <div className="px-10">
+        <div className="px-10 mobile:px-0 mobile:pl-10">
           <h1 className="text-[65px] font-semibold">Benefits of H & H</h1>
-          <ul className="list-disc text-2xl">
+          <ul className="list-disc text-2xl ">
             <li>
               Death Relief Fund disbursed amount goal will be $15,000 CAD
               approximately 6 million francs to help relieve financial stress to
@@ -169,12 +169,12 @@ const Body = () => {
         </div>
       </div>
       <div className="flex justify-center items-center ">
-      <div className=" bg-rectangle1 bg-no-repeat flex justify-center mt-12 h-full w-[65%] mobile:flex-wrap tabletOnly:flex-wrap">
+      <div className=" bg-rectangle1 bg-no-repeat flex justify-center mt-12 h-[400px] w-[65%] mobile:flex-wrap mobile:bg-rectangle1-responsive mobile:w-full mobile:h-full tabletOnly:flex-col tabletOnly:bg-rectangle1-responsive tabletOnly:h-full">
         <div className="mt-20">
           <h1 className="text-3xl text-orange font-semibold">
             H&H Relief Assistance
           </h1>
-          <ul className="list-disc text-xl">
+          <ul className="list-disc text-xl mobile:pl-7">
             <li>Access to more financial support</li>
             <li>National & International Support</li>
             <li>Little financial contribution (crowd funding)</li>
@@ -190,7 +190,7 @@ const Body = () => {
           <h1 className="text-3xl text-orange font-semibold">
             Your Group Sinking Funds
           </h1>
-          <ul className="list-disc text-xl">
+          <ul className="list-disc text-xl mobile:pl-4">
             <li>Less financial assistance</li>
             <li>Group members only</li>
             <li>More financial contribution</li>
@@ -198,11 +198,11 @@ const Body = () => {
         </div>
       </div>
       </div>
-      <div className="flex items-center justify-center mt-24 px-20 mobile:flex-wrap tabletOnly:flex-wrap">
+      <div className="flex items-center justify-center mt-24 px-20 mobile:flex-wrap mobile:px-5 tabletOnly:flex-wrap">
       {/* <div className="flex items-center justify-center"> */}
           <img src={third} alt="not image found" />
         {/* </div> */}
-        <div className="px-10">
+        <div className="px-10 mobile:px-0">
           <h1 className="text-[65px] font-semibold">Our Mission</h1>
           <p className="text-2xl">
             What is H&H the full acronym is Holding Hands Community Network

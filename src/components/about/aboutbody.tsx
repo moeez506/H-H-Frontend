@@ -7,6 +7,7 @@ import forth from "../../assets/6.png"
 import sixth from "../../assets/Ellipse 2.png"
 import second from "../../assets/Rectangle 41.png"
 import fifth from "../../assets/Ellipse 1.png"
+import Button from "../Button";
 const Aboutbody = () => {
   return (
     <>
@@ -15,7 +16,7 @@ const Aboutbody = () => {
         {/* <div className="flex items-center justify-center"> */}
           <img src={first} alt="no image found" />
         {/* </div> */}
-        <div className="px-20 mobile:px-0">
+        <div className="px-20 mobile:px-5">
           
           <h1 className="text-4xl font-semibold">Holding Hands Community</h1>
           <p className="text-base mt-8">
@@ -37,7 +38,7 @@ const Aboutbody = () => {
           </ul>
         </div>
       </div>
-      <div className="p-10 px-56 tabletOnly:px-0 mobile:px-0">
+      <div className="p-10 px-56 tabletOnly:px-5 mobile:px-5">
         <h1 className="text-4xl font-semibold text-orange">
           Holding Hands Community
         </h1>
@@ -76,7 +77,7 @@ const Aboutbody = () => {
         <h1 className="text-4xl font-semibold text-orange text-center underline-offset-8 decoration-orange">
           Critical Health Relief Fund
         </h1>
-        <p className="text-center px-56 mt-6 tabletOnly:px-0 mobile:px-0">
+        <p className="px-56 mt-6 tabletOnly:px-5 mobile:px-5">
           Registered members will be able to benefit from our Critical Health
           Relief Fund .This Fund is aimed at assisting members who are
           critically sick , have been diagnosed with a terminal or life
@@ -100,8 +101,8 @@ const Aboutbody = () => {
           therefore eligible to get Critical Health Relief Funding?
         </p>
       </div>
-      <div className="flex items-center justify-center mt-24 px-20 mobile:flex-wrap  tabletOnly:flex-wrap mobile:px-0" >
-        <div className="pl-56 tabletOnly:pl-0 mobile:pl-0">
+      <div className="flex items-center justify-center mt-24 px-20 mobile:flex-wrap  tabletOnly:flex-wrap mobile:px-5" >
+        <div className="pl-56 tabletOnly:pl-0 mobile:px-5 laptop:pl-10">
           <h1 className="text-4xl font-semibold">
             Eligibility Criteria For Critical<br></br> Relief Fund
           </h1>
@@ -129,7 +130,7 @@ const Aboutbody = () => {
         <h1 className="text-4xl font-semibold text-white pt-12">
           Holding Hands Community
         </h1>
-        <p className="text-white px-64 mt-8 tabletOnly:px-0 mobile:px-0">
+        <p className="text-white px-64 mt-8 tabletOnly:px-7 mobile:px-5">
           Education is Key that unlocks Endless potentials. Educational Support
           Fund is aim in assisting members or their family members achieve the
           educational goal. Not everyone in our communities are privileged to
@@ -157,18 +158,20 @@ const Aboutbody = () => {
           and Asia.<br></br> All members are eligible for Educational Support
           Fund
         </p>
-        <button className="border-4 rounded-3xl text-white border-yellow bg-gradient-to-r from-orange to-yellow mt-6 px-8 py-2 text-xl font-medium">
-          CONTACT US
-        </button>
+        <br />
+        <Button text="CONTACT US" />
+        <br />
+        <br />
+        <br />
       </div>
       <div className="mt-16">
         <h1 className="text-4xl font-semibold text-orange text-center underline-offset-8 decoration-orange">
           Connect The Community Initiative
         </h1>
         
-        <div className="flex items-center justify-center mt-12 px-20 mobile:flex-wrap mobile:px-0 tabletOnly:flex-wrap">
-          <div className="pl-56 tabletOnly:pl-0 mobile:pl-0">
-            <p className="text-base pr-64 tabletOnly:pr-0 mobile:pr-0">
+        <div className="flex items-center justify-center mt-12 px-20 mobile:flex-wrap mobile:px-5 tabletOnly:flex-wrap">
+          <div className="pl-56 tabletOnly:pl-0 mobile:pl-0 laptop:pl-10">
+            <p className="text-base pr-64 tabletOnly:pr-0 mobile:pr-0 laptop:pr-0">
               With H&H Connect The Community Initiative, members would be able
               to benefit from a wide range of exposure. One of the objectives of
               H&H is to bring communities together Brining the diaspora
@@ -189,7 +192,7 @@ const Aboutbody = () => {
         
         </div>
       </div>
-      <div className="flex items-center justify-center mt-24 ml-20 px-20 mobile:flex-wrap mobile:px-0 mobile:ml-0 tabletOnly:flex-wrap tabletOnly:ml-0">
+      <div className="flex items-center justify-center mt-24 ml-20 px-20 mobile:flex-wrap mobile:px-5 mobile:ml-0 tabletOnly:flex-wrap tabletOnly:ml-0">
       
           <img src={forth} alt="no image found" />
         
@@ -206,16 +209,14 @@ const Aboutbody = () => {
             to prepare if they have to travel out of their jurisdiction or
             country.
           </p>
-          <button className="border-4 rounded-3xl text-white border-white bg-gradient-to-r from-orange to-yellow mt-6 px-8 py-2 text-xl font-medium">
-            CONTACT US
-          </button>
+          <Button text="CONTACT US" />
         </div>
       </div>
       <div className="mt-20">
         <h1 className="text-4xl font-semibold text-orange text-center underline-offset-8 decoration-orange">
           Connect The Community Initiative
         </h1>
-        <div className="flex justify-center items-center mt-16 mobile:flex-wrap tabletOnly:flex-wrap">
+        <div className="flex justify-center items-center mt-16 mobile:flex-wrap tabletOnly:flex-wrap mobile:px-5">
           <div>
           <img src={fifth} alt="no image found" />
             <h1 className="text-4xl font-semibold text-orange mt-10">Eligibility</h1>
@@ -226,9 +227,7 @@ const Aboutbody = () => {
               <li>Has an administrative structure in place</li>
               <li>Must be a Cameroonian Group , Meeting , Association etc</li>
             </ul>
-            <button className="border-4 rounded-3xl text-white border-white bg-gradient-to-r from-orange to-yellow mt-8 px-8 py-2 text-xl font-medium">
-              CONTACT US
-            </button>
+            <Button text="CONTACT US" />
           </div>
           <div>
             <img src={sixth} alt="no image found" />
@@ -241,9 +240,7 @@ const Aboutbody = () => {
               <li>Name of Association</li>
               <li>List of registered members</li>
             </ul>
-            <button className="border-4 rounded-3xl text-white border-white bg-gradient-to-r from-orange to-yellow mt-8 px-8 py-2 text-xl font-medium">
-              CONTACT US
-            </button>
+            <Button text="CONTACT US" />
           </div>
         </div>
       </div>

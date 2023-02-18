@@ -12,9 +12,12 @@ module.exports = {
       },
       backgroundImage: (theme) =>({
         'hero-pattern': "url('/src/assets/Rectangle 2.png')",
+        'hero-pattern-responsive': "url('/src/assets/Responsive2.png')",
         'rectangle1': "url('/src/assets/Rectangle 29.png')",
+        'rectangle1-responsive': "url('/src/assets/Rectangle 85.png')",
         'rectangle2': "url('/src/assets/Rectangle 32.png')",
         'rectangle3': "url('/src/assets/Rectangle 71.png')",
+        'rectangle3-responsive': "url('/src/assets/Rectangle 84.png')",
         'about': "url('/src/assets/image 3.png')",
         'community': "url('/src/assets/Rectangle 40.png')",
         'program' : "url('/src/assets/Rectangle 70.png')",

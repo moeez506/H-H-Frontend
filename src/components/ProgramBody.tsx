@@ -2,6 +2,7 @@
 import React from "react";
 import death1 from "../assets/Rectangle 64.png";
 import death2 from "../assets/Rectangle 65.png";
+import icon from "../assets/Rectangle 67.png"
 import health from "../assets/Rectangle 41.png";
 import community from "../assets/Rectangle 74.png"
 import female from "../assets/female.png"
@@ -12,10 +13,10 @@ const ProgramBody = () => {
     <>
       <div className="bg-program-hero h-[500px] bg-no-repeat bg-cover mb-2"></div>
       <div className="bg-program h-full bg-cover bg-no-repeat grid grid-cols-2 tabletOnly:flex flex-col mobile:flex ">
-        <div className="flex flex-col justify-center items-center mr-20 ml-72 tabletOnly:ml-0 mobile:ml-0 ">
-          <div className="flex">
+        <div className="flex flex-col justify-center items-center mr-20 ml-72 tabletOnly:mx-5 mobile:mx-5 laptop:ml-20">
+          <div className="flex mobile:flex-col">
             <div>
-              <img src="" alt="" />
+              <img src={icon} alt="no image found" />
               <p className="text-xl font-bold">COMMUNITY</p>
               <p className="text-xl">
                 The more the members and association the less amount each member
@@ -25,18 +26,18 @@ const ProgramBody = () => {
             </div>
             <img src={death1} alt="image not loaded" />
           </div>
-          <div className="flex mt-10 ">
+          <div className="flex mt-10 mobile:flex-col">
             <img src={death2} alt="image not loaded" />
-            <p className="text-xl pl-8">
+            <p className="text-xl pl-8 mobile:pl-0">
               H&H upon any death occurrence, will announce to all members
               association and contributions have to be done within 72 hours. The
               amount would be disburse to the deceased next of kin
             </p>
           </div>
         </div>
-        <div className="mt-10">
+        <div className="mt-10 mobile:mx-5 tabletOnly:mx-5">
           <h1 className="text-4xl font-semibold">Death Relief Fund</h1>
-          <p className="text-base pr-80 tabletOnly:pr-0 mobile:pr-0">
+          <p className="text-base pr-80 tabletOnly:pr-0 mobile:pr-0 laptop:pr-0">
             As an Organization we do understand our community needs assistance.
             Death comes unannounced and neither is anyone prepared when death
             knocks. This is the more reason why we have to be prepared at all
@@ -65,7 +66,8 @@ const ProgramBody = () => {
         </div>
       </div>
       <div className="flex justify-center items-center">
-      <div className="bg-rectangle3 flex flex-col justify-center items-center h-full bg-no-repeat bg-cover mt-10 px-20 w-[70%] tabletOnly:p-10 tabletOnly:w-[90%] mobile:p-8 mobile:w-full">
+      <div className="bg-rectangle3 flex flex-col justify-center items-center h-full bg-no-repeat bg-cover mt-10 px-20 w-[70%] tabletOnly:p-10 tabletOnly:w-full mobile:p-8 mobile:w-full">
+        <br />
         <div>
           <h1 className="text-4xl font-semibold">
             Critical Health Relief Fund
@@ -132,7 +134,7 @@ const ProgramBody = () => {
 
           </div>
           
-          <div>
+          <div className="mobile:px-5 tabletOnly:px-5">
             <p className="pr-72 tabletOnly:pr-0 mobile:pr-0">
               <strong>Education</strong> is Key that unlocks Endless potentials
               . Educational Support Fund aims in assisting members or their
@@ -168,11 +170,13 @@ const ProgramBody = () => {
         </div>
       </div>
       <div className="bg-orange h-full mt-10 justify-center items-center flex flex-col">
+        <br />
+      <br />
         <h1 className="text-5xl font-bold text-white text-center">
           Connect The Community Initiative
         </h1>
-        <div className="bg-white h-full rounded-lg w-[80%] mt-8 grid grid-cols-2 justify-center items-center tabletOnly:flex flex-col-reverse mobile:flex">
-          <p className="px-24 tabletOnly:px-0 mobile:px-0">
+        <div className="bg-white h-full rounded-2xl w-[80%] mt-8 grid grid-cols-2 justify-center items-center tabletOnly:flex flex-col mobile:flex">
+          <p className="px-24 tabletOnly:px-5 mobile:px-5">
             With H&H Connect The Community Initiative, members would be able to
             benefit from a wide range of exposure. One of the objectives of H&H
             is to bring communities together Brining the diaspora community with
@@ -195,7 +199,7 @@ const ProgramBody = () => {
             communicate any social trips for members to be able to prepare if
             they have to travel out of their jurisdiction or country.
           </p>
-          <div className="ml-32 tabletOnly:ml-0 mobile:ml-0">
+          <div className="ml-32 pt-6 tabletOnly:ml-0 mobile:ml-0">
             <img src={community} alt="image not loaded" />
             <br></br>
             <Button text="Contact Us"/>
