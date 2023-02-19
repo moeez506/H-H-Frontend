@@ -8,12 +8,12 @@ const ContactBody = () => {
   return (
     <>
       <div className="bg-contact h-[510px] bg-no-repeat"></div>
-      <div className="flex justify-center items-center tabletOnly:flex-col mobile:flex-col">
+      <div className=" flex justify-center items-center tabletOnly:flex-col mobile:flex-col mobile:p-5">
         <div className="bg-gradient-to-b from-orange to-yellow h-[830px] text-white w-[520px] m-10 rounded-3xl mobile:w-full">
           <h1 className="text-5xl font-bold text-center pt-8">Contact Info</h1>
           <br />
           <br />
-          <div className="pl-10">
+          <div className="pl-10 mobile:pl-5 ">
             <p>
               <strong>Head Office Canada:</strong> Manahan Road, Scarborough
               Ontario, M1E 3X8
@@ -39,7 +39,7 @@ const ContactBody = () => {
           </div>
           
         </div>
-        <div className="bg-white rounded-3xl shadow-black shadow-lg h-[830px] w-[780px] tabletOnly:w-[520px] pl-12 pt-16 pr-12 mobile:w-full">
+        <div className="mobile:h-[900px] bg-white rounded-3xl shadow-black shadow-lg h-[830px] w-[780px] tabletOnly:w-[500px] pl-12 pt-16 pr-12 mobile:w-full ">
           <h1 className="text-5xl font-bold">Contact Info</h1>
           <br />
           <p>
@@ -56,7 +56,7 @@ const ContactBody = () => {
                 type="text"
                 name="name"
                 id="name"
-                className="border text-gray-900 sm:text-sm rounded-lg laptop:w-full p-3 dark:placeholder-gray-400"
+                className="border text-gray-900 sm:text-sm rounded-lg laptop:w-full tabletOnly:w-full p-3 dark:placeholder-gray-400"
                 placeholder="Name*"
               />
             </div>
@@ -69,7 +69,7 @@ const ContactBody = () => {
                 type="email"
                 name="email"
                 id="email"
-                className="border text-gray-900 sm:text-sm rounded-lg laptop:w-full p-3 dark:placeholder-gray-400"
+                className="border text-gray-900 sm:text-sm rounded-lg laptop:w-full tabletOnly:w-full p-3 dark:placeholder-gray-400"
                 placeholder="Email Address*"
               />
             </div>
@@ -82,7 +82,7 @@ const ContactBody = () => {
                 name="password"
                 id="password"
                 placeholder="Contact Number*"
-                className="border text-gray-900 sm:text-sm rounded-lg laptop:w-full p-3 dark:placeholder-gray-400"
+                className="border text-gray-900 sm:text-sm rounded-lg laptop:w-full tabletOnly:w-full p-3 dark:placeholder-gray-400"
               />
             </div>
             <div>
@@ -91,7 +91,7 @@ const ContactBody = () => {
                 name="subject"
                 id="subject"
                 placeholder="Subject*"
-                className="border text-gray-900 sm:text-sm rounded-lg laptop:w-full p-3 dark:placeholder-gray-400"
+                className="border text-gray-900 sm:text-sm rounded-lg laptop:w-full tabletOnly:w-full p-3 dark:placeholder-gray-400"
               />
             </div>
             <div>
@@ -100,7 +100,7 @@ const ContactBody = () => {
                 name="message"
                 id="message"
                 placeholder="Meassage*"
-                className="border text-gray-900 sm:text-sm rounded-lg laptop:w-full p-3 dark:placeholder-gray-400 h-[160px]"
+                className="border text-gray-900 sm:text-sm rounded-lg laptop:w-full tabletOnly:w-full p-3 dark:placeholder-gray-400 h-[160px]"
               />
             </div>
             <Button text="Contact Us" />
@@ -108,14 +108,14 @@ const ContactBody = () => {
         </div>
       </div>
       <div className="flex items-center justify-center mt-12">
-        <div className="bg-[#ececed] shadow-black shadow-xl rounded-2xl h-full w-[75%] mobile:w-full">
-          <h1 className="text-6xl font-bold text-center text-orange pt-5">
+        <div className="mobile:m-5 bg-[#ececed] shadow-black shadow-xl rounded-2xl h-full w-[75%] mobile:w-full">
+          <h1 className="text-6xl mobile:text-5xl font-bold text-center text-orange pt-5">
             OUR LOCATIONS
           </h1>
           <div className="grid grid-cols-2 justify-center px-20 py-10 tabletOnly:flex flex-col mobile:flex mobile:px-5">
             <img src={map} alt="image not found" />
-            <div className="bg-white shadow-black shadow-sm rounded-lg flex flex-col justify-center items-center">
-              <div className="p-5">
+            <div className="mt-5 bg-white shadow-black shadow-sm rounded-lg flex flex-col justify-center items-center">
+              <div className="p-5 ">
                 <h1 className="text-2xl font-bold text-orange">Branch Cameroon:</h1>
                 <p className="text-xl font-medium">Open today till 10pm</p>
                 <p className="text-xl font-light">
