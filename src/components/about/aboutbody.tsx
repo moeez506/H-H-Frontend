@@ -11,12 +11,12 @@ import Button from "../Button";
 const Aboutbody = () => {
   return (
     <>
-      <div className="bg-about h-[500px] mb-2 bg-no-repeat bg-cover"></div>
-      <div className="flex items-center justify-center mt-24 px-20 mobile:flex-wrap mobile:px-0 tabletOnly:flex-wrap">
+      <div className="bg-about h-[500px] bg-no-repeat bg-cover mb-2 tabletOnly:h-60 mobile:h-36"></div>
+      <div className="flex items-center justify-center mt-24 px-40 mobile:flex-wrap mobile:px-5 tabletOnly:flex-wrap tabletOnly:px-16">
         {/* <div className="flex items-center justify-center"> */}
           <img src={first} alt="no image found" />
         {/* </div> */}
-        <div className="px-20 mobile:px-5">
+        <div className="px-20 mobile:px-5 tabletOnly:pt-4 mobile:pt-4">
           
           <h1 className="text-4xl font-semibold">Holding Hands Community</h1>
           <p className="text-base mt-8">
@@ -102,11 +102,11 @@ const Aboutbody = () => {
         </p>
       </div>
       <div className="flex items-center justify-center mt-24 px-20 mobile:flex-wrap  tabletOnly:flex-wrap mobile:px-5" >
-        <div className="pl-56 tabletOnly:pl-0 mobile:px-5 laptop:pl-10">
-          <h1 className="text-4xl font-semibold">
+        <div className="px-20 tabletOnly:pl-0 mobile:px-5 laptop:px-40">
+          <h1 className="text-4xl font-semibold mobile:text-3xl">
             Eligibility Criteria For Critical<br></br> Relief Fund
           </h1>
-          <ul className="list-disc text-base mt-12">
+          <ul className="list-disc text-base mt-12 mobile:mt-5">
             <li>All Active member</li>
             <li>
               Members who are critically sick ,have been diagnosed with a life{" "}
@@ -123,7 +123,7 @@ const Aboutbody = () => {
           </p>
         </div>
         {/* <div className="flex items-center justify-center"> */}
-          <img src={second} alt="no image found" className="pr-32 mobile:pr-0"/>
+          <img src={second} alt="no image found" className="pr-32 mobile:pr-0 tabletOnly:pt-6 mobile:pt-5"/>
         {/* </div> */}
       </div>
       <div className="bg-community bg-no-repeat bg-cover h-full mt-5 text-center">
@@ -169,7 +169,7 @@ const Aboutbody = () => {
           Connect The Community Initiative
         </h1>
         
-        <div className="flex items-center justify-center mt-12 px-20 mobile:flex-wrap mobile:px-5 tabletOnly:flex-wrap">
+        <div className="flex items-center justify-center mt-12 px-40 mobile:flex-col-reverse mobile:px-5 tabletOnly:flex-col-reverse">
           <div className="pl-56 tabletOnly:pl-0 mobile:pl-0 laptop:pl-10">
             <p className="text-base pr-64 tabletOnly:pr-0 mobile:pr-0 laptop:pr-0">
               With H&H Connect The Community Initiative, members would be able
@@ -192,7 +192,7 @@ const Aboutbody = () => {
         
         </div>
       </div>
-      <div className="flex items-center justify-center mt-24 ml-20 px-20 mobile:flex-wrap mobile:px-5 mobile:ml-0 tabletOnly:flex-wrap tabletOnly:ml-0">
+      <div className="flex items-center justify-center mt-24 ml-20 px-40 mobile:flex-wrap mobile:px-5 mobile:ml-0 tabletOnly:flex-wrap tabletOnly:ml-0">
       
           <img src={forth} alt="no image found" />
         
@@ -216,8 +216,8 @@ const Aboutbody = () => {
         <h1 className="text-4xl font-semibold text-orange text-center underline-offset-8 decoration-orange">
           Connect The Community Initiative
         </h1>
-        <div className="flex justify-center items-center mt-16 mobile:flex-wrap tabletOnly:flex-wrap mobile:px-5">
-          <div>
+        <div className="flex justify-center items-center m-16 mobile:flex-wrap tabletOnly:flex-wrap mobile:px-0">
+          <div className="px-20 mobile:px-0">
           <img src={fifth} alt="no image found" />
             <h1 className="text-4xl font-semibold text-orange mt-10">Eligibility</h1>
             <ul className="list-disc text-base mt-8">
@@ -229,7 +229,7 @@ const Aboutbody = () => {
             </ul>
             <Button text="CONTACT US" />
           </div>
-          <div>
+          <div className="px-20 mobile:px-0 pt-6">
             <img src={sixth} alt="no image found" />
             <h1 className="text-4xl font-semibold text-orange mt-10">
               Registration process
