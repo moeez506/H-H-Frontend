@@ -10,9 +10,6 @@ import fifth from "../../assets/Ellipse 1.png"
 import Button from "../Button";
 const Aboutbody = () => {
   return (
-     <>
-      <div className="bg-about h-[500px] bg-no-repeat bg-cover mb-2 tabletOnly:h-60 mobile:h-36"></div>
-      <div className="flex items-center justify-center mt-24 px-40 mobile:flex-wrap mobile:px-5 tabletOnly:flex-wrap tabletOnly:px-16">
     <>
       <div className="bg-about h-[500px] bg-no-repeat bg-cover mb-2 tabletOnly:h-60 mobile:h-36"></div>
       <div className="flex items-center justify-center mt-24 px-40 mobile:flex-wrap mobile:px-5 tabletOnly:flex-wrap tabletOnly:px-16">
