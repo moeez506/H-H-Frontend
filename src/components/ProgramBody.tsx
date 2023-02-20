@@ -66,7 +66,7 @@ const ProgramBody = () => {
         </div>
       </div>
       <div className="flex justify-center items-center">
-      <div className="bg-rectangle3 flex flex-col justify-center items-center h-full bg-no-repeat bg-cover mt-10 px-20 w-[70%] tabletOnly:p-10 tabletOnly:w-full mobile:p-8 mobile:w-full">
+      <div className="bg-rectangle3 flex flex-col justify-center items-center h-full bg-no-repeat bg-cover mt-10 px-20 w-[70%] tabletOnly:p-10 tabletOnly:w-full mobile:p-8 mobile:w-full mobile:bg-rectangle3-res">
         <br />
         <div>
           <h1 className="text-4xl font-semibold">
