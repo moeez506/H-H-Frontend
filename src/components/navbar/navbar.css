@@ -1,0 +1,18 @@
+.setRight{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.active{
+    color: #1F8BB6;
+    border-top: solid 2px #1F8BB6;
+}
+
+@media (max-width: 1023px) {
+   .setRight{
+    display: none;
+   }
+   .active{
+    border: none;
+   }
+}

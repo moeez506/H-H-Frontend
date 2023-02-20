@@ -7,6 +7,7 @@ import health from "../assets/Rectangle 41.png";
 import community from "../assets/Rectangle 74.png"
 import female from "../assets/EducationalSupport.png"
 import Button from "./Button";
+import Faq from "./program/faq";
 
 const ProgramBody = () => {
   return (
@@ -208,6 +209,10 @@ const ProgramBody = () => {
           </div>
         </div>
       </div>
+      <h1 className="text-5xl font-bold text-black ml-64 mt-5 tabletOnly:ml-3 mobile:ml-3">
+        Frequently Asked Questions
+      </h1>
+      <Faq />
     </>
   );
 };
