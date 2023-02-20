@@ -67,13 +67,13 @@ const ProgramBody = () => {
         </div>
       </div>
       <div className="flex justify-center items-center">
-        <div className="bg-rectangle3 flex flex-col	rounded-3xl justify-center items-center h-full bg-no-repeat bg-cover m-8 px-14 w-[80%] tabletOnly:p-10 tabletOnly:w-full mobile:p-5 mobile:m-5 mobile:w-full mobile:bg-criticalHealthBg">
+        <div className="bg-rectangle3 flex flex-col	rounded-3xl justify-center items-center h-full bg-no-repeat bg-cover m-8 px-14 w-[80%] tabletOnly:p-10 tabletOnly:w-full mobile:p-0 mobile:m-0 mobile:w-full mobile:bg-criticalHealthBg">
           <br />
-          <div className="mobile:ml-8">
+          <div className="mobile:mx-7">
             <h1 className="text-4xl font-semibold bg-gradient-to-r from-orange to-yellow text-transparent bg-clip-text mobile:text-center m-4">
               Critical Health Relief Fund
             </h1>
-            <p className="text-base">
+            <p className="text-base ">
               Registered members will be able to benefit from our Critical Health
               Relief Fund .This Fund is aimed at assisting members who are
               critically sick , have been diagnosed with a terminal or life

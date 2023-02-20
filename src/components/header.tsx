@@ -3,8 +3,8 @@ import React from 'react'
 
 const Header = () => {
   return (
-    <div className='bg-[#C4C7C8] h-16'>
-    <div className="absolute top-[20px] left-[48px] text-[inherit]">
+    <div className='bg-[#C4C7C8] h-16 mobile:hidden'>
+      <div className="absolute top-5 left-12 text-[inherit] mobile:top-2 mobile:text-sm mobile:left-2">
         Call Us Today! 416-519-3621|
         <a
         //   className="text-[inherit]"
@@ -16,8 +16,8 @@ const Header = () => {
           </span>
         </a>
       </div>
-      
-      </div>
+
+    </div>
   )
 }
 
