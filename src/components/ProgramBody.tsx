@@ -123,6 +123,61 @@ const ProgramBody = () => {
             </div>
             <img src={health} className="h-80 ml-10 tabletOnly:mt-10 tabletOnly:ml-0 mobile:ml-0 mr-4 mt-8" alt="image not loaded" />
           </div>
+      <div className="bg-rectangle3 flex flex-col justify-center items-center h-full bg-no-repeat bg-cover mt-10 px-20 w-[70%] tabletOnly:p-10 tabletOnly:w-full mobile:p-8 mobile:w-full mobile:bg-rectangle3-res">
+        <br />
+        <div>
+          <h1 className="text-4xl font-semibold">
+            Critical Health Relief Fund
+          </h1>
+          <p className="text-base">
+            Registered members will be able to benefit from our Critical Health
+            Relief Fund .This Fund is aimed at assisting members who are
+            critically sick , have been diagnosed with a terminal or life
+            threatening illness. This fund will assist in taking care of medical
+            bills and reduce the financial burden of the member and it’s family.
+            This Fund will be part of a members upfront part benefit of Death
+            Relief Fund , Donation and Assistance from the H&H community. Health
+            is Wealth and we strongly believe helping members in such times will
+            be more beneficial rather than helping theming when they are no
+            more. As a community we do understand there is lack of good health
+            system in our communities . H&H and its international partners are
+            dedicated in helping during such times . We have therefore ,put in
+            place a mechanism to assist all H&H members financially when
+            diagnosed with a terminal disease or when found in a critical health
+            circumstance. This assistance will be available only for active
+            members and conditions may apply .H&H is also working with community
+            hospitals, clinics ,health specialist for its members to have access
+            to discounted health services for non- critical health issues .H&H
+            is working to with its international partners to make available
+            health services available for its community members who would need
+            international health care .Who is therefore eligible to get Critical
+            Health Relief Funding?
+          </p>
+        </div>
+        <br />
+        <br />
+        <div className="flex tabletOnly:flex-col mobile:flex-col">
+          <div>
+            <h1 className="text-3xl font-semibold">
+              Eligibility Criteria For Critical Relief Fund
+            </h1>
+            <ul className="list-disc">
+              <li>All Active member Members</li>
+              <li>
+                Members who are critically sick ,have been diagnosed with a life
+                threatening disease
+              </li>
+              <li>Has proven medical Report</li>
+            </ul>
+            <p>
+              All claims for Critical Health Relief Funding must be announced
+              through the association executive team .Upon each announcement H&H
+              would do its internal and external verifications and proceed with
+              the claims if all eligibility and verifications have been done
+              .Members do not need to contribute for Critical Health Relief Fund
+            </p>
+          </div>
+          <img src={health} alt="image not loaded" />
         </div>
       </div>
       <div className=" pl-24 tabletOnly:pl-5 px-5 mobile:pl-5">
