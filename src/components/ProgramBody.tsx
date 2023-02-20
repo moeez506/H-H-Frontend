@@ -121,7 +121,7 @@ const ProgramBody = () => {
                 .Members do not need to contribute for Critical Health Relief Fund
               </p>
             </div>
-            <img src={health} className="h-80 ml-10 tabletOnly:mt-10 tabletOnly:ml-0 mobile:ml-0 mt-8" alt="image not loaded" />
+            <img src={health} className="h-80 ml-10 tabletOnly:mt-10 tabletOnly:ml-0 mobile:ml-0 mr-4 mt-8" alt="image not loaded" />
           </div>
         </div>
       </div>

@@ -238,7 +238,7 @@ const Aboutbody = () => {
         <div className="flex items-center justify-center mt-12 px-20 mobile:flex-wrap mobile:px-5 tabletOnly:flex-wrap">
           <div className="pl-56 tabletOnly:pl-0 mobile:pl-0 laptop:pl-10">
             <img src={third} alt="no image found" className="pr-32 tabletOnly:pr-0 mobile:pr-0" />
-            <p className="text-base pr-64  tablet:mt-4 tabletOnly:mt-4  tabletOnly:pr-0 mobile:pr-0 mobile:pl-3 laptop:pr-0">
+            <p className="text-base pr-64  tablet:mt-4 tabletOnly:mt-4  tabletOnly:pr-0 mobile:pr-0 mobile:pl-3 ">
               With H&H Connect The Community Initiative, members would be able
               to benefit from a wide range of exposure. One of the objectives of
               H&H is to bring communities together Brining the diaspora

@@ -7,7 +7,7 @@ import Button from "./Button";
 const ContactBody = () => {
   return (
     <>
-      <div className="bg-contact h-[510px] bg-no-repeat"></div>
+      <div className="bg-contact h-[700px] bg-no-repeat bg-cover mb-2 tabletOnly:h-60 mobile:h-36"></div>
       <div className=" flex justify-center items-center tabletOnly:flex-col mobile:flex-col mobile:p-5">
         <div className="bg-gradient-to-b from-orange to-yellow h-[830px] text-white w-[520px] m-10 rounded-3xl mobile:w-full">
           <h1 className="text-5xl font-bold text-center pt-8">Contact Info</h1>
@@ -39,7 +39,7 @@ const ContactBody = () => {
           </div>
           
         </div>
-        <div className="mobile:h-[900px] bg-white rounded-3xl shadow-black shadow-lg h-[830px] w-[780px] tabletOnly:w-[500px] pl-12 pt-16 pr-12 mobile:w-full ">
+        <div className="mobile:h-[900px] bg-white rounded-3xl shadow-black shadow-lg h-[830px] w-[780px] tabletOnly:w-[500px] pl-8 pt-16 pr-12 mobile:w-full ">
           <h1 className="text-5xl font-bold">Contact Info</h1>
           <br />
           <p>

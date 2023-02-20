@@ -15,7 +15,7 @@ const Footer = () => {
       <h1 className='text-white font-semibold text-3xl mt-12'>CONTACT INFO</h1>
       <div className='flex'>
       <GrLocation className='bg-white' />
-      <p className='mt-8 text-sm'>Head Office Canada: Manahan Road,<br></br> Scarborough Ontario, M1E 3X8</p>
+      <p className='text-sm'>Head Office Canada: Manahan Road,<br></br> Scarborough Ontario, M1E 3X8</p>
       </div>
       <div className='flex'>
       <GrLocation className='bg-white' />
