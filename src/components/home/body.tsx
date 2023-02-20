@@ -25,8 +25,8 @@ const Body = () => {
           <img src={first} alt="not image found" className=""/>
         {/* </div> */}
         
-        <div className="px-10 mobile:px-0">
-          <h1 className="text-[65px] font-semibold mobile:text-5xl">Welcome to H & H</h1>
+        <div className="px-10 mobile:px-4 mt-4">
+          <h1 className="text-[65px] font-semibold mobile:text-[38px]">Welcome to H & H</h1>
           <p className="text-2xl mobile:text-lg">
             What is H&H the full acronym is Holding Hands Community Network
             Organization .This is a Community Owned Organization with the Head
@@ -131,9 +131,9 @@ const Body = () => {
       {/* <div className="flex items-center justify-center"> */}
           <img src={second} alt="not image found" />
         {/* </div> */}
-        <div className="px-10 mobile:px-0 mobile:pl-10">
-          <h1 className="text-[65px] font-semibold">Benefits of H & H</h1>
-          <ul className="list-disc text-2xl ">
+        <div className="px-10 mobile:px-4 mobile:pl-10 mt-4">
+          <h1 className="text-[65px] font-semibold mobile:text-[38px]">Benefits of H & H</h1>
+          <ul className="list-disc text-2xl mobile:text-lg">
             <li>
               Death Relief Fund disbursed amount goal will be $15,000 CAD
               approximately 6 million francs to help relieve financial stress to
@@ -170,7 +170,7 @@ const Body = () => {
       </div>
       <div className="flex justify-center items-center ">
       <div className=" bg-rectangle1 bg-no-repeat flex justify-center mt-12 h-[400px] w-[65%] mobile:flex-wrap mobile:bg-rectangle1-responsive mobile:w-full mobile:h-full tabletOnly:flex-col tabletOnly:bg-rectangle1-responsive tabletOnly:h-full">
-        <div className="mt-20">
+        <div className="mt-20 mobile:pl-4">
           <h1 className="text-3xl text-orange font-semibold">
             H&H Relief Assistance
           </h1>
@@ -202,9 +202,9 @@ const Body = () => {
       {/* <div className="flex items-center justify-center"> */}
           <img src={third} alt="not image found" />
         {/* </div> */}
-        <div className="px-10 mobile:px-0">
-          <h1 className="text-[65px] font-semibold">Our Mission</h1>
-          <p className="text-2xl">
+        <div className="px-10 mobile:px-4 mt-4">
+          <h1 className="text-[65px] font-semibold mobile:text-5xl">Our Mission</h1>
+          <p className="text-2xl mobile:text-lg">
             What is H&H the full acronym is Holding Hands Community Network
             Organization .This is a Community Owned Organization with the Head
             Office located in Toronto ,Ontario , Canada .The goal of this
@@ -228,10 +228,10 @@ const Body = () => {
           <div className="box-content h-32 w-32 p-4 border-4 border-orange"></div>
           <div className="box-content h-32 w-32 p-4 border-4 border-orange"></div>
         </div>
-        <h1 className="text-[#F25132] font-semibold text-3xl text-center mt-6">
+        <h1 className="text-orange font-semibold text-3xl text-center mt-6">
           PARTNER
         </h1>
-        <p className="text-[#F25132] text-xl text-center">
+        <p className="text-orange text-xl text-center">
           Lorem Ipsum is simply dummy text of the printing <br></br>and
           typesetting industry.
         </p>

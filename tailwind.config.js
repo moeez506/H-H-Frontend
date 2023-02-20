@@ -7,7 +7,7 @@ module.exports = {
       colors: {
        'orange': '#1F8BB6',
        'yellow': '#87CEEB',
-       'footer': '#0C1214',
+       'footer': '#08232D',
        'text-grey': '#71726F'
       },
       backgroundImage: (theme) =>({
