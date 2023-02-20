@@ -19,19 +19,19 @@ import Home from "./pages/home";
 function App() {
   return (
     <>
-    {/* <Header /> */}
-    <Navbar />
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/contact" element={<ContactUS />} />
-      <Route path="/programs" element={<Programs />} />
-    </Routes>
+      {/* <Header /> */}
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<ContactUS />} />
+        <Route path="/programs" element={<Programs />} />
+      </Routes>
 
-    <Contact />
-    <Footer />
-    
-    </>  
+      <Contact />
+      <Footer />
+
+    </>
 
   );
 }
