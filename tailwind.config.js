@@ -23,10 +23,12 @@ module.exports = {
         program: "url('/src/assets/Rectangle 70.png')",
         criticalHealthBg: "url('/src/assets/Rectangle 72.png')",
         "program-hero": "url('/src/assets/program-hero.jpg')",
+        "program-hero-mobile": "url('/src/assets/program-hero-mobile.png')",
         contact: "url('/src/assets/Rectangle 52.png')",
       }),
     },
     screens: {
+      smallMobile: { max: "320px" },
       mobile: { max: "480px" },
       tablet: { max: "1023px" },
 

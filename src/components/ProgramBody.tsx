@@ -12,24 +12,24 @@ import Faq from "./program/faq";
 const ProgramBody = () => {
   return (
     <>
-      <div className="bg-program-hero h-[500px] bg-no-repeat bg-cover mb-2 tabletOnly:h-60 mobile:h-36"></div>
-      <div className="bg-program h-full px-20 py-10  bg-cover bg-no-repeat grid grid-cols-2 tabletOnly:flex flex-col mobile:flex mobile:px-10 mobile:py-5">
+      <div className="bg-program-hero mobile:bg-program-hero-mobile h-[500px] bg-no-repeat bg-cover mb-2 tabletOnly:h-60 mobile:h-36"></div>
+      <div className="bg-program h-full px-20 py-10  bg-cover bg-no-repeat grid grid-cols-2 tabletOnly:flex flex-col mobile:flex mobile:px-5 mobile:py-5">
         <div className="flex flex-col justify-center items-center mr-10 ml-50 tabletOnly:mx-5 mobile:mr-0 mobile:pl-0 laptop:ml-20">
           <div className="flex">
             <div>
-              <img src={icon} alt="no image found" />
-              <p className="text-xl mobile:text-base font-bold">COMMUNITY</p>
-              <p className="text-xl mobile:text-sm mobile:pt-0 mobile:pr-2">
+              <img className="smallMobile:w-1/3" src={icon} alt="no image found" />
+              <p className="text-xl smallMobile:text-orange mobile:text-base font-bold">COMMUNITY</p>
+              <p className="text-xl mobile:text-sm mobile:pt-0 mobile:pr-2 smallMobile:pl-4">
                 The more the members and association the less amount each member
                 will contribute when a death occurs. We take any death in our
                 community seriously.
               </p>
             </div>
-            <img src={death1} className="mobile:h-52 mobile:w-44 mobile:mt-4" alt="image not loaded" />
+            <img  src={death1} className="mobile:h-52  mobile:w-44  mobile:mt-4 smallMobile:hidden" alt="image not loaded" />
           </div>
           <div className="flex mt-10 mobile:mt-5">
-            <img src={death2} className="mobile:h-48 mobile:w-44" alt="image not loaded" />
-            <p className="text-xl pl-8 pt-10 mobile:pl-4 mobile:text-sm">
+            <img src={death2} className="mobile:h-48  mobile:w-44 smallMobile:hidden" alt="image not loaded" />
+            <p className="smallMobile:pl-0 text-xl pl-8 pt-10 mobile:pl-4   mobile:pt-0 mobile:text-sm">
               H&H upon any death occurrence, will announce to all members
               association and contributions have to be done within 72 hours. The
               amount would be disburse to the deceased next of kin
@@ -37,8 +37,8 @@ const ProgramBody = () => {
           </div>
         </div>
         <div className="mr-20 mobile:mx-0 mobile:mt-10 tabletOnly:mt-10 tabletOnly:mx-5">
-          <h1 className="text-4xl ml-3 font-semibold bg-gradient-to-r from-orange to-yellow text-transparent bg-clip-text">Death Relief Fund</h1>
-          <p className="text-lg m-3 pr-80 tabletOnly:pr-0 mobile:pr-0 mobile:text-base laptop:pr-0">
+          <h1 className="text-4xl font-semibold bg-gradient-to-r from-orange to-yellow text-transparent bg-clip-text">Death Relief Fund</h1>
+          <p className="text-lg mt-2 pr-80 tabletOnly:pr-0 mobile:pr-0 mobile:text-base laptop:pr-0">
             As an Organization we do understand our community needs assistance.
             Death comes unannounced and neither is anyone prepared when death
             knocks. This is the more reason why we have to be prepared at all
@@ -73,7 +73,7 @@ const ProgramBody = () => {
             <h1 className="text-4xl font-semibold bg-gradient-to-r from-orange to-yellow text-transparent bg-clip-text mobile:text-center m-4">
               Critical Health Relief Fund
             </h1>
-            <p className="text-base ">
+            <p className="text-base m-3">
               Registered members will be able to benefit from our Critical Health
               Relief Fund .This Fund is aimed at assisting members who are
               critically sick , have been diagnosed with a terminal or life
@@ -101,7 +101,7 @@ const ProgramBody = () => {
           <br />
           <br />
           <div className="flex tabletOnly:flex-col mb-10 mobile:flex-col mobile:ml-8">
-            <div className="mr-16">
+            <div className="mr-12">
               <h1 className="text-3xl font-semibold ">
                 Eligibility Criteria For Critical Relief Fund
               </h1>
@@ -176,8 +176,8 @@ const ProgramBody = () => {
         <h1 className="text-5xl font-bold text-white text-center">
           Connect The Community Initiative
         </h1>
-        <div className="bg-white h-full rounded-2xl w-[80%] my-10 grid grid-cols-2 justify-center items-center tabletOnly:flex flex-col mobile:flex">
-          <p className="px-16 py-10 tabletOnly:px-5 mobile:px-5">
+        <div className="bg-white h-full rounded-2xl w-[80%] my-8 grid grid-cols-2 justify-center items-center tabletOnly:flex flex-col mobile:flex">
+          <p className="px-16 py-0   tabletOnly:px-5 mobile:px-5">
             With H&H Connect The Community Initiative, members would be able to
             benefit from a wide range of exposure. One of the objectives of H&H
             is to bring communities together Brining the diaspora community with
@@ -200,7 +200,7 @@ const ProgramBody = () => {
             communicate any social trips for members to be able to prepare if
             they have to travel out of their jurisdiction or country.
           </p>
-          <div className="pl-32 tabletOnly:ml-0 mobile:ml-0 mobile:pl-3 mobile:px-3">
+          <div className="pl-32 mt-10 tabletOnly:ml-0 mobile:ml-0 mobile:pl-3 mobile:px-3">
             <img src={community} className="mobile:rounded-3xl mobile:h-96" alt="image not loaded" />
             <br></br>
             <div className="mt-5 mobile:my-5">
@@ -209,7 +209,7 @@ const ProgramBody = () => {
           </div>
         </div>
       </div>
-      <h1 className="text-5xl font-bold text-black ml-64 mt-5 tabletOnly:ml-3 mobile:ml-3">
+      <h1 className="text-5xl font-bold text-black ml-64 mt-5 tabletOnly:ml-3 mobile:ml-3 mobile:text-center tabletOnly:text-center"  >
         Frequently Asked Questions
       </h1>
       <Faq />

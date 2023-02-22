@@ -60,7 +60,7 @@ return (
 <div className="ml-64 md:w-2/3 py-5 mx-auto tabletOnly:ml-0 mobile:ml-0">
 <div className="p-4">
 {faqs.map((faq: FaqItem, index: number) => (
-<div className="item w-[80%] border-b-2 border-solid border-orange text-orange font-bold px-6 py-4" key={index}>
+<div className="item w-[80%] border-b-2 border-solid border-orange text-orange font-bold px-6 py-4 mobile:w-[100%] tabletOnly:w-[100%]" key={index}>
 <a
 href="#"
 className="flex items-center justify-between"

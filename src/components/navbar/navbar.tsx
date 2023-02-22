@@ -2,21 +2,25 @@
 import React,{ useState } from "react";
 import './navbar.css';
 import {Link, useLocation} from 'react-router-dom'
+import logo from '../../assets/logo-2.png'
 export default function Navbar() {
     const [navbar, setNavbar] = useState(false);
     const location = useLocation();
+    function openClose() {
+        setNavbar(!navbar);
+    }
     return (
         <nav className="w-full bg-[#0C1214] shadow">
             <div className="justify-between px-4 mx-auto   laptop:items-center laptop:flex laptop:px-8">
                 <div>
-                    <div className="flex items-center justify-between py-3 laptop:py-5 laptop:block desktop:block">
+                    <div className="flex items-center justify-between py-3 laptop:py-1.5 laptop:block desktop:block">
                         <a href="javascript:void(0)">
-                            <h2 className="text-2xl font-bold text-white">LOGO</h2>
+                        <img className="h-20 w-24" src={logo} alt="Logo" />
                         </a>
                         <div className="desktop:hidden laptop:hidden">
                             <button
                                 className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
-                                onClick={() => {setNavbar(!navbar)}}
+                                onClick={() => {openClose()}}
                             >
                                 {navbar ? (
                                     <svg
@@ -59,18 +63,18 @@ export default function Navbar() {
                     >
                         <ul className="items-center justify-center laptop:  space-y-8 laptop:flex laptop:space-x-8 laptop:space-y-0">
                             <li className={location.pathname ==='/' ? "active text-white hover:text-indigo-200":"text-white hover:text-indigo-200" }>
-                               <Link to={'/'}>Home</Link>
+                               <Link to={'/'} onClick={() => {openClose()}}>Home</Link>
                             </li>
                             <li className={location.pathname ==='/about' ? "active text-white hover:text-indigo-200":"text-white hover:text-indigo-200" }>
-                            <Link to={'/about'}>About Us</Link>
+                            <Link to={'/about'}  onClick={() => {openClose()}}>About Us</Link>
                             </li>
                             <li className={location.pathname ==='/programs' ? "active text-white hover:text-indigo-200":"text-white hover:text-indigo-200" }>
-                            <Link to={'/programs'}>Our Programs</Link>
+                            <Link to={'/programs'} onClick={() => {openClose()}}>Our Programs</Link>
                             </li>
                             <li className={location.pathname ==='/contact' ? "active text-white hover:text-indigo-200":"text-white hover:text-indigo-200" }>
-                            <Link to={'/contact'}>Contact Us</Link>
+                            <Link to={'/contact'} onClick={() => {openClose()}}>Contact Us</Link>
                             </li> <li className={location.pathname ==='/#' ? "active text-white hover:text-indigo-200":"text-white hover:text-indigo-200" }>
-                            <Link to={'#'}>Market Place</Link>
+                            <Link to={'#'} onClick={() => {openClose()}}>Market Place</Link>
                             </li>
                         </ul>
 

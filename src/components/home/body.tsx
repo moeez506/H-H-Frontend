@@ -9,7 +9,9 @@ import first from "../../assets/1.png"
 import second from "../../assets/2.png"
 import third from "../../assets/3.png"
 import Button from "../Button";
-
+import Partner1 from "../../assets/Partner1.png"
+import Partner2 from "../../assets/Partner2.png"
+import Partner3 from "../../assets/Partner3.jpg"
 
 // const member = {
 //   path: 'Hello',
@@ -221,12 +223,10 @@ const Body = () => {
         <h1 className="text-[65px] font-semibold text-center text-orange">
           OUR PARTNERS
         </h1>
-        <div className="flex flex-row justify-center items-center mt-6">
-          <div className="box-content h-32 w-32 p-4 border-4 border-orange"></div>
-          <div className="box-content h-32 w-32 p-4 border-4 border-orange"></div>
-          <div className="box-content h-32 w-32 p-4 border-4 border-orange"></div>
-          <div className="box-content h-32 w-32 p-4 border-4 border-orange"></div>
-          <div className="box-content h-32 w-32 p-4 border-4 border-orange"></div>
+        <div className="flex flex-row justify-center items-center mt-6 space-x-10 mr-32 mobile:flex-col mobile:m-0 mobile:space-x-0 tabletOnly:flex-col tabletOnly:m-0 tabletOnly:space-x-0">
+        <img className="h-52 w-5h-56" src={Partner3} alt="Partner3" />          
+        <img className="h-52 w-5h-56" src={Partner1} alt="Partner1" />
+        <img className="h-52 w-5h-56" src={Partner2} alt="Partner2" />
         </div>
         <h1 className="text-orange font-semibold text-3xl text-center mt-6">
           PARTNER
