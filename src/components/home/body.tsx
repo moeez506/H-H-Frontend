@@ -69,7 +69,7 @@ const Body = () => {
           members ,groups, association in the following domains.
         </p>
         <div className="flex flex-row mt-12 mobile:flex-col mobile:items-center tabletOnly:flex-col tabletOnly:items-center">
-          <div className="border-4 rounded-2xl border-orange h-[510px] w-[350px] bg-white flex justify-center flex-col items-center mx-24 hover:text-white mobile:m-3 tabletOnly:m-3">
+          <div className="border-4 rounded-2xl border-orange h-[510px] w-[75%] bg-white flex justify-center flex-col items-center mx-8 hover:text-white mobile:m-3 tabletOnly:m-3">
             <img src={death}/>
             <h1 className="text-orange text-2xl font-extrabold">
               Death Relief Fund
@@ -83,7 +83,7 @@ const Body = () => {
               VIEW DETAILS
             </button>
           </div>
-          <div className="border-4 rounded-2xl border-orange h-[510px] w-[350px] bg-white flex justify-center flex-col items-center mx-24 hover:text-white mobile:m-3 tabletOnly:m-3">
+          <div className="border-4 rounded-2xl border-orange h-[510px] w-[75%] bg-white flex justify-center flex-col items-center mx-8 hover:text-white mobile:m-3 tabletOnly:m-3">
             <img src={health}/>
             <h1 className="text-orange text-2xl font-extrabold text-center">
               Critical Health Relief Fund
@@ -97,7 +97,7 @@ const Body = () => {
               VIEW DETAILS
             </button>
           </div>
-          <div className="border-4 rounded-2xl border-orange h-[510px] w-[350px] bg-white flex justify-center flex-col items-center mx-24 hover:text-white mobile:m-3 tabletOnly:m-3">
+          <div className="border-4 rounded-2xl border-orange h-[510px] w-[75%] bg-white flex justify-center flex-col items-center mx-8 hover:text-white mobile:m-3 tabletOnly:m-3">
             <img src={education}/>
             <h1 className="text-orange text-2xl font-extrabold text-center">
               Educational Support Fund
@@ -111,7 +111,7 @@ const Body = () => {
               VIEW DETAILS
             </button>
           </div>
-          <div className="border-4 rounded-2xl border-orange h-[510px] w-[350px] bg-white flex justify-center flex-col items-center mx-24 hover:text-white mobile:m-3 tabletOnly:m-3">
+          <div className="border-4 rounded-2xl border-orange h-[510px] w-[75%] bg-white flex justify-center flex-col items-center mx-8 hover:text-white mobile:m-3 tabletOnly:m-3">
             <img src={community} />
             <h1 className="text-orange text-2xl font-extrabold text-center">
               Connect The Community Initiative
@@ -171,7 +171,7 @@ const Body = () => {
         </div>
       </div>
       <div className="flex justify-center items-center ">
-      <div className=" bg-rectangle1 bg-no-repeat flex justify-center mt-12 h-[400px] w-[65%] mobile:flex-wrap mobile:bg-rectangle1-responsive mobile:w-full mobile:h-full tabletOnly:flex-col tabletOnly:bg-rectangle1-responsive tabletOnly:h-full">
+      <div className=" bg-rectangle1 bg-no-repeat flex justify-center mt-12 h-[400px] w-[75%] mobile:flex-wrap mobile:bg-rectangle1-responsive mobile:w-full mobile:h-full tabletOnly:flex-col tabletOnly:bg-rectangle1-responsive tabletOnly:h-full">
         <div className="mt-20 mobile:pl-4">
           <h1 className="text-3xl text-orange font-semibold">
             H&H Relief Assistance
