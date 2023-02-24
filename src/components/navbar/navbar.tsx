@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
-import React,{ useState } from "react";
+import React, { useState } from "react";
 import './navbar.css';
-import {Link, useLocation} from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import logo from '../../assets/logo-2.png'
 export default function Navbar() {
     const [navbar, setNavbar] = useState(false);
@@ -13,14 +13,14 @@ export default function Navbar() {
         <nav className="w-full bg-[#0C1214] shadow">
             <div className="justify-between px-4 mx-auto   laptop:items-center laptop:flex laptop:px-8">
                 <div>
-                    <div className="flex items-center justify-between py-3 laptop:py-1.5 laptop:block desktop:block">
+                    <div className="flex items-center justify-between py-3 laptop:py-1.5 laptop:block desktop:block tablet:py-2">
                         <a href="javascript:void(0)">
-                        <img className="h-20 w-24" src={logo} alt="Logo" />
+                            <img className="h-20 w-24 tablet:h-14 tablet:w-18" src={logo} alt="Logo" />
                         </a>
                         <div className="desktop:hidden laptop:hidden">
                             <button
                                 className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
-                                onClick={() => {openClose()}}
+                                onClick={() => { openClose() }}
                             >
                                 {navbar ? (
                                     <svg
@@ -57,41 +57,40 @@ export default function Navbar() {
                 </div>
                 <div>
                     <div
-                        className={`flex-1 justify-self-center pb-3 mt-8 laptop:block laptop:pb-0 laptop:mt-0 ${
-                            navbar ? "block" : "hidden"
-                        }`}
+                        className={`flex-1 justify-self-center pb-3 mt-8 laptop:block laptop:pb-0 laptop:mt-0 ${navbar ? "block" : "hidden"
+                            }`}
                     >
                         <ul className="items-center justify-center laptop:  space-y-8 laptop:flex laptop:space-x-8 laptop:space-y-0">
-                            <li className={location.pathname ==='/' ? "active text-white hover:text-indigo-200":"text-white hover:text-indigo-200" }>
-                               <Link to={'/'} onClick={() => {openClose()}}>Home</Link>
+                            <li className={location.pathname === '/' ? "active text-white hover:text-indigo-200" : "text-white hover:text-indigo-200"}>
+                                <Link to={'/'} onClick={() => { openClose() }}>Home</Link>
                             </li>
-                            <li className={location.pathname ==='/about' ? "active text-white hover:text-indigo-200":"text-white hover:text-indigo-200" }>
-                            <Link to={'/about'}  onClick={() => {openClose()}}>About Us</Link>
+                            <li className={location.pathname === '/about' ? "active text-white hover:text-indigo-200" : "text-white hover:text-indigo-200"}>
+                                <Link to={'/about'} onClick={() => { openClose() }}>About Us</Link>
                             </li>
-                            <li className={location.pathname ==='/programs' ? "active text-white hover:text-indigo-200":"text-white hover:text-indigo-200" }>
-                            <Link to={'/programs'} onClick={() => {openClose()}}>Our Programs</Link>
+                            <li className={location.pathname === '/programs' ? "active text-white hover:text-indigo-200" : "text-white hover:text-indigo-200"}>
+                                <Link to={'/programs'} onClick={() => { openClose() }}>Our Programs</Link>
                             </li>
-                            <li className={location.pathname ==='/contact' ? "active text-white hover:text-indigo-200":"text-white hover:text-indigo-200" }>
-                            <Link to={'/contact'} onClick={() => {openClose()}}>Contact Us</Link>
-                            </li> <li className={location.pathname ==='/#' ? "active text-white hover:text-indigo-200":"text-white hover:text-indigo-200" }>
-                            <Link to={'#'} onClick={() => {openClose()}}>Market Place</Link>
+                            <li className={location.pathname === '/contact' ? "active text-white hover:text-indigo-200" : "text-white hover:text-indigo-200"}>
+                                <Link to={'/contact'} onClick={() => { openClose() }}>Contact Us</Link>
+                            </li> <li className={location.pathname === '/#' ? "active text-white hover:text-indigo-200" : "text-white hover:text-indigo-200"}>
+                                <Link to={'#'} onClick={() => { openClose() }}>Market Place</Link>
                             </li>
                         </ul>
 
                         <div className="mt-3 space-y-2 desktop:hidden laptop:hidden">
-                    <a
-                        href="javascript:void(0)"
-                        className="inline-block w-full px-4 py-2 text-center  text-white border border-solid border-orange rounded-md shadow hover:bg-gray-800"
-                    >
-                        Sign in
-                    </a>
-                    <a
-                        href="javascript:void(0)"
-                        className="inline-block w-full px-4 py-2 text-center  text-white border border-solid border-orange rounded-md shadow hover:bg-gray-800"
-                    >
-                        Sign up
-                    </a>
-                </div>
+                            <a
+                                href="javascript:void(0)"
+                                className="inline-block w-full px-4 py-2 text-center  text-white border border-solid border-orange rounded-md shadow hover:bg-gray-800"
+                            >
+                                Sign in
+                            </a>
+                            <a
+                                href="javascript:void(0)"
+                                className="inline-block w-full px-4 py-2 text-center  text-white border border-solid border-orange rounded-md shadow hover:bg-gray-800"
+                            >
+                                Sign up
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div className=" space-x-2 desktop:inline-block laptop:inline-block setRight" >

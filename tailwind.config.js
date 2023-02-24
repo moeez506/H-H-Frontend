@@ -28,7 +28,7 @@ module.exports = {
       }),
     },
     screens: {
-      smallMobile: { max: "320px" },
+      smallMobile: { max: "350px" },
       mobile: { max: "480px" },
       tablet: { max: "1023px" },
 
