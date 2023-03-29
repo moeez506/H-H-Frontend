@@ -82,25 +82,25 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
   // const value = localStorage.getItem("user");
   // console.log("🚀 ~ file: step3.tsx:24 ~ Step3 ~ value:", value);
 
-  // const { isLoading, data } = useRepresentiveData("6408b251f070213942bae18d");
+  const { isLoading, data } = useRepresentiveData("6408b251f070213942bae18d");
 
-  // if (isLoading) {
-  //   return <h1>Loading...</h1>;
-  // }
-
-  // console.log(data?.data?.user);
-  const data = {
-    firstName: "Moeez",
-    email: "moeez@gmail.com",
-    lastName: "Ahmad"
+  if (isLoading) {
+    return <h1>Loading...</h1>;
   }
-  const { firstName, email, lastName } = data;
+
+  console.log(data?.data?.user);
+
+  const { firstName, email, lastName } = data?.data?.user;
 
   // const { firstName, lastName, email } = data?.data.user;
 
   return (
     <>
-      <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-xl mx-auto">
+      <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-xl mx-auto   desktop:text-2xl laptop:text-xl tabletOnly:text-lg mobile:text-base w-full">
+        <h1 className="text-3xl font-bold mb-6 text-center">
+          Group Admin Info
+        </h1>
+
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label
@@ -136,6 +136,14 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               value={values.middleName}
               onBlur={handleBlur}
               onChange={handleChange}
+            />
+            <Input
+              id="middleName"
+              name="middleName"
+              type="text"
+              value={values.middleName}
+              handleBlur={handleBlur}
+              handleChange={handleChange}
             />
             {errors.middleName !== null && touched.middleName !== null ? (
               <p className="text-[red]">{errors.middleName}</p>
@@ -178,7 +186,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               onChange={handleChange}
             />
             {errors.positionOccupied !== null &&
-              touched.positionOccupied !== null ? (
+            touched.positionOccupied !== null ? (
               <p className="text-[red]">{errors.positionOccupied}</p>
             ) : null}
           </div>
@@ -256,7 +264,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               onChange={handleChange}
             />
             {errors.countryOfResidence !== null &&
-              touched.countryOfResidence !== null ? (
+            touched.countryOfResidence !== null ? (
               <p className="text-[red]">{errors.countryOfResidence}</p>
             ) : null}{" "}
           </div>
@@ -317,7 +325,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               onChange={handleChange}
             />
             {errors.homePhoneNumber !== null &&
-              touched.homePhoneNumber !== null ? (
+            touched.homePhoneNumber !== null ? (
               <p className="text-[red]">{errors.homePhoneNumber}</p>
             ) : null}
           </div>

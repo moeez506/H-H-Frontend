@@ -1,40 +1,38 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
-
 import React, { useContext } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { GroupUserContext } from "../../../contexts/groupOnboardingContext";
+import { IndividualUserContext } from "../../../contexts/individualOnboardingContext";
 
-interface Step7Props {
+interface Step5Props {
   currentStep: number;
   handleNextStep: (step: number) => void;
 }
+interface Values {
+  firstName: string;
+  middleName: string;
+  lastName: string;
+  dob: string;
+  placeOfBirth: string;
+  nationality: string;
+  countryOfResidence: string;
+  address: string;
+  zipCode: string;
+  homePhoneNumber: string;
+  cellNumber: string;
+  email: string;
+}
 
-const Step7 = ({ currentStep, handleNextStep }: Step7Props) => {
-  const { representativeThree, setRepresentativeThree } =
-    useContext(GroupUserContext);
-  interface Values {
-    firstName: string;
-    middleName: string;
-    lastName: string;
-    positionOccupied: string;
-    dob: string;
-    placeOfBirth: string;
-    nationality: string;
-    countryOfResidence: string;
-    address: string;
-    zipCode: string;
-    homePhoneNumber: string;
-    cellNumber: string;
-    email: string;
-  }
+const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
+  const { additionalMember, setAdditionalMember } = useContext(
+    IndividualUserContext
+  );
 
   const initialValues: Values = {
     firstName: "",
     middleName: "",
     lastName: "",
-    positionOccupied: "",
     dob: "",
     placeOfBirth: "",
     nationality: "",
@@ -50,7 +48,6 @@ const Step7 = ({ currentStep, handleNextStep }: Step7Props) => {
     firstName: Yup.string().required("First Name is required"),
     middleName: Yup.string(),
     lastName: Yup.string().required("Last Name is required"),
-    positionOccupied: Yup.string().required("Position Occupied is required"),
     dob: Yup.date().required("Date of Birth is required"),
     placeOfBirth: Yup.string().required("Place of Birth is required"),
     nationality: Yup.string().required("Nationality is required"),
@@ -64,19 +61,25 @@ const Step7 = ({ currentStep, handleNextStep }: Step7Props) => {
     email: Yup.string().email().required("Email is required"),
   });
 
+  //TODO cell no validation and zip code
+
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues,
       validationSchema,
       onSubmit: (values) => {
-        setRepresentativeThree(values);
-        console.log("🚀 ~ file: step7.tsx:75 ~ Step7 ~ values:", values);
-        handleNextStep(8);
+        setAdditionalMember(values);
+        // console.log("🚀 ~ file: Step5.tsx:70 ~ Step5 ~ values:", values)
+        handleNextStep(6);
       },
     });
 
   return (
-    <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-xl mx-auto">
+    <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-xl mx-auto desktop:text-2xl laptop:text-xl tabletOnly:text-lg mobile:text-base  w-full">
+      <h1 className="text-3xl font-bold mb-6 text-center">
+        Representative No: 2
+      </h1>
+
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label
@@ -94,7 +97,10 @@ const Step7 = ({ currentStep, handleNextStep }: Step7Props) => {
             onBlur={handleBlur}
             onChange={handleChange}
           />
-          {errors.firstName !== null && touched.firstName !== null ? (
+          {errors.firstName !== null &&
+          touched.firstName !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "firstName") &&
+          Object.prototype.hasOwnProperty.call(touched, "firstName") ? (
             <p className="text-[red]">{errors.firstName}</p>
           ) : null}
         </div>
@@ -114,9 +120,6 @@ const Step7 = ({ currentStep, handleNextStep }: Step7Props) => {
             onBlur={handleBlur}
             onChange={handleChange}
           />
-          {errors.middleName !== null && touched.middleName !== null ? (
-            <p className="text-[red]">{errors.middleName}</p>
-          ) : null}
         </div>
         <div className="mb-4">
           <label
@@ -134,29 +137,11 @@ const Step7 = ({ currentStep, handleNextStep }: Step7Props) => {
             onBlur={handleBlur}
             onChange={handleChange}
           />
-          {errors.lastName !== null && touched.lastName !== null ? (
+          {errors.lastName !== null &&
+          touched.lastName !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "lastName") &&
+          Object.prototype.hasOwnProperty.call(touched, "lastName") ? (
             <p className="text-[red]">{errors.lastName}</p>
-          ) : null}
-        </div>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 font-bold mb-2"
-            htmlFor="positionOccupied"
-          >
-            Position Occupied in organization/group
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="positionOccupied"
-            name="positionOccupied"
-            type="text"
-            value={values.positionOccupied}
-            onBlur={handleBlur}
-            onChange={handleChange}
-          />
-          {errors.positionOccupied !== null &&
-          touched.positionOccupied !== null ? (
-            <p className="text-[red]">{errors.positionOccupied}</p>
           ) : null}
         </div>
         <div className="mb-4">
@@ -172,7 +157,10 @@ const Step7 = ({ currentStep, handleNextStep }: Step7Props) => {
             onBlur={handleBlur}
             onChange={handleChange}
           />
-          {errors.dob !== null && touched.dob !== null ? (
+          {errors.dob !== null &&
+          touched.dob !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "dob") &&
+          Object.prototype.hasOwnProperty.call(touched, "dob") ? (
             <p className="text-[red]">{errors.dob}</p>
           ) : null}
         </div>
@@ -192,7 +180,10 @@ const Step7 = ({ currentStep, handleNextStep }: Step7Props) => {
             onBlur={handleBlur}
             onChange={handleChange}
           />
-          {errors.placeOfBirth !== null && touched.placeOfBirth !== null ? (
+          {errors.placeOfBirth !== null &&
+          touched.placeOfBirth !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "placeOfBirth") &&
+          Object.prototype.hasOwnProperty.call(touched, "placeOfBirth") ? (
             <p className="text-[red]">{errors.placeOfBirth}</p>
           ) : null}
         </div>
@@ -212,7 +203,10 @@ const Step7 = ({ currentStep, handleNextStep }: Step7Props) => {
             onBlur={handleBlur}
             onChange={handleChange}
           />
-          {errors.nationality !== null && touched.nationality !== null ? (
+          {errors.nationality !== null &&
+          touched.nationality !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "nationality") &&
+          Object.prototype.hasOwnProperty.call(touched, "nationality") ? (
             <p className="text-[red]">{errors.nationality}</p>
           ) : null}
         </div>
@@ -233,9 +227,14 @@ const Step7 = ({ currentStep, handleNextStep }: Step7Props) => {
             onChange={handleChange}
           />
           {errors.countryOfResidence !== null &&
-          touched.countryOfResidence !== null ? (
+          touched.countryOfResidence !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "countryOfResidence") &&
+          Object.prototype.hasOwnProperty.call(
+            touched,
+            "countryOfResidence"
+          ) ? (
             <p className="text-[red]">{errors.countryOfResidence}</p>
-          ) : null}{" "}
+          ) : null}
         </div>
         <div className="mb-4">
           <label
@@ -253,7 +252,10 @@ const Step7 = ({ currentStep, handleNextStep }: Step7Props) => {
             onBlur={handleBlur}
             onChange={handleChange}
           />
-          {errors.address !== null && touched.address !== null ? (
+          {errors.address !== null &&
+          touched.address !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "address") &&
+          Object.prototype.hasOwnProperty.call(touched, "address") ? (
             <p className="text-[red]">{errors.address}</p>
           ) : null}
         </div>
@@ -273,7 +275,10 @@ const Step7 = ({ currentStep, handleNextStep }: Step7Props) => {
             onBlur={handleBlur}
             onChange={handleChange}
           />
-          {errors.zipCode !== null && touched.zipCode !== null ? (
+          {errors.zipCode !== null &&
+          touched.zipCode !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "zipCode") &&
+          Object.prototype.hasOwnProperty.call(touched, "zipCode") ? (
             <p className="text-[red]">{errors.zipCode}</p>
           ) : null}
         </div>
@@ -294,7 +299,9 @@ const Step7 = ({ currentStep, handleNextStep }: Step7Props) => {
             onChange={handleChange}
           />
           {errors.homePhoneNumber !== null &&
-          touched.homePhoneNumber !== null ? (
+          touched.homePhoneNumber !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "homePhoneNumber") &&
+          Object.prototype.hasOwnProperty.call(touched, "homePhoneNumber") ? (
             <p className="text-[red]">{errors.homePhoneNumber}</p>
           ) : null}
         </div>
@@ -314,7 +321,10 @@ const Step7 = ({ currentStep, handleNextStep }: Step7Props) => {
             onBlur={handleBlur}
             onChange={handleChange}
           />
-          {errors.cellNumber !== null && touched.cellNumber !== null ? (
+          {errors.cellNumber !== null &&
+          touched.cellNumber !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "cellNumber") &&
+          Object.prototype.hasOwnProperty.call(touched, "cellNumber") ? (
             <p className="text-[red]">{errors.cellNumber}</p>
           ) : null}
         </div>
@@ -331,7 +341,10 @@ const Step7 = ({ currentStep, handleNextStep }: Step7Props) => {
             onBlur={handleBlur}
             onChange={handleChange}
           />
-          {errors.email !== null && touched.email !== null ? (
+          {errors.email !== null &&
+          touched.email !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "email") &&
+          Object.prototype.hasOwnProperty.call(touched, "email") ? (
             <p className="text-[red]">{errors.email}</p>
           ) : null}
         </div>
@@ -349,4 +362,4 @@ const Step7 = ({ currentStep, handleNextStep }: Step7Props) => {
   );
 };
 
-export default Step7;
+export default Step5;

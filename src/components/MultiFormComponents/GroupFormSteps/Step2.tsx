@@ -1,15 +1,15 @@
 /* eslint-disable prettier/prettier */
-import React, {useContext} from "react";
-import * as Yup from 'yup';
-import { useFormik } from 'formik';
+import React, { useContext } from "react";
+import * as Yup from "yup";
+import { useFormik } from "formik";
 import { GroupUserContext } from "../../../contexts/groupOnboardingContext";
 interface Step2Props {
-	currentStep: number;
-	handleNextStep: (step: number) => void;
+  currentStep: number;
+  handleNextStep: (step: number) => void;
 }
 
 const Step2 = ({ currentStep, handleNextStep }: Step2Props) => {
-  const {createGroup, setCreateGroup} = useContext(GroupUserContext)
+  const { createGroup, setCreateGroup } = useContext(GroupUserContext);
   interface Values {
     groupName: string;
     registerdMembers: number;
@@ -22,64 +22,75 @@ const Step2 = ({ currentStep, handleNextStep }: Step2Props) => {
   }
 
   const initialValues: Values = {
-    groupName: '',
+    groupName: "",
     registerdMembers: 0,
-    countryOfOperation: '',
-    address: '',
-    zipCode: '',
-    cellNumber: '',
-    email: '',
-    website: '',
+    countryOfOperation: "",
+    address: "",
+    zipCode: "",
+    cellNumber: "",
+    email: "",
+    website: "",
   };
-  
 
   const validationSchema = Yup.object().shape({
-    groupName: Yup.string().required('Group name is required'),
+    groupName: Yup.string().required("Group name is required"),
     registerdMembers: Yup.number()
-      .required('Number of registered members is required')
-      .min(1, 'Number of registered members must be at least 1'),
-    countryOfOperation: Yup.string().required('Country of operation is required'),
-    address: Yup.string().required('Address is required'),
+      .required("Number of registered members is required")
+      .min(1, "Number of registered members must be at least 1"),
+    countryOfOperation: Yup.string().required(
+      "Country of operation is required"
+    ),
+    address: Yup.string().required("Address is required"),
     zipCode: Yup.string().max(5).min(5).required("Zip Code is required"),
     cellNumber: Yup.string().max(15).min(7).required("Cell Number is required"),
-    email: Yup.string().email('Invalid email').required('Email is required'),
-    website: Yup.string().url('Invalid URL').required('Website is required'),
+    email: Yup.string().email("Invalid email").required("Email is required"),
+    website: Yup.string().url("Invalid URL").required("Website is required"),
   });
 
-  const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik(
-    {
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
+    useFormik({
       initialValues,
       validationSchema,
       onSubmit: (values) => {
-        setCreateGroup(values)
-        console.log("🚀 ~ file: step2.tsx:60 ~ Step2 ~ values:", values)
+        setCreateGroup(values);
+        console.log("🚀 ~ file: step2.tsx:60 ~ Step2 ~ values:", values);
         handleNextStep(3);
       },
-    }
-  )
+    });
 
   return (
-    <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-xl mx-auto">
+    <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-xl mx-auto   desktop:text-2xl laptop:text-xl tabletOnly:text-lg mobile:text-base w-full">
+      <h1 className="text-4xl font-bold mb-6 text-center"> Group Details</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-2" htmlFor="groupName">
-          Association/Group Name
+          <label
+            className="block text-gray-700 font-bold mb-2"
+            htmlFor="groupName"
+          >
+            Association/Group Name
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="groupName"
             name="groupName"
-           type="text"
-           value={values.groupName}
-           onBlur={handleBlur}
-           onChange={handleChange}
+            type="text"
+            value={values.groupName}
+            onBlur={handleBlur}
+            onChange={handleChange}
           />
-            {errors.groupName !== null && touched.groupName !== null ? (
+          {errors.groupName !== null &&
+          touched.groupName !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "groupName") &&
+          Object.prototype.hasOwnProperty.call(touched, "groupName") ? (
             <p className="text-[red]">{errors.groupName}</p>
           ) : null}
-        </div>   <div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-2" htmlFor="registerdMembers">
-          Number of Registered Members 
+        </div>{" "}
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 font-bold mb-2"
+            htmlFor="registerdMembers"
+          >
+            Number of Registered Members
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -90,13 +101,19 @@ const Step2 = ({ currentStep, handleNextStep }: Step2Props) => {
             onBlur={handleBlur}
             onChange={handleChange}
           />
-            {errors.registerdMembers !== null && touched.registerdMembers !== null ? (
+          {errors.registerdMembers !== null &&
+          touched.registerdMembers !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "registerdMembers") &&
+          Object.prototype.hasOwnProperty.call(touched, "registerdMembers") ? (
             <p className="text-[red]">{errors.registerdMembers}</p>
           ) : null}
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-2" htmlFor="countryOfOperation">
-          Country of Operation
+          <label
+            className="block text-gray-700 font-bold mb-2"
+            htmlFor="countryOfOperation"
+          >
+            Country of Operation
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -107,12 +124,21 @@ const Step2 = ({ currentStep, handleNextStep }: Step2Props) => {
             onBlur={handleBlur}
             onChange={handleChange}
           />
-           {errors.countryOfOperation !== null && touched.countryOfOperation !== null ? (
+          {errors.countryOfOperation !== null &&
+          touched.countryOfOperation !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "countryOfOperation") &&
+          Object.prototype.hasOwnProperty.call(
+            touched,
+            "countryOfOperation"
+          ) ? (
             <p className="text-[red]">{errors.countryOfOperation}</p>
           ) : null}
-        </div> 
-      <div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-2" htmlFor="address">
+        </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 font-bold mb-2"
+            htmlFor="address"
+          >
             Address
           </label>
           <input
@@ -124,12 +150,19 @@ const Step2 = ({ currentStep, handleNextStep }: Step2Props) => {
             onBlur={handleBlur}
             onChange={handleChange}
           />
-           {errors.address !== null && touched.address !== null ? (
+          {errors.address !== null &&
+          touched.address !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "address") &&
+          Object.prototype.hasOwnProperty.call(touched, "address") ? (
             <p className="text-[red]">{errors.address}</p>
           ) : null}
-        </div><div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-2" htmlFor="zipCode">
-          Zip Code
+        </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 font-bold mb-2"
+            htmlFor="zipCode"
+          >
+            Zip Code
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -140,11 +173,18 @@ const Step2 = ({ currentStep, handleNextStep }: Step2Props) => {
             onBlur={handleBlur}
             onChange={handleChange}
           />
-           {errors.zipCode !== null && touched.zipCode !== null ? (
+          {errors.zipCode !== null &&
+          touched.zipCode !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "zipCode") &&
+          Object.prototype.hasOwnProperty.call(touched, "zipCode") ? (
             <p className="text-[red]">{errors.zipCode}</p>
           ) : null}
-        </div><div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-2" htmlFor="cellNumber">
+        </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 font-bold mb-2"
+            htmlFor="cellNumber"
+          >
             Cell Number
           </label>
           <input
@@ -156,10 +196,14 @@ const Step2 = ({ currentStep, handleNextStep }: Step2Props) => {
             onBlur={handleBlur}
             onChange={handleChange}
           />
-           {errors.cellNumber !== null && touched.cellNumber !== null ? (
+          {errors.cellNumber !== null &&
+          touched.cellNumber !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "cellNumber") &&
+          Object.prototype.hasOwnProperty.call(touched, "cellNumber") ? (
             <p className="text-[red]">{errors.cellNumber}</p>
           ) : null}
-        </div><div className="mb-4">
+        </div>
+        <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2" htmlFor="email">
             Email
           </label>
@@ -172,12 +216,19 @@ const Step2 = ({ currentStep, handleNextStep }: Step2Props) => {
             onBlur={handleBlur}
             onChange={handleChange}
           />
-           {errors.email !== null && touched.email !== null ? (
+          {errors.email !== null &&
+          touched.email !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "email") &&
+          Object.prototype.hasOwnProperty.call(touched, "email") ? (
             <p className="text-[red]">{errors.email}</p>
           ) : null}
-        </div><div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-2" htmlFor="website">
-          Website
+        </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 font-bold mb-2"
+            htmlFor="website"
+          >
+            Website
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -188,19 +239,20 @@ const Step2 = ({ currentStep, handleNextStep }: Step2Props) => {
             onBlur={handleBlur}
             onChange={handleChange}
           />
-           {errors.website !== null && touched.website !== null ? (
+          {errors.website !== null &&
+          touched.website !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "website") &&
+          Object.prototype.hasOwnProperty.call(touched, "website") ? (
             <p className="text-[red]">{errors.website}</p>
           ) : null}
         </div>
-        
         <div className="flex items-center justify-between">
-        <button
-        type="submit"
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full sm:w-auto"
-  
-        >
-        Next
-      </button>
+          <button
+            type="submit"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full sm:w-auto"
+          >
+            Next
+          </button>
         </div>
       </form>
     </div>

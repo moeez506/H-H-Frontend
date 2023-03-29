@@ -57,7 +57,9 @@ const Step1 = ({ currentStep, handleNextStep }: Step1Props) => {
   const [selectedFamilyMemberCount, setSelectedFamilyMemberCount] = useState<
     number | null
   >(null);
-  const { subscriptionPlan, setSubscriptionPlan } = useContext(IndividualUserContext);
+  const { subscriptionPlan, setSubscriptionPlan } = useContext(
+    IndividualUserContext
+  );
 
   const handleOptionSelect = (value: string) => {
     setSelectedOption(value);
@@ -75,9 +77,9 @@ const Step1 = ({ currentStep, handleNextStep }: Step1Props) => {
     joinOption: Yup.string().required("Please select answer"),
     familyMemberCount:
       selectedOption === "register_and_pay_additional_members"
-        ? Yup
-          .number()
-          .required("Please select the number of members to pay for")
+        ? Yup.number().required(
+            "Please select the number of members to pay for"
+          )
         : Yup.string().notRequired(),
   });
 
@@ -89,7 +91,7 @@ const Step1 = ({ currentStep, handleNextStep }: Step1Props) => {
     validationSchema,
     onSubmit: (values) => {
       setSubscriptionPlan(values);
-      // console.log("🚀 ~ file: step1.tsx:88 ~ Step1 ~ values:", values)
+      // console.log("🚀 ~ file: step1.tsx:88 ~ Step1 ~ values:", values);
       handleNextStep(2);
     },
   });
@@ -97,20 +99,22 @@ const Step1 = ({ currentStep, handleNextStep }: Step1Props) => {
   const { errors, touched, handleSubmit } = formik;
 
   return (
-    <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-xl mx-auto">
-      <h1 className="text-2xl font-bold mb-6 text-center">Join Form</h1>
+    <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-xl mx-auto   desktop:text-2xl laptop:text-xl tabletOnly:text-lg mobile:text-base">
+      <h1 className="text-3xl font-bold mb-6 text-center">Your Plan</h1>
 
       <form onSubmit={handleSubmit}>
-        <div className="mb-6">
-          <p className="text-gray-800 font-bold mb-2">
+        <div className="mb-6 ">
+          <p className="text-gray-800 font-bold mb-4">
             Question: I plan to join
           </p>
-          {errors.joinOption !== null && touched.joinOption !== null ? (
+          {errors.joinOption !== null &&
+          touched.joinOption !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "joinOption") &&
+          Object.prototype.hasOwnProperty.call(touched, "joinOption") ? (
             <p className="text-[red]">{errors.joinOption}</p>
           ) : null}
-
           {options.map((option) => (
-            <div key={option.value} className="flex items-center mb-2">
+            <div key={option.value} className="flex items-center mb-6">
               <input
                 type="radio"
                 name="joinOption"
@@ -122,23 +126,36 @@ const Step1 = ({ currentStep, handleNextStep }: Step1Props) => {
                 }}
                 className="mr-2"
               />
-              <label htmlFor={option.value} className="text-gray-700">
+              <label
+                htmlFor={option.value}
+                className="text-gray-700"
+                onClick={() => {
+                  handleOptionSelect(option.value);
+                  void formik.setFieldValue("joinOption", option.value);
+                }}
+              >
                 {option.label}
               </label>
             </div>
           ))}
         </div>
         {selectedOption === "register_and_pay_additional_members" && (
-          <div className="mb-6">
-            <p className="text-gray-800 font-bold mb-2">
+          <div className="mb-6  laptop:text-2xl tabletOnly:text-lg mobile:text-base ">
+            <p className="text-gray-800 font-bold mb-4">
               Question: How many members will you pay for?
             </p>
-            {errors.familyMemberCount !== null && touched.familyMemberCount !== null ? (
+            {errors.familyMemberCount !== null &&
+            touched.familyMemberCount !== null &&
+            Object.prototype.hasOwnProperty.call(errors, "familyMemberCount") &&
+            Object.prototype.hasOwnProperty.call(
+              touched,
+              "familyMemberCount"
+            ) ? (
               <p className="text-[red]">{errors.familyMemberCount}</p>
             ) : null}
 
             {familyMemberOptions.map((option) => (
-              <div key={option.numVal} className="flex items-center mb-2">
+              <div key={option.numVal} className="flex items-center mb-6">
                 <input
                   type="radio"
                   name="familyMemberCount"
@@ -146,11 +163,24 @@ const Step1 = ({ currentStep, handleNextStep }: Step1Props) => {
                   checked={selectedFamilyMemberCount === option.numVal}
                   onChange={() => {
                     handleFamilyMemberCountSelect(option.numVal);
-                    void formik.setFieldValue("familyMemberCount", option.numVal);
+                    void formik.setFieldValue(
+                      "familyMemberCount",
+                      option.numVal
+                    );
                   }}
                   className="mr-2"
                 />
-                <label htmlFor={option.label} className="text-gray-700">
+                <label
+                  htmlFor={option.label}
+                  className="text-gray-700"
+                  onClick={() => {
+                    handleFamilyMemberCountSelect(option.numVal);
+                    void formik.setFieldValue(
+                      "familyMemberCount",
+                      option.numVal
+                    );
+                  }}
+                >
                   {option.label}
                 </label>
               </div>

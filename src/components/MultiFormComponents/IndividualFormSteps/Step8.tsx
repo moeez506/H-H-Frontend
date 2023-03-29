@@ -1,63 +1,66 @@
 /* eslint-disable prettier/prettier */
-/* eslint-disable import/no-duplicates */
-import React from "react";
-import { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { IndividualUserContext } from "../../../contexts/individualOnboardingContext";
+import { individualOndoarding } from "../../../apis/individualOndoarding";
+interface Step6Props {
+  currentStep: number;
+  handleNextStep: (step: number) => void;
+}
 interface Option {
   label: string;
   value: string;
 }
 
-interface Step8Props {
-  currentStep: number;
-  handleNextStep: (step: number) => void;
-}
+const Step6 = ({ currentStep, handleNextStep }: Step6Props) => {
+  const [identityCheck, setIdentityCheck] = useState("");
+  const { additionalMember, setAdditionalMember } = useContext(
+    IndividualUserContext
+  );
 
-const options: Option[] = [
-  {
-    label: "yes",
-    value: "yes",
-  },
-  {
-    label: "no",
-    value: "no",
-  },
-];
-
-const Step8 = ({ currentStep, handleNextStep }: Step8Props) => {
-  const [preExistingIssue, setPreExisting] = useState<string | null>(null);
-  const [terminalIllness, setTerminalIllness] = useState("");
-  const [moreInfo, setMoreInfo] = useState("");
+  const options: Option[] = [
+    {
+      label: "National Identity",
+      value: "National Identity",
+    },
+    {
+      label: "passport",
+      value: "passport",
+    },
+    {
+      label: "licsense",
+      value: "licsense",
+    },
+  ];
 
   interface Values {
-    preExistingIssue: string;
-    issueSpecify: string;
-    terminalIllness: string;
-    terminalIssueSpecify: string;
-    moreInfo: string;
+    identityCheck: string;
+    identity: string;
+    countryOfIssuance: string;
+    placedIssuance: string;
+    dateOfIssuance: string;
+    expiryDate: string;
   }
 
   const initialValues: Values = {
-    preExistingIssue: "",
-    issueSpecify: "",
-    terminalIllness: "",
-    terminalIssueSpecify: "",
-    moreInfo: "",
+    identityCheck: "",
+    identity: "",
+    countryOfIssuance: "",
+    placedIssuance: "",
+    dateOfIssuance: "",
+    expiryDate: "",
   };
 
   const validationSchema = Yup.object().shape({
-    preExistingIssue: Yup.string().required("Please select an option"),
-    issueSpecify:
-      preExistingIssue === "yes"
-        ? Yup.string().required("Specify your pre-existing issue")
-        : Yup.string().notRequired(),
-    terminalIllness: Yup.string().required("Please select an option"),
-    terminalIssueSpecify:
-      terminalIllness === "yes"
-        ? Yup.string().required("Specify your terminal illness")
-        : Yup.string().notRequired(),
-    moreInfo: Yup.string().required("Please select an option"),
+    identityCheck: Yup.string().required(
+      "Please check which identity you want to give"
+    ),
+    identity: Yup.string().required("Identity is required"),
+    countryOfIssuance: Yup.string().required("Country of Issuance is required"),
+    placedIssuance: Yup.string().required("Place of Issuance is required"),
+    dateOfIssuance: Yup.string().required("Date of Issuance is required"),
+    expiryDate: Yup.string().required("Expiry Date is required"),
   });
 
   const {
@@ -72,160 +75,188 @@ const Step8 = ({ currentStep, handleNextStep }: Step8Props) => {
     initialValues,
     validationSchema,
     onSubmit: (values) => {
-      console.log("🚀 ~ file: Step8.tsx:70 ~ Step8 ~ values:", values);
-      handleNextStep(9);
+      setAdditionalMember((prevState) => ({ ...prevState, ...values }));
+      console.log(
+        "🚀 ~ file: step6.tsx:18 ~ Step6 ~ additionalMember:",
+        additionalMember
+      );
+      // console.log("🚀 ~ file: Step6.tsx:72 ~ Step6 ~ values:", values)
+      handleNextStep(7);
     },
   });
 
   return (
-    <>
-      <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-xl mx-auto">
-        <h1 className="text-2xl font-bold mb-6 text-center">Step No: 6</h1>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-6">
-            <p className="text-gray-800 font-bold mb-2">
-              Question: Do you have any pre-existing health issues that we
-              should be aware of ?{" "}
-            </p>
-            {errors.preExistingIssue !== null &&
-            touched.preExistingIssue !== null ? (
-              <p className="text-[red]">{errors.preExistingIssue}</p>
-            ) : null}
-            {options.map((option) => (
-              <div key={option.value} className="flex items-center mb-2">
-                <input
-                  type="radio"
-                  name="preExistingIssue"
-                  value={option.value}
-                  checked={preExistingIssue === option.value}
-                  onChange={() => {
-                    setPreExisting(option.value);
-                    void setFieldValue("preExistingIssue", option.value);
-                  }}
-                  className="mr-2"
-                />
+    <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-xl mx-auto desktop:text-2xl laptop:text-xl tabletOnly:text-lg mobile:text-base  w-full">
+      <h1 className="text-3xl font-bold mb-6 text-center">
+        {" "}
+        Representative No 2 Identity
+      </h1>
 
-                <label htmlFor={option.value} className="text-gray-700">
-                  {option.label}
-                </label>
-              </div>
-            ))}
-          </div>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-6">
+          <p className="text-gray-800 font-bold mb-2">
+            Which identiy would you like to provide:
+          </p>
+          {errors.identityCheck !== null &&
+          touched.identityCheck !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "identityCheck") &&
+          Object.prototype.hasOwnProperty.call(touched, "identityCheck") ? (
+            <p className="text-[red]">{errors.identityCheck}</p>
+          ) : null}
 
-          {preExistingIssue === "yes" && (
-            <div className="mb-6">
-              <div className="flex items-center mb-2">
-                <div>
-                  <label htmlFor="issueSpecify">Kindly Specify: </label>
-
-                  <input
-                    type="text"
-                    name="issueSpecify"
-                    id="issueSpecify"
-                    value={values.issueSpecify}
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                  />
-                  {errors.issueSpecify !== null &&
-                  touched.issueSpecify !== null ? (
-                    <p className="text-[red]">{errors.issueSpecify}</p>
-                  ) : null}
-                </div>
-              </div>
+          {options.map((option) => (
+            <div key={option.value} className="flex items-center mb-2">
+              <input
+                type="radio"
+                name="identityCheck"
+                value={option.value}
+                checked={identityCheck === option.value}
+                onChange={() => {
+                  setIdentityCheck(option.value);
+                  void setFieldValue("identityCheck", option.value);
+                }}
+                className="mr-2"
+              />
+              <label
+                htmlFor={option.value}
+                className="text-gray-700"
+                onClick={() => {
+                  setIdentityCheck(option.value);
+                  void setFieldValue("identityCheck", option.value);
+                }}
+              >
+                {option.label}
+              </label>
             </div>
-          )}
+          ))}
+        </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 font-bold mb-2"
+            htmlFor="identity"
+          >
+            Identity
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="identity"
+            name="identity"
+            type="number"
+            value={values.identity}
+            onBlur={handleBlur}
+            onChange={handleChange}
+          />
+          {errors.identity !== null &&
+          touched.identity !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "identity") &&
+          Object.prototype.hasOwnProperty.call(touched, "identity") ? (
+            <p className="text-[red]">{errors.identity}</p>
+          ) : null}
+        </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 font-bold mb-2"
+            htmlFor="countryOfIssuance"
+          >
+            Country Of Issuance
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="countryOfIssuance"
+            name="countryOfIssuance"
+            type="text"
+            value={values.countryOfIssuance}
+            onBlur={handleBlur}
+            onChange={handleChange}
+          />
+          {errors.countryOfIssuance !== null &&
+          touched.countryOfIssuance !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "countryOfIssuance") &&
+          Object.prototype.hasOwnProperty.call(touched, "countryOfIssuance") ? (
+            <p className="text-[red]">{errors.countryOfIssuance}</p>
+          ) : null}
+        </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 font-bold mb-2"
+            htmlFor="placedIssuance"
+          >
+            Place Of Issuance
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="placedIssuance"
+            name="placedIssuance"
+            type="text"
+            value={values.placedIssuance}
+            onBlur={handleBlur}
+            onChange={handleChange}
+          />
+          {errors.placedIssuance !== null &&
+          touched.placedIssuance !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "placedIssuance") &&
+          Object.prototype.hasOwnProperty.call(touched, "placedIssuance") ? (
+            <p className="text-[red]">{errors.placedIssuance}</p>
+          ) : null}
+        </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 font-bold mb-2"
+            htmlFor="dateOfIssuance"
+          >
+            Date Of Issuance
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="dateOfIssuance"
+            name="dateOfIssuance"
+            type="text"
+            value={values.dateOfIssuance}
+            onBlur={handleBlur}
+            onChange={handleChange}
+          />
+          {errors.dateOfIssuance !== null &&
+          touched.dateOfIssuance !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "dateOfIssuance") &&
+          Object.prototype.hasOwnProperty.call(touched, "dateOfIssuance") ? (
+            <p className="text-[red]">{errors.dateOfIssuance}</p>
+          ) : null}
+        </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 font-bold mb-2"
+            htmlFor="expiryDate"
+          >
+            Expiry Date
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="expiryDate"
+            name="expiryDate"
+            type="text"
+            value={values.expiryDate}
+            onBlur={handleBlur}
+            onChange={handleChange}
+          />
+          {errors.expiryDate !== null &&
+          touched.expiryDate !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "expiryDate") &&
+          Object.prototype.hasOwnProperty.call(touched, "expiryDate") ? (
+            <p className="text-[red]">{errors.expiryDate}</p>
+          ) : null}
+        </div>
 
-          <div className="mb-6">
-            <p className="text-gray-800 font-bold mb-2">
-              Question: Have you been recently diagnosed with any terminal
-              illness at the time of this application?{" "}
-            </p>
-            {errors.terminalIllness !== null &&
-            touched.terminalIllness !== null ? (
-              <p className="text-[red]">{errors.terminalIllness}</p>
-            ) : null}
-            {options.map((option) => (
-              <div key={option.value} className="flex items-center mb-2">
-                <input
-                  type="radio"
-                  name="terminalIllness"
-                  value={option.value}
-                  checked={terminalIllness === option.value}
-                  onChange={() => {
-                    setTerminalIllness(option.value);
-                    void setFieldValue("terminalIllness", option.value);
-                  }}
-                  className="mr-2"
-                />
-
-                <label htmlFor={option.value} className="text-gray-700">
-                  {option.label}
-                </label>
-              </div>
-            ))}
-          </div>
-          {terminalIllness === "yes" && (
-            <div className="mb-6">
-              <div className="flex items-center mb-2">
-                <div>
-                  <label htmlFor="terminalIssueSpecify">Kindly Specify: </label>
-
-                  <input
-                    type="text"
-                    id="terminalIssueSpecify"
-                    name="terminalIssueSpecify"
-                    value={values.terminalIssueSpecify}
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                  />
-                  {errors.terminalIssueSpecify !== null &&
-                  touched.terminalIssueSpecify !== null ? (
-                    <p className="text-[red]">{errors.terminalIssueSpecify}</p>
-                  ) : null}
-                </div>
-              </div>
-            </div>
-          )}
-
-          <div className="mb-6">
-            <p className="text-gray-800 font-bold mb-2">
-              Question: H&H has partnered with third-party medical services to
-              ensure the health needs of their members are catered for. Would
-              you like to receive more information regarding these programs?
-            </p>
-            {errors.moreInfo !== null && touched.moreInfo !== null ? (
-              <p className="text-[red]">{errors.moreInfo}</p>
-            ) : null}
-            {options.map((option) => (
-              <div key={option.value} className="flex items-center mb-2">
-                <input
-                  type="radio"
-                  name="moreInfo"
-                  value={option.value}
-                  checked={moreInfo === option.value}
-                  onChange={(event) => {
-                    setMoreInfo(event.target.value);
-                    void setFieldValue("moreInfo", event.target.value);
-                  }}
-                  className="mr-2"
-                />
-
-                <label htmlFor={option.value} className="text-gray-700">
-                  {option.label}
-                </label>
-              </div>
-            ))}
-          </div>
+        <div className="flex items-center justify-between">
           <button
             type="submit"
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full sm:w-auto"
           >
             Submit
           </button>
-        </form>
-      </div>
-    </>
+        </div>
+      </form>
+    </div>
   );
 };
 
-export default Step8;
+export default Step6;
