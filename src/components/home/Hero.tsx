@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React from 'react'
-import Heroboxes from './heroboxes'
+import Heroboxes from './HeroBoxes'
 import members from '../../assets/icons/1.png'
 import group from '../../assets/icons/3.png'
 import xafmembers from '../../assets/icons/2.png'

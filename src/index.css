@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* body {
+  margin: 0;
+  background-color: #f0f6ff;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  font-family: "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+}
+body > div {
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #f0f6ff;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  font-family: "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+}
+body > div {
+  width: 100%;
+} */

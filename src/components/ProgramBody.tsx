@@ -7,7 +7,7 @@ import health from "../assets/Rectangle 41.png";
 import community from "../assets/Rectangle 74.png"
 import female from "../assets/EducationalSupport.png"
 import Button from "./Button";
-import Faq from "./program/faq";
+import Faq from "./program/Faq";
 
 const ProgramBody = () => {
   return (
@@ -25,7 +25,7 @@ const ProgramBody = () => {
                 community seriously.
               </p>
             </div>
-            <img  src={death1} className="mobile:h-52  mobile:w-44  mobile:mt-4 smallMobile:hidden" alt="image not loaded" />
+            <img src={death1} className="mobile:h-52  mobile:w-44  mobile:mt-4 smallMobile:hidden" alt="image not loaded" />
           </div>
           <div className="flex mt-10 mobile:mt-5">
             <img src={death2} className="mobile:h-48  mobile:w-44 smallMobile:hidden" alt="image not loaded" />

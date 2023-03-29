@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier */
 import React from 'react'
 
-import Body from '../components/home/body';
-import Hero from '../components/home/hero';
+import Body from '../components/home/Body';
+import Hero from '../components/home/Hero';
 
 
 const Home = () => {

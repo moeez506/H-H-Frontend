@@ -5,20 +5,24 @@ import {
   Routes,
   Route
 } from "react-router-dom";
+import MultiFormIndividual from "./pages/MultiFormIndividual";
+import MultiFormGroup from "./pages/MultiFormGroup";
 import Contact from "./components/contact";
 import Footer from "./components/footer";
 import Header from "./components/header";
 import ContactUS from "./pages/Contact";
 
 import Programs from "./pages/Programs";
-import About from "./pages/about";
-import Home from "./pages/home";
-import Navbar from "./components/navbar/navbar";
+import About from "./pages/About";
+import Home from "./pages/Home";
+import Navbar from "./components/navbar/Navbar";
 
 
 function App() {
   return (
     <>
+      {/* <MultiFormIndividual /> */}
+      <MultiFormGroup />
       <Header />
       <Navbar />
       <Routes>
