@@ -5,7 +5,7 @@ import React, { useContext } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { GroupUserContext } from "../../../contexts/groupOnboardingContext";
-import { useRepresentiveData } from "./../../../hooks/useRepresentativeData";
+import { useRepresentiveData } from "../../../hooks/useRepresentativeData";
 import Input from "../../Input";
 
 interface Step3Props {
@@ -186,7 +186,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               onChange={handleChange}
             />
             {errors.positionOccupied !== null &&
-            touched.positionOccupied !== null ? (
+              touched.positionOccupied !== null ? (
               <p className="text-[red]">{errors.positionOccupied}</p>
             ) : null}
           </div>
@@ -264,7 +264,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               onChange={handleChange}
             />
             {errors.countryOfResidence !== null &&
-            touched.countryOfResidence !== null ? (
+              touched.countryOfResidence !== null ? (
               <p className="text-[red]">{errors.countryOfResidence}</p>
             ) : null}{" "}
           </div>
@@ -325,7 +325,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               onChange={handleChange}
             />
             {errors.homePhoneNumber !== null &&
-            touched.homePhoneNumber !== null ? (
+              touched.homePhoneNumber !== null ? (
               <p className="text-[red]">{errors.homePhoneNumber}</p>
             ) : null}
           </div>
