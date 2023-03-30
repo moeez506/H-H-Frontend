@@ -33,6 +33,7 @@ interface Values {
 }
 
 const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
+  const { setRepresentativeOne } = useContext(GroupUserContext);
   const initialValues: Values = {
     // firstName,
     middleName: "",
@@ -78,7 +79,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
       },
     });
 
-  const { setRepresentativeOne } = useContext(GroupUserContext);
+
   // const value = localStorage.getItem("user");
   // console.log("🚀 ~ file: step3.tsx:24 ~ Step3 ~ value:", value);
 

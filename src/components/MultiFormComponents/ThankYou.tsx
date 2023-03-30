@@ -3,7 +3,8 @@ import React, { useContext } from "react";
 import { GroupUserContext } from "../../contexts/groupOnboardingContext";
 import { IndividualUserContext } from "../../contexts/individualOnboardingContext";
 export const ThankYou = () => {
-	// const context = useContext(IndividualUserContext)
+	const USercontext = useContext(IndividualUserContext)
+	console.log("🚀 ~ file: ThankYou.tsx:7 ~ ThankYou ~ USercontext:", USercontext)
 	const context = useContext(GroupUserContext)
 	console.log("🚀 ~ file: step8.tsx:36 ~ Step8 ~ context:", context);
 	return (

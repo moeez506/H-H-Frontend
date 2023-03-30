@@ -1,12 +1,17 @@
 /* eslint-disable prettier/prettier */
-import React from "react";
+import React, { useContext } from "react";
+import { GroupUserContext } from "../../../contexts/groupOnboardingContext";
 
 interface Step9Props {
   currentStep: number;
   handleNextStep: (step: number) => void;
 }
 
+
+
 export default function step9({ currentStep, handleNextStep }: Step9Props) {
+  const context = useContext(GroupUserContext)
+  console.log("🚀 ~ file: Step9.tsx:11 ~ context:", context)
   return (
     <div className="flex items-center justify-between">
       <button
