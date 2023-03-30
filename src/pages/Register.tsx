@@ -5,6 +5,7 @@ import Pass from "../assets/pass.png";
 import { useFormik } from "formik";
 import { signUpSchema } from "../schemas";
 import { registerUser } from "../apis/auth";
+import { Link } from "react-router-dom";
 
 const initialValues = {
   firstName: "",
@@ -30,7 +31,7 @@ export default function Register() {
   return (
     <section className="">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <div className="w-full bg-white rounded-2xl shadow-2xl border md:mt-0 sm:max-w-md xl:p-0">
+        <div className=" bg-white rounded-2xl shadow-2xl border md:mt-0 sm:max-w-md xl:p-0">
           <div className="p-6 pt-6 mx-2 my-4 space-y-6 md:space-y-6 sm:p-8">
             <div className=" font-bold text-center leading-tight tracking-tight md:text-2xl text-black">
               <h1 className="text-4xl">SignUp Now</h1>
@@ -59,7 +60,7 @@ export default function Register() {
                   onBlur={handleBlur}
                 />
                 {errors.firstName !== undefined &&
-                  touched.firstName === true ? (
+                touched.firstName === true ? (
                   <p className="text-red-500 text-sm ">{errors.firstName}</p>
                 ) : (
                   <p></p>
@@ -140,7 +141,7 @@ export default function Register() {
                   onBlur={handleBlur}
                 />
                 {errors.confirm_password !== undefined &&
-                  touched.confirm_password === true ? (
+                touched.confirm_password === true ? (
                   <p className="text-red-500 text-sm ">
                     {errors.confirm_password}
                   </p>
@@ -181,11 +182,13 @@ export default function Register() {
               </button>
               <p className="text-sm font-light text-gray-500 ">
                 Already have an account?{" "}
-                <a
-                  href="#"
-                  className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                >
-                  Login here
+                <a href="#">
+                  <Link
+                    to={"/login"}
+                    className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                  >
+                    Login here
+                  </Link>
                 </a>
               </p>
             </form>

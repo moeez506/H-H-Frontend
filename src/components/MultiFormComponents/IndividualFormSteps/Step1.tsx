@@ -99,7 +99,7 @@ const Step1 = ({ currentStep, handleNextStep }: Step1Props) => {
   const { errors, touched, handleSubmit } = formik;
 
   return (
-    <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-xl mx-auto   desktop:text-2xl laptop:text-xl tabletOnly:text-lg mobile:text-base">
+    <div className="bg-white shadow-md  rounded-2xl px-8 pt-6 pb-8 mb-4 max-w-xl mx-auto   desktop:text-2xl laptop:text-xl tabletOnly:text-lg mobile:text-base">
       <h1 className="text-3xl font-bold mb-6 text-center">Your Plan</h1>
 
       <form onSubmit={handleSubmit}>

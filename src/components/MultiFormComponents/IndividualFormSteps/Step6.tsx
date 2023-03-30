@@ -86,7 +86,7 @@ const Step6 = ({ currentStep, handleNextStep }: Step6Props) => {
   });
 
   return (
-    <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-xl mx-auto desktop:text-2xl laptop:text-xl tabletOnly:text-lg mobile:text-base  w-full">
+    <div className="bg-white shadow-md rounded-2xl px-8 pt-6 pb-8 mb-4 max-w-xl mx-auto desktop:text-2xl laptop:text-xl tabletOnly:text-lg mobile:text-base  w-full">
       <h1 className="text-3xl font-bold mb-6 text-center">
         {" "}
         Representative No 1 Identity

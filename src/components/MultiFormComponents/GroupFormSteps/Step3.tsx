@@ -96,7 +96,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
 
   return (
     <>
-      <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-xl mx-auto   desktop:text-2xl laptop:text-xl tabletOnly:text-lg mobile:text-base w-full">
+      <div className="bg-white shadow-md rounded-2xl px-8 pt-6 pb-8 mb-4 max-w-xl mx-auto   desktop:text-2xl laptop:text-xl tabletOnly:text-lg mobile:text-base w-full">
         <h1 className="text-3xl font-bold mb-6 text-center">
           Group Admin Info
         </h1>
@@ -186,7 +186,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               onChange={handleChange}
             />
             {errors.positionOccupied !== null &&
-              touched.positionOccupied !== null ? (
+            touched.positionOccupied !== null ? (
               <p className="text-[red]">{errors.positionOccupied}</p>
             ) : null}
           </div>
@@ -264,7 +264,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               onChange={handleChange}
             />
             {errors.countryOfResidence !== null &&
-              touched.countryOfResidence !== null ? (
+            touched.countryOfResidence !== null ? (
               <p className="text-[red]">{errors.countryOfResidence}</p>
             ) : null}{" "}
           </div>
@@ -325,7 +325,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               onChange={handleChange}
             />
             {errors.homePhoneNumber !== null &&
-              touched.homePhoneNumber !== null ? (
+            touched.homePhoneNumber !== null ? (
               <p className="text-[red]">{errors.homePhoneNumber}</p>
             ) : null}
           </div>
