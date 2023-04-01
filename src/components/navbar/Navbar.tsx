@@ -73,19 +73,14 @@ export default function Navbar() {
                             <li className={location.pathname === '/contact' ? "active text-white hover:text-indigo-200" : "text-white hover:text-indigo-200"}>
                                 <Link to={'/contact'} onClick={() => { openClose() }}>Contact Us</Link>
                             </li> <li className={location.pathname === '/#' ? "active text-white hover:text-indigo-200" : "text-white hover:text-indigo-200"}>
-                                <Link to={'#'} onClick={() => { openClose() }}>Market Place</Link>
+                                <Link to={'/market-place'} onClick={() => { openClose() }}>Market Place</Link>
                             </li>
                         </ul>
 
                         <div className="mt-3 space-y-2 desktop:hidden laptop:hidden">
+                        <Link to={'/login'} onClick={() => { openClose() }} className="inline-block w-full px-4 py-2 text-center text-white border border-solid border-orange rounded-md shadow hover:bg-gray-800">Sign In</Link>
                             <a
-                                href="javascript:void(0)"
-                                className="inline-block w-full px-4 py-2 text-center  text-white border border-solid border-orange rounded-md shadow hover:bg-gray-800"
-                            >
-                                Sign in
-                            </a>
-                            <a
-                                href="javascript:void(0)"
+                                href="/login"
                                 className="inline-block w-full px-4 py-2 text-center  text-white border border-solid border-orange rounded-md shadow hover:bg-gray-800"
                             >
                                 Sign up
@@ -94,18 +89,20 @@ export default function Navbar() {
                     </div>
                 </div>
                 <div className=" space-x-2 desktop:inline-block laptop:inline-block setRight" >
-                    <a
-                        href="javascript:void(0)"
+                <Link to={'/login'} onClick={() => { openClose() }} className="inline-block w-full px-6 py-0 text-center text-white border border-solid border-orange rounded-md shadow hover:bg-gray-800">SignIn</Link>
+                <Link to={'/register'} onClick={() => { openClose() }} className="inline-block w-full px-4 py-0 text-center text-white border border-solid border-orange rounded-md shadow hover:bg-gray-800">Register</Link>    
+                    {/* <a
+                        href="/login"
                         className="px-4 py-2 text-white border border-solid border-orange rounded-md shadow hover:bg-gray-800"
                     >
                         Sign in
-                    </a>
-                    <a
-                        href="javascript:void(0)"
+                    </a> */}
+                    {/* <a
+                        href="/register"
                         className="px-4 py-2 text-white border border-solid border-orange rounded-md shadow hover:bg-gray-800"
                     >
                         Sign up
-                    </a>
+                    </a> */}
                 </div>
             </div>
         </nav>

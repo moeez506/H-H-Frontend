@@ -13,12 +13,12 @@ const PopUp = () => {
             <div>
                 <p className='text-4xl font-medium'>Immigration And Citizenship</p>
                 <br />
-                <Button text="ENGLISH"  />
+                {/* <Button text="ENGLISH"  /> */}
             </div>
             <div>
                 <p className='text-4xl font-medium'>Immigration et citoyenneté</p>
                 <br />
-                <Button text="FRANÇAISE" />
+                {/* <Button text="FRANÇAISE" /> */}
             </div>
 
             </div>
