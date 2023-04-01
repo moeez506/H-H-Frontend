@@ -4,6 +4,7 @@ import React, { useContext } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { IndividualUserContext } from "../../../contexts/individualOnboardingContext";
+import Button from "../../Button";
 
 interface Step5Props {
   currentStep: number;
@@ -22,6 +23,7 @@ interface Values {
   homePhoneNumber: string;
   cellNumber: string;
   email: string;
+  relationship: string;
 }
 
 const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
@@ -42,6 +44,7 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
     homePhoneNumber: "",
     cellNumber: "",
     email: "",
+    relationship: "",
   };
 
   const validationSchema = Yup.object({
@@ -59,6 +62,7 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
     homePhoneNumber: Yup.string().required("Home Phone Number is required"),
     cellNumber: Yup.string().max(15).min(7).required("Cell Number is required"),
     email: Yup.string().email().required("Email is required"),
+    relationship: Yup.string().required("Relatioship is required"),
   });
 
   //TODO cell no validation and zip code
@@ -76,9 +80,7 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
 
   return (
     <div className="bg-white shadow-md rounded-2xl px-8 pt-6 pb-8 mb-4 max-w-xl mx-auto desktop:text-2xl laptop:text-xl tabletOnly:text-lg mobile:text-base  w-full">
-      <h1 className="text-3xl font-bold mb-6 text-center">
-        Representative No: 1
-      </h1>
+      <h1 className="text-3xl font-bold mb-6 text-center">Kin Info</h1>
 
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
@@ -348,15 +350,49 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
             <p className="text-[red]">{errors.email}</p>
           ) : null}
         </div>
-
-        <div className="flex items-center justify-between">
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full sm:w-auto"
+        <div className="flex flex-col items-start">
+          <label
+            htmlFor="relationship"
+            className="text-gray-800 font-bold mb-2"
           >
-            Next
-          </button>
+            Relationship
+          </label>
+          {errors.relationship !== null &&
+          touched.relationship !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "relationship") &&
+          Object.prototype.hasOwnProperty.call(touched, "relationship") ? (
+            <p className="text-[red]">{errors.relationship}</p>
+          ) : null}
+          <select
+            name="relationship"
+            id="relationship"
+            value={values.relationship}
+            onBlur={handleBlur}
+            onChange={handleChange}
+            className="w-full border rounded px-3 py-2 mb-4"
+          >
+            <option value="">Select Relationship</option>
+            <option value="mother">Mother</option>
+            <option value="brother">Brother</option>
+            <option value="sister">Sister</option>
+            <option value="spouse">Spouse</option>
+            <option value="daughter">Daughter</option>
+            <option value="son">Son</option>
+            <option value="others">Others</option>
+          </select>
+          {values.relationship === "others" && (
+            <div className="w-full">
+              <input
+                type="text"
+                name="otherRelationship"
+                id="otherRelationship"
+                placeholder="Enter Relationship"
+                className="w-full border rounded px-3 py-2 mb-2 border border-black rounded"
+              />
+            </div>
+          )}
         </div>
+        <Button text="Next" isForm />
       </form>
     </div>
   );

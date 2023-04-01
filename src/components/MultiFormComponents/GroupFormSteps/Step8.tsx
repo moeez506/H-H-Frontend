@@ -4,7 +4,8 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { IndividualUserContext } from "../../../contexts/individualOnboardingContext";
 import { individualOndoarding } from "../../../apis/individualOndoarding";
-interface Step6Props {
+import Button from "../../Button";
+interface Step8Props {
   currentStep: number;
   handleNextStep: (step: number) => void;
 }
@@ -13,7 +14,7 @@ interface Option {
   value: string;
 }
 
-const Step6 = ({ currentStep, handleNextStep }: Step6Props) => {
+const Step8 = ({ currentStep, handleNextStep }: Step8Props) => {
   const [identityCheck, setIdentityCheck] = useState("");
   const { additionalMember, setAdditionalMember } = useContext(
     IndividualUserContext
@@ -77,10 +78,10 @@ const Step6 = ({ currentStep, handleNextStep }: Step6Props) => {
     onSubmit: (values) => {
       setAdditionalMember((prevState) => ({ ...prevState, ...values }));
       console.log(
-        "🚀 ~ file: step6.tsx:18 ~ Step6 ~ additionalMember:",
+        "🚀 ~ file: Step8.tsx:18 ~ Step8 ~ additionalMember:",
         additionalMember
       );
-      // console.log("🚀 ~ file: Step6.tsx:72 ~ Step6 ~ values:", values)
+      // console.log("🚀 ~ file: Step8.tsx:72 ~ Step8 ~ values:", values)
       handleNextStep(7);
     },
   });
@@ -245,18 +246,10 @@ const Step6 = ({ currentStep, handleNextStep }: Step6Props) => {
             <p className="text-[red]">{errors.expiryDate}</p>
           ) : null}
         </div>
-
-        <div className="flex items-center justify-between">
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full sm:w-auto"
-          >
-            Submit
-          </button>
-        </div>
+        <Button text="Next" isForm />
       </form>
     </div>
   );
 };
 
-export default Step6;
+export default Step8;

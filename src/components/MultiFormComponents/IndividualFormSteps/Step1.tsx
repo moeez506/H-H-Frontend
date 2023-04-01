@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { IndividualUserContext } from "../../../contexts/individualOnboardingContext";
+import Button from "../../Button";
 
 interface Option {
   label: string;
@@ -52,6 +53,9 @@ const familyMemberOptions: Option1[] = [
   },
 ];
 
+// TODO: If now we are managing the state within the context then why we need states in this file?
+// TODO: By Changing these states our checked mark would be set on the base of context state. So for Go Back Button we can set initial Values like  subscriptionPlan.joinOption
+
 const Step1 = ({ currentStep, handleNextStep }: Step1Props) => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [selectedFamilyMemberCount, setSelectedFamilyMemberCount] = useState<
@@ -91,7 +95,7 @@ const Step1 = ({ currentStep, handleNextStep }: Step1Props) => {
     validationSchema,
     onSubmit: (values) => {
       setSubscriptionPlan(values);
-      // console.log("🚀 ~ file: step1.tsx:88 ~ Step1 ~ values:", values);
+      console.log("🚀 ~ file: step1.tsx:88 ~ Step1 ~ values:", values);
       handleNextStep(2);
     },
   });
@@ -187,12 +191,8 @@ const Step1 = ({ currentStep, handleNextStep }: Step1Props) => {
             ))}
           </div>
         )}
-        <button
-          type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full sm:w-auto"
-        >
-          Next
-        </button>
+
+        <Button text="Next" isForm />
       </form>
     </div>
   );

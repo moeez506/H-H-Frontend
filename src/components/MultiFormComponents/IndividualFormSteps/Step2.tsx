@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { IndividualUserContext } from "../../../contexts/individualOnboardingContext";
+import Button from "../../Button";
 interface Option {
   label: string;
   value: string;
@@ -245,16 +246,14 @@ const Step2 = ({ currentStep, handleNextStep }: Step2Props) => {
               </p>
             </div>
           )}
-          <button
-            type="submit"
-            className={
-              relationCameroonian === "no"
-                ? "hidden"
-                : "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full sm:w-auto"
-            }
-          >
-            Next
-          </button>
+          <Button text="Next" isForm />
+          <Button
+            text="Go Back"
+            isForm
+            onClick={() => {
+              handleNextStep(1);
+            }}
+          />
         </form>
       </div>
     </>

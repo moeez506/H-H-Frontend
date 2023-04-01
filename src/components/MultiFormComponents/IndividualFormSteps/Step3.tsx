@@ -7,6 +7,7 @@ import { useQuery } from "react-query";
 import { IndividualUserContext } from "../../../contexts/individualOnboardingContext";
 import { individualOndoarding } from "../../../apis/individualOndoarding";
 import request from "../../../apis/request";
+import Button from "../../Button";
 
 interface Step3Props {
   currentStep: number;
@@ -355,14 +356,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
           ) : null}
         </div>
 
-        <div className="flex items-center justify-between">
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full sm:w-auto"
-          >
-            Next
-          </button>
-        </div>
+        <Button text="Next" isForm />
       </form>
     </div>
   );

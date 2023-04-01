@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { IndividualUserContext } from "../../../contexts/individualOnboardingContext";
 import { individualOndoarding } from "../../../apis/individualOndoarding";
+import Button from "../../Button";
 interface Step6Props {
   currentStep: number;
   handleNextStep: (step: number) => void;
@@ -246,14 +247,7 @@ const Step6 = ({ currentStep, handleNextStep }: Step6Props) => {
           ) : null}
         </div>
 
-        <div className="flex items-center justify-between">
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full sm:w-auto"
-          >
-            Next
-          </button>
-        </div>
+        <Button text="Next" isForm />
       </form>
     </div>
   );

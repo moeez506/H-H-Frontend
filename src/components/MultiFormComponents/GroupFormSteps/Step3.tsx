@@ -7,6 +7,7 @@ import * as Yup from "yup";
 import { GroupUserContext } from "../../../contexts/groupOnboardingContext";
 import { useRepresentiveData } from "../../../hooks/useRepresentativeData";
 import Input from "../../Input";
+import Button from "../../Button";
 
 interface Step3Props {
   currentStep: number;
@@ -61,9 +62,18 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
       "Country of Residence is required"
     ),
     address: Yup.string().required("Address is required"),
-    zipCode: Yup.string().max(5).min(5).required("Zip Code is required"),
-    homePhoneNumber: Yup.string().required("Home Phone Number is required"),
-    cellNumber: Yup.string().max(15).min(7).required("Cell Number is required"),
+    zipCode: Yup.string()
+      .max(5, "Zip code should be exact 5 digits")
+      .min(5, "Zip code should be exact 5 integers")
+      .required("Zip Code is required"),
+    cellNumber: Yup.string()
+      .max(15, "Cell Number can be max 15 digits")
+      .min(7, "Cell Number can be min 7 digits")
+      .required("Cell Number is required"),
+    homePhoneNumber: Yup.string()
+      .max(15, "Home Phone Number can be max 15 digits")
+      .min(7, "Home Phone Number can be min 7 digits")
+      .required("Home Phone Number is required"),
     email: Yup.string().email().required("Email is required"),
   });
 
@@ -370,14 +380,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
           ) : null} */}
           </div>
 
-          <div className="flex items-center justify-between">
-            <button
-              type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full sm:w-auto"
-            >
-              Next
-            </button>
-          </div>
+          <Button text="Next" isForm />
         </form>
       </div>
     </>

@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { GroupUserContext } from "../../../contexts/groupOnboardingContext";
+import Button from "../../Button";
 interface Step2Props {
   currentStep: number;
   handleNextStep: (step: number) => void;
@@ -41,8 +42,14 @@ const Step2 = ({ currentStep, handleNextStep }: Step2Props) => {
       "Country of operation is required"
     ),
     address: Yup.string().required("Address is required"),
-    zipCode: Yup.string().max(5).min(5).required("Zip Code is required"),
-    cellNumber: Yup.string().max(15).min(7).required("Cell Number is required"),
+    zipCode: Yup.string()
+      .max(5, "Zip code should be exact 5 digits")
+      .min(5, "Zip code should be exact 5 integers")
+      .required("Zip Code is required"),
+    cellNumber: Yup.string()
+      .max(15, "Cell Number can be max 15 digits")
+      .min(7, "Cell Number can be min 7 digits")
+      .required("Cell Number is required"),
     email: Yup.string().email("Invalid email").required("Email is required"),
     website: Yup.string().url("Invalid URL").required("Website is required"),
   });
@@ -246,14 +253,7 @@ const Step2 = ({ currentStep, handleNextStep }: Step2Props) => {
             <p className="text-[red]">{errors.website}</p>
           ) : null}
         </div>
-        <div className="flex items-center justify-between">
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full sm:w-auto"
-          >
-            Next
-          </button>
-        </div>
+        <Button text="Next" isForm />
       </form>
     </div>
   );

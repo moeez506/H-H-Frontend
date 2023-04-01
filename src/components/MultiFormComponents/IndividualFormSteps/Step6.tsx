@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { IndividualUserContext } from "../../../contexts/individualOnboardingContext";
 import { individualOndoarding } from "../../../apis/individualOndoarding";
+import Button from "../../Button";
 interface Step6Props {
   currentStep: number;
   handleNextStep: (step: number) => void;
@@ -76,21 +77,18 @@ const Step6 = ({ currentStep, handleNextStep }: Step6Props) => {
     validationSchema,
     onSubmit: (values) => {
       setAdditionalMember((prevState) => ({ ...prevState, ...values }));
-      console.log(
-        "🚀 ~ file: step6.tsx:18 ~ Step6 ~ additionalMember:",
-        additionalMember
-      );
-      // console.log("🚀 ~ file: Step6.tsx:72 ~ Step6 ~ values:", values)
+      // console.log(
+      //   "🚀 ~ file: step6.tsx:18 ~ Step6 ~ additionalMember:",
+      //   additionalMember
+      // );
+      console.log("🚀 ~ file: Step6.tsx:72 ~ Step6 ~ values:", values);
       handleNextStep(7);
     },
   });
 
   return (
     <div className="bg-white shadow-md rounded-2xl px-8 pt-6 pb-8 mb-4 max-w-xl mx-auto desktop:text-2xl laptop:text-xl tabletOnly:text-lg mobile:text-base  w-full">
-      <h1 className="text-3xl font-bold mb-6 text-center">
-        {" "}
-        Representative No 1 Identity
-      </h1>
+      <h1 className="text-3xl font-bold mb-6 text-center"> Kin Identity</h1>
 
       <form onSubmit={handleSubmit}>
         <div className="mb-6">
@@ -246,14 +244,7 @@ const Step6 = ({ currentStep, handleNextStep }: Step6Props) => {
           ) : null}
         </div>
 
-        <div className="flex items-center justify-between">
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full sm:w-auto"
-          >
-            Next
-          </button>
-        </div>
+        <Button text="Submit" isForm />
       </form>
     </div>
   );
