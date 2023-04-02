@@ -33,6 +33,7 @@ interface Values {
 }
 
 const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
+  const { setRepresentativeOne } = useContext(GroupUserContext);
   const initialValues: Values = {
     // firstName,
     middleName: "",
@@ -78,21 +79,13 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
       },
     });
 
-  const { setRepresentativeOne } = useContext(GroupUserContext);
-  // const value = localStorage.getItem("user");
-  // console.log("🚀 ~ file: step3.tsx:24 ~ Step3 ~ value:", value);
-
-  const { isLoading, data } = useRepresentiveData("6408b251f070213942bae18d");
+  const { isLoading, data } = useRepresentiveData();
 
   if (isLoading) {
     return <h1>Loading...</h1>;
   }
 
-  console.log(data?.data?.user);
-
   const { firstName, email, lastName } = data?.data?.user;
-
-  // const { firstName, lastName, email } = data?.data.user;
 
   return (
     <>
@@ -128,15 +121,6 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
             >
               Middle Name
             </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="middleName"
-              name="middleName"
-              type="text"
-              value={values.middleName}
-              onBlur={handleBlur}
-              onChange={handleChange}
-            />
             <Input
               id="middleName"
               name="middleName"
@@ -186,7 +170,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               onChange={handleChange}
             />
             {errors.positionOccupied !== null &&
-              touched.positionOccupied !== null ? (
+            touched.positionOccupied !== null ? (
               <p className="text-[red]">{errors.positionOccupied}</p>
             ) : null}
           </div>
@@ -264,7 +248,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               onChange={handleChange}
             />
             {errors.countryOfResidence !== null &&
-              touched.countryOfResidence !== null ? (
+            touched.countryOfResidence !== null ? (
               <p className="text-[red]">{errors.countryOfResidence}</p>
             ) : null}{" "}
           </div>
@@ -325,7 +309,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               onChange={handleChange}
             />
             {errors.homePhoneNumber !== null &&
-              touched.homePhoneNumber !== null ? (
+            touched.homePhoneNumber !== null ? (
               <p className="text-[red]">{errors.homePhoneNumber}</p>
             ) : null}
           </div>

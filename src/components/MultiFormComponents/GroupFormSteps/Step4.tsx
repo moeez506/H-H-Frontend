@@ -2,8 +2,7 @@
 import React, { useContext, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { IndividualUserContext } from "../../../contexts/individualOnboardingContext";
-import { individualOndoarding } from "../../../apis/individualOndoarding";
+import { GroupUserContext } from "../../../contexts/groupOnboardingContext";
 interface Step6Props {
   currentStep: number;
   handleNextStep: (step: number) => void;
@@ -15,9 +14,7 @@ interface Option {
 
 const Step6 = ({ currentStep, handleNextStep }: Step6Props) => {
   const [identityCheck, setIdentityCheck] = useState("");
-  const { additionalMember, setAdditionalMember } = useContext(
-    IndividualUserContext
-  );
+  const { setRepresentativeOne } = useContext(GroupUserContext);
 
   const options: Option[] = [
     {
@@ -75,13 +72,9 @@ const Step6 = ({ currentStep, handleNextStep }: Step6Props) => {
     initialValues,
     validationSchema,
     onSubmit: (values) => {
-      setAdditionalMember((prevState) => ({ ...prevState, ...values }));
-      console.log(
-        "🚀 ~ file: step6.tsx:18 ~ Step6 ~ additionalMember:",
-        additionalMember
-      );
+      setRepresentativeOne((prevState) => ({ ...prevState, ...values }));
       // console.log("🚀 ~ file: Step6.tsx:72 ~ Step6 ~ values:", values)
-      handleNextStep(7);
+      handleNextStep(5);
     },
   });
 
@@ -98,9 +91,9 @@ const Step6 = ({ currentStep, handleNextStep }: Step6Props) => {
             Which identiy would you like to provide:
           </p>
           {errors.identityCheck !== null &&
-          touched.identityCheck !== null &&
-          Object.prototype.hasOwnProperty.call(errors, "identityCheck") &&
-          Object.prototype.hasOwnProperty.call(touched, "identityCheck") ? (
+            touched.identityCheck !== null &&
+            Object.prototype.hasOwnProperty.call(errors, "identityCheck") &&
+            Object.prototype.hasOwnProperty.call(touched, "identityCheck") ? (
             <p className="text-[red]">{errors.identityCheck}</p>
           ) : null}
 
@@ -147,9 +140,9 @@ const Step6 = ({ currentStep, handleNextStep }: Step6Props) => {
             onChange={handleChange}
           />
           {errors.identity !== null &&
-          touched.identity !== null &&
-          Object.prototype.hasOwnProperty.call(errors, "identity") &&
-          Object.prototype.hasOwnProperty.call(touched, "identity") ? (
+            touched.identity !== null &&
+            Object.prototype.hasOwnProperty.call(errors, "identity") &&
+            Object.prototype.hasOwnProperty.call(touched, "identity") ? (
             <p className="text-[red]">{errors.identity}</p>
           ) : null}
         </div>
@@ -170,9 +163,9 @@ const Step6 = ({ currentStep, handleNextStep }: Step6Props) => {
             onChange={handleChange}
           />
           {errors.countryOfIssuance !== null &&
-          touched.countryOfIssuance !== null &&
-          Object.prototype.hasOwnProperty.call(errors, "countryOfIssuance") &&
-          Object.prototype.hasOwnProperty.call(touched, "countryOfIssuance") ? (
+            touched.countryOfIssuance !== null &&
+            Object.prototype.hasOwnProperty.call(errors, "countryOfIssuance") &&
+            Object.prototype.hasOwnProperty.call(touched, "countryOfIssuance") ? (
             <p className="text-[red]">{errors.countryOfIssuance}</p>
           ) : null}
         </div>
@@ -193,9 +186,9 @@ const Step6 = ({ currentStep, handleNextStep }: Step6Props) => {
             onChange={handleChange}
           />
           {errors.placedIssuance !== null &&
-          touched.placedIssuance !== null &&
-          Object.prototype.hasOwnProperty.call(errors, "placedIssuance") &&
-          Object.prototype.hasOwnProperty.call(touched, "placedIssuance") ? (
+            touched.placedIssuance !== null &&
+            Object.prototype.hasOwnProperty.call(errors, "placedIssuance") &&
+            Object.prototype.hasOwnProperty.call(touched, "placedIssuance") ? (
             <p className="text-[red]">{errors.placedIssuance}</p>
           ) : null}
         </div>
@@ -216,9 +209,9 @@ const Step6 = ({ currentStep, handleNextStep }: Step6Props) => {
             onChange={handleChange}
           />
           {errors.dateOfIssuance !== null &&
-          touched.dateOfIssuance !== null &&
-          Object.prototype.hasOwnProperty.call(errors, "dateOfIssuance") &&
-          Object.prototype.hasOwnProperty.call(touched, "dateOfIssuance") ? (
+            touched.dateOfIssuance !== null &&
+            Object.prototype.hasOwnProperty.call(errors, "dateOfIssuance") &&
+            Object.prototype.hasOwnProperty.call(touched, "dateOfIssuance") ? (
             <p className="text-[red]">{errors.dateOfIssuance}</p>
           ) : null}
         </div>
@@ -239,9 +232,9 @@ const Step6 = ({ currentStep, handleNextStep }: Step6Props) => {
             onChange={handleChange}
           />
           {errors.expiryDate !== null &&
-          touched.expiryDate !== null &&
-          Object.prototype.hasOwnProperty.call(errors, "expiryDate") &&
-          Object.prototype.hasOwnProperty.call(touched, "expiryDate") ? (
+            touched.expiryDate !== null &&
+            Object.prototype.hasOwnProperty.call(errors, "expiryDate") &&
+            Object.prototype.hasOwnProperty.call(touched, "expiryDate") ? (
             <p className="text-[red]">{errors.expiryDate}</p>
           ) : null}
         </div>

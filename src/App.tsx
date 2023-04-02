@@ -4,7 +4,6 @@ import "./App.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 import RouterConfig from "./routes/RouterConfig";
 
-
 function App() {
   const queryClient = new QueryClient();
   return (
@@ -13,7 +12,6 @@ function App() {
        <RouterConfig />
       </QueryClientProvider>
     </>
-
   );
 }
 

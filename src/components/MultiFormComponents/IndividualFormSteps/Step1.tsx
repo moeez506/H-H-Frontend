@@ -78,8 +78,8 @@ const Step1 = ({ currentStep, handleNextStep }: Step1Props) => {
     familyMemberCount:
       selectedOption === "register_and_pay_additional_members"
         ? Yup.number().required(
-            "Please select the number of members to pay for"
-          )
+          "Please select the number of members to pay for"
+        )
         : Yup.string().notRequired(),
   });
 
@@ -108,9 +108,9 @@ const Step1 = ({ currentStep, handleNextStep }: Step1Props) => {
             Question: I plan to join
           </p>
           {errors.joinOption !== null &&
-          touched.joinOption !== null &&
-          Object.prototype.hasOwnProperty.call(errors, "joinOption") &&
-          Object.prototype.hasOwnProperty.call(touched, "joinOption") ? (
+            touched.joinOption !== null &&
+            Object.prototype.hasOwnProperty.call(errors, "joinOption") &&
+            Object.prototype.hasOwnProperty.call(touched, "joinOption") ? (
             <p className="text-[red]">{errors.joinOption}</p>
           ) : null}
           {options.map((option) => (
@@ -145,12 +145,12 @@ const Step1 = ({ currentStep, handleNextStep }: Step1Props) => {
               Question: How many members will you pay for?
             </p>
             {errors.familyMemberCount !== null &&
-            touched.familyMemberCount !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "familyMemberCount") &&
-            Object.prototype.hasOwnProperty.call(
-              touched,
-              "familyMemberCount"
-            ) ? (
+              touched.familyMemberCount !== null &&
+              Object.prototype.hasOwnProperty.call(errors, "familyMemberCount") &&
+              Object.prototype.hasOwnProperty.call(
+                touched,
+                "familyMemberCount"
+              ) ? (
               <p className="text-[red]">{errors.familyMemberCount}</p>
             ) : null}
 
