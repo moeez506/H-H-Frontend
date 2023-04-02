@@ -49,14 +49,14 @@ const PopUp = () => {
               <p className="text-3xl font-medium">Welcome to H&H Org</p>
               <br />
               <button onClick={toggleHiddenEnglish}>
-                <Button text="ENGLISH" />
+                <Button text="ENGLISH" route="#"/>
               </button>
             </div>
             <div className="ml-6">
               <p className="text-3xl font-medium">{`Bienvenue à l'organisation H&H`}</p>
               <br />
               <button onClick={toggleHiddenFrench}>
-                <Button text="FRANÇAISE" />
+                <Button text="FRANÇAISE" route="#" />
               </button>
             </div>
           </div>

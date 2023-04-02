@@ -5,7 +5,7 @@ import { useQuery } from "react-query";
 import request from "../apis/request";
 
 const representativeData = () => {
-  return request.get(`/group/one-representative/6408975cc8712e329abe02a8`);
+  return request.get(`/group/one-representative`);
 };
 
 export const useRepresentiveData = () => {

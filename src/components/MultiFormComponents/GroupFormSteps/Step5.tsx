@@ -73,8 +73,8 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
         setRepresentativeTwo(values);
         checkUserEmail(values.email)
           .then(res => setApiResponse(res))
-          .catch(err => console.log(err?.response?.data?.msg))
-        console.log("🚀 ~ file: Step5.tsx:70 ~ Step5 ~ values:", values)
+          .catch(err => console.log(err.response.data))
+        // console.log("🚀 ~ file: Step5.tsx:70 ~ Step5 ~ values:", values)
         if (apiResponse === "Success") {
           handleNextStep(6);
         }
