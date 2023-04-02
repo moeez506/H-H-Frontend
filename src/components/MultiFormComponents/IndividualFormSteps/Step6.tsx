@@ -1,9 +1,8 @@
 /* eslint-disable prettier/prettier */
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { IndividualUserContext } from "../../../contexts/individualOnboardingContext";
-import { individualOndoarding } from "../../../apis/individualOndoarding";
 import Button from "../../Button";
 interface Step6Props {
   currentStep: number;
@@ -16,7 +15,7 @@ interface Option {
 
 const Step6 = ({ currentStep, handleNextStep }: Step6Props) => {
   const [identityCheck, setIdentityCheck] = useState("");
-  const { additionalMember, setAdditionalMember } = useContext(
+  const { individualAdmin, setIndividualAdmin } = useContext(
     IndividualUserContext
   );
 
@@ -44,13 +43,30 @@ const Step6 = ({ currentStep, handleNextStep }: Step6Props) => {
     expiryDate: string;
   }
 
+  useEffect(() => {
+    if (
+      (individualAdmin as { identityCheck: string }).identityCheck !== undefined
+    ) {
+      setIdentityCheck(
+        (individualAdmin as { identityCheck: string }).identityCheck
+      );
+      setIdentityCheck(
+        (individualAdmin as { identityCheck: string }).identityCheck
+      );
+      void setFieldValue(
+        "identityCheck",
+        (individualAdmin as { identityCheck: string }).identityCheck
+      );
+    }
+  }, [individualAdmin]);
+
   const initialValues: Values = {
     identityCheck: "",
-    identity: "",
-    countryOfIssuance: "",
-    placedIssuance: "",
-    dateOfIssuance: "",
-    expiryDate: "",
+    identity: (individualAdmin as Values)?.identity ?? "",
+    countryOfIssuance: (individualAdmin as Values)?.countryOfIssuance ?? "",
+    placedIssuance: (individualAdmin as Values)?.placedIssuance ?? "",
+    dateOfIssuance: (individualAdmin as Values)?.dateOfIssuance ?? "",
+    expiryDate: (individualAdmin as Values)?.expiryDate ?? "",
   };
 
   const validationSchema = Yup.object().shape({
@@ -76,19 +92,15 @@ const Step6 = ({ currentStep, handleNextStep }: Step6Props) => {
     initialValues,
     validationSchema,
     onSubmit: (values) => {
-      setAdditionalMember((prevState) => ({ ...prevState, ...values }));
-      // console.log(
-      //   "🚀 ~ file: step6.tsx:18 ~ Step6 ~ additionalMember:",
-      //   additionalMember
-      // );
-      console.log("🚀 ~ file: Step6.tsx:72 ~ Step6 ~ values:", values);
+      setIndividualAdmin((prevState) => ({ ...prevState, ...values }));
+      // console.log("🚀 ~ file: Step6.tsx:72 ~ Step6 ~ values:", values)
       handleNextStep(7);
     },
   });
 
   return (
     <div className="bg-white shadow-md rounded-2xl px-8 pt-6 pb-8 mb-4 max-w-xl mx-auto desktop:text-2xl laptop:text-xl tabletOnly:text-lg mobile:text-base  w-full">
-      <h1 className="text-3xl font-bold mb-6 text-center"> Kin Identity</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center">Kin Identity Info</h1>
 
       <form onSubmit={handleSubmit}>
         <div className="mb-6">
@@ -244,7 +256,14 @@ const Step6 = ({ currentStep, handleNextStep }: Step6Props) => {
           ) : null}
         </div>
 
-        <Button text="Submit" isForm />
+        <Button text="Next" isForm />
+        <Button
+          text="Go Back"
+          isForm
+          onClick={() => {
+            handleNextStep(5);
+          }}
+        />
       </form>
     </div>
   );

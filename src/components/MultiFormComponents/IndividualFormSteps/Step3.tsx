@@ -32,20 +32,24 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
   const { individualAdmin, setIndividualAdmin } = useContext(
     IndividualUserContext
   );
+  console.log(
+    "🚀 ~ file: Step3.tsx:33 ~ Step3 ~ individualAdmin:",
+    individualAdmin
+  );
 
   const initialValues: Values = {
-    firstName: "",
-    middleName: "",
-    lastName: "",
-    dob: "",
-    placeOfBirth: "",
-    nationality: "",
-    countryOfResidence: "",
-    address: "",
-    zipCode: "",
-    homePhoneNumber: "",
-    cellNumber: "",
-    email: "",
+    firstName: (individualAdmin as Values)?.firstName ?? "",
+    middleName: (individualAdmin as Values)?.middleName ?? "",
+    lastName: (individualAdmin as Values)?.lastName ?? "",
+    dob: (individualAdmin as Values)?.dob ?? "",
+    placeOfBirth: (individualAdmin as Values)?.placeOfBirth ?? "",
+    nationality: (individualAdmin as Values)?.nationality ?? "",
+    countryOfResidence: (individualAdmin as Values)?.countryOfResidence ?? "",
+    address: (individualAdmin as Values)?.address ?? "",
+    zipCode: (individualAdmin as Values)?.zipCode ?? "",
+    homePhoneNumber: (individualAdmin as Values)?.homePhoneNumber ?? "",
+    cellNumber: (individualAdmin as Values)?.cellNumber ?? "",
+    email: (individualAdmin as Values)?.email ?? "",
   };
 
   const validationSchema = Yup.object({
@@ -60,8 +64,14 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
     ),
     address: Yup.string().required("Address is required"),
     zipCode: Yup.string().max(5).min(5).required("Zip Code is required"),
-    homePhoneNumber: Yup.string().required("Home Phone Number is required"),
-    cellNumber: Yup.string().max(15).min(7).required("Cell Number is required"),
+    homePhoneNumber: Yup.string()
+      .max(15, "Home Phone Number max 15")
+      .min(7, "Home Phone Number min 7")
+      .required("Home Phone Number is required"),
+    cellNumber: Yup.string()
+      .max(15, "Cell Number max 15")
+      .min(7, "Cell Number min 7")
+      .required("Cell Number is required"),
     email: Yup.string().email().required("Email is required"),
   });
 
@@ -357,6 +367,13 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
         </div>
 
         <Button text="Next" isForm />
+        <Button
+          text="Go Back"
+          isForm
+          onClick={() => {
+            handleNextStep(2);
+          }}
+        />
       </form>
     </div>
   );

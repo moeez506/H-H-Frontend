@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { IndividualUserContext } from "../../../contexts/individualOnboardingContext";
@@ -43,14 +43,30 @@ const Step4 = ({ currentStep, handleNextStep }: Step4Props) => {
     dateOfIssuance: string;
     expiryDate: string;
   }
-
+  useEffect(() => {
+    if (
+      (additionalMember as { identityCheck: string }).identityCheck !==
+      undefined
+    ) {
+      setIdentityCheck(
+        (additionalMember as { identityCheck: string }).identityCheck
+      );
+      setIdentityCheck(
+        (additionalMember as { identityCheck: string }).identityCheck
+      );
+      void setFieldValue(
+        "identityCheck",
+        (additionalMember as { identityCheck: string }).identityCheck
+      );
+    }
+  }, [additionalMember]);
   const initialValues: Values = {
     identityCheck: "",
-    identity: "",
-    countryOfIssuance: "",
-    placedIssuance: "",
-    dateOfIssuance: "",
-    expiryDate: "",
+    identity: (additionalMember as Values)?.identity ?? "",
+    countryOfIssuance: (additionalMember as Values)?.countryOfIssuance ?? "",
+    placedIssuance: (additionalMember as Values)?.placedIssuance ?? "",
+    dateOfIssuance: (additionalMember as Values)?.dateOfIssuance ?? "",
+    expiryDate: (additionalMember as Values)?.expiryDate ?? "",
   };
 
   const validationSchema = Yup.object().shape({
@@ -79,7 +95,7 @@ const Step4 = ({ currentStep, handleNextStep }: Step4Props) => {
       setAdditionalMember((prevState) => ({ ...prevState, ...values }));
       console.log(
         "🚀 ~ file: Step4.tsx:18 ~ Step4 ~ additionalMember:",
-        additionalMember
+        values
       );
       // console.log("🚀 ~ file: Step4.tsx:72 ~ Step4 ~ values:", values)
       handleNextStep(7);

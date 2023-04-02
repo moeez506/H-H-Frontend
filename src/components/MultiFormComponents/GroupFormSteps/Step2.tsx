@@ -23,14 +23,14 @@ const Step2 = ({ currentStep, handleNextStep }: Step2Props) => {
   }
 
   const initialValues: Values = {
-    groupName: "",
-    registerdMembers: 0,
-    countryOfOperation: "",
-    address: "",
-    zipCode: "",
-    cellNumber: "",
-    email: "",
-    website: "",
+    groupName: (createGroup as Values)?.groupName ?? "",
+    registerdMembers: (createGroup as Values)?.registerdMembers ?? "",
+    countryOfOperation: (createGroup as Values)?.countryOfOperation ?? "",
+    address: (createGroup as Values)?.address ?? "",
+    zipCode: (createGroup as Values)?.zipCode ?? "",
+    cellNumber: (createGroup as Values)?.cellNumber ?? "",
+    email: (createGroup as Values)?.email ?? "",
+    website: (createGroup as Values)?.website ?? "",
   };
 
   const validationSchema = Yup.object().shape({
@@ -254,6 +254,13 @@ const Step2 = ({ currentStep, handleNextStep }: Step2Props) => {
           ) : null}
         </div>
         <Button text="Next" isForm />
+        <Button
+          text="Go Back"
+          isForm
+          onClick={() => {
+            handleNextStep(1);
+          }}
+        />
       </form>
     </div>
   );

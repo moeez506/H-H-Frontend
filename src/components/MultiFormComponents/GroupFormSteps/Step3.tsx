@@ -34,20 +34,22 @@ interface Values {
 }
 
 const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
+  const { representativeOne, setRepresentativeOne } =
+    useContext(GroupUserContext);
+
   const initialValues: Values = {
-    // firstName,
-    middleName: "",
-    // lastName: "",
-    positionOccupied: "",
-    dob: "",
-    placeOfBirth: "",
-    nationality: "",
-    countryOfResidence: "",
-    address: "",
-    zipCode: "",
-    homePhoneNumber: "",
-    cellNumber: "",
-    // email: "",
+    // firstName: (individualAdmin as Values)?.firstName ?? "",
+    middleName: (representativeOne as Values)?.middleName ?? "",
+    // lastName: (individualAdmin as Values)?.lastName ?? "",
+    positionOccupied: (representativeOne as Values)?.positionOccupied ?? "",
+    dob: (representativeOne as Values)?.dob ?? "",
+    placeOfBirth: (representativeOne as Values)?.placeOfBirth ?? "",
+    nationality: (representativeOne as Values)?.nationality ?? "",
+    countryOfResidence: (representativeOne as Values)?.countryOfResidence ?? "",
+    address: (representativeOne as Values)?.address ?? "",
+    zipCode: (representativeOne as Values)?.zipCode ?? "",
+    homePhoneNumber: (representativeOne as Values)?.homePhoneNumber ?? "",
+    cellNumber: (representativeOne as Values)?.cellNumber ?? "",
   };
 
   const validationSchema = Yup.object({
@@ -88,7 +90,6 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
       },
     });
 
-  const { setRepresentativeOne } = useContext(GroupUserContext);
   // const value = localStorage.getItem("user");
   // console.log("🚀 ~ file: step3.tsx:24 ~ Step3 ~ value:", value);
 
@@ -381,6 +382,13 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
           </div>
 
           <Button text="Next" isForm />
+          <Button
+            text="Go Back"
+            isForm
+            onClick={() => {
+              handleNextStep(2);
+            }}
+          />
         </form>
       </div>
     </>

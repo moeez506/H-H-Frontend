@@ -31,18 +31,18 @@ const Step7 = ({ currentStep, handleNextStep }: Step7Props) => {
   );
 
   const initialValues: Values = {
-    firstName: "",
-    middleName: "",
-    lastName: "",
-    dob: "",
-    placeOfBirth: "",
-    nationality: "",
-    countryOfResidence: "",
-    address: "",
-    zipCode: "",
-    homePhoneNumber: "",
-    cellNumber: "",
-    email: "",
+    firstName: (additionalMember as Values)?.firstName ?? "",
+    middleName: (additionalMember as Values)?.middleName ?? "",
+    lastName: (additionalMember as Values)?.lastName ?? "",
+    dob: (additionalMember as Values)?.dob ?? "",
+    placeOfBirth: (additionalMember as Values)?.placeOfBirth ?? "",
+    nationality: (additionalMember as Values)?.nationality ?? "",
+    countryOfResidence: (additionalMember as Values)?.countryOfResidence ?? "",
+    address: (additionalMember as Values)?.address ?? "",
+    zipCode: (additionalMember as Values)?.zipCode ?? "",
+    homePhoneNumber: (additionalMember as Values)?.homePhoneNumber ?? "",
+    cellNumber: (additionalMember as Values)?.cellNumber ?? "",
+    email: (additionalMember as Values)?.email ?? "",
   };
 
   const validationSchema = Yup.object({
@@ -79,7 +79,10 @@ const Step7 = ({ currentStep, handleNextStep }: Step7Props) => {
       validationSchema,
       onSubmit: (values) => {
         setAdditionalMember(values);
-        // console.log("🚀 ~ file: Step7.tsx:70 ~ Step7 ~ values:", values)
+        console.log(
+          "🚀 ~ file: Step7.tsx:70 ~ Step7 ~ values:",
+          additionalMember
+        );
         handleNextStep(6);
       },
     });
@@ -360,6 +363,13 @@ const Step7 = ({ currentStep, handleNextStep }: Step7Props) => {
         </div>
 
         <Button text="Next" isForm />
+        <Button
+          text="Go Back"
+          isForm
+          onClick={() => {
+            handleNextStep(6);
+          }}
+        />
       </form>
     </div>
   );
