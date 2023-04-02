@@ -24,11 +24,11 @@ export const IndividualUserContext = createContext<IndividualUserContextType>({
   individualAdmin: {},
   additionalMember: {},
   kinInformation: {},
-  setSubscriptionPlan: () => {},
-  setCameroonian: () => {},
-  setIndividualAdmin: () => {},
-  setAdditionalMember: () => {},
-  setKinInformation: () => {},
+  setSubscriptionPlan: () => { },
+  setCameroonian: () => { },
+  setIndividualAdmin: () => { },
+  setAdditionalMember: () => { },
+  setKinInformation: () => { },
 });
 
 export const UserProvider = ({ children }: Props) => {

@@ -53,7 +53,7 @@ export const SidebarGroup = ({ currentStep, handleNextStep }: SidebarProps) => {
             className={clsx(
               "px-3 py-2 border border-white inline-flex rounded-full leading-none font-medium w-min h-min transition-colors duration-[400ms] desktop:mt-10 laptop:mt-10 tabletOnly:mt-10 m-3",
               currentStep === step.step
-                ? "bg-primary-light-blue text-primary-marine-blue border-primary-light-blue"
+                ? "bg-white text-black border-black border-primary-light-blue"
                 : "text-white"
             )}
             onClick={() => {
@@ -61,7 +61,7 @@ export const SidebarGroup = ({ currentStep, handleNextStep }: SidebarProps) => {
             }}
             key={step.step}
           >
-            <span className=" lg:inline text-white uppercase ">
+            <span className={clsx(" lg:inline text-white uppercase", currentStep === step.step ? "text-black" : "")}>
               <p className="font-normal"> {step.step}</p>
               {/* <p className="font-bold text-white">{step.title}</p> */}
             </span>

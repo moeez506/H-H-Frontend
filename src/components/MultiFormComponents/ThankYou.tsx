@@ -5,14 +5,14 @@ import { IndividualUserContext } from "../../contexts/individualOnboardingContex
 export const ThankYou = () => {
 	const USercontext = useContext(IndividualUserContext)
 	console.log("🚀 ~ file: ThankYou.tsx:7 ~ ThankYou ~ USercontext:", USercontext)
-	const context = useContext(GroupUserContext)
-	console.log("🚀 ~ file: step8.tsx:36 ~ Step8 ~ context:", context);
+	// const context = useContext(GroupUserContext)
+	// console.log("🚀 ~ file: step8.tsx:36 ~ Step8 ~ context:", context);
 	return (
 		<section className="flex flex-col justify-center items-center w-full gap-4 py-[36px]">
 			<figure className="w-[60px] h-[60px]">
 				<img
 					src="./assets/images/icon-thank-you.svg"
-					alt="Form compleated, thank you!"
+					alt="Form completed, thank you!"
 				/>
 			</figure>
 			<h2>Thank you</h2>

@@ -25,7 +25,7 @@ interface Values {
   email: string;
 }
 
-const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
+const Step7 = ({ currentStep, handleNextStep }: Step7Props) => {
   const { setRepresentativeThree } = useContext(GroupUserContext);
 
   const initialValues: Values = {
