@@ -1,9 +1,11 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { GroupUserContext } from "../../../contexts/groupOnboardingContext";
+import { checkUserEmail } from "../../../apis/groupOnboading";
+import ApiError from "../../ApiError";
 
 interface Step5Props {
   currentStep: number;
@@ -26,6 +28,8 @@ interface Values {
 
 const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
   const { setRepresentativeTwo } = useContext(GroupUserContext);
+  const [apiResponse, setApiResponse] = useState<string>()
+  console.log("🚀 ~ file: Step5.tsx:32 ~ Step5 ~ apiResponse:", apiResponse)
 
   const initialValues: Values = {
     firstName: "",
@@ -67,8 +71,13 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
       validationSchema,
       onSubmit: (values) => {
         setRepresentativeTwo(values);
+        checkUserEmail(values.email)
+          .then(res => setApiResponse(res))
+          .catch(err => console.log(err?.response?.data?.msg))
         console.log("🚀 ~ file: Step5.tsx:70 ~ Step5 ~ values:", values)
-        handleNextStep(6);
+        if (apiResponse === "Success") {
+          handleNextStep(6);
+        }
       },
     });
 
@@ -79,6 +88,7 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
       </h1>
 
       <form onSubmit={handleSubmit}>
+        {apiResponse === "Email already exist" ? <ApiError error={apiResponse} /> : null }
         <div className="mb-4">
           <label
             className="block text-gray-700 font-bold mb-2"

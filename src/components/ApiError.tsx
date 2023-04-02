@@ -3,7 +3,7 @@ import React from "react";
 
 
 interface errorProp {
-    error: string
+    error: string | undefined
 }
 const ApiError = ({error}: errorProp) => {
   return (

@@ -5,7 +5,7 @@ import whatsapp from "../assets/icons/Rectangle 11.png"
 import facebook from "../assets/icons/Rectangle 12.png"
 import call from "../assets/icons/Rectangle 13.png"
 import message from "../assets/icons/Rectangle 34.png"
-// import location from "../assets/icons/Frame2.png"
+import email from "../assets/icons/email.png"
 import logo from '../assets/logo-2.png'
 const Footer = () => {
   return (
@@ -21,8 +21,8 @@ const Footer = () => {
       
       <p className='mt-2 text-sm'>Branch Cameroon: Commercial Avenue, Bamenda,<br></br>North West Region, Cameroon</p>
       </div>
-      <div className='flex flex-col'>
-     
+      <div className='flex'>
+      <img src={email} alt="no image found" className='w-[3%]'/>
       <p className='mt-2 text-sm'>info@holdinghandscommunitynetwork.org</p>
       </div>
       <div className='flex flex-col'>
