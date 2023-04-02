@@ -29,7 +29,7 @@ const Step2 = ({ currentStep, handleNextStep }: Step2Props) => {
   const [selectNationality, setSelectNationality] = useState("");
   const [liveInCamericon, setliveInCamericon] = useState("");
   const [relationCameroonian, setRelationCamericon] = useState("");
-  const { setCameroonian } = useContext(IndividualUserContext);
+  const { cameroonian, setCameroonian } = useContext(IndividualUserContext);
 
   useEffect(() => {
     if ((cameroonian as { joinOption: string }).joinOption !== undefined) {

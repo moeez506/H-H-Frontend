@@ -43,28 +43,28 @@ const Step6 = ({ currentStep, handleNextStep }: Step6Props) => {
   }
   useEffect(() => {
     if (
-      (additionalMember as { identityCheck: string }).identityCheck !==
+      (representativeTwo as { identityCheck: string }).identityCheck !==
       undefined
     ) {
       setIdentityCheck(
-        (additionalMember as { identityCheck: string }).identityCheck
+        (representativeTwo as { identityCheck: string }).identityCheck
       );
       setIdentityCheck(
-        (additionalMember as { identityCheck: string }).identityCheck
+        (representativeTwo as { identityCheck: string }).identityCheck
       );
       void setFieldValue(
         "identityCheck",
-        (additionalMember as { identityCheck: string }).identityCheck
+        (representativeTwo as { identityCheck: string }).identityCheck
       );
     }
-  }, [additionalMember]);
+  }, [representativeTwo]);
   const initialValues: Values = {
     identityCheck: "",
-    identity: (additionalMember as Values)?.identity ?? "",
-    countryOfIssuance: (additionalMember as Values)?.countryOfIssuance ?? "",
-    placedIssuance: (additionalMember as Values)?.placedIssuance ?? "",
-    dateOfIssuance: (additionalMember as Values)?.dateOfIssuance ?? "",
-    expiryDate: (additionalMember as Values)?.expiryDate ?? "",
+    identity: (representativeTwo as Values)?.identity ?? "",
+    countryOfIssuance: (representativeTwo as Values)?.countryOfIssuance ?? "",
+    placedIssuance: (representativeTwo as Values)?.placedIssuance ?? "",
+    dateOfIssuance: (representativeTwo as Values)?.dateOfIssuance ?? "",
+    expiryDate: (representativeTwo as Values)?.expiryDate ?? "",
   };
 
   const validationSchema = Yup.object().shape({
@@ -90,10 +90,7 @@ const Step6 = ({ currentStep, handleNextStep }: Step6Props) => {
     initialValues,
     validationSchema,
     onSubmit: (values) => {
-      console.log("🚀representativeTwo:", representativeTwo)
       setRepresentativeTwo((prevState) => ({ ...prevState, ...values }));
-      console.log("🚀 ~ file: Step6.tsx:78 ~ Step6 ~ representativeTwo:", representativeTwo)
-      console.log("🚀 ~ file: Step6.tsx:72 ~ Step6 ~ values:", values)
       handleNextStep(7);
     },
   });

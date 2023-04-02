@@ -15,7 +15,7 @@ interface Option {
 
 const Step4 = ({ currentStep, handleNextStep }: Step4Props) => {
   const [identityCheck, setIdentityCheck] = useState("");
-  const { setRepresentativeOne } = useContext(GroupUserContext);
+  const { representativeOne, setRepresentativeOne } = useContext(GroupUserContext);
 
   const options: Option[] = [
     {
@@ -42,28 +42,28 @@ const Step4 = ({ currentStep, handleNextStep }: Step4Props) => {
   }
   useEffect(() => {
     if (
-      (additionalMember as { identityCheck: string }).identityCheck !==
+      (representativeOne as { identityCheck: string }).identityCheck !==
       undefined
     ) {
       setIdentityCheck(
-        (additionalMember as { identityCheck: string }).identityCheck
+        (representativeOne as { identityCheck: string }).identityCheck
       );
       setIdentityCheck(
-        (additionalMember as { identityCheck: string }).identityCheck
+        (representativeOne as { identityCheck: string }).identityCheck
       );
       void setFieldValue(
         "identityCheck",
-        (additionalMember as { identityCheck: string }).identityCheck
+        (representativeOne as { identityCheck: string }).identityCheck
       );
     }
-  }, [additionalMember]);
+  }, [representativeOne]);
   const initialValues: Values = {
     identityCheck: "",
-    identity: (additionalMember as Values)?.identity ?? "",
-    countryOfIssuance: (additionalMember as Values)?.countryOfIssuance ?? "",
-    placedIssuance: (additionalMember as Values)?.placedIssuance ?? "",
-    dateOfIssuance: (additionalMember as Values)?.dateOfIssuance ?? "",
-    expiryDate: (additionalMember as Values)?.expiryDate ?? "",
+    identity: (representativeOne as Values)?.identity ?? "",
+    countryOfIssuance: (representativeOne as Values)?.countryOfIssuance ?? "",
+    placedIssuance: (representativeOne as Values)?.placedIssuance ?? "",
+    dateOfIssuance: (representativeOne as Values)?.dateOfIssuance ?? "",
+    expiryDate: (representativeOne as Values)?.expiryDate ?? "",
   };
 
   const validationSchema = Yup.object().shape({

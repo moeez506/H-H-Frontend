@@ -15,7 +15,7 @@ interface Option {
 
 const Step6 = ({ currentStep, handleNextStep }: Step6Props) => {
   const [identityCheck, setIdentityCheck] = useState("");
-  const { setKinInformation } = useContext(
+  const { kinInformation, setKinInformation } = useContext(
     IndividualUserContext
   );
 
@@ -45,28 +45,28 @@ const Step6 = ({ currentStep, handleNextStep }: Step6Props) => {
 
   useEffect(() => {
     if (
-      (individualAdmin as { identityCheck: string }).identityCheck !== undefined
+      (kinInformation as { identityCheck: string }).identityCheck !== undefined
     ) {
       setIdentityCheck(
-        (individualAdmin as { identityCheck: string }).identityCheck
+        (kinInformation as { identityCheck: string }).identityCheck
       );
       setIdentityCheck(
-        (individualAdmin as { identityCheck: string }).identityCheck
+        (kinInformation as { identityCheck: string }).identityCheck
       );
       void setFieldValue(
         "identityCheck",
-        (individualAdmin as { identityCheck: string }).identityCheck
+        (kinInformation as { identityCheck: string }).identityCheck
       );
     }
-  }, [individualAdmin]);
+  }, [kinInformation]);
 
   const initialValues: Values = {
     identityCheck: "",
-    identity: (individualAdmin as Values)?.identity ?? "",
-    countryOfIssuance: (individualAdmin as Values)?.countryOfIssuance ?? "",
-    placedIssuance: (individualAdmin as Values)?.placedIssuance ?? "",
-    dateOfIssuance: (individualAdmin as Values)?.dateOfIssuance ?? "",
-    expiryDate: (individualAdmin as Values)?.expiryDate ?? "",
+    identity: (kinInformation as Values)?.identity ?? "",
+    countryOfIssuance: (kinInformation as Values)?.countryOfIssuance ?? "",
+    placedIssuance: (kinInformation as Values)?.placedIssuance ?? "",
+    dateOfIssuance: (kinInformation as Values)?.dateOfIssuance ?? "",
+    expiryDate: (kinInformation as Values)?.expiryDate ?? "",
   };
 
   const validationSchema = Yup.object().shape({

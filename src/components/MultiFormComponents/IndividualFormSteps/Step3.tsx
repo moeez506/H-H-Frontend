@@ -32,10 +32,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
   const { individualAdmin, setIndividualAdmin } = useContext(
     IndividualUserContext
   );
-  console.log(
-    "🚀 ~ file: Step3.tsx:33 ~ Step3 ~ individualAdmin:",
-    individualAdmin
-  );
+
 
   const initialValues: Values = {
     firstName: (individualAdmin as Values)?.firstName ?? "",
@@ -88,7 +85,6 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
           individualAdmin
         );
         // await individualOndoarding(individualAdmin);
-        // console.log("🚀 ~ file: step3.tsx:70 ~ Step3 ~ values:", values)
         handleNextStep(4);
       },
     });

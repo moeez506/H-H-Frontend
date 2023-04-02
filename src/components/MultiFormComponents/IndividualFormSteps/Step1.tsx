@@ -58,7 +58,7 @@ const Step1 = ({ currentStep, handleNextStep }: Step1Props) => {
   const [selectedFamilyMemberCount, setSelectedFamilyMemberCount] = useState<
     number | null
   >(null);
-  const { setSubscriptionPlan } = useContext(
+  const { subscriptionPlan, setSubscriptionPlan } = useContext(
     IndividualUserContext
   );
 

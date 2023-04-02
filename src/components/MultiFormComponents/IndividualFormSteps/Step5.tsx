@@ -27,24 +27,24 @@ interface Values {
 }
 
 const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
-  const { setKinInformation } = useContext(
+  const { kinInformation, setKinInformation } = useContext(
     IndividualUserContext
   );
 
   const initialValues: Values = {
-    firstName: (additionalMember as Values)?.firstName ?? "",
-    middleName: (additionalMember as Values)?.middleName ?? "",
-    lastName: (additionalMember as Values)?.lastName ?? "",
-    dob: (additionalMember as Values)?.dob ?? "",
-    placeOfBirth: (additionalMember as Values)?.placeOfBirth ?? "",
-    nationality: (additionalMember as Values)?.nationality ?? "",
-    countryOfResidence: (additionalMember as Values)?.countryOfResidence ?? "",
-    address: (additionalMember as Values)?.address ?? "",
-    zipCode: (additionalMember as Values)?.zipCode ?? "",
-    homePhoneNumber: (additionalMember as Values)?.homePhoneNumber ?? "",
-    cellNumber: (additionalMember as Values)?.cellNumber ?? "",
-    email: (additionalMember as Values)?.email ?? "",
-    relationship: (additionalMember as Values)?.relationship ?? "",
+    firstName: (kinInformation as Values)?.firstName ?? "",
+    middleName: (kinInformation as Values)?.middleName ?? "",
+    lastName: (kinInformation as Values)?.lastName ?? "",
+    dob: (kinInformation as Values)?.dob ?? "",
+    placeOfBirth: (kinInformation as Values)?.placeOfBirth ?? "",
+    nationality: (kinInformation as Values)?.nationality ?? "",
+    countryOfResidence: (kinInformation as Values)?.countryOfResidence ?? "",
+    address: (kinInformation as Values)?.address ?? "",
+    zipCode: (kinInformation as Values)?.zipCode ?? "",
+    homePhoneNumber: (kinInformation as Values)?.homePhoneNumber ?? "",
+    cellNumber: (kinInformation as Values)?.cellNumber ?? "",
+    email: (kinInformation as Values)?.email ?? "",
+    relationship: (kinInformation as Values)?.relationship ?? "",
   };
 
   const validationSchema = Yup.object({
