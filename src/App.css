@@ -1,3 +1,15 @@
+/* For chrome, Safari, Edge, Opera: */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* For firefox: */
+input[type=number]{
+    -moz-appearance: textfield;
+}
+
 .App {
   text-align: center;
 }

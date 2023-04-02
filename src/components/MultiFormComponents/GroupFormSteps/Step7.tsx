@@ -4,8 +4,9 @@ import React, { useContext } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { GroupUserContext } from "../../../contexts/groupOnboardingContext";
+import Button from "../../Button";
 
-interface Step5Props {
+interface Step7Props {
   currentStep: number;
   handleNextStep: (step: number) => void;
 }
@@ -53,9 +54,18 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
       "Country of Residence is required"
     ),
     address: Yup.string().required("Address is required"),
-    zipCode: Yup.string().max(5).min(5).required("Zip Code is required"),
-    homePhoneNumber: Yup.string().required("Home Phone Number is required"),
-    cellNumber: Yup.string().max(15).min(7).required("Cell Number is required"),
+    zipCode: Yup.string()
+      .max(5, "Zip code should be exact 5 digits")
+      .min(5, "Zip code should be exact 5 integers")
+      .required("Zip Code is required"),
+    cellNumber: Yup.string()
+      .max(15, "Cell Number can be max 15 digits")
+      .min(7, "Cell Number can be min 7 digits")
+      .required("Cell Number is required"),
+    homePhoneNumber: Yup.string()
+      .max(15, "Home Phone Number can be max 15 digits")
+      .min(7, "Home Phone Number can be min 7 digits")
+      .required("Home Phone Number is required"),
     email: Yup.string().email().required("Email is required"),
   });
 
@@ -73,7 +83,7 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
     });
 
   return (
-    <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-xl mx-auto desktop:text-2xl laptop:text-xl tabletOnly:text-lg mobile:text-base  w-full">
+    <div className="bg-white shadow-md rounded-2xl px-8 pt-6 pb-8 mb-4 max-w-xl mx-auto desktop:text-2xl laptop:text-xl tabletOnly:text-lg mobile:text-base  w-full">
       <h1 className="text-3xl font-bold mb-6 text-center">
         Representative No: 2
       </h1>
@@ -347,17 +357,10 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
           ) : null}
         </div>
 
-        <div className="flex items-center justify-between">
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full sm:w-auto"
-          >
-            Next
-          </button>
-        </div>
+        <Button text="Next" isForm />
       </form>
     </div>
   );
 };
 
-export default Step5;
+export default Step7;

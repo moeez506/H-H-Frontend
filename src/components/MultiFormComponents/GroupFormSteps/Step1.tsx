@@ -3,6 +3,7 @@ import React, { useState, useContext } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { GroupUserContext } from "../../../contexts/groupOnboardingContext";
+import Button from "../../Button";
 
 interface Option {
   label: string;
@@ -34,7 +35,7 @@ interface Values {
 
 const Step1 = ({ currentStep, handleNextStep }: Step1Props) => {
   const [CameroonianGroup, setCameroonianGroup] = useState<string | null>(null);
-  const [registrationCountry, setRegistrationCountry] = useState("");
+  const [whereRegister, setWhereRegister] = useState("");
   const [tenMember, setTenMember] = useState("");
   const [administrativeStructure, setAdminstrativeStructure] = useState("");
   const [executiveMember, setExecutiveMember] = useState<string | null>(null);
@@ -47,9 +48,18 @@ const Step1 = ({ currentStep, handleNextStep }: Step1Props) => {
       CameroonianGroup === "no"
         ? Yup.string().required("Please mention the required field")
         : Yup.string().notRequired(),
-    tenMember: Yup.string().required("This field is required"),
-    administrativeStructure: Yup.string().required("This field is required"),
-    executiveMember: Yup.string().required("This field is required"),
+    tenMember:
+      CameroonianGroup === "yes"
+        ? Yup.string().required("This field is required")
+        : Yup.string().notRequired(),
+    administrativeStructure:
+      CameroonianGroup === "yes"
+        ? Yup.string().required("This field is required")
+        : Yup.string().notRequired(),
+    executiveMember:
+      CameroonianGroup === "yes"
+        ? Yup.string().required("This field is required")
+        : Yup.string().notRequired(),
   });
 
   const initialValues: Values = {
@@ -73,7 +83,7 @@ const Step1 = ({ currentStep, handleNextStep }: Step1Props) => {
 
   return (
     <>
-      <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-xl mx-auto   desktop:text-2xl laptop:text-xl tabletOnly:text-lg mobile:text-base">
+      <div className="bg-white shadow-md  rounded-2xl px-8 pt-6 pb-8 mb-4 max-w-xl mx-auto   desktop:text-2xl laptop:text-xl tabletOnly:text-lg mobile:text-base">
         <h1 className="text-3xl font-bold mb-6 text-center">
           Cameroonian Group
         </h1>
@@ -142,9 +152,9 @@ const Step1 = ({ currentStep, handleNextStep }: Step1Props) => {
                     type="text"
                     id="whereRegister"
                     name="whereRegister"
-                    value={registrationCountry}
+                    value={whereRegister}
                     onChange={(event) => {
-                      setRegistrationCountry(event.target.value);
+                      setWhereRegister(event.target.value);
                       void formik.setFieldValue(
                         "whereRegister",
                         event.target.value
@@ -296,12 +306,7 @@ const Step1 = ({ currentStep, handleNextStep }: Step1Props) => {
             </div>
           )}
 
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full sm:w-auto"
-          >
-            Next
-          </button>
+          <Button text="Next" isForm />
         </form>
       </div>
     </>

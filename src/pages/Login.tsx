@@ -5,6 +5,7 @@ import Pass from "../assets/pass.png";
 import { useFormik } from "formik";
 import { loginSchema } from "../schemas";
 import { login } from "../apis/auth";
+import { Link } from "react-router-dom";
 
 interface LoginProp {
   email: string;
@@ -42,7 +43,7 @@ export default function Login() {
   return (
     <section className="">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <div className="w-full bg-white rounded-2xl shadow-2xl border md:mt-0 sm:max-w-md xl:p-0">
+        <div className=" bg-white rounded-2xl shadow-2xl border md:mt-0 sm:max-w-md xl:p-0">
           <div className="p-6 pt-6 mx-2 my-4 space-y-6 md:space-y-6 sm:p-8">
             <div className=" font-bold text-center leading-tight tracking-tight md:text-2xl text-black">
               <h1 className="text-4xl">Login</h1>
@@ -132,11 +133,13 @@ export default function Login() {
 
               <p className="text-sm font-light text-gray-500 ">
                 {`Don't have an account? `}{" "}
-                <a
-                  href="#"
-                  className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                >
-                  SignUp here
+                <a href="#">
+                  <Link
+                    to={"/register"}
+                    className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                  >
+                    SignUp here
+                  </Link>
                 </a>
               </p>
             </form>

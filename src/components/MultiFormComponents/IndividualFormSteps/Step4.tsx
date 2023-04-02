@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { IndividualUserContext } from "../../../contexts/individualOnboardingContext";
+import Button from "../../Button";
 interface Step4Props {
   currentStep: number;
   handleNextStep: (step: number) => void;
@@ -81,7 +82,7 @@ const Step4 = ({ currentStep, handleNextStep }: Step4Props) => {
   });
 
   return (
-    <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-xl mx-auto desktop:text-2xl laptop:text-xl tabletOnly:text-lg mobile:text-base  w-full">
+    <div className="bg-white shadow-md rounded-2xl px-8 pt-6 pb-8 mb-4 max-w-xl mx-auto desktop:text-2xl laptop:text-xl tabletOnly:text-lg mobile:text-base  w-full">
       <h1 className="text-3xl font-bold mb-6 text-center">
         Your Identity Info
       </h1>
@@ -240,14 +241,7 @@ const Step4 = ({ currentStep, handleNextStep }: Step4Props) => {
           ) : null}
         </div>
 
-        <div className="flex items-center justify-between">
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full sm:w-auto"
-          >
-            Next
-          </button>
-        </div>
+        <Button text="Next" isForm />
       </form>
     </div>
   );
