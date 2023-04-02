@@ -28,7 +28,7 @@ const Step2 = ({ currentStep, handleNextStep }: Step2Props) => {
   const [selectNationality, setSelectNationality] = useState("");
   const [liveInCamericon, setliveInCamericon] = useState("");
   const [relationCameroonian, setRelationCamericon] = useState("");
-  const { cameroonian, setCameroonian } = useContext(IndividualUserContext);
+  const { setCameroonian } = useContext(IndividualUserContext);
 
   const validationSchema = Yup.object().shape({
     joinOption: Yup.string().required("Please select an option"),
@@ -75,9 +75,9 @@ const Step2 = ({ currentStep, handleNextStep }: Step2Props) => {
               Question: Are you a Cameroonian?{" "}
             </p>
             {errors.joinOption !== null &&
-            touched.joinOption !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "joinOption") &&
-            Object.prototype.hasOwnProperty.call(touched, "joinOption") ? (
+              touched.joinOption !== null &&
+              Object.prototype.hasOwnProperty.call(errors, "joinOption") &&
+              Object.prototype.hasOwnProperty.call(touched, "joinOption") ? (
               <p className="text-[red]">{errors.joinOption}</p>
             ) : null}
             {options.map((option) => (
@@ -113,12 +113,12 @@ const Step2 = ({ currentStep, handleNextStep }: Step2Props) => {
                 <div>
                   <label htmlFor="nationality">Country of Nationality ?</label>
                   {errors.nationality !== null &&
-                  touched.nationality !== null &&
-                  Object.prototype.hasOwnProperty.call(errors, "nationality") &&
-                  Object.prototype.hasOwnProperty.call(
-                    touched,
-                    "nationality"
-                  ) ? (
+                    touched.nationality !== null &&
+                    Object.prototype.hasOwnProperty.call(errors, "nationality") &&
+                    Object.prototype.hasOwnProperty.call(
+                      touched,
+                      "nationality"
+                    ) ? (
                     <p className="text-[red]">{errors.nationality}</p>
                   ) : null}
                   <input
@@ -145,12 +145,12 @@ const Step2 = ({ currentStep, handleNextStep }: Step2Props) => {
                 Question: Do you currently live in Cameroon ?{" "}
               </p>
               {errors.livesInCameroon !== null &&
-              touched.livesInCameroon !== null &&
-              Object.prototype.hasOwnProperty.call(errors, "livesInCameroon") &&
-              Object.prototype.hasOwnProperty.call(
-                touched,
-                "livesInCameroon"
-              ) ? (
+                touched.livesInCameroon !== null &&
+                Object.prototype.hasOwnProperty.call(errors, "livesInCameroon") &&
+                Object.prototype.hasOwnProperty.call(
+                  touched,
+                  "livesInCameroon"
+                ) ? (
                 <p className="text-[red]">{errors.livesInCameroon}</p>
               ) : null}
               {options.map((option) => (
@@ -192,15 +192,15 @@ const Step2 = ({ currentStep, handleNextStep }: Step2Props) => {
                 Question: Do you have any relation who is a Cameroonian ?
               </p>
               {errors.relationCameroonian !== null &&
-              touched.relationCameroonian !== null &&
-              Object.prototype.hasOwnProperty.call(
-                errors,
-                "relationCameroonian"
-              ) &&
-              Object.prototype.hasOwnProperty.call(
-                touched,
-                "relationCameroonian"
-              ) ? (
+                touched.relationCameroonian !== null &&
+                Object.prototype.hasOwnProperty.call(
+                  errors,
+                  "relationCameroonian"
+                ) &&
+                Object.prototype.hasOwnProperty.call(
+                  touched,
+                  "relationCameroonian"
+                ) ? (
                 <p className="text-[red]">{errors.relationCameroonian}</p>
               ) : null}
               {options.map((option) => (

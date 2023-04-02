@@ -5,7 +5,6 @@ import Pass from "../assets/pass.png";
 import { useFormik } from "formik";
 import { signUpSchema } from "../schemas";
 import { registerUser } from "../apis/auth";
-import { string } from "yup";
 
 interface SignUpFormValues {
   firstName: string;
@@ -39,8 +38,7 @@ export default function Register() {
       },
       onSubmit: async (values, action) => {
         if (values.terms) {
-          // await registerUser(values);
-          console.log("🚀 ~ file: Register.tsx:43 ~ onSubmit: ~ values:", values)
+          await registerUser(values);
           action.resetForm();
         }
       },
