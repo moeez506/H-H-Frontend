@@ -3,6 +3,11 @@
 
 import axios from "axios";
 
+const token = localStorage.getItem("authToken");
+if (token !== null) {
+  axios.defaults.headers["Authorization"] = `Bearer ${token}`;
+}
+
 const request = axios.create({
   baseURL: "http://localhost:8000/api",
 });

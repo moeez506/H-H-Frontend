@@ -8,7 +8,6 @@ import { QueryClient, QueryClientProvider } from "react-query";
 // import Navbar from "./components/navbar/Navbar";
 import RouterConfig from "./routes/RouterConfig";
 
-
 function App() {
   const queryClient = new QueryClient();
   return (
@@ -23,7 +22,6 @@ function App() {
         <Footer /> */}
       </QueryClientProvider>
     </>
-
   );
 }
 
