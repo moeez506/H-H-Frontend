@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { IndividualUserContext } from "../../../contexts/individualOnboardingContext";
@@ -43,13 +43,30 @@ const Step4 = ({ currentStep, handleNextStep }: Step4Props) => {
     expiryDate: string;
   }
 
+  useEffect(() => {
+    if (
+      (individualAdmin as { identityCheck: string }).identityCheck !== undefined
+    ) {
+      setIdentityCheck(
+        (individualAdmin as { identityCheck: string }).identityCheck
+      );
+      setIdentityCheck(
+        (individualAdmin as { identityCheck: string }).identityCheck
+      );
+      void setFieldValue(
+        "identityCheck",
+        (individualAdmin as { identityCheck: string }).identityCheck
+      );
+    }
+  }, [individualAdmin]);
+
   const initialValues: Values = {
     identityCheck: "",
-    identity: "",
-    countryOfIssuance: "",
-    placedIssuance: "",
-    dateOfIssuance: "",
-    expiryDate: "",
+    identity: (individualAdmin as Values)?.identity ?? "",
+    countryOfIssuance: (individualAdmin as Values)?.countryOfIssuance ?? "",
+    placedIssuance: (individualAdmin as Values)?.placedIssuance ?? "",
+    dateOfIssuance: (individualAdmin as Values)?.dateOfIssuance ?? "",
+    expiryDate: (individualAdmin as Values)?.expiryDate ?? "",
   };
 
   const validationSchema = Yup.object().shape({
@@ -242,6 +259,13 @@ const Step4 = ({ currentStep, handleNextStep }: Step4Props) => {
         </div>
 
         <Button text="Next" isForm />
+        <Button
+          text="Go Back"
+          isForm
+          onClick={() => {
+            handleNextStep(3);
+          }}
+        />
       </form>
     </div>
   );

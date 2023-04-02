@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { IndividualUserContext } from "../../../contexts/individualOnboardingContext";
@@ -31,6 +31,40 @@ const Step2 = ({ currentStep, handleNextStep }: Step2Props) => {
   const [relationCameroonian, setRelationCamericon] = useState("");
   const { setCameroonian } = useContext(IndividualUserContext);
 
+  useEffect(() => {
+    if ((cameroonian as { joinOption: string }).joinOption !== undefined) {
+      setSelectedOption((cameroonian as { joinOption: string }).joinOption);
+      setSelectNationality(
+        (cameroonian as { nationality: string }).nationality
+      );
+      setliveInCamericon(
+        (cameroonian as { livesInCameroon: string }).livesInCameroon
+      );
+      setRelationCamericon(
+        (cameroonian as { relationCameroonian: string }).relationCameroonian
+      );
+      void formik.setFieldValue(
+        "joinOption",
+        (cameroonian as { joinOption: string }).joinOption
+      );
+
+      void formik.setFieldValue(
+        "nationality",
+        (cameroonian as { nationality: string }).nationality
+      );
+
+      void formik.setFieldValue(
+        "livesInCameroon",
+        (cameroonian as { livesInCameroon: string }).livesInCameroon
+      );
+
+      void formik.setFieldValue(
+        "relationCameroonian",
+        (cameroonian as { relationCameroonian: string }).relationCameroonian
+      );
+    }
+  }, [cameroonian]);
+
   const validationSchema = Yup.object().shape({
     joinOption: Yup.string().required("Please select an option"),
     nationality:
@@ -58,8 +92,16 @@ const Step2 = ({ currentStep, handleNextStep }: Step2Props) => {
     },
     validationSchema,
     onSubmit: (values) => {
+      if (values.livesInCameroon === "yes") {
+        values.relationCameroonian = "";
+      }
+      if (values.joinOption === "yes") {
+        values.nationality = "";
+        values.livesInCameroon = "";
+        values.relationCameroonian = "";
+      }
       setCameroonian(values);
-      // console.log("🚀 ~ file: step2.tsx:57 ~ Step2 ~ values:", values)
+      console.log("🚀 ~ file: step2.tsx:57 ~ Step2 ~ values:", values);
       handleNextStep(3);
     },
   });
@@ -187,7 +229,7 @@ const Step2 = ({ currentStep, handleNextStep }: Step2Props) => {
               ))}
             </div>
           )}
-          {liveInCamericon === "no" && (
+          {liveInCamericon === "no" && selectedOption !== "yes" && (
             <div className="mb-6 ">
               <p className="text-gray-800 font-bold mb-2">
                 Question: Do you have any relation who is a Cameroonian ?
@@ -246,7 +288,7 @@ const Step2 = ({ currentStep, handleNextStep }: Step2Props) => {
               </p>
             </div>
           )}
-          <Button text="Next" isForm />
+          {relationCameroonian === "no" ? null : <Button text="Next" isForm />}
           <Button
             text="Go Back"
             isForm

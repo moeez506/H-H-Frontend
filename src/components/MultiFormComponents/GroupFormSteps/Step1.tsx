@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { GroupUserContext } from "../../../contexts/groupOnboardingContext";
@@ -41,7 +41,50 @@ const Step1 = ({ currentStep, handleNextStep }: Step1Props) => {
   const [executiveMember, setExecutiveMember] = useState<string | null>(null);
 
   const { cameroonian, setCameroonian } = useContext(GroupUserContext);
+  useEffect(() => {
+    if (
+      (cameroonian as { CameroonianGroup: string }).CameroonianGroup !==
+      undefined
+    ) {
+      setCameroonianGroup(
+        (cameroonian as { CameroonianGroup: string }).CameroonianGroup
+      );
+      setWhereRegister(
+        (cameroonian as { whereRegister: string }).whereRegister
+      );
+      setTenMember((cameroonian as { tenMember: string }).tenMember);
+      setAdminstrativeStructure(
+        (cameroonian as { administrativeStructure: string })
+          .administrativeStructure
+      );
+      setExecutiveMember(
+        (cameroonian as { executiveMember: string }).executiveMember
+      );
+      void formik.setFieldValue(
+        "CameroonianGroup",
+        (cameroonian as { CameroonianGroup: string }).CameroonianGroup
+      );
+      void formik.setFieldValue(
+        "whereRegister",
+        (cameroonian as { whereRegister: string }).whereRegister
+      );
+      void formik.setFieldValue(
+        "tenMember",
+        (cameroonian as { tenMember: string }).tenMember
+      );
 
+      void formik.setFieldValue(
+        "administrativeStructure",
+        (cameroonian as { administrativeStructure: string })
+          .administrativeStructure
+      );
+
+      void formik.setFieldValue(
+        "executiveMember",
+        (cameroonian as { executiveMember: string }).executiveMember
+      );
+    }
+  }, [cameroonian]);
   const validationSchema = Yup.object({
     CameroonianGroup: Yup.string().required("This field is required"),
     whereRegister:
@@ -74,6 +117,14 @@ const Step1 = ({ currentStep, handleNextStep }: Step1Props) => {
     initialValues,
     validationSchema,
     onSubmit: (values) => {
+      if (values.CameroonianGroup === "no") {
+        values.tenMember = "";
+        values.administrativeStructure = "";
+        values.executiveMember = "";
+      }
+      if (values.CameroonianGroup === "yes") {
+        values.whereRegister = "";
+      }
       setCameroonian(values);
       console.log("🚀 ~ file: step1.tsx:71 ~ Step1 ~ values:", values);
       handleNextStep(2);

@@ -29,18 +29,18 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
   const { setRepresentativeTwo } = useContext(GroupUserContext);
 
   const initialValues: Values = {
-    firstName: "",
-    middleName: "",
-    lastName: "",
-    dob: "",
-    placeOfBirth: "",
-    nationality: "",
-    countryOfResidence: "",
-    address: "",
-    zipCode: "",
-    homePhoneNumber: "",
-    cellNumber: "",
-    email: "",
+    firstName: (additionalMember as Values)?.firstName ?? "",
+    middleName: (additionalMember as Values)?.middleName ?? "",
+    lastName: (additionalMember as Values)?.lastName ?? "",
+    dob: (additionalMember as Values)?.dob ?? "",
+    placeOfBirth: (additionalMember as Values)?.placeOfBirth ?? "",
+    nationality: (additionalMember as Values)?.nationality ?? "",
+    countryOfResidence: (additionalMember as Values)?.countryOfResidence ?? "",
+    address: (additionalMember as Values)?.address ?? "",
+    zipCode: (additionalMember as Values)?.zipCode ?? "",
+    homePhoneNumber: (additionalMember as Values)?.homePhoneNumber ?? "",
+    cellNumber: (additionalMember as Values)?.cellNumber ?? "",
+    email: (additionalMember as Values)?.email ?? "",
   };
 
   const validationSchema = Yup.object({
@@ -358,6 +358,13 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
         </div>
 
         <Button text="Next" isForm />
+        <Button
+          text="Go Back"
+          isForm
+          onClick={() => {
+            handleNextStep(4);
+          }}
+        />
       </form>
     </div>
   );

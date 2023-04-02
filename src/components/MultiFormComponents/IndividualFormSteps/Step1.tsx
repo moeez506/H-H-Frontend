@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { IndividualUserContext } from "../../../contexts/individualOnboardingContext";
@@ -53,9 +53,6 @@ const familyMemberOptions: Option1[] = [
   },
 ];
 
-// TODO: If now we are managing the state within the context then why we need states in this file?
-// TODO: By Changing these states our checked mark would be set on the base of context state. So for Go Back Button we can set initial Values like  subscriptionPlan.joinOption
-
 const Step1 = ({ currentStep, handleNextStep }: Step1Props) => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [selectedFamilyMemberCount, setSelectedFamilyMemberCount] = useState<
@@ -64,6 +61,31 @@ const Step1 = ({ currentStep, handleNextStep }: Step1Props) => {
   const { setSubscriptionPlan } = useContext(
     IndividualUserContext
   );
+
+  useEffect(() => {
+    if ((subscriptionPlan as { joinOption: string }).joinOption !== undefined) {
+      setSelectedOption(
+        (subscriptionPlan as { joinOption: string }).joinOption
+      );
+      setSelectedFamilyMemberCount(
+        (subscriptionPlan as { familyMemberCount: number }).familyMemberCount
+      );
+      handleOptionSelect(
+        (subscriptionPlan as { joinOption: string }).joinOption
+      );
+      void formik.setFieldValue(
+        "joinOption",
+        (subscriptionPlan as { joinOption: string }).joinOption
+      );
+      handleFamilyMemberCountSelect(
+        (subscriptionPlan as { familyMemberCount: number }).familyMemberCount
+      );
+      void formik.setFieldValue(
+        "familyMemberCount",
+        (subscriptionPlan as { familyMemberCount: number }).familyMemberCount
+      );
+    }
+  }, [subscriptionPlan]);
 
   const handleOptionSelect = (value: string) => {
     setSelectedOption(value);
@@ -94,8 +116,10 @@ const Step1 = ({ currentStep, handleNextStep }: Step1Props) => {
     },
     validationSchema,
     onSubmit: (values) => {
+      if (values.joinOption !== "register_and_pay_additional_members") {
+        values.familyMemberCount = "";
+      }
       setSubscriptionPlan(values);
-      console.log("🚀 ~ file: step1.tsx:88 ~ Step1 ~ values:", values);
       handleNextStep(2);
     },
   });

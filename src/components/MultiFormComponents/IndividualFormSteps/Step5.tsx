@@ -32,19 +32,19 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
   );
 
   const initialValues: Values = {
-    firstName: "",
-    middleName: "",
-    lastName: "",
-    dob: "",
-    placeOfBirth: "",
-    nationality: "",
-    countryOfResidence: "",
-    address: "",
-    zipCode: "",
-    homePhoneNumber: "",
-    cellNumber: "",
-    email: "",
-    relationship: "",
+    firstName: (additionalMember as Values)?.firstName ?? "",
+    middleName: (additionalMember as Values)?.middleName ?? "",
+    lastName: (additionalMember as Values)?.lastName ?? "",
+    dob: (additionalMember as Values)?.dob ?? "",
+    placeOfBirth: (additionalMember as Values)?.placeOfBirth ?? "",
+    nationality: (additionalMember as Values)?.nationality ?? "",
+    countryOfResidence: (additionalMember as Values)?.countryOfResidence ?? "",
+    address: (additionalMember as Values)?.address ?? "",
+    zipCode: (additionalMember as Values)?.zipCode ?? "",
+    homePhoneNumber: (additionalMember as Values)?.homePhoneNumber ?? "",
+    cellNumber: (additionalMember as Values)?.cellNumber ?? "",
+    email: (additionalMember as Values)?.email ?? "",
+    relationship: (additionalMember as Values)?.relationship ?? "",
   };
 
   const validationSchema = Yup.object({
@@ -59,8 +59,14 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
     ),
     address: Yup.string().required("Address is required"),
     zipCode: Yup.string().max(5).min(5).required("Zip Code is required"),
-    homePhoneNumber: Yup.string().required("Home Phone Number is required"),
-    cellNumber: Yup.string().max(15).min(7).required("Cell Number is required"),
+    homePhoneNumber: Yup.string()
+      .max(15, "Home Phone Number max 15")
+      .min(7, "Home Phone Number min 7")
+      .required("Home Phone Number is required"),
+    cellNumber: Yup.string()
+      .max(15, "Cell Number max 15")
+      .min(7, "Cell Number min 7")
+      .required("Cell Number is required"),
     email: Yup.string().email().required("Email is required"),
     relationship: Yup.string().required("Relatioship is required"),
   });
@@ -393,6 +399,13 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
           )}
         </div>
         <Button text="Next" isForm />
+        <Button
+          text="Go Back"
+          isForm
+          onClick={() => {
+            handleNextStep(4);
+          }}
+        />
       </form>
     </div>
   );

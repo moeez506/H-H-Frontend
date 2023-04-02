@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { GroupUserContext } from "../../../contexts/groupOnboardingContext";
@@ -40,14 +40,30 @@ const Step8 = ({ currentStep, handleNextStep }: Step8Props) => {
     dateOfIssuance: string;
     expiryDate: string;
   }
-
+  useEffect(() => {
+    if (
+      (additionalMember as { identityCheck: string }).identityCheck !==
+      undefined
+    ) {
+      setIdentityCheck(
+        (additionalMember as { identityCheck: string }).identityCheck
+      );
+      setIdentityCheck(
+        (additionalMember as { identityCheck: string }).identityCheck
+      );
+      void setFieldValue(
+        "identityCheck",
+        (additionalMember as { identityCheck: string }).identityCheck
+      );
+    }
+  }, [additionalMember]);
   const initialValues: Values = {
     identityCheck: "",
-    identity: "",
-    countryOfIssuance: "",
-    placedIssuance: "",
-    dateOfIssuance: "",
-    expiryDate: "",
+    identity: (additionalMember as Values)?.identity ?? "",
+    countryOfIssuance: (additionalMember as Values)?.countryOfIssuance ?? "",
+    placedIssuance: (additionalMember as Values)?.placedIssuance ?? "",
+    dateOfIssuance: (additionalMember as Values)?.dateOfIssuance ?? "",
+    expiryDate: (additionalMember as Values)?.expiryDate ?? "",
   };
 
   const validationSchema = Yup.object().shape({
@@ -240,6 +256,13 @@ const Step8 = ({ currentStep, handleNextStep }: Step8Props) => {
           ) : null}
         </div>
         <Button text="Next" isForm />
+        <Button
+          text="Go Back"
+          isForm
+          onClick={() => {
+            handleNextStep(7);
+          }}
+        />
       </form>
     </div>
   );
