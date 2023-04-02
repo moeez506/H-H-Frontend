@@ -21,9 +21,16 @@ const initialValues: LoginProp = {
 // Todo terms validation
 export default function Login() {
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
-    useFormik({
+    useFormik<LoginProp>({
       initialValues,
       validationSchema: loginSchema,
+      validate: (values) => {
+        const errors: Partial<LoginProp> = {};
+        if (!values.terms) {
+          errors.terms = true;
+        }
+        return errors;
+      },
       onSubmit: async (values, action) => {
         if (values.terms) {
           await login({ email: values.email, password: values.password });
@@ -31,7 +38,7 @@ export default function Login() {
         }
       },
     });
-  console.log("🚀 ~ file: Login.tsx:28 ~ Login ~ errors:", errors);
+  console.log("errors:", errors);
   return (
     <section className="">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -113,7 +120,7 @@ export default function Login() {
                 </div>
               </div>
               {errors.terms !== undefined && touched.terms === true ? (
-                <p className="text-red-500 text-sm mt-1">{errors.terms}</p>
+                <p className="text-red-500 text-sm mt-1">You must agree to the terms and conditions</p>
               ) : null}
 
               <button

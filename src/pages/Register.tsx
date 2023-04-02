@@ -5,6 +5,17 @@ import Pass from "../assets/pass.png";
 import { useFormik } from "formik";
 import { signUpSchema } from "../schemas";
 import { registerUser } from "../apis/auth";
+import { string } from "yup";
+
+interface SignUpFormValues {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  confirm_password: string;
+  terms: boolean;
+}
+
 
 const initialValues = {
   firstName: "",
@@ -16,17 +27,27 @@ const initialValues = {
 };
 export default function Register() {
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
-    useFormik({
+    useFormik<SignUpFormValues>({
       initialValues,
       validationSchema: signUpSchema,
+      validate: (values) => {
+        const errors: Partial<SignUpFormValues> = {};
+        if (!values.terms) {
+          errors.terms = true;
+        }
+        return errors;
+      },
       onSubmit: async (values, action) => {
         if (values.terms) {
-          await registerUser(values);
+          // await registerUser(values);
+          console.log("🚀 ~ file: Register.tsx:43 ~ onSubmit: ~ values:", values)
           action.resetForm();
         }
       },
+
     });
-  console.log(errors);
+  // console.log(errors);
+
   return (
     <section className="">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -157,9 +178,6 @@ export default function Register() {
                     onChange={handleChange}
                     className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300  dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
                   />
-                  {/* {errors.terms && touched.terms === true ? (
-                    <p className="text-red-500 text-sm ">{errors.terms}</p>
-                  ) : null} */}
                 </div>
                 <div className="ml-3 text-sm">
                   <label className="font-light">
@@ -172,7 +190,11 @@ export default function Register() {
                     </a>
                   </label>
                 </div>
+
               </div>
+              {errors.terms !== undefined && touched.terms === true ? (
+                <p className="text-red-500 text-sm ">You must agree to the terms and conditions</p>
+              ) : null}
               <button
                 type="submit"
                 className="w-full bg-orange-400 text-black bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
@@ -195,3 +217,5 @@ export default function Register() {
     </section>
   );
 }
+
+
