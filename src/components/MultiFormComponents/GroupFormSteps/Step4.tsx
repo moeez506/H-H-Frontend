@@ -257,6 +257,13 @@ const Step4 = ({ currentStep, handleNextStep }: Step4Props) => {
         </div>
 
         <Button text="Next" isForm />
+        <Button
+          text="Go Back"
+          isForm
+          onClick={() => {
+            handleNextStep(3);
+          }}
+        />
       </form>
     </div>
   );

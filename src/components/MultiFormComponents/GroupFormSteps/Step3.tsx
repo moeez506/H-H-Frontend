@@ -93,7 +93,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
 
   const { isLoading, data } = useRepresentiveData();
   // console.log("🚀 ~ file: Step3.tsx:83 ~ Step3 ~ error:", error)
-  console.log("🚀 ~ file: Step3.tsx:83 ~ Step3 ~ data:", data)
+  // console.log("🚀 ~ file: Step3.tsx:83 ~ Step3 ~ data:", data)
 
   if (isLoading) {
     return <Loader />;
