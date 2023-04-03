@@ -111,6 +111,14 @@ export default function PayPal({ am, className, contextData }: PayPalProps) {
             return;
           });
         }}
+        onError={(err) => {
+          console.log(err);
+          window.location.href = "our page";
+        }}
+        onCancel={(data) => {
+          console.log(data);
+          // Show a cancel page or go to another page
+        }}
       />
     </PayPalScriptProvider>
   );
