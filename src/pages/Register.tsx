@@ -1,10 +1,13 @@
 /* eslint-disable prettier/prettier */
-import React from "react";
-import Email from "../assets/email.png";
-import Pass from "../assets/pass.png";
+import React, { useState } from "react";
+import user from "../assets/User.png";
+import Pass from "../assets/Lock.png";
 import { useFormik } from "formik";
 import { signUpSchema } from "../schemas";
-import { registerUser } from "../apis/auth";
+// import { registerUser } from "../apis/auth";
+import request from "../apis/request";
+import ApiSuccess from "../components/ApiSuccess";
+import ApiError from "../components/ApiError";
 import { Link } from "react-router-dom";
 
 interface SignUpFormValues {
@@ -17,6 +20,7 @@ interface SignUpFormValues {
 }
 
 
+
 const initialValues = {
   firstName: "",
   lastName: "",
@@ -26,6 +30,37 @@ const initialValues = {
   terms: false,
 };
 export default function Register() {
+  const [apiSuccess, setApiSuccess] = useState<string>();
+  // console.log(
+  //   "🚀 ~ file: Register.tsx:22 ~ Register ~ apiSuccess:",
+  //   apiSuccess
+  // );
+  const [apiError, setApiError] = useState<string>();
+
+  const registerUser = async (values: any) => {
+    try {
+      const response = await request.post("/auth/register", values);
+      // console.log(
+      //   "🚀 ~ file: auth.ts:25 ~ registerUser ~ data:",
+      //   response.data.message
+      // );
+      setApiSuccess(response.data.message);
+
+      return response.data;
+    } catch (error: any) {
+      if (error.response) {
+        // console.log(error.response.data, "working");
+        setApiError(error.response.data.msg);
+      } else {
+        // console.error(error);
+        // handle other types of errors
+      }
+      throw new Error(
+        error.response.data.message || "Registration failed. Please try again."
+      );
+    }
+  };
+
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik<SignUpFormValues>({
       initialValues,
@@ -40,7 +75,6 @@ export default function Register() {
       onSubmit: async (values, action) => {
         if (values.terms) {
           await registerUser(values);
-          action.resetForm();
         }
       },
 
@@ -50,12 +84,18 @@ export default function Register() {
   return (
     <section className="">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <div className=" bg-white rounded-2xl shadow-2xl border md:mt-0 sm:max-w-md xl:p-0">
+        <div className="w-[40%] bg-white rounded-2xl shadow-2xl border md:mt-0 sm:max-w-md xl:p-0 tabletOnly:w-[60%] mobile:w-full">
           <div className="p-6 pt-6 mx-2 my-4 space-y-6 md:space-y-6 sm:p-8">
             <div className=" font-bold text-center leading-tight tracking-tight md:text-2xl text-black">
               <h1 className="text-4xl">SignUp Now</h1>
-              <p className="text-base my-2 font-light text-center text-gray-500 ">
-                {`Don't have an account yet? Register Here!`}
+              <p className="text-sm font-light text-gray- text-center ">
+                Already have an account?{" "}
+                <Link
+                  to={"/login"}
+                  className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                >
+                  Login here
+                </Link>
               </p>
             </div>
             <form
@@ -63,11 +103,16 @@ export default function Register() {
               action="#"
               onSubmit={handleSubmit}
             >
+              {apiSuccess ? (
+                <ApiSuccess success={apiSuccess} />
+              ) : apiError ? (
+                <ApiError error={apiError} />
+              ) : null}
               <div>
                 <label className="block mb-2 text-sm font-medium text-black">
                   First Name
                 </label>
-                <img src={Email} className="h-7 absolute m-2" />
+                <img src={user} className="h-7 absolute m-2" />
                 <input
                   type="text"
                   name="firstName"
@@ -79,7 +124,7 @@ export default function Register() {
                   onBlur={handleBlur}
                 />
                 {errors.firstName !== undefined &&
-                touched.firstName === true ? (
+                  touched.firstName === true ? (
                   <p className="text-red-500 text-sm ">{errors.firstName}</p>
                 ) : (
                   <p></p>
@@ -89,7 +134,7 @@ export default function Register() {
                 <label className="block mb-2 text-sm font-medium text-black">
                   Last Name
                 </label>
-                <img src={Email} className="h-7 absolute m-2" />
+                <img src={user} className="h-7 absolute m-2" />
                 <input
                   type="text"
                   name="lastName"
@@ -110,7 +155,7 @@ export default function Register() {
                 <label className="block mb-2 text-sm font-medium text-black">
                   Email
                 </label>
-                <img src={Email} className="h-7 absolute m-2" />
+                <img src={user} className="h-7 absolute m-2" />
                 <input
                   type="email"
                   name="email"
@@ -160,7 +205,7 @@ export default function Register() {
                   onBlur={handleBlur}
                 />
                 {errors.confirm_password !== undefined &&
-                touched.confirm_password === true ? (
+                  touched.confirm_password === true ? (
                   <p className="text-red-500 text-sm ">
                     {errors.confirm_password}
                   </p>
@@ -194,22 +239,22 @@ export default function Register() {
               {errors.terms !== undefined && touched.terms === true ? (
                 <p className="text-red-500 text-sm ">You must agree to the terms and conditions</p>
               ) : null}
-              <button
-                type="submit"
-                className="w-full bg-orange-400 text-black bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-              >
-                SignUp
-              </button>
+              <div className="flex justify-center items-center">
+                <button
+                  type="submit"
+                  className="border-4 rounded-3xl text-white border-white bg-gradient-to-r from-orange to-yellow px-12 py-2 text-xl font-medium flex justify-center items-center"
+                >
+                  SignUp
+                </button>
+              </div>
               <p className="text-sm font-light text-gray-500 ">
                 Already have an account?{" "}
-                <a href="#">
-                  <Link
-                    to={"/login"}
-                    className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                  >
-                    Login here
-                  </Link>
-                </a>
+                <Link
+                  to={"/login"}
+                  className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                >
+                  Login here
+                </Link>
               </p>
             </form>
           </div>

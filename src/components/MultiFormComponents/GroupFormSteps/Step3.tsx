@@ -8,6 +8,7 @@ import { GroupUserContext } from "../../../contexts/groupOnboardingContext";
 import { useRepresentiveData } from "../../../hooks/useRepresentativeData";
 import Input from "../../Input";
 import Button from "../../Button";
+import Loader from "../../Loader";
 
 interface Step3Props {
   currentStep: number;
@@ -91,9 +92,11 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
     });
 
   const { isLoading, data } = useRepresentiveData();
+  // console.log("🚀 ~ file: Step3.tsx:83 ~ Step3 ~ error:", error)
+  console.log("🚀 ~ file: Step3.tsx:83 ~ Step3 ~ data:", data)
 
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return <Loader />;
   }
 
   const { firstName, email, lastName } = data?.data?.user;

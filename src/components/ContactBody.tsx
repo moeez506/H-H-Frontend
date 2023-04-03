@@ -56,7 +56,7 @@ const ContactBody = () => {
                 type="text"
                 name="name"
                 id="name"
-                className="border text-gray-900 sm:text-sm rounded-lg laptop:w-full tabletOnly:w-full p-3 dark:placeholder-gray-400"
+                className="border text-gray-900 sm:text-sm rounded-lg laptop:w-full tabletOnly:w-full mobile:w-full p-3 dark:placeholder-gray-400"
                 placeholder="Name*"
               />
             </div>
@@ -69,7 +69,7 @@ const ContactBody = () => {
                 type="email"
                 name="email"
                 id="email"
-                className="border text-gray-900 sm:text-sm rounded-lg laptop:w-full tabletOnly:w-full p-3 dark:placeholder-gray-400"
+                className="border text-gray-900 sm:text-sm rounded-lg laptop:w-full tabletOnly:w-full p-3 mobile:w-full dark:placeholder-gray-400"
                 placeholder="Email Address*"
               />
             </div>
@@ -82,7 +82,7 @@ const ContactBody = () => {
                 name="password"
                 id="password"
                 placeholder="Contact Number*"
-                className="border text-gray-900 sm:text-sm rounded-lg laptop:w-full tabletOnly:w-full p-3 dark:placeholder-gray-400"
+                className="border text-gray-900 sm:text-sm rounded-lg laptop:w-full tabletOnly:w-full p-3 mobile:w-full dark:placeholder-gray-400"
               />
             </div>
             <div>
@@ -91,7 +91,7 @@ const ContactBody = () => {
                 name="subject"
                 id="subject"
                 placeholder="Subject*"
-                className="border text-gray-900 sm:text-sm rounded-lg laptop:w-full tabletOnly:w-full p-3 dark:placeholder-gray-400"
+                className="border text-gray-900 sm:text-sm rounded-lg laptop:w-full tabletOnly:w-full p-3 mobile:w-full dark:placeholder-gray-400"
               />
             </div>
             <div>
@@ -100,10 +100,10 @@ const ContactBody = () => {
                 name="message"
                 id="message"
                 placeholder="Meassage*"
-                className="border text-gray-900 sm:text-sm rounded-lg laptop:w-full tabletOnly:w-full p-3 dark:placeholder-gray-400 h-[160px]"
+                className="border text-gray-900 sm:text-sm rounded-lg laptop:w-full tabletOnly:w-full p-3 mobile:w-full dark:placeholder-gray-400 h-[160px]"
               />
             </div>
-            <Button text="Contact Us" />
+            <Button text="Contact Us" route="/contact"/>
           </form>
         </div>
       </div>

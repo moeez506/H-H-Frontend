@@ -40,7 +40,7 @@ const Body = () => {
             communities around the world through Connect the community
             initiative.
           </p>
-          <Button text="Read More"/>
+          <Button text="Read More" route="/contact"/>
         </div>
       </div>
       <div className="mt-36">

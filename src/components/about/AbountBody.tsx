@@ -159,7 +159,7 @@ const Aboutbody = () => {
           Fund
         </p>
         <br />
-        <Button text="CONTACT US" />
+        <Button text="CONTACT US" route="/contact" />
         <br />
         <br />
         <br />
@@ -209,7 +209,7 @@ const Aboutbody = () => {
             to prepare if they have to travel out of their jurisdiction or
             country.
           </p>
-          <Button text="CONTACT US" />
+          <Button text="CONTACT US" route="/contact"/>
         </div>
       </div>
       <div className="mt-20">
@@ -227,7 +227,7 @@ const Aboutbody = () => {
               <li>Has an administrative structure in place</li>
               <li>Must be a Cameroonian Group , Meeting , Association etc</li>
             </ul>
-            <Button text="CONTACT US" />
+            <Button text="CONTACT US" route="/contact" />
           </div>
           <div className="px-20 mobile:px-0 pt-6">
             <img src={sixth} alt="no image found" />
@@ -240,7 +240,7 @@ const Aboutbody = () => {
               <li>Name of Association</li>
               <li>List of registered members</li>
             </ul>
-            <Button text="CONTACT US" />
+            <Button text="CONTACT US" route="/contact" />
           </div>
         </div>
       </div>

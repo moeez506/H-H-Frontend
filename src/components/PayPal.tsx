@@ -52,15 +52,9 @@ export default function PayPal({ am, className, contextData }: PayPalProps) {
   const representativeTwoData = dataRepresentative(representativeTwo);
   const representativeThreeData = dataRepresentative(representativeThree);
 
-  async function addGroup(orderId: string, payerId: string) {
-    console.log(orderId, payerId);
-    if (!orderId || !payerId) {
-      alert("Failed to Pay Money");
-      return;
-    }
-
+  async function addGroup() {
     createGroupApi(groupData).then(async (res) => {
-      const response = await Promise.all([
+      await Promise.all([
         updateRepresentative({
           ...representativeOneData,
           groupId: res.group._id,
@@ -74,7 +68,6 @@ export default function PayPal({ am, className, contextData }: PayPalProps) {
           groupId: res.group._id,
         }),
       ]);
-      console.log(response, "REs");
     });
   }
 
@@ -96,18 +89,27 @@ export default function PayPal({ am, className, contextData }: PayPalProps) {
           _: CreateOrderData,
           actions: CreateOrderActions
         ) => {
-          return await actions.order.create({
-            purchase_units: [
-              {
-                amount: {
-                  value: am,
+          return await actions.order
+            .create({
+              purchase_units: [
+                {
+                  amount: {
+                    value: am,
+                  },
                 },
-              },
-            ],
-          });
+              ],
+            })
+            .then((orderId) => {
+              console.log(orderId);
+              return orderId;
+            });
         }}
-        onApprove={async (data: any, _: any): Promise<void> => {
-          addGroup(data.orderID, data.payerID);
+        onApprove={async (data: any, actions: any): Promise<void> => {
+          return actions.order.capture().then((res: any) => {
+            // console.log(res);
+            addGroup();
+            return;
+          });
         }}
       />
     </PayPalScriptProvider>

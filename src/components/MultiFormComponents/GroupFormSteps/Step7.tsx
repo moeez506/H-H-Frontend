@@ -1,10 +1,12 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { GroupUserContext } from "../../../contexts/groupOnboardingContext";
 import Button from "../../Button";
+import { checkUserEmail } from "../../../apis/groupOnboading";
+import ApiError from "../../ApiError";
 
 interface Step7Props {
   currentStep: number;
@@ -27,6 +29,7 @@ interface Values {
 
 const Step7 = ({ currentStep, handleNextStep }: Step7Props) => {
   const { representativeThree, setRepresentativeThree } = useContext(GroupUserContext);
+  const [apiResponse, setApiResponse] = useState<string>()
 
   const initialValues: Values = {
     firstName: (representativeThree as Values)?.firstName ?? "",
@@ -75,10 +78,18 @@ const Step7 = ({ currentStep, handleNextStep }: Step7Props) => {
     useFormik({
       initialValues,
       validationSchema,
-      onSubmit: (values) => {
+      onSubmit: async (values) => {
         setRepresentativeThree(values);
+        try {
+          const res = await checkUserEmail(values.email);
+          setApiResponse(res);
+          if (res === "Success") {
+            handleNextStep(8);
+          }
+        } catch (err: any) {
+          console.log(err.response.data);
+        }
         // console.log("🚀 ~ file: Step5.tsx:70 ~ Step5 ~ values:", values)
-        handleNextStep(8);
       },
     });
 
@@ -89,6 +100,7 @@ const Step7 = ({ currentStep, handleNextStep }: Step7Props) => {
       </h1>
 
       <form onSubmit={handleSubmit}>
+        {apiResponse === "Email already exist" ? <ApiError error={apiResponse} /> : null}
         <div className="mb-4">
           <label
             className="block text-gray-700 font-bold mb-2"

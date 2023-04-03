@@ -63,9 +63,8 @@ export default function Navbar() {
         </div>
         <div>
           <div
-            className={`flex-1 justify-self-center pb-3 mt-8 laptop:block laptop:pb-0 laptop:mt-0 ${
-              navbar ? "block" : "hidden"
-            }`}
+            className={`flex-1 justify-self-center pb-3 mt-8 laptop:block laptop:pb-0 laptop:mt-0 ${navbar ? "block" : "hidden"
+              }`}
           >
             <ul className="items-center justify-center laptop:  space-y-8 laptop:flex laptop:space-x-8 laptop:space-y-0">
               <li

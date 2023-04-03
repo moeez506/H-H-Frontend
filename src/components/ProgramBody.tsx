@@ -63,7 +63,7 @@ const ProgramBody = () => {
             death is a death to the community and as such we call on each member
             to act with compassion and commitment.
           </p>
-          <Button text="Contact Us" />
+          <Button text="Contact Us" route="/contact"/>
         </div>
       </div>
       <div className="flex justify-center items-center">
@@ -166,7 +166,7 @@ const ProgramBody = () => {
               <br></br> All members are eligible for Educational Support Fund
             </p>
             <br></br>
-            <Button text="Contact Us" />
+            <Button text="Contact Us" route="/contact" />
           </div>
         </div>
       </div>
@@ -204,7 +204,7 @@ const ProgramBody = () => {
             <img src={community} className="mobile:rounded-3xl mobile:h-96" alt="image not loaded" />
             <br></br>
             <div className="mt-5 mobile:my-5">
-              <Button text="Contact Us" />
+              <Button text="Contact Us" route="/contact"/>
             </div>
           </div>
         </div>

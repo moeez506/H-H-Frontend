@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React from 'react'
+import Button from './Button'
 
 const Contact = () => {
   return (
@@ -10,9 +11,7 @@ const Contact = () => {
       <p className="text-center text-3xl text-text-grey">
         Call 1.800.555.6789 to Donate Or Contact Us to get Involved
       </p>
-      <button className="border-4 rounded-3xl text-white border-white bg-gradient-to-r from-orange to-yellow px-8 py-2 text-xl font-medium mt-4">
-        CONTACT US
-      </button>
+      <Button text='Contact Us' route='/contact'/>
     </div>
   )
 }
