@@ -34,19 +34,19 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
   console.log("🚀 ~ file: Step5.tsx:32 ~ Step5 ~ apiResponse:", apiResponse)
 
   const initialValues: Values = {
-    firstName: (additionalMember as Values)?.firstName ?? "",
-    middleName: (additionalMember as Values)?.middleName ?? "",
-    lastName: (additionalMember as Values)?.lastName ?? "",
-    positionOccupied: (additionalMember as Values)?.positionOccupied ?? "",
-    dob: (additionalMember as Values)?.dob ?? "",
-    placeOfBirth: (additionalMember as Values)?.placeOfBirth ?? "",
-    nationality: (additionalMember as Values)?.nationality ?? "",
-    countryOfResidence: (additionalMember as Values)?.countryOfResidence ?? "",
-    address: (additionalMember as Values)?.address ?? "",
-    zipCode: (additionalMember as Values)?.zipCode ?? "",
-    homePhoneNumber: (additionalMember as Values)?.homePhoneNumber ?? "",
-    cellNumber: (additionalMember as Values)?.cellNumber ?? "",
-    email: (additionalMember as Values)?.email ?? "",
+    firstName: (representativeTwo as Values)?.firstName ?? "",
+    middleName: (representativeTwo as Values)?.middleName ?? "",
+    lastName: (representativeTwo as Values)?.lastName ?? "",
+    positionOccupied: (representativeTwo as Values)?.positionOccupied ?? "",
+    dob: (representativeTwo as Values)?.dob ?? "",
+    placeOfBirth: (representativeTwo as Values)?.placeOfBirth ?? "",
+    nationality: (representativeTwo as Values)?.nationality ?? "",
+    countryOfResidence: (representativeTwo as Values)?.countryOfResidence ?? "",
+    address: (representativeTwo as Values)?.address ?? "",
+    zipCode: (representativeTwo as Values)?.zipCode ?? "",
+    homePhoneNumber: (representativeTwo as Values)?.homePhoneNumber ?? "",
+    cellNumber: (representativeTwo as Values)?.cellNumber ?? "",
+    email: (representativeTwo as Values)?.email ?? "",
   };
 
   const validationSchema = Yup.object({
