@@ -16,6 +16,7 @@ interface Values {
   firstName: string;
   middleName: string;
   lastName: string;
+  positionOccupied: string;
   dob: string;
   placeOfBirth: string;
   nationality: string;
@@ -33,18 +34,19 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
   console.log("🚀 ~ file: Step5.tsx:32 ~ Step5 ~ apiResponse:", apiResponse)
 
   const initialValues: Values = {
-    firstName: (representativeTwo as Values)?.firstName ?? "",
-    middleName: (representativeTwo as Values)?.middleName ?? "",
-    lastName: (representativeTwo as Values)?.lastName ?? "",
-    dob: (representativeTwo as Values)?.dob ?? "",
-    placeOfBirth: (representativeTwo as Values)?.placeOfBirth ?? "",
-    nationality: (representativeTwo as Values)?.nationality ?? "",
-    countryOfResidence: (representativeTwo as Values)?.countryOfResidence ?? "",
-    address: (representativeTwo as Values)?.address ?? "",
-    zipCode: (representativeTwo as Values)?.zipCode ?? "",
-    homePhoneNumber: (representativeTwo as Values)?.homePhoneNumber ?? "",
-    cellNumber: (representativeTwo as Values)?.cellNumber ?? "",
-    email: (representativeTwo as Values)?.email ?? "",
+    firstName: (additionalMember as Values)?.firstName ?? "",
+    middleName: (additionalMember as Values)?.middleName ?? "",
+    lastName: (additionalMember as Values)?.lastName ?? "",
+    positionOccupied: (additionalMember as Values)?.positionOccupied ?? "",
+    dob: (additionalMember as Values)?.dob ?? "",
+    placeOfBirth: (additionalMember as Values)?.placeOfBirth ?? "",
+    nationality: (additionalMember as Values)?.nationality ?? "",
+    countryOfResidence: (additionalMember as Values)?.countryOfResidence ?? "",
+    address: (additionalMember as Values)?.address ?? "",
+    zipCode: (additionalMember as Values)?.zipCode ?? "",
+    homePhoneNumber: (additionalMember as Values)?.homePhoneNumber ?? "",
+    cellNumber: (additionalMember as Values)?.cellNumber ?? "",
+    email: (additionalMember as Values)?.email ?? "",
   };
 
   const validationSchema = Yup.object({
@@ -163,6 +165,29 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
             Object.prototype.hasOwnProperty.call(errors, "lastName") &&
             Object.prototype.hasOwnProperty.call(touched, "lastName") ? (
             <p className="text-[red]">{errors.lastName}</p>
+          ) : null}
+        </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 font-bold mb-2"
+            htmlFor="positionOccupied"
+          >
+            Position Occupied in organization/group
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="positionOccupied"
+            name="positionOccupied"
+            type="text"
+            value={values.positionOccupied}
+            onBlur={handleBlur}
+            onChange={handleChange}
+          />
+          {errors.positionOccupied !== null &&
+            touched.positionOccupied !== null &&
+            Object.prototype.hasOwnProperty.call(errors, "positionOccupied") &&
+            Object.prototype.hasOwnProperty.call(touched, "positionOccupied") ? (
+            <p className="text-[red]">{errors.positionOccupied}</p>
           ) : null}
         </div>
         <div className="mb-4">
