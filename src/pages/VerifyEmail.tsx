@@ -21,7 +21,7 @@ const VerificationScreen = () => {
 
         try {
 
-            const { data } = await request.get(`/auth/verify-email/${verifcationToken}`)
+            const { data } = await request.get(`/auth/verify-email/${verifcationToken ?? ''}`)
 
             console.log("🚀 ~ file: VerifyEmail.tsx:24 ~ verifyEmail ~ data:", data)
 
@@ -37,7 +37,7 @@ const VerificationScreen = () => {
 
     useEffect(() => {
 
-        verifyEmail(verifcationToken);
+        void verifyEmail(verifcationToken);
     }, []);
 
     return (
@@ -46,7 +46,7 @@ const VerificationScreen = () => {
             <div className='w-full h-screen'>
 
                 {/* <Header /> */}
-                {(success) ? <EmailVerificationSuccess /> : (!success) ? <EmailVerificationFailed />: null}
+                {(success) ? <EmailVerificationSuccess /> : (!success) ? <EmailVerificationFailed /> : null}
 
             </div>
         </>

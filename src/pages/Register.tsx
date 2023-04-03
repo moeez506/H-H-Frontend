@@ -29,19 +29,19 @@ export default function Register() {
   const registerUser = async (values: any) => {
     try {
       const response = await request.post("/auth/register", values);
-      console.log(
-        "🚀 ~ file: auth.ts:25 ~ registerUser ~ data:",
-        response.data.message
-      );
+      // console.log(
+      //   "🚀 ~ file: auth.ts:25 ~ registerUser ~ data:",
+      //   response.data.message
+      // );
       setApiSuccess(response.data.message);
 
       return response.data;
     } catch (error: any) {
       if (error.response) {
-        console.log(error.response.data, "working");
+        // console.log(error.response.data, "working");
         setApiError(error.response.data.msg);
       } else {
-        console.error(error);
+        // console.error(error);
         // handle other types of errors
       }
       throw new Error(
@@ -104,7 +104,7 @@ export default function Register() {
                   onBlur={handleBlur}
                 />
                 {errors.firstName !== undefined &&
-                touched.firstName === true ? (
+                  touched.firstName === true ? (
                   <p className="text-red-500 text-sm ">{errors.firstName}</p>
                 ) : (
                   <p></p>
@@ -185,7 +185,7 @@ export default function Register() {
                   onBlur={handleBlur}
                 />
                 {errors.confirm_password !== undefined &&
-                touched.confirm_password === true ? (
+                  touched.confirm_password === true ? (
                   <p className="text-red-500 text-sm ">
                     {errors.confirm_password}
                   </p>

@@ -69,15 +69,18 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
     useFormik({
       initialValues,
       validationSchema,
-      onSubmit: (values) => {
+      onSubmit: async (values) => {
         setRepresentativeTwo(values);
-        checkUserEmail(values.email)
-          .then(res => setApiResponse(res))
-          .catch(err => console.log(err.response.data))
-        // console.log("🚀 ~ file: Step5.tsx:70 ~ Step5 ~ values:", values)
-        if (apiResponse === "Success") {
-          handleNextStep(6);
+        try {
+          const res = await checkUserEmail(values.email);
+          setApiResponse(res);
+          if (res === "Success") {
+            handleNextStep(6);
+          }
+        } catch (err: any) {
+          console.log(err.response.data);
         }
+        console.log("🚀 ~ file: Step5.tsx:81 ~ onSubmit: ~ TEstttt:",)
       },
     });
 
@@ -88,7 +91,7 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
       </h1>
 
       <form onSubmit={handleSubmit}>
-        {apiResponse === "Email already exist" ? <ApiError error={apiResponse} /> : null }
+        {apiResponse === "Email already exist" ? <ApiError error={apiResponse} /> : null}
         <div className="mb-4">
           <label
             className="block text-gray-700 font-bold mb-2"
