@@ -1,9 +1,9 @@
 /* eslint-disable prettier/prettier */
-import React, { useEffect } from 'react';
-import './App.css';
-import { QueryClient, QueryClientProvider } from 'react-query';
-import RouterConfig from './routes/RouterConfig';
-import './window.d.ts';
+import React, { useEffect } from "react";
+import "./App.css";
+import { QueryClient, QueryClientProvider } from "react-query";
+import RouterConfig from "./routes/RouterConfig";
+import "./window.d.ts";
 
 function App() {
   const queryClient = new QueryClient();
@@ -12,20 +12,20 @@ function App() {
       // eslint-disable-next-line no-new
       new window.google.translate.TranslateElement(
         {
-          pageLanguage: 'en',
-          includedLanguages: 'en,fr',
+          pageLanguage: "en",
+          includedLanguages: "en,fr",
           autoDisplay: false,
         },
-        'google_translate_element'
+        "google_translate_element"
       );
     }
   };
 
   useEffect(() => {
-    const addScript = document.createElement('script');
+    const addScript = document.createElement("script");
     addScript?.setAttribute(
-      'src',
-      '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'
+      "src",
+      "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
     );
     document.body.appendChild(addScript);
     window.googleTranslateElementInit = googleTranslateElementInit;

@@ -1,10 +1,10 @@
 /* eslint-disable prettier/prettier */
 
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import Header from '../components/Header';
-import { GroupProvider } from '../contexts/groupOnboardingContext';
-import { UserProvider } from '../contexts/individualOnboardingContext';
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import Header from "../components/Header";
+import { GroupProvider } from "../contexts/groupOnboardingContext";
+import { UserProvider } from "../contexts/individualOnboardingContext";
 import {
   Login,
   Register,
@@ -17,25 +17,26 @@ import {
   OnboardingType,
   VerificationScreen,
   MarketPlace,
-} from '../pages';
-import PopUp from '../components/PopUp';
+} from "../pages";
+import PopUp from "../components/PopUp";
 
 const RouterConfig = () => {
   return (
     <>
+      <Header />
       <Routes>
-        <Route path='/' element={<PopUp />} />
-        <Route path='/home' element={<Home />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/contact' element={<ContactUs />} />
-        <Route path='/programs' element={<Programs />} />
-        <Route path='/market-place' element={<MarketPlace />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Register />} />
-        <Route path='/onboarding-type' element={<OnboardingType />} />
-        <Route path='/verify-email/:token' element={<VerificationScreen />} />
+        <Route path="/" element={<PopUp />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<ContactUs />} />
+        <Route path="/programs" element={<Programs />} />
+        <Route path="/market-place" element={<MarketPlace />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/onboarding-type" element={<OnboardingType />} />
+        <Route path="/verify-email/:token" element={<VerificationScreen />} />
         <Route
-          path='/individual-onboarding'
+          path="/individual-onboarding"
           element={
             <UserProvider>
               <MultiFormIndividual />
@@ -43,7 +44,7 @@ const RouterConfig = () => {
           }
         />
         <Route
-          path='/group-onboarding'
+          path="/group-onboarding"
           element={
             <GroupProvider>
               <MultiFormGroup />

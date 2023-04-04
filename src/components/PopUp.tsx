@@ -13,7 +13,6 @@ const PopUp = () => {
     const dropdown = document?.querySelector(
       ".goog-te-combo"
     ) as HTMLOptionElement;
-
     dropdown.value = "fr";
     dropdown.dispatchEvent(new Event("change"));
   }
@@ -33,7 +32,6 @@ const PopUp = () => {
       const dropdown = document?.querySelector(
         ".goog-te-combo"
       ) as HTMLOptionElement;
-
       dropdown.value = "en";
       dropdown.dispatchEvent(new Event("change"));
     }, 50);
@@ -49,7 +47,7 @@ const PopUp = () => {
               <p className="text-3xl font-medium">Welcome to H&H Org</p>
               <br />
               <button onClick={toggleHiddenEnglish}>
-                <Button text="ENGLISH" route="#"/>
+                <Button text="ENGLISH" route="#" />
               </button>
             </div>
             <div className="ml-6">
