@@ -5,6 +5,7 @@ import type {
   CreateOrderData,
   CreateOrderActions,
 } from "@paypal/paypal-js";
+import { useNavigate } from "react-router-dom";
 import {
   createGroupApi,
   createRepresentative,
@@ -22,6 +23,7 @@ interface PayPalProps {
 }
 
 export default function PayPal({ am, className, contextData }: PayPalProps) {
+  const navigate = useNavigate()
   const [apiSuccess, setApiSuccess] = useState<string>()
   console.log("🚀 ~ file: PayPal.tsx:26 ~ PayPal ~ apiSuccess:", apiSuccess)
   const [apiError, setApiError] = useState<string>()
@@ -76,7 +78,7 @@ export default function PayPal({ am, className, contextData }: PayPalProps) {
           groupId: res.group._id,
         }),
       ]);
-      
+      navigate('/thank-you')
     })
     .catch(err => setApiError(err.response.data.msg))
   }
