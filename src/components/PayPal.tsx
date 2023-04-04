@@ -15,6 +15,7 @@ import { dataRepresentative } from "../utils/representativeData";
 import { useState } from "react";
 import ApiSuccess from "./ApiSuccess";
 import ApiError from "./ApiError";
+import { createKin, updateIndividualAdmin } from "../apis/individualOndoarding";
 
 interface PayPalProps {
   className: string;
@@ -34,29 +35,32 @@ export default function PayPal({ am, className, contextData }: PayPalProps) {
     representativeOne,
     representativeThree,
     representativeTwo,
+    kinInformation,
+    individualAdmin
   } = contextData;
+
   const groupData = {
-    associationName: createGroup.groupName,
-    websiteLink: createGroup.website,
-    phoneNumbers: [createGroup.cellNumber],
-    registeredMembers: createGroup.registerdMembers,
-    email: createGroup.email,
-    address: createGroup.email,
-    zipCode: createGroup.zipCode,
-    country: createGroup.countryOfOperation,
+    associationName: createGroup?.groupName,
+    websiteLink: createGroup?.website,
+    phoneNumbers: [createGroup?.cellNumber],
+    registeredMembers: createGroup?.registerdMembers,
+    email: createGroup?.email,
+    address: createGroup?.email,
+    zipCode: createGroup?.zipCode,
+    country: createGroup?.countryOfOperation,
   };
   const representativeOneData = {
-    dateOfBirth: representativeOne.dob,
-    placeOfBirth: representativeOne.placeOfBirth,
-    nationality: representativeOne.nationality,
-    address: representativeOne.address,
-    zipCode: representativeOne.zipCode,
+    dateOfBirth: representativeOne?.dob,
+    placeOfBirth: representativeOne?.placeOfBirth,
+    nationality: representativeOne?.nationality,
+    address: representativeOne?.address,
+    zipCode: representativeOne?.zipCode,
     phoneNumbers: {
-      Home: representativeOne.homePhoneNumber.toString(),
-      Cell: representativeOne.cellNumber.toString(),
+      Home: representativeOne?.homePhoneNumber.toString(),
+      Cell: representativeOne?.cellNumber.toString(),
     },
-    countryOfResidence: representativeOne.countryOfResidence,
-    positionOccupied: representativeOne.positionOccupied,
+    countryOfResidence: representativeOne?.countryOfResidence,
+    positionOccupied: representativeOne?.positionOccupied,
   };
 
   const representativeTwoData = dataRepresentative(representativeTwo);
@@ -81,6 +85,12 @@ export default function PayPal({ am, className, contextData }: PayPalProps) {
       navigate('/thank-you')
     })
       .catch(err => setApiError(err.response.data.msg))
+  }
+
+
+  async function addInvdividualMember() {
+    updateIndividualAdmin(individualAdmin);
+    createKin(kinInformation);
   }
 
   return (
@@ -124,7 +134,11 @@ export default function PayPal({ am, className, contextData }: PayPalProps) {
               console.log("🚀 ~ file: PayPal.tsx:110 ~ returnactions.order.capture ~ res:", res)
               { res.status === "COMPLETED" ? setApiSuccess("Transaction Successful") : null }
               // console.log(res);
-              addGroup();
+              if (individualAdmin) {
+                addInvdividualMember()
+              } else if (createGroup) {
+                addGroup();
+              }
               return;
             });
           }}

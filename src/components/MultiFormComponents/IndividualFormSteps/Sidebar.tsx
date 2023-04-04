@@ -38,6 +38,10 @@ const steps = [
     step: 7,
     title: "Health Status",
   },
+  {
+    step: 8,
+    title: "Payment",
+  },
 ];
 export const Sidebar = ({ currentStep, handleNextStep }: SidebarProps) => {
   const context = useContext(IndividualUserContext);

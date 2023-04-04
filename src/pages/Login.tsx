@@ -6,7 +6,6 @@ import { useFormik } from "formik";
 import { loginSchema } from "../schemas";
 import { login } from "../apis/auth";
 import { Link, useNavigate } from "react-router-dom";
-import request from "../apis/request";
 import Loader from "../components/Loader";
 import ApiError from "../components/ApiError";
 
