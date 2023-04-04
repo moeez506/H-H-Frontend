@@ -8,6 +8,7 @@ import { login } from "../apis/auth";
 import { Link, useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
 import ApiError from "../components/ApiError";
+import request from "../apis/request";
 
 interface LoginProp {
   email: string;

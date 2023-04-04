@@ -91,6 +91,7 @@ export default function PayPal({ am, className, contextData }: PayPalProps) {
   async function addInvdividualMember() {
     updateIndividualAdmin(individualAdmin);
     createKin(kinInformation);
+    navigate('/thank-you')
   }
 
   return (
