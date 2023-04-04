@@ -8,21 +8,18 @@ interface LoginData {
 
 export const login = async (values: LoginData) => {
   try {
-    await request.post("/auth/login", values)
-     .then(res => {return res.data})
-     .catch(err => {return err.response.data})
-    // localStorage.setItem("authToken", data.token);
-    
-    // return data;
+    const result = await request.post("/auth/login", values);
+    localStorage.setItem("auth-token", result.data.token);
+    return result;
   } catch (error: any) {
-    console.error(error);
-    throw new Error(error.response.data.message || "Login failed. Please try again.");
+    console.log("🚀 ~ file: auth.ts:24 ~ login ~ error:", error);
+    return error.response;
   }
 };
 export const registerUser = async (values: any) => {
   try {
     const response = await request.post("/auth/register", values);
-    console.log("🚀 ~ file: auth.ts:25 ~ registerUser ~ data:", response)
+    console.log("🚀 ~ file: auth.ts:25 ~ registerUser ~ data:", response);
 
     return response.data;
     // await request.post("/auth/register", values)
@@ -37,6 +34,8 @@ export const registerUser = async (values: any) => {
     //   console.error(error);
     //   // handle other types of errors
     // }
-    throw new Error(error.response.data || "Registration failed. Please try again.");
+    throw new Error(
+      error.response.data || "Registration failed. Please try again."
+    );
   }
 };

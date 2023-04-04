@@ -32,6 +32,10 @@ const steps = [
     step: 6,
     title: "Health Status",
   },
+  {
+    step: 7,
+    title: "Payment",
+  },
 ];
 export const Sidebar = ({ currentStep, handleNextStep }: SidebarProps) => {
   return (

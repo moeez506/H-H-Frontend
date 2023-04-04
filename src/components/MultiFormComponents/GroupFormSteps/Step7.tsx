@@ -33,19 +33,19 @@ const Step7 = ({ currentStep, handleNextStep }: Step7Props) => {
   const [apiResponse, setApiResponse] = useState<string>()
 
   const initialValues: Values = {
-    firstName: (additionalMember as Values)?.firstName ?? "",
-    middleName: (additionalMember as Values)?.middleName ?? "",
-    lastName: (additionalMember as Values)?.lastName ?? "",
-    positionOccupied: (additionalMember as Values)?.positionOccupied ?? "",
-    dob: (additionalMember as Values)?.dob ?? "",
-    placeOfBirth: (additionalMember as Values)?.placeOfBirth ?? "",
-    nationality: (additionalMember as Values)?.nationality ?? "",
-    countryOfResidence: (additionalMember as Values)?.countryOfResidence ?? "",
-    address: (additionalMember as Values)?.address ?? "",
-    zipCode: (additionalMember as Values)?.zipCode ?? "",
-    homePhoneNumber: (additionalMember as Values)?.homePhoneNumber ?? "",
-    cellNumber: (additionalMember as Values)?.cellNumber ?? "",
-    email: (additionalMember as Values)?.email ?? "",
+    firstName: (representativeThree as Values)?.firstName ?? "",
+    middleName: (representativeThree as Values)?.middleName ?? "",
+    lastName: (representativeThree as Values)?.lastName ?? "",
+    positionOccupied: (representativeThree as Values)?.positionOccupied ?? "",
+    dob: (representativeThree as Values)?.dob ?? "",
+    placeOfBirth: (representativeThree as Values)?.placeOfBirth ?? "",
+    nationality: (representativeThree as Values)?.nationality ?? "",
+    countryOfResidence: (representativeThree as Values)?.countryOfResidence ?? "",
+    address: (representativeThree as Values)?.address ?? "",
+    zipCode: (representativeThree as Values)?.zipCode ?? "",
+    homePhoneNumber: (representativeThree as Values)?.homePhoneNumber ?? "",
+    cellNumber: (representativeThree as Values)?.cellNumber ?? "",
+    email: (representativeThree as Values)?.email ?? "",
   };
 
   const validationSchema = Yup.object({

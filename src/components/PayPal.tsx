@@ -11,6 +11,7 @@ import {
   updateRepresentative,
 } from "../apis/groupOnboading";
 import { dataRepresentative } from "../utils/representativeData";
+import { createKin, updateIndividualAdmin } from "../apis/individualOndoarding";
 
 interface PayPalProps {
   className: string;
@@ -24,29 +25,32 @@ export default function PayPal({ am, className, contextData }: PayPalProps) {
     representativeOne,
     representativeThree,
     representativeTwo,
+    kinInformation,
+    individualAdmin
   } = contextData;
+
   const groupData = {
-    associationName: createGroup.groupName,
-    websiteLink: createGroup.website,
-    phoneNumbers: [createGroup.cellNumber],
-    registeredMembers: createGroup.registerdMembers,
-    email: createGroup.email,
-    address: createGroup.email,
-    zipCode: createGroup.zipCode,
-    country: createGroup.countryOfOperation,
+    associationName: createGroup?.groupName,
+    websiteLink: createGroup?.website,
+    phoneNumbers: [createGroup?.cellNumber],
+    registeredMembers: createGroup?.registerdMembers,
+    email: createGroup?.email,
+    address: createGroup?.email,
+    zipCode: createGroup?.zipCode,
+    country: createGroup?.countryOfOperation,
   };
   const representativeOneData = {
-    dateOfBirth: representativeOne.dob,
-    placeOfBirth: representativeOne.placeOfBirth,
-    nationality: representativeOne.nationality,
-    address: representativeOne.address,
-    zipCode: representativeOne.zipCode,
+    dateOfBirth: representativeOne?.dob,
+    placeOfBirth: representativeOne?.placeOfBirth,
+    nationality: representativeOne?.nationality,
+    address: representativeOne?.address,
+    zipCode: representativeOne?.zipCode,
     phoneNumbers: {
-      Home: representativeOne.homePhoneNumber.toString(),
-      Cell: representativeOne.cellNumber.toString(),
+      Home: representativeOne?.homePhoneNumber.toString(),
+      Cell: representativeOne?.cellNumber.toString(),
     },
-    countryOfResidence: representativeOne.countryOfResidence,
-    positionOccupied: representativeOne.positionOccupied,
+    countryOfResidence: representativeOne?.countryOfResidence,
+    positionOccupied: representativeOne?.positionOccupied,
   };
 
   const representativeTwoData = dataRepresentative(representativeTwo);
@@ -69,6 +73,11 @@ export default function PayPal({ am, className, contextData }: PayPalProps) {
         }),
       ]);
     });
+  }
+
+  async function addInvdividualMember() {
+    updateIndividualAdmin(individualAdmin);
+    createKin(kinInformation);
   }
 
   return (
@@ -107,7 +116,11 @@ export default function PayPal({ am, className, contextData }: PayPalProps) {
         onApprove={async (data: any, actions: any): Promise<void> => {
           return actions.order.capture().then((res: any) => {
             // console.log(res);
-            addGroup();
+            if (individualAdmin) {
+              addInvdividualMember()
+            } else if (createGroup) {
+              addGroup();
+            }
             return;
           });
         }}

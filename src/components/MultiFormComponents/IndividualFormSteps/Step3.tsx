@@ -5,8 +5,6 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useQuery } from "react-query";
 import { IndividualUserContext } from "../../../contexts/individualOnboardingContext";
-import { individualOndoarding } from "../../../apis/individualOndoarding";
-import request from "../../../apis/request";
 import Button from "../../Button";
 
 interface Step3Props {

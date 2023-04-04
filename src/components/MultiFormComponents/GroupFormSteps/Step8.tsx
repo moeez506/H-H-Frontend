@@ -20,15 +20,15 @@ const Step8 = ({ currentStep, handleNextStep }: Step8Props) => {
   const options: Option[] = [
     {
       label: "National Identity",
-      value: "National Identity",
+      value: "nationalIdentity",
     },
     {
       label: "passport",
       value: "passport",
     },
     {
-      label: "licsense",
-      value: "licsense",
+      label: "driverLisence",
+      value: "driverLisence",
     },
   ];
 

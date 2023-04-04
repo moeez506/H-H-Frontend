@@ -3,7 +3,7 @@
 
 import axios from "axios";
 
-const token = localStorage.getItem("authToken");
+const token = localStorage.getItem("auth-token");
 if (token !== null) {
   axios.defaults.headers["Authorization"] = `Bearer ${token}`;
 }

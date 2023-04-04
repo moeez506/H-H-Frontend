@@ -19,6 +19,7 @@ const Button = ({ text, route, onClick, isForm = false }: buttonProp) => {
   };
   return (
     <button
+      type="submit"
       onClick={handleClick}
       className={
         isForm

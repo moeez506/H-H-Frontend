@@ -6,7 +6,6 @@ import { useFormik } from "formik";
 import { loginSchema } from "../schemas";
 import { login } from "../apis/auth";
 import { Link, useNavigate } from "react-router-dom";
-import request from "../apis/request";
 import Loader from "../components/Loader";
 import ApiError from "../components/ApiError";
 
@@ -41,33 +40,12 @@ export default function Login() {
       },
       onSubmit: async (values, action) => {
         if (values.terms) {
-          try {
-            await request
-              .post("/auth/login", values)
-              .then((res) => {
-                console.log(res.data);
-                if (!res.data.user.isVerified) {
-                  setApiError("PLease first verify your email");
-                } else {
-                  if (!res.data) {
-                    setIsLoading(true);
-                  }
-                  localStorage.setItem("auth-token", res.data.token);
-                  navigate("/onboarding-type");
-                }
-              })
-              .catch((err) => {
-                // if (!err.response.data.msg) {
-                // setIsLoading(true);
-                // }
-                setApiError(err.response.data.msg);
-                // setIsLoading(false)
-              });
-          } catch (error: any) {
-            console.error(error);
-            throw new Error(
-              error.response.data.message || "Login failed. Please try again."
-            );
+          const response = await login(values);
+          if (response.status !== 200) {
+            setApiError(response.data.msg)
+          }
+          if (response.status === 200) {
+            navigate("/onboarding-type");
           }
         }
       },
