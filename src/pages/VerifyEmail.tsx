@@ -12,8 +12,8 @@ const VerificationScreen = () => {
     const params = useParams();
     const navigate = useNavigate()
     const [success, setSuccess] = useState<boolean>(false);
-    const [isLoading, setIsLoading] = useState<boolean>(false)
-    console.log("🚀 ~ file: VerifyEmail.tsx:16 ~ VerificationScreen ~ isLoading:", isLoading)
+    // const [isLoading, setIsLoading] = useState<boolean>(false)
+    // console.log("🚀 ~ file: VerifyEmail.tsx:16 ~ VerificationScreen ~ isLoading:", isLoading)
 
     // email token
     const verifcationToken = params.token;
@@ -23,14 +23,14 @@ const VerificationScreen = () => {
         try {
 
             const { data } = await request.get(`/auth/verify-email/${verifcationToken ?? ''}`)
-            
+
 
             console.log("🚀 ~ file: VerifyEmail.tsx:24 ~ verifyEmail ~ data:", data)
 
             if (data.message === "Successfully Verified") {
                 setSuccess(true);
             }
-            
+
         } catch (error: any) {
 
             setSuccess(false);
@@ -38,14 +38,14 @@ const VerificationScreen = () => {
         }
     }
 
-    if (isLoading) {
-        return <Loader />
-    }
+    // if (isLoading) {
+    //     return <Loader />
+    // }
 
     useEffect(() => {
 
         void verifyEmail(verifcationToken);
-        setIsLoading(true)
+        // setIsLoading(true)
     }, []);
 
     return (

@@ -32,11 +32,11 @@ const RouterConfig = () => {
         <Route path="/market-place" element={<MarketPlace />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/verify-email/:token" element={<VerificationScreen />} />
         <Route element={<ProtectedRoutes />}>
           <Route path="/onboarding-type" element={<OnboardingType />} />
           <Route path="/thank-you" element={<ThankYou />} />
 
-          <Route path="/verify-email/:token" element={<VerificationScreen />} />
           <Route
             path="/individual-onboarding"
             element={
