@@ -5,16 +5,16 @@ import { IndividualUserContext } from "../../../contexts/individualOnboardingCon
 import PayPal from "../../PayPal";
 // import PayPal from "../../PayPal";
 
-interface Step7Props {
+interface Step8Props {
     currentStep: number;
     handleNextStep: (step: number) => void;
 }
 
-export default function step7({ currentStep, handleNextStep }: Step7Props) {
+export default function Step8({ currentStep, handleNextStep }: Step8Props) {
     const context = useContext(IndividualUserContext);
     const { kinInformation, individualAdmin } = context;
 
-    console.log("🚀 ~ file: Step7.tsx:13 ~ step7 ~ context:", context)
+    console.log("🚀 ~ file: Step8.tsx:13 ~ step8 ~ context:", context)
     const onClick = () => {
         void createKin(kinInformation);
         void updateIndividualAdmin(individualAdmin);

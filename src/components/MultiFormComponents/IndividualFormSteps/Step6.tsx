@@ -94,7 +94,7 @@ const Step6 = ({ currentStep, handleNextStep }: Step6Props) => {
     onSubmit: (values) => {
       setKinInformation((prevState) => ({ ...prevState, ...values }));
       // console.log("🚀 ~ file: Step6.tsx:72 ~ Step6 ~ values:", values);
-      handleNextStep(7);
+      handleNextStep(8);
     },
   });
 

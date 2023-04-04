@@ -33,7 +33,7 @@ const steps = [
     title: "Health Status",
   },
   {
-    step: 7,
+    step: 8,
     title: "Payment",
   },
 ];
