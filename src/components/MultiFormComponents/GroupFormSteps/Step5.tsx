@@ -7,6 +7,7 @@ import { GroupUserContext } from "../../../contexts/groupOnboardingContext";
 import Button from "../../Button";
 import { checkUserEmail } from "../../../apis/groupOnboading";
 import ApiError from "../../ApiError";
+import Loader from "../../Loader";
 
 interface Step5Props {
   currentStep: number;
@@ -31,6 +32,7 @@ interface Values {
 const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
   const { representativeTwo, setRepresentativeTwo } = useContext(GroupUserContext);
   const [apiResponse, setApiResponse] = useState<string>()
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   console.log("🚀 ~ file: Step5.tsx:32 ~ Step5 ~ apiResponse:", apiResponse)
 
   const initialValues: Values = {
@@ -83,18 +85,25 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
       validationSchema,
       onSubmit: async (values) => {
         setRepresentativeTwo(values);
+        setIsLoading(true)
         try {
           const res = await checkUserEmail(values.email);
+          setIsLoading(false)
           setApiResponse(res);
           if (res === "Success") {
             handleNextStep(6);
           }
         } catch (err: any) {
+          setIsLoading(false)
           console.log(err.response.data);
         }
         console.log("🚀 ~ file: Step5.tsx:81 ~ onSubmit: ~ TEstttt:",)
       },
     });
+
+    if (isLoading) {
+      return <Loader />
+    }
 
   return (
     <div className="bg-white shadow-md rounded-2xl px-8 pt-6 pb-8 mb-4 max-w-xl mx-auto desktop:text-2xl laptop:text-xl tabletOnly:text-lg mobile:text-base  w-full">

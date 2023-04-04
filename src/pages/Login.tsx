@@ -40,28 +40,24 @@ export default function Login() {
         return errors;
       },
       onSubmit: async (values, action) => {
+        setIsLoading(true)
         if (values.terms) {
           try {
             await request
               .post("/auth/login", values)
               .then((res) => {
                 console.log(res.data);
+                setIsLoading(false)
                 if (!res.data.user.isVerified) {
                   setApiError("PLease first verify your email");
                 } else {
-                  if (!res.data) {
-                    setIsLoading(true);
-                  }
                   localStorage.setItem("auth-token", res.data.token);
                   navigate("/onboarding-type");
                 }
               })
               .catch((err) => {
-                // if (!err.response.data.msg) {
-                // setIsLoading(true);
-                // }
+                setIsLoading(false)
                 setApiError(err.response.data.msg);
-                // setIsLoading(false)
               });
           } catch (error: any) {
             console.error(error);
