@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
-import React from "react";
+import React, { useContext, useEffect, useRef } from "react";
+import { GroupUserContext } from "../../../contexts/groupOnboardingContext";
 import clsx from "clsx";
 import Button from "../../Button";
 
@@ -45,12 +46,42 @@ const steps = [
     title: "Payment",
   },
 ];
+
 export const SidebarGroup = ({ currentStep, handleNextStep }: SidebarProps) => {
+  const context = useContext(GroupUserContext);
+  const getOnTop = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (context !== undefined) {
+      getOnTop.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  });
+
+  const saveToLocalStorage = (boardingData: any) => {
+    localStorage.setItem("boardingDataGroup", JSON.stringify(boardingData));
+  };
+
+  const handleClick = () => {
+    saveToLocalStorage(context);
+  };
+
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("boardingDataGroup") ?? "{}");
+
+    context.setCameroonian(data.cameroonian ?? {});
+    context.setCreateGroup(data.createGroup ?? {});
+    context.setRepresentativeOne(data.representativeOne ?? {});
+    context.setRepresentativeTwo(data.representativeTwo ?? {});
+    context.setRepresentativeThree(data.representativeThree ?? {});
+  }, []);
+
   return (
     <>
-      <div className="bg-sky-800 ">
+      <div ref={getOnTop} className="bg-sky-800 ">
         <div className="flex justify-end mt-4 ">
-          <button className=" mr-10 rounded-lg text-white  bg-gradient-to-r from-orange to-yellow px-2 py-1 text-md w-36 md:text-lg font-bold">
+          <button
+            className=" mr-10 rounded-lg text-white  bg-gradient-to-r from-orange to-yellow px-2 py-1 text-md w-36 md:text-lg font-bold"
+            onClick={handleClick}
+          >
             SAVE
           </button>
         </div>
@@ -64,12 +95,14 @@ export const SidebarGroup = ({ currentStep, handleNextStep }: SidebarProps) => {
                     ? "bg-white text-black border-black border-primary-light-blue"
                     : "text-white"
                 )}
-                onClick={() => {
-                  handleNextStep(step.step);
-                }}
                 key={step.step}
               >
-                <span className={clsx(" lg:inline text-white uppercase", currentStep === step.step ? "text-black" : "")}>
+                <span
+                  className={clsx(
+                    " lg:inline text-white uppercase",
+                    currentStep === step.step ? "text-black" : ""
+                  )}
+                >
                   <p className="font-normal"> {step.step}</p>
                   {/* <p className="font-bold text-white">{step.title}</p> */}
                 </span>

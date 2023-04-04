@@ -29,9 +29,10 @@ interface Values {
 }
 
 const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
-  const { representativeTwo, setRepresentativeTwo } = useContext(GroupUserContext);
-  const [apiResponse, setApiResponse] = useState<string>()
-  console.log("🚀 ~ file: Step5.tsx:32 ~ Step5 ~ apiResponse:", apiResponse)
+  const { representativeTwo, setRepresentativeTwo } =
+    useContext(GroupUserContext);
+  const [apiResponse, setApiResponse] = useState<string>();
+  console.log("🚀 ~ file: Step5.tsx:32 ~ Step5 ~ apiResponse:", apiResponse);
 
   const initialValues: Values = {
     firstName: (representativeTwo as Values)?.firstName ?? "",
@@ -82,7 +83,14 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
       initialValues,
       validationSchema,
       onSubmit: async (values) => {
-        setRepresentativeTwo(values);
+        console.log("🚀 ~ file: Step5.tsx:85 ~ onSubmit: ~ values:", values);
+        setRepresentativeTwo((prevState) => {
+          console.log(
+            "🚀 ~ file: Step6.tsx:94 ~ Step6 ~ prevState:",
+            prevState
+          );
+          return { ...prevState, ...values };
+        });
         try {
           const res = await checkUserEmail(values.email);
           setApiResponse(res);
@@ -92,7 +100,7 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
         } catch (err: any) {
           console.log(err.response.data);
         }
-        console.log("🚀 ~ file: Step5.tsx:81 ~ onSubmit: ~ TEstttt:",)
+        // console.log("🚀 ~ file: Step5.tsx:81 ~ onSubmit: ~ TEstttt:",)
       },
     });
 
@@ -103,7 +111,9 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
       </h1>
 
       <form onSubmit={handleSubmit}>
-        {apiResponse === "Email already exist" ? <ApiError error={apiResponse} /> : null}
+        {apiResponse === "Email already exist" ? (
+          <ApiError error={apiResponse} />
+        ) : null}
         <div className="mb-4">
           <label
             className="block text-gray-700 font-bold mb-2"
@@ -121,9 +131,9 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
             onChange={handleChange}
           />
           {errors.firstName !== null &&
-            touched.firstName !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "firstName") &&
-            Object.prototype.hasOwnProperty.call(touched, "firstName") ? (
+          touched.firstName !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "firstName") &&
+          Object.prototype.hasOwnProperty.call(touched, "firstName") ? (
             <p className="text-[red]">{errors.firstName}</p>
           ) : null}
         </div>
@@ -161,9 +171,9 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
             onChange={handleChange}
           />
           {errors.lastName !== null &&
-            touched.lastName !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "lastName") &&
-            Object.prototype.hasOwnProperty.call(touched, "lastName") ? (
+          touched.lastName !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "lastName") &&
+          Object.prototype.hasOwnProperty.call(touched, "lastName") ? (
             <p className="text-[red]">{errors.lastName}</p>
           ) : null}
         </div>
@@ -184,9 +194,9 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
             onChange={handleChange}
           />
           {errors.positionOccupied !== null &&
-            touched.positionOccupied !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "positionOccupied") &&
-            Object.prototype.hasOwnProperty.call(touched, "positionOccupied") ? (
+          touched.positionOccupied !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "positionOccupied") &&
+          Object.prototype.hasOwnProperty.call(touched, "positionOccupied") ? (
             <p className="text-[red]">{errors.positionOccupied}</p>
           ) : null}
         </div>
@@ -204,9 +214,9 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
             onChange={handleChange}
           />
           {errors.dob !== null &&
-            touched.dob !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "dob") &&
-            Object.prototype.hasOwnProperty.call(touched, "dob") ? (
+          touched.dob !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "dob") &&
+          Object.prototype.hasOwnProperty.call(touched, "dob") ? (
             <p className="text-[red]">{errors.dob}</p>
           ) : null}
         </div>
@@ -227,9 +237,9 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
             onChange={handleChange}
           />
           {errors.placeOfBirth !== null &&
-            touched.placeOfBirth !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "placeOfBirth") &&
-            Object.prototype.hasOwnProperty.call(touched, "placeOfBirth") ? (
+          touched.placeOfBirth !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "placeOfBirth") &&
+          Object.prototype.hasOwnProperty.call(touched, "placeOfBirth") ? (
             <p className="text-[red]">{errors.placeOfBirth}</p>
           ) : null}
         </div>
@@ -250,9 +260,9 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
             onChange={handleChange}
           />
           {errors.nationality !== null &&
-            touched.nationality !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "nationality") &&
-            Object.prototype.hasOwnProperty.call(touched, "nationality") ? (
+          touched.nationality !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "nationality") &&
+          Object.prototype.hasOwnProperty.call(touched, "nationality") ? (
             <p className="text-[red]">{errors.nationality}</p>
           ) : null}
         </div>
@@ -273,12 +283,12 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
             onChange={handleChange}
           />
           {errors.countryOfResidence !== null &&
-            touched.countryOfResidence !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "countryOfResidence") &&
-            Object.prototype.hasOwnProperty.call(
-              touched,
-              "countryOfResidence"
-            ) ? (
+          touched.countryOfResidence !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "countryOfResidence") &&
+          Object.prototype.hasOwnProperty.call(
+            touched,
+            "countryOfResidence"
+          ) ? (
             <p className="text-[red]">{errors.countryOfResidence}</p>
           ) : null}
         </div>
@@ -299,9 +309,9 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
             onChange={handleChange}
           />
           {errors.address !== null &&
-            touched.address !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "address") &&
-            Object.prototype.hasOwnProperty.call(touched, "address") ? (
+          touched.address !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "address") &&
+          Object.prototype.hasOwnProperty.call(touched, "address") ? (
             <p className="text-[red]">{errors.address}</p>
           ) : null}
         </div>
@@ -322,9 +332,9 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
             onChange={handleChange}
           />
           {errors.zipCode !== null &&
-            touched.zipCode !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "zipCode") &&
-            Object.prototype.hasOwnProperty.call(touched, "zipCode") ? (
+          touched.zipCode !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "zipCode") &&
+          Object.prototype.hasOwnProperty.call(touched, "zipCode") ? (
             <p className="text-[red]">{errors.zipCode}</p>
           ) : null}
         </div>
@@ -345,9 +355,9 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
             onChange={handleChange}
           />
           {errors.homePhoneNumber !== null &&
-            touched.homePhoneNumber !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "homePhoneNumber") &&
-            Object.prototype.hasOwnProperty.call(touched, "homePhoneNumber") ? (
+          touched.homePhoneNumber !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "homePhoneNumber") &&
+          Object.prototype.hasOwnProperty.call(touched, "homePhoneNumber") ? (
             <p className="text-[red]">{errors.homePhoneNumber}</p>
           ) : null}
         </div>
@@ -368,9 +378,9 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
             onChange={handleChange}
           />
           {errors.cellNumber !== null &&
-            touched.cellNumber !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "cellNumber") &&
-            Object.prototype.hasOwnProperty.call(touched, "cellNumber") ? (
+          touched.cellNumber !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "cellNumber") &&
+          Object.prototype.hasOwnProperty.call(touched, "cellNumber") ? (
             <p className="text-[red]">{errors.cellNumber}</p>
           ) : null}
         </div>
@@ -388,9 +398,9 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
             onChange={handleChange}
           />
           {errors.email !== null &&
-            touched.email !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "email") &&
-            Object.prototype.hasOwnProperty.call(touched, "email") ? (
+          touched.email !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "email") &&
+          Object.prototype.hasOwnProperty.call(touched, "email") ? (
             <p className="text-[red]">{errors.email}</p>
           ) : null}
         </div>

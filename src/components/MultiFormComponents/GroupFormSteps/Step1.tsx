@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useState, useContext, useEffect, useRef } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { GroupUserContext } from "../../../contexts/groupOnboardingContext";
@@ -41,13 +41,11 @@ const Step1 = ({ currentStep, handleNextStep }: Step1Props) => {
   const [executiveMember, setExecutiveMember] = useState<string | null>(null);
 
   const { cameroonian, setCameroonian } = useContext(GroupUserContext);
-  const formRef = useRef<HTMLFormElement>(null);
   useEffect(() => {
     if (
       (cameroonian as { CameroonianGroup: string }).CameroonianGroup !==
       undefined
     ) {
-      formRef.current?.scrollIntoView({ behavior: "smooth" });
       setCameroonianGroup(
         (cameroonian as { CameroonianGroup: string }).CameroonianGroup
       );
@@ -140,7 +138,7 @@ const Step1 = ({ currentStep, handleNextStep }: Step1Props) => {
         <h1 className="text-3xl font-bold mb-6 text-center">
           Cameroonian Group
         </h1>
-        <form ref={formRef} onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <div className="mb-10">
             <p className="text-gray-800 font-bold mb-2">
               Question: This Group/Association is a Cameroonian Group ?

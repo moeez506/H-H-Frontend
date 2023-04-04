@@ -107,7 +107,7 @@ const Step4 = ({ currentStep, handleNextStep }: Step4Props) => {
       <form onSubmit={handleSubmit}>
         <div className="mb-6">
           <p className="text-gray-800 font-bold mb-2">
-            Which identiy would you like to provide:
+            Which identity would you like to provide:
           </p>
           {errors.identityCheck !== null &&
           touched.identityCheck !== null &&
