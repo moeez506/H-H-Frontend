@@ -8,7 +8,6 @@ import Button from "../../Button";
 import { checkUserEmail } from "../../../apis/groupOnboading";
 import ApiError from "../../ApiError";
 import Loader from "../../Loader";
-import Loader from "../../Loader";
 
 interface Step7Props {
   currentStep: number;

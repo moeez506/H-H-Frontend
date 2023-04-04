@@ -2,8 +2,9 @@
 import React, { useContext, useEffect, useRef } from "react";
 import { GroupUserContext } from "../../../contexts/groupOnboardingContext";
 import clsx from "clsx";
-import Button from "../../Button";
 import LogoutButton from "../../Logout";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface SidebarProps {
   currentStep: number;
@@ -63,6 +64,15 @@ export const SidebarGroup = ({ currentStep, handleNextStep }: SidebarProps) => {
 
   const handleClick = () => {
     saveToLocalStorage(context);
+    toast.success("Data saved successfully!", {
+      position: toast.POSITION.TOP_CENTER,
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   useEffect(() => {
