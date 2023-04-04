@@ -3,7 +3,8 @@ import React, { useEffect } from "react";
 import "./App.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 import RouterConfig from "./routes/RouterConfig";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function App() {
   const queryClient = new QueryClient();
   const googleTranslateElementInit = () => {
@@ -33,7 +34,8 @@ function App() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-       <RouterConfig />
+        <RouterConfig />
+        <ToastContainer />
       </QueryClientProvider>
     </>
   );

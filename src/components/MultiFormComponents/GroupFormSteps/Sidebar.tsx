@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useRef } from "react";
 import { GroupUserContext } from "../../../contexts/groupOnboardingContext";
 import clsx from "clsx";
 import Button from "../../Button";
+import LogoutButton from "../../Logout";
 
 interface SidebarProps {
   currentStep: number;
@@ -77,14 +78,15 @@ export const SidebarGroup = ({ currentStep, handleNextStep }: SidebarProps) => {
   return (
     <>
       <div ref={getOnTop} className="bg-sky-800 ">
-        <div className="flex justify-end mt-4 ">
+        <div className="flex justify-between m-4 mb-0 ">
           <button
-            className=" mr-10 rounded-lg text-white  bg-gradient-to-r from-orange to-yellow px-2 py-1 text-md w-36 md:text-lg font-bold"
+            className=" mr-10 rounded-lg text-white  text-xl bg-gradient-to-r from-orange to-yellow px-2 py-1 text-md w-36 md:text-lg font-bold"
             onClick={handleClick}
           >
             SAVE
           </button>
-        </div>
+          <LogoutButton />
+        </div>{" "}
         <aside className="bg-sky-800 bg-sidebar-image-mobile min-h-[172px] bg-cover bg-no-repeat lg:rounded-lg lg:bg-sidebar-image-desktop w-full">
           <nav className="flex flex-wrap justify-center lg:flex-col lg:w-60 lg:mx-auto overflow-x-auto">
             {steps.map((step) => (

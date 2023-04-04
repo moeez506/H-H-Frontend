@@ -3,7 +3,8 @@ import React, { useContext, useEffect, useRef } from "react";
 import { IndividualUserContext } from "../../../contexts/individualOnboardingContext";
 import clsx from "clsx";
 import LogoutButton from "../../Logout";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 interface SidebarProps {
   currentStep: number;
   handleNextStep: (step: number) => void;
@@ -31,6 +32,10 @@ const steps = [
   },
   {
     step: 6,
+    title: "",
+  },
+  {
+    step: 7,
     title: "Health Status",
   },
 ];
@@ -51,6 +56,15 @@ export const Sidebar = ({ currentStep, handleNextStep }: SidebarProps) => {
 
   const handleClick = () => {
     saveToLocalStorage(context);
+    toast.success("Data saved successfully!", {
+      position: toast.POSITION.TOP_CENTER,
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   useEffect(() => {
@@ -66,13 +80,14 @@ export const Sidebar = ({ currentStep, handleNextStep }: SidebarProps) => {
   }, []);
   return (
     <div ref={getOnTop} className="bg-sky-800 ">
-      <div className="flex justify-end mt-4 ">
+      <div className="flex justify-between m-4 mb-0 ">
         <button
-          className=" mr-10 rounded-lg text-white  bg-gradient-to-r from-orange to-yellow px-2 py-1 text-md w-36 md:text-lg font-bold"
+          className=" mr-10 rounded-lg text-white  text-xl bg-gradient-to-r from-orange to-yellow px-2 py-1 text-md w-36 md:text-lg font-bold"
           onClick={handleClick}
         >
           SAVE
         </button>
+        <LogoutButton />
       </div>
       <aside className="bg-sky-800 bg-sidebar-image-mobile min-h-[172px] bg-cover bg-no-repeat lg:rounded-lg lg:bg-sidebar-image-desktop w-full">
         <nav className="flex flex-wrap justify-center lg:flex-col lg:w-60 lg:mx-auto overflow-x-auto">
@@ -98,9 +113,7 @@ export const Sidebar = ({ currentStep, handleNextStep }: SidebarProps) => {
             </button>
           ))}
         </nav>
-        <div className="absolute top-0 right-0 mt-8 mr-4">
-          <LogoutButton />
-        </div>
+        <div className="absolute top-0 right-0 mt-8 mr-4"></div>
       </aside>
     </div>
   );

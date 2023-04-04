@@ -73,7 +73,9 @@ const Step4 = ({ currentStep, handleNextStep }: Step4Props) => {
     identityCheck: Yup.string().required(
       "Please check which identity you want to give"
     ),
-    identity: Yup.string().required("Identity is required"),
+    identity: Yup.string()
+      .min(7, "Identity must be minimum 7 digits")
+      .required("Identity is required"),
     countryOfIssuance: Yup.string().required("Country of Issuance is required"),
     placedIssuance: Yup.string().required("Place of Issuance is required"),
     dateOfIssuance: Yup.string().required("Date of Issuance is required"),
