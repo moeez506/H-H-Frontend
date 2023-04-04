@@ -8,6 +8,9 @@ import { IndividualUserContext } from "../../../contexts/individualOnboardingCon
 import { individualOndoarding } from "../../../apis/individualOndoarding";
 import request from "../../../apis/request";
 import Button from "../../Button";
+import Loader from "../../Loader";
+import { useRepresentiveData } from "../../../hooks/useRepresentativeData";
+import ApiError from "../../ApiError";
 
 interface Step3Props {
   currentStep: number;
@@ -84,15 +87,27 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
           individualAdmin
         );
         // await individualOndoarding(individualAdmin);
-        handleNextStep(4);
+        if (!isError) {
+          handleNextStep(4);
+        }
       },
     });
+
+  const { isLoading, data, error, isError }: any = useRepresentiveData();
+
+  if (isLoading) {
+    return <Loader />;
+  }
+  if (!isError && !isLoading) {
+    var { firstName, email, lastName } = data?.data?.user;
+  }
 
   return (
     <div className="bg-white shadow-md rounded-2xl px-8 pt-6 pb-8 mb-4 max-w-xl mx-auto desktop:text-2xl laptop:text-xl tabletOnly:text-lg mobile:text-base w-full">
       <h1 className="text-3xl font-bold mb-6 text-center">Your Info</h1>
 
       <form onSubmit={handleSubmit}>
+        {isError ? <ApiError error={error.response.data.msg} /> : null}
         <div className="mb-4 ">
           <label
             className="block text-gray-700 font-bold mb-2"
@@ -105,7 +120,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
             id="firstName"
             name="firstName"
             type="text"
-            value={values.firstName}
+            value={firstName}
             onBlur={handleBlur}
             onChange={handleChange}
           />
@@ -145,7 +160,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
             id="lastName"
             name="lastName"
             type="text"
-            value={values.lastName}
+            value={lastName}
             onBlur={handleBlur}
             onChange={handleChange}
           />
@@ -349,7 +364,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
             id="email"
             type="text"
             name="email"
-            value={values.email}
+            value={email}
             onBlur={handleBlur}
             onChange={handleChange}
           />

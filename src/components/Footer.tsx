@@ -22,7 +22,7 @@ const Footer = () => {
       <p className='mt-2 text-sm'>Branch Cameroon: Commercial Avenue, Bamenda,<br></br>North West Region, Cameroon</p>
       </div>
       <div className='flex'>
-      <img src={email} alt="no image found" className='w-[3%]'/>
+      {/* <img src={email} alt="no image found" className='w-[3%] h-[3%]'/> */}
       <p className='mt-2 text-sm'>info@holdinghandscommunitynetwork.org</p>
       </div>
       <div className='flex flex-col'>

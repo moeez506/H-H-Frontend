@@ -7,6 +7,7 @@ import { GroupUserContext } from "../../../contexts/groupOnboardingContext";
 import Button from "../../Button";
 import { checkUserEmail } from "../../../apis/groupOnboading";
 import ApiError from "../../ApiError";
+import Loader from "../../Loader";
 
 interface Step7Props {
   currentStep: number;
@@ -32,6 +33,7 @@ const Step7 = ({ currentStep, handleNextStep }: Step7Props) => {
   const { representativeThree, setRepresentativeThree } =
     useContext(GroupUserContext);
   const [apiResponse, setApiResponse] = useState<string>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const initialValues: Values = {
     firstName: (representativeThree as Values)?.firstName ?? "",
@@ -87,15 +89,21 @@ const Step7 = ({ currentStep, handleNextStep }: Step7Props) => {
         try {
           const res = await checkUserEmail(values.email);
           setApiResponse(res);
+          setIsLoading(false);
           if (res === "Success") {
             handleNextStep(8);
           }
         } catch (err: any) {
+          setIsLoading(false);
           console.log(err.response.data);
         }
         console.log("🚀 ~ file: Step5.tsx:70 ~ Step5 ~ values:", values);
       },
     });
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <div className="bg-white shadow-md rounded-2xl px-8 pt-6 pb-8 mb-4 max-w-xl mx-auto desktop:text-2xl laptop:text-xl tabletOnly:text-lg mobile:text-base  w-full">

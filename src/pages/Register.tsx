@@ -9,6 +9,7 @@ import request from "../apis/request";
 import ApiSuccess from "../components/ApiSuccess";
 import ApiError from "../components/ApiError";
 import { Link } from "react-router-dom";
+import Loader from "../components/Loader";
 
 interface SignUpFormValues {
   firstName: string;
@@ -31,30 +32,25 @@ const initialValues = {
 };
 export default function Register() {
   const [apiSuccess, setApiSuccess] = useState<string>();
-  // console.log(
-  //   "🚀 ~ file: Register.tsx:22 ~ Register ~ apiSuccess:",
-  //   apiSuccess
-  // );
+  console.log("🚀 ~ file: Register.tsx:35 ~ Register ~ apiSuccess:", apiSuccess)
   const [apiError, setApiError] = useState<string>();
+  console.log("🚀 ~ file: Register.tsx:36 ~ Register ~ apiError:", apiError)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const registerUser = async (values: any) => {
     try {
       const response = await request.post("/auth/register", values);
-      // console.log(
-      //   "🚀 ~ file: auth.ts:25 ~ registerUser ~ data:",
-      //   response.data.message
-      // );
+      setIsLoading(false)
       setApiSuccess(response.data.message);
 
       return response.data;
     } catch (error: any) {
-      if (error.response) {
-        // console.log(error.response.data, "working");
+      // if (error.response) {
+        setApiSuccess("")
         setApiError(error.response.data.msg);
-      } else {
-        // console.error(error);
-        // handle other types of errors
-      }
+        console.log(error.response.data.msg)
+      // } 
+      setIsLoading(false)
       throw new Error(
         error.response.data.message || "Registration failed. Please try again."
       );
@@ -73,13 +69,17 @@ export default function Register() {
         return errors;
       },
       onSubmit: async (values, action) => {
+        setIsLoading(true)
         if (values.terms) {
           await registerUser(values);
         }
       },
 
     });
-  // console.log(errors);
+  
+    if (isLoading) {
+      return <Loader />
+    }
 
   return (
     <section className="">

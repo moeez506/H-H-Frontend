@@ -393,7 +393,7 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
                 name="otherRelationship"
                 id="otherRelationship"
                 placeholder="Enter Relationship"
-                className="w-full border rounded px-3 py-2 mb-2 border border-black rounded"
+                className="w-full border rounded px-3 py-2 mb-2 border-black"
               />
             </div>
           )}

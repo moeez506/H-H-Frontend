@@ -9,6 +9,7 @@ import { useRepresentiveData } from "../../../hooks/useRepresentativeData";
 import Input from "../../Input";
 import Button from "../../Button";
 import Loader from "../../Loader";
+import ApiError from "../../ApiError";
 
 interface Step3Props {
   currentStep: number;
@@ -91,15 +92,14 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
       },
     });
 
-  const { isLoading, data } = useRepresentiveData();
-  // console.log("🚀 ~ file: Step3.tsx:83 ~ Step3 ~ error:", error)
-  // console.log("🚀 ~ file: Step3.tsx:83 ~ Step3 ~ data:", data)
+  const { isLoading, data, isError, error }: any = useRepresentiveData();
 
   if (isLoading) {
     return <Loader />;
   }
-
-  const { firstName, email, lastName } = data?.data?.user;
+  if (!isError && !isLoading) {
+    var { firstName, email, lastName } = data?.data?.user;
+  }
 
   return (
     <>
@@ -109,6 +109,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
         </h1>
 
         <form onSubmit={handleSubmit}>
+        {isError ? <ApiError error={error.response.data.msg} /> : null}
           <div className="mb-4">
             <label
               className="block text-gray-700 font-bold mb-2"
