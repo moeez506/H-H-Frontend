@@ -11,6 +11,7 @@ import {
   updateRepresentative,
 } from "../apis/groupOnboading";
 import { dataRepresentative } from "../utils/representativeData";
+import PayPalSpinner from "./PayPalSpinner";
 
 interface PayPalProps {
   className: string;
@@ -77,6 +78,7 @@ export default function PayPal({ am, className, contextData }: PayPalProps) {
         "client-id": `${process.env.REACT_APP_PAYPAL_CLIENT_ID as string}`,
       }}
     >
+      <PayPalSpinner />
       <PayPalButtons
         style={{
           layout: "horizontal",
@@ -114,10 +116,6 @@ export default function PayPal({ am, className, contextData }: PayPalProps) {
         onError={(err) => {
           console.log(err);
           window.location.href = "our page";
-        }}
-        onCancel={(data) => {
-          console.log(data);
-          // Show a cancel page or go to another page
         }}
       />
     </PayPalScriptProvider>
