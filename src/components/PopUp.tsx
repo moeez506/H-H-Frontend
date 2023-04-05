@@ -38,9 +38,9 @@ const PopUp = () => {
   }, []);
 
   return (
-    <div className={`fixed inset-0 backdrop-blur-2xl mobile:hidden`}>
-      <div className="flex items-center justify-center h-screen">
-        <div className="h-[500px] w-[650px]  bg-white shadow-md rounded-3xl shadow-gray-600 mx-auto flex flex-col justify-center items-center">
+    <div className={`fixed inset-0 bg-home mobile:hidden`}>
+      <div className="flex items-center justify-center backdrop-blur-3xl h-screen">
+        <div className="h-[500px] w-[650px] shadow-md rounded-3xl shadow-gray-600 mx-auto flex flex-col justify-center items-center">
           <img src={logo} alt="no image found" className="w-1/3" />
           <div className="flex pl-24 pr-">
             <div className="">

@@ -25,6 +25,7 @@ module.exports = {
         "program-hero": "url('/src/assets/program-hero.jpg')",
         "program-hero-mobile": "url('/src/assets/program-hero-mobile.png')",
         contact: "url('/src/assets/Rectangle 52.png')",
+        home: "url('/src/assets/home.jpeg')",
       }),
     },
     screens: {
