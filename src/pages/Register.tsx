@@ -8,7 +8,7 @@ import { signUpSchema } from "../schemas";
 import request from "../apis/request";
 import ApiSuccess from "../components/ApiSuccess";
 import ApiError from "../components/ApiError";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
 
 interface SignUpFormValues {
@@ -20,8 +20,6 @@ interface SignUpFormValues {
   terms: boolean;
 }
 
-
-
 const initialValues = {
   firstName: "",
   lastName: "",
@@ -31,26 +29,30 @@ const initialValues = {
   terms: false,
 };
 export default function Register() {
+  const navigate = useNavigate();
   const [apiSuccess, setApiSuccess] = useState<string>();
-  console.log("🚀 ~ file: Register.tsx:35 ~ Register ~ apiSuccess:", apiSuccess)
+  console.log(
+    "🚀 ~ file: Register.tsx:35 ~ Register ~ apiSuccess:",
+    apiSuccess
+  );
   const [apiError, setApiError] = useState<string>();
-  console.log("🚀 ~ file: Register.tsx:36 ~ Register ~ apiError:", apiError)
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+  console.log("🚀 ~ file: Register.tsx:36 ~ Register ~ apiError:", apiError);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const registerUser = async (values: any) => {
     try {
       const response = await request.post("/auth/register", values);
-      setIsLoading(false)
+      setIsLoading(false);
       setApiSuccess(response.data.message);
 
       return response.data;
     } catch (error: any) {
       // if (error.response) {
-        setApiSuccess("")
-        setApiError(error.response.data.msg);
-        console.log(error.response.data.msg)
-      // } 
-      setIsLoading(false)
+      setApiSuccess("");
+      setApiError(error.response.data.msg);
+      console.log(error.response.data.msg);
+      // }
+      setIsLoading(false);
       throw new Error(
         error.response.data.message || "Registration failed. Please try again."
       );
@@ -69,17 +71,16 @@ export default function Register() {
         return errors;
       },
       onSubmit: async (values, action) => {
-        setIsLoading(true)
+        setIsLoading(true);
         if (values.terms) {
           await registerUser(values);
         }
       },
-
     });
-  
-    if (isLoading) {
-      return <Loader />
-    }
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <section className="">
@@ -124,7 +125,7 @@ export default function Register() {
                   onBlur={handleBlur}
                 />
                 {errors.firstName !== undefined &&
-                  touched.firstName === true ? (
+                touched.firstName === true ? (
                   <p className="text-red-500 text-sm ">{errors.firstName}</p>
                 ) : (
                   <p></p>
@@ -205,7 +206,7 @@ export default function Register() {
                   onBlur={handleBlur}
                 />
                 {errors.confirm_password !== undefined &&
-                  touched.confirm_password === true ? (
+                touched.confirm_password === true ? (
                   <p className="text-red-500 text-sm ">
                     {errors.confirm_password}
                   </p>
@@ -228,16 +229,20 @@ export default function Register() {
                     I accept the{" "}
                     <a
                       className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                      href="#"
+                      // href="#"
+                      onClick={() => {
+                        navigate("/termsandconditions");
+                      }}
                     >
                       Terms and Conditions
                     </a>
                   </label>
                 </div>
-
               </div>
               {errors.terms !== undefined && touched.terms === true ? (
-                <p className="text-red-500 text-sm ">You must agree to the terms and conditions</p>
+                <p className="text-red-500 text-sm ">
+                  You must agree to the terms and conditions
+                </p>
               ) : null}
               <div className="flex justify-center items-center">
                 <button
@@ -263,5 +268,3 @@ export default function Register() {
     </section>
   );
 }
-
-

@@ -28,8 +28,8 @@ const Step4 = ({ currentStep, handleNextStep }: Step4Props) => {
       value: "passport",
     },
     {
-      label: "driverLisence",
-      value: "driverLisence",
+      label: "Driver license",
+      value: "Driver license",
     },
   ];
 

@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import user from "../assets/User.png";
 import Pass from "../assets/Lock.png";
 import { useFormik } from "formik";
@@ -9,6 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
 import ApiError from "../components/ApiError";
 import request from "../apis/request";
+import TermsAndConditions from "../components/TermsAndConditions";
 
 interface LoginProp {
   email: string;
@@ -27,7 +28,8 @@ export default function Login() {
   const navigate = useNavigate();
   const [apiError, setApiError] = useState<string>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  console.log("🚀 ~ file: Login.tsx:28 ~ Login ~ isLoading:", isLoading)
+  const [isOpen, setIsOpen] = useState(false);
+  console.log("🚀 ~ file: Login.tsx:28 ~ Login ~ isLoading:", isLoading);
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik<LoginProp>({
       initialValues,
@@ -40,14 +42,14 @@ export default function Login() {
         return errors;
       },
       onSubmit: async (values, action) => {
-        setIsLoading(true)
+        setIsLoading(true);
         if (values.terms) {
           try {
             await request
               .post("/auth/login", values)
               .then((res) => {
                 console.log(res.data);
-                setIsLoading(false)
+                setIsLoading(false);
                 if (!res.data.user.isVerified) {
                   setApiError("PLease first verify your email");
                 } else {
@@ -56,7 +58,7 @@ export default function Login() {
                 }
               })
               .catch((err) => {
-                setIsLoading(false)
+                setIsLoading(false);
                 setApiError(err.response.data.msg);
               });
           } catch (error: any) {
@@ -68,6 +70,7 @@ export default function Login() {
         }
       },
     });
+
   console.log("errors:", errors);
   return (
     <>
@@ -88,9 +91,7 @@ export default function Login() {
                 action="#"
                 onSubmit={handleSubmit}
               >
-                {apiError ? (
-                  <ApiError error={apiError} />
-                ) : null}
+                {apiError ? <ApiError error={apiError} /> : null}
                 <div>
                   <label className="block mb-2 text-sm font-medium text-black">
                     Email
@@ -126,7 +127,7 @@ export default function Login() {
                     onBlur={handleBlur}
                   />
                   {errors.password !== undefined &&
-                    touched.password === true ? (
+                  touched.password === true ? (
                     <p className="text-red-500 text-sm ">{errors.password}</p>
                   ) : null}
                 </div>
@@ -147,17 +148,25 @@ export default function Login() {
                   <div className="ml-3 text-sm">
                     <label className="font-light">
                       I accept the{" "}
-                      <a
+                      <button
                         className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                        href="#"
+                        onClick={() => {
+                          setIsOpen(true);
+                        }}
                       >
                         Terms and Conditions
-                      </a>
+                      </button>
                     </label>
                   </div>
+
+                  {isOpen && (
+                    <TermsAndConditions isOpen={isOpen} setIsOpen={setIsOpen} />
+                  )}
                 </div>
                 {errors.terms !== undefined && touched.terms === true ? (
-                  <p className="text-red-500 text-sm mt-1">You must agree to the terms and conditions</p>
+                  <p className="text-red-500 text-sm mt-1">
+                    You must agree to the terms and conditions
+                  </p>
                 ) : null}
                 <div className="flex justify-center items-center">
                   <button
@@ -170,7 +179,12 @@ export default function Login() {
 
                 <p className="text-sm font-light text-gray-500 ">
                   {`Don't have an account? `}{" "}
-                  <Link to={'/register'} className="font-medium text-primary-600 hover:underline dark:text-primary-500">SignUp here</Link>
+                  <Link
+                    to={"/register"}
+                    className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                  >
+                    SignUp here
+                  </Link>
                 </p>
               </form>
             </div>

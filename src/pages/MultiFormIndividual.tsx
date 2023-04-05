@@ -8,7 +8,6 @@ import {
   Step5,
   Step6,
   Step7,
-  Step8,
   Sidebar,
 } from "../components/MultiFormComponents/IndividualFormSteps";
 import { ThankYou } from "../components/MultiFormComponents/ThankYou";
@@ -35,8 +34,7 @@ function MultiFormIndividual() {
           {step === 5 && <Step5 currentStep={step} handleNextStep={nextStep} />}
           {step === 6 && <Step6 currentStep={step} handleNextStep={nextStep} />}
           {step === 7 && <Step7 currentStep={step} handleNextStep={nextStep} />}
-          {step === 8 && <Step8 currentStep={step} handleNextStep={nextStep} />}
-          {step === 9 && <ThankYou />}
+          {step === 8 && <ThankYou />}
         </div>
       </div>
     </main>

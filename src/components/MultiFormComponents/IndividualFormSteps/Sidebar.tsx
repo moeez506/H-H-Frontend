@@ -28,18 +28,14 @@ const steps = [
   },
   {
     step: 5,
-    title: "Kin info",
+    title: "Next Of Kin / Successor information",
   },
   {
     step: 6,
-    title: "",
-  },
-  {
-    step: 7,
     title: "Health Status",
   },
   {
-    step: 8,
+    step: 7,
     title: "Payment",
   },
 ];
