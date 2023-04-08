@@ -139,7 +139,7 @@ export default function Navbar() {
                 }
               >
                 <Link
-                  to={"#"}
+                  to={"/market-place"}
                   onClick={() => {
                     openClose();
                   }}

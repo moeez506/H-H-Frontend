@@ -25,8 +25,10 @@ import PopUp from "../components/PopUp";
 const RouterConfig = () => {
   return (
     <>
+      <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<PopUp />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/programs" element={<Programs />} />

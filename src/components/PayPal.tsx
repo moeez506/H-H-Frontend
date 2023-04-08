@@ -151,10 +151,6 @@ export default function PayPal({ am, className, contextData }: PayPalProps) {
             // console.log(err);
             window.location.href = "our page";
           }}
-          onError={(err) => {
-            console.log(err);
-            window.location.href = "our page";
-          }}
         />
       </PayPalScriptProvider>
     </>

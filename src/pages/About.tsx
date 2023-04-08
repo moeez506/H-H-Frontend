@@ -10,7 +10,7 @@ import Navbar from '../components/navbar/Navbar'
 const About = () => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <Navbar />
       <Aboutbody />
       <Contact />

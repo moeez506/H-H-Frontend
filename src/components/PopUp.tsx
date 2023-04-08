@@ -22,6 +22,8 @@ const PopUp = () => {
     navigate("/home");
   }
   function toggleHiddenFrench() {
+    console.log("french");
+
     setDefaultLanguage();
     navigate("/home");
     // setIsHidden(!isHidden);

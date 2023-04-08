@@ -13,7 +13,7 @@ const Home = () => {
   return (
     // <div>home</div>
     <>
-      <Header />
+      {/* <Header /> */}
       <Navbar />
       <Hero />
       <Body />

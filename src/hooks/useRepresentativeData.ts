@@ -4,8 +4,8 @@
 import { useQuery } from "react-query";
 import request from "../apis/request";
 
-const representativeData = () => {
-  return request.get(`/group/one-representative`);
+const representativeData = async () => {
+  return await request.get(`/group/one-representative`);
 };
 
 export const useRepresentiveData = () => {

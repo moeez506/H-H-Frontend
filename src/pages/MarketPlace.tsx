@@ -8,18 +8,18 @@ import Navbar from '../components/navbar/Navbar'
 const MarketPlace = () => {
   return (
     <>
-    <Header />
-    <Navbar />
-    <div>
+      {/* <Header /> */}
+      <Navbar />
+      <div>
         <h1 className='text-center mt-14 text-orange text-6xl font-bold'>Coming Soon...</h1>
-    </div>
-    <br></br>
-    <br></br>
-    <br></br>
-    <br></br>
-    <br></br>
-    <Contact />
-    <Footer />
+      </div>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <Contact />
+      <Footer />
     </>
   )
 }

@@ -12,12 +12,12 @@ import Navbar from '../components/navbar/Navbar'
 const ContactUS = () => {
   return (
     <>
-    <Header />
-    <Navbar />
-    <ContactBody />
-    <Contact />
-    <Footer />
-   
+      {/* <Header /> */}
+      <Navbar />
+      <ContactBody />
+      <Contact />
+      <Footer />
+
     </>
   )
 }

@@ -90,9 +90,9 @@ const Step6 = ({ currentStep, handleNextStep }: Step6Props) => {
               should be aware of ?
             </p>
             {errors.anyHealthIssue !== null &&
-            touched.anyHealthIssue !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "anyHealthIssue") &&
-            Object.prototype.hasOwnProperty.call(touched, "anyHealthIssue") ? (
+              touched.anyHealthIssue !== null &&
+              Object.prototype.hasOwnProperty.call(errors, "anyHealthIssue") &&
+              Object.prototype.hasOwnProperty.call(touched, "anyHealthIssue") ? (
               <p className="text-[red]">{errors.anyHealthIssue}</p>
             ) : null}
             {options.map((option) => (
@@ -130,15 +130,15 @@ const Step6 = ({ currentStep, handleNextStep }: Step6Props) => {
                     Specify pre-existing health issue:
                   </label>
                   {errors.specifyHealthIsuue !== null &&
-                  touched.specifyHealthIsuue !== null &&
-                  Object.prototype.hasOwnProperty.call(
-                    errors,
-                    "specifyHealthIsuue"
-                  ) &&
-                  Object.prototype.hasOwnProperty.call(
-                    touched,
-                    "specifyHealthIsuue"
-                  ) ? (
+                    touched.specifyHealthIsuue !== null &&
+                    Object.prototype.hasOwnProperty.call(
+                      errors,
+                      "specifyHealthIsuue"
+                    ) &&
+                    Object.prototype.hasOwnProperty.call(
+                      touched,
+                      "specifyHealthIsuue"
+                    ) ? (
                     <p className="text-[red]">{errors.specifyHealthIsuue}</p>
                   ) : null}
                   <input
@@ -165,15 +165,15 @@ const Step6 = ({ currentStep, handleNextStep }: Step6Props) => {
               illness at the time of this application?
             </p>
             {errors.recentTerminalIllness !== null &&
-            touched.recentTerminalIllness !== null &&
-            Object.prototype.hasOwnProperty.call(
-              errors,
-              "recentTerminalIllness"
-            ) &&
-            Object.prototype.hasOwnProperty.call(
-              touched,
-              "recentTerminalIllness"
-            ) ? (
+              touched.recentTerminalIllness !== null &&
+              Object.prototype.hasOwnProperty.call(
+                errors,
+                "recentTerminalIllness"
+              ) &&
+              Object.prototype.hasOwnProperty.call(
+                touched,
+                "recentTerminalIllness"
+              ) ? (
               <p className="text-[red]">{errors.recentTerminalIllness}</p>
             ) : null}
             {options.map((option) => (
@@ -217,15 +217,15 @@ const Step6 = ({ currentStep, handleNextStep }: Step6Props) => {
                     Specify recent terminal illness:
                   </label>
                   {errors.specifyRecentTerminalIllness !== null &&
-                  touched.specifyRecentTerminalIllness !== null &&
-                  Object.prototype.hasOwnProperty.call(
-                    errors,
-                    "specifyRecentTerminalIllness"
-                  ) &&
-                  Object.prototype.hasOwnProperty.call(
-                    touched,
-                    "specifyRecentTerminalIllness"
-                  ) ? (
+                    touched.specifyRecentTerminalIllness !== null &&
+                    Object.prototype.hasOwnProperty.call(
+                      errors,
+                      "specifyRecentTerminalIllness"
+                    ) &&
+                    Object.prototype.hasOwnProperty.call(
+                      touched,
+                      "specifyRecentTerminalIllness"
+                    ) ? (
                     <p className="text-[red]">
                       {errors.specifyRecentTerminalIllness}
                     </p>
@@ -249,6 +249,13 @@ const Step6 = ({ currentStep, handleNextStep }: Step6Props) => {
             </div>
           )}
           <Button text="Next" isForm />
+          <Button
+            text="Go Back"
+            isForm
+            onClick={() => {
+              handleNextStep(5);
+            }}
+          />
         </form>
       </div>
     </>

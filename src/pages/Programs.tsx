@@ -10,12 +10,12 @@ import ProgramBody from '../components/ProgramBody'
 const Programs = () => {
   return (
     <>
-     <Header />
-     <Navbar />
-     <ProgramBody />
-     <Contact />
-     <Footer />
-      
+      {/* <Header /> */}
+      <Navbar />
+      <ProgramBody />
+      <Contact />
+      <Footer />
+
     </>
   )
 }

@@ -105,11 +105,11 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
     <>
       <div className="bg-white shadow-md rounded-2xl px-8 pt-6 pb-8 mb-4 max-w-xl mx-auto   desktop:text-2xl laptop:text-xl tabletOnly:text-lg mobile:text-base w-full">
         <h1 className="text-3xl font-bold mb-6 text-center">
-          Group Admin Info
+          REPRESENTATIVE NO. 1
         </h1>
 
         <form onSubmit={handleSubmit}>
-        {isError ? <ApiError error={error.response.data.msg} /> : null}
+          {isError ? <ApiError error={error.response.data.msg} /> : null}
           <div className="mb-4">
             <label
               className="block text-gray-700 font-bold mb-2"
@@ -186,12 +186,12 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               onChange={handleChange}
             />
             {errors.positionOccupied !== null &&
-            touched.positionOccupied !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "positionOccupied") &&
-            Object.prototype.hasOwnProperty.call(
-              touched,
-              "positionOccupied"
-            ) ? (
+              touched.positionOccupied !== null &&
+              Object.prototype.hasOwnProperty.call(errors, "positionOccupied") &&
+              Object.prototype.hasOwnProperty.call(
+                touched,
+                "positionOccupied"
+              ) ? (
               <p className="text-[red]">{errors.positionOccupied}</p>
             ) : null}
           </div>
@@ -209,9 +209,9 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               onChange={handleChange}
             />
             {errors.dob !== null &&
-            touched.dob !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "dob") &&
-            Object.prototype.hasOwnProperty.call(touched, "dob") ? (
+              touched.dob !== null &&
+              Object.prototype.hasOwnProperty.call(errors, "dob") &&
+              Object.prototype.hasOwnProperty.call(touched, "dob") ? (
               <p className="text-[red]">{errors.dob}</p>
             ) : null}
           </div>
@@ -232,9 +232,9 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               onChange={handleChange}
             />
             {errors.placeOfBirth !== null &&
-            touched.placeOfBirth !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "placeOfBirth") &&
-            Object.prototype.hasOwnProperty.call(touched, "placeOfBirth") ? (
+              touched.placeOfBirth !== null &&
+              Object.prototype.hasOwnProperty.call(errors, "placeOfBirth") &&
+              Object.prototype.hasOwnProperty.call(touched, "placeOfBirth") ? (
               <p className="text-[red]">{errors.placeOfBirth}</p>
             ) : null}
           </div>
@@ -255,9 +255,9 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               onChange={handleChange}
             />
             {errors.nationality !== null &&
-            touched.nationality !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "nationality") &&
-            Object.prototype.hasOwnProperty.call(touched, "nationality") ? (
+              touched.nationality !== null &&
+              Object.prototype.hasOwnProperty.call(errors, "nationality") &&
+              Object.prototype.hasOwnProperty.call(touched, "nationality") ? (
               <p className="text-[red]">{errors.nationality}</p>
             ) : null}
           </div>
@@ -278,15 +278,15 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               onChange={handleChange}
             />
             {errors.countryOfResidence !== null &&
-            touched.countryOfResidence !== null &&
-            Object.prototype.hasOwnProperty.call(
-              errors,
-              "countryOfResidence"
-            ) &&
-            Object.prototype.hasOwnProperty.call(
-              touched,
-              "countryOfResidence"
-            ) ? (
+              touched.countryOfResidence !== null &&
+              Object.prototype.hasOwnProperty.call(
+                errors,
+                "countryOfResidence"
+              ) &&
+              Object.prototype.hasOwnProperty.call(
+                touched,
+                "countryOfResidence"
+              ) ? (
               <p className="text-[red]">{errors.countryOfResidence}</p>
             ) : null}
           </div>
@@ -307,9 +307,9 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               onChange={handleChange}
             />
             {errors.address !== null &&
-            touched.address !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "address") &&
-            Object.prototype.hasOwnProperty.call(touched, "address") ? (
+              touched.address !== null &&
+              Object.prototype.hasOwnProperty.call(errors, "address") &&
+              Object.prototype.hasOwnProperty.call(touched, "address") ? (
               <p className="text-[red]">{errors.address}</p>
             ) : null}
           </div>
@@ -330,9 +330,9 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               onChange={handleChange}
             />
             {errors.zipCode !== null &&
-            touched.zipCode !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "zipCode") &&
-            Object.prototype.hasOwnProperty.call(touched, "zipCode") ? (
+              touched.zipCode !== null &&
+              Object.prototype.hasOwnProperty.call(errors, "zipCode") &&
+              Object.prototype.hasOwnProperty.call(touched, "zipCode") ? (
               <p className="text-[red]">{errors.zipCode}</p>
             ) : null}
           </div>
@@ -353,9 +353,9 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               onChange={handleChange}
             />
             {errors.homePhoneNumber !== null &&
-            touched.homePhoneNumber !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "homePhoneNumber") &&
-            Object.prototype.hasOwnProperty.call(touched, "homePhoneNumber") ? (
+              touched.homePhoneNumber !== null &&
+              Object.prototype.hasOwnProperty.call(errors, "homePhoneNumber") &&
+              Object.prototype.hasOwnProperty.call(touched, "homePhoneNumber") ? (
               <p className="text-[red]">{errors.homePhoneNumber}</p>
             ) : null}
           </div>
@@ -376,9 +376,9 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               onChange={handleChange}
             />
             {errors.cellNumber !== null &&
-            touched.cellNumber !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "cellNumber") &&
-            Object.prototype.hasOwnProperty.call(touched, "cellNumber") ? (
+              touched.cellNumber !== null &&
+              Object.prototype.hasOwnProperty.call(errors, "cellNumber") &&
+              Object.prototype.hasOwnProperty.call(touched, "cellNumber") ? (
               <p className="text-[red]">{errors.cellNumber}</p>
             ) : null}
           </div>
