@@ -16,6 +16,7 @@ import { useState } from "react";
 import ApiSuccess from "./ApiSuccess";
 import ApiError from "./ApiError";
 import { createKin, updateIndividualAdmin } from "../apis/individualOndoarding";
+import PayPalSpinner from "./PayPalSpinner";
 
 interface PayPalProps {
   className: string;
@@ -103,6 +104,7 @@ export default function PayPal({ am, className, contextData }: PayPalProps) {
           "client-id": `${process.env.REACT_APP_PAYPAL_CLIENT_ID as string}`,
         }}
       >
+        <PayPalSpinner />
         <PayPalButtons
           style={{
             layout: "horizontal",
@@ -147,6 +149,10 @@ export default function PayPal({ am, className, contextData }: PayPalProps) {
             console.log("🚀 ~ file: PayPal.tsx:117 ~ PayPal ~ err:", err)
 
             // console.log(err);
+            window.location.href = "our page";
+          }}
+          onError={(err) => {
+            console.log(err);
             window.location.href = "our page";
           }}
         />

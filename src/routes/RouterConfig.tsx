@@ -20,6 +20,7 @@ import {
   MarketPlace,
 } from "../pages";
 import ProtectedRoutes from "./ProtectedRoutes";
+import PopUp from "../components/PopUp";
 
 const RouterConfig = () => {
   return (
