@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Header from "../components/Header";
 import { ThankYou } from "../components/MultiFormComponents/ThankYou";
 import { GroupProvider } from "../contexts/groupOnboardingContext";
@@ -23,9 +23,22 @@ import ProtectedRoutes from "./ProtectedRoutes";
 import PopUp from "../components/PopUp";
 
 const RouterConfig = () => {
+  const location = useLocation();
+  const shouldRenderHeader = ![
+    "/individual-onboarding",
+    "/group-onboarding",
+    "/thank-you",
+    "/login",
+    "/register",
+    "/onboarding-type",
+  ].includes(location.pathname);
+
+  console.log(shouldRenderHeader);
+
   return (
     <>
-      <Header />
+      {shouldRenderHeader && <Header />}
+
       <Routes>
         <Route path="/" element={<PopUp />} />
         <Route path="/home" element={<Home />} />
