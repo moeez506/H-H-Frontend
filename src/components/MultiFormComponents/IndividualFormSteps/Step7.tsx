@@ -45,7 +45,11 @@ export default function Step7({ currentStep, handleNextStep }: Step7Props) {
       </div>
 
       {isOpen && (
-        <TermsAndConditions isOpen={isOpen} setIsOpen={setIsOpen} />
+        <TermsAndConditions
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          isPayment={true}
+        />
       )}
       <h3 className="text-xl mb-5">Click below to pay the dues</h3>
       <PayPal className="" am="5000" contextData={context} />

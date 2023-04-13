@@ -24,6 +24,7 @@ interface Values {
   cellNumber: string;
   email: string;
   relationship: string;
+  otherRelationship: string;
 }
 
 const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
@@ -45,6 +46,7 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
     cellNumber: (kinInformation as Values)?.cellNumber ?? "",
     email: (kinInformation as Values)?.email ?? "",
     relationship: (kinInformation as Values)?.relationship ?? "",
+    otherRelationship: (kinInformation as Values)?.otherRelationship ?? "",
   };
 
   const validationSchema = Yup.object({
@@ -69,6 +71,7 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
       .required("Cell Number is required"),
     email: Yup.string().email().required("Email is required"),
     relationship: Yup.string().required("Relatioship is required"),
+    otherRelationship: Yup.string().required("Other Relationship is required"),
   });
 
   //TODO cell no validation and zip code
@@ -96,7 +99,7 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
             className="block text-gray-700 font-bold mb-2"
             htmlFor="firstName"
           >
-            First Name
+            First Name*
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -136,7 +139,7 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
             className="block text-gray-700 font-bold mb-2"
             htmlFor="lastName"
           >
-            Last Name
+            Last Name*
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -156,7 +159,7 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
         </div>
         <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2" htmlFor="dob">
-            Date of Birth
+            Date of Birth*
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -179,7 +182,7 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
             className="block text-gray-700 font-bold mb-2"
             htmlFor="placeOfBirth"
           >
-            Place of Birth
+            Place of Birth*
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -202,7 +205,7 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
             className="block text-gray-700 font-bold mb-2"
             htmlFor="nationality"
           >
-            Nationality
+            Nationality*
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -225,7 +228,7 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
             className="block text-gray-700 font-bold mb-2"
             htmlFor="countryOfResidence"
           >
-            Country of Residence
+            Country of Residence*
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -251,7 +254,7 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
             className="block text-gray-700 font-bold mb-2"
             htmlFor="address"
           >
-            Address
+            Address*
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -274,7 +277,7 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
             className="block text-gray-700 font-bold mb-2"
             htmlFor="zipCode"
           >
-            Zip Code
+            Zip Code*
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -297,7 +300,7 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
             className="block text-gray-700 font-bold mb-2"
             htmlFor="homePhoneNumber"
           >
-            Home Phone Number
+            Home Phone Number*
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -320,7 +323,7 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
             className="block text-gray-700 font-bold mb-2"
             htmlFor="cellNumber"
           >
-            Cell Number
+            Cell Number*
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -340,7 +343,7 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
         </div>
         <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2" htmlFor="email">
-            Email
+            Email*
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -363,7 +366,7 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
             htmlFor="relationship"
             className="text-gray-800 font-bold mb-2"
           >
-            Relationship
+            Relationship*
           </label>
           {errors.relationship !== null &&
           touched.relationship !== null &&
@@ -371,6 +374,7 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
           Object.prototype.hasOwnProperty.call(touched, "relationship") ? (
             <p className="text-[red]">{errors.relationship}</p>
           ) : null}
+
           <select
             name="relationship"
             id="relationship"
@@ -389,14 +393,34 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
             <option value="others">Others</option>
           </select>
           {values.relationship === "others" && (
-            <div className="w-full">
+            <div className="mb-4">
+              <label
+                className="block text-gray-700 font-bold mb-2"
+                htmlFor="otherRelationship"
+              >
+                Other Relationship*
+              </label>
               <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="otherRelationship"
                 type="text"
                 name="otherRelationship"
-                id="otherRelationship"
-                placeholder="Enter Relationship"
-                className="w-full border rounded px-3 py-2 mb-2 border-black"
+                value={values.otherRelationship}
+                onBlur={handleBlur}
+                onChange={handleChange}
               />
+              {errors.otherRelationship !== null &&
+              touched.otherRelationship !== null &&
+              Object.prototype.hasOwnProperty.call(
+                errors,
+                "otherRelationship"
+              ) &&
+              Object.prototype.hasOwnProperty.call(
+                touched,
+                "otherRelationship"
+              ) ? (
+                <p className="text-[red]">{errors.otherRelationship}</p>
+              ) : null}
             </div>
           )}
         </div>

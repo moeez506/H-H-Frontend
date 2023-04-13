@@ -1,12 +1,16 @@
 /* eslint-disable prettier/prettier */
 import React, { Fragment, useState, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-
-export default function TermsAndConditions({ isOpen, setIsOpen }: any) {
+import { useNavigate } from "react-router-dom";
+export default function TermsAndConditions({
+  isOpen,
+  setIsOpen,
+  isPayment = false,
+}: any) {
   function openModal() {
     setIsOpen(!isOpen);
   }
-
+  const navigate = useNavigate();
   return (
     <div className="fixed inset-0 flex items-center justify-center">
       <Transition appear show={isOpen} as={Fragment}>
@@ -43,27 +47,44 @@ export default function TermsAndConditions({ isOpen, setIsOpen }: any) {
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                      molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-                      numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-                      optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
-                      obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-                      nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
-                      tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
-                      quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos
-                      sapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam
-                      recusandae alias error harum maxime adipisci amet laborum. Perspiciatis
-                      minima nesciunt dolorem! Officiis iure rerum voluptates a cumque velit
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Maxime mollitia, molestiae quas vel sint commodi
+                      repudiandae consequuntur voluptatum laborum numquam
+                      blanditiis harum quisquam eius sed odit fugiat iusto fuga
+                      praesentium optio, eaque rerum! Provident similique
+                      accusantium nemo autem. Veritatis obcaecati tenetur iure
+                      eius earum ut molestias architecto voluptate aliquam
+                      nihil, eveniet aliquid culpa officia aut! Impedit sit sunt
+                      quaerat, odit, tenetur error, harum nesciunt ipsum debitis
+                      quas aliquid. Reprehenderit, quia. Quo neque error
+                      repudiandae fuga? Ipsa laudantium molestias eos sapiente
+                      officiis modi at sunt excepturi expedita sint? Sed
+                      quibusdam recusandae alias error harum maxime adipisci
+                      amet laborum. Perspiciatis minima nesciunt dolorem!
+                      Officiis iure rerum voluptates a cumque velit
                     </p>
                   </div>
 
-                  <div className="mt-4">
+                  <div className="mt-4 flex justify-evenly items-center">
                     <button
                       type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      className=" rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       onClick={openModal}
                     >
                       I Agree!
+                    </button>{" "}
+                    <button
+                      type="button"
+                      className="rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
+                      onClick={
+                        isPayment === true
+                          ? openModal // TODO: Change here if you want to naviagte somewhere else
+                          : () => {
+                              navigate("/home");
+                            }
+                      }
+                    >
+                      Deny!
                     </button>
                   </div>
                 </Dialog.Panel>

@@ -111,9 +111,9 @@ const Step8 = ({ currentStep, handleNextStep }: Step8Props) => {
             Which identity would you like to provide:
           </p>
           {errors.identityCheck !== null &&
-            touched.identityCheck !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "identityCheck") &&
-            Object.prototype.hasOwnProperty.call(touched, "identityCheck") ? (
+          touched.identityCheck !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "identityCheck") &&
+          Object.prototype.hasOwnProperty.call(touched, "identityCheck") ? (
             <p className="text-[red]">{errors.identityCheck}</p>
           ) : null}
 
@@ -148,7 +148,7 @@ const Step8 = ({ currentStep, handleNextStep }: Step8Props) => {
             className="block text-gray-700 font-bold mb-2"
             htmlFor="identity"
           >
-            Identity
+            Identity*
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -160,9 +160,9 @@ const Step8 = ({ currentStep, handleNextStep }: Step8Props) => {
             onChange={handleChange}
           />
           {errors.identity !== null &&
-            touched.identity !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "identity") &&
-            Object.prototype.hasOwnProperty.call(touched, "identity") ? (
+          touched.identity !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "identity") &&
+          Object.prototype.hasOwnProperty.call(touched, "identity") ? (
             <p className="text-[red]">{errors.identity}</p>
           ) : null}
         </div>
@@ -171,7 +171,7 @@ const Step8 = ({ currentStep, handleNextStep }: Step8Props) => {
             className="block text-gray-700 font-bold mb-2"
             htmlFor="countryOfIssuance"
           >
-            Country Of Issuance
+            Country Of Issuance*
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -183,9 +183,9 @@ const Step8 = ({ currentStep, handleNextStep }: Step8Props) => {
             onChange={handleChange}
           />
           {errors.countryOfIssuance !== null &&
-            touched.countryOfIssuance !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "countryOfIssuance") &&
-            Object.prototype.hasOwnProperty.call(touched, "countryOfIssuance") ? (
+          touched.countryOfIssuance !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "countryOfIssuance") &&
+          Object.prototype.hasOwnProperty.call(touched, "countryOfIssuance") ? (
             <p className="text-[red]">{errors.countryOfIssuance}</p>
           ) : null}
         </div>
@@ -194,7 +194,7 @@ const Step8 = ({ currentStep, handleNextStep }: Step8Props) => {
             className="block text-gray-700 font-bold mb-2"
             htmlFor="placedIssuance"
           >
-            Place Of Issuance
+            Place Of Issuance*
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -206,9 +206,9 @@ const Step8 = ({ currentStep, handleNextStep }: Step8Props) => {
             onChange={handleChange}
           />
           {errors.placedIssuance !== null &&
-            touched.placedIssuance !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "placedIssuance") &&
-            Object.prototype.hasOwnProperty.call(touched, "placedIssuance") ? (
+          touched.placedIssuance !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "placedIssuance") &&
+          Object.prototype.hasOwnProperty.call(touched, "placedIssuance") ? (
             <p className="text-[red]">{errors.placedIssuance}</p>
           ) : null}
         </div>
@@ -217,7 +217,7 @@ const Step8 = ({ currentStep, handleNextStep }: Step8Props) => {
             className="block text-gray-700 font-bold mb-2"
             htmlFor="dateOfIssuance"
           >
-            Date Of Issuance
+            Date Of Issuance*
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -229,9 +229,9 @@ const Step8 = ({ currentStep, handleNextStep }: Step8Props) => {
             onChange={handleChange}
           />
           {errors.dateOfIssuance !== null &&
-            touched.dateOfIssuance !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "dateOfIssuance") &&
-            Object.prototype.hasOwnProperty.call(touched, "dateOfIssuance") ? (
+          touched.dateOfIssuance !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "dateOfIssuance") &&
+          Object.prototype.hasOwnProperty.call(touched, "dateOfIssuance") ? (
             <p className="text-[red]">{errors.dateOfIssuance}</p>
           ) : null}
         </div>
@@ -240,7 +240,7 @@ const Step8 = ({ currentStep, handleNextStep }: Step8Props) => {
             className="block text-gray-700 font-bold mb-2"
             htmlFor="expiryDate"
           >
-            Expiry Date
+            Expiry Date*
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -252,9 +252,9 @@ const Step8 = ({ currentStep, handleNextStep }: Step8Props) => {
             onChange={handleChange}
           />
           {errors.expiryDate !== null &&
-            touched.expiryDate !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "expiryDate") &&
-            Object.prototype.hasOwnProperty.call(touched, "expiryDate") ? (
+          touched.expiryDate !== null &&
+          Object.prototype.hasOwnProperty.call(errors, "expiryDate") &&
+          Object.prototype.hasOwnProperty.call(touched, "expiryDate") ? (
             <p className="text-[red]">{errors.expiryDate}</p>
           ) : null}
         </div>

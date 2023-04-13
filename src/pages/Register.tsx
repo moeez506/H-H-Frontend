@@ -10,6 +10,8 @@ import ApiSuccess from "../components/ApiSuccess";
 import ApiError from "../components/ApiError";
 import { Link, useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
+import Button from "../components/Button";
+import TermsAndConditions from "../components/TermsAndConditions";
 
 interface SignUpFormValues {
   firstName: string;
@@ -31,6 +33,7 @@ const initialValues = {
 export default function Register() {
   const navigate = useNavigate();
   const [apiSuccess, setApiSuccess] = useState<string>();
+  const [isOpen, setIsOpen] = useState(false);
   console.log(
     "🚀 ~ file: Register.tsx:35 ~ Register ~ apiSuccess:",
     apiSuccess
@@ -221,36 +224,46 @@ export default function Register() {
                     name="terms"
                     checked={values.terms}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300  dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
                   />
                 </div>
                 <div className="ml-3 text-sm">
                   <label className="font-light">
                     I accept the{" "}
-                    <a
+                    <button
                       className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                      // href="#"
                       onClick={() => {
-                        navigate("/termsandconditions");
+                        setIsOpen(true);
                       }}
                     >
                       Terms and Conditions
-                    </a>
+                    </button>
                   </label>
                 </div>
+
+                {isOpen && (
+                  <TermsAndConditions isOpen={isOpen} setIsOpen={setIsOpen} />
+                )}
               </div>
               {errors.terms !== undefined && touched.terms === true ? (
-                <p className="text-red-500 text-sm ">
+                <p className="text-red-500 text-sm mt-1">
                   You must agree to the terms and conditions
                 </p>
               ) : null}
-              <div className="flex justify-center items-center">
+              <div className="flex justify-around items-center">
                 <button
                   type="submit"
                   className="border-4 rounded-3xl text-white border-white bg-gradient-to-r from-orange to-yellow px-12 py-2 text-xl font-medium flex justify-center items-center"
                 >
                   SignUp
                 </button>
+                <Button
+                  text="Go Back"
+                  onClick={() => {
+                    navigate("/home");
+                  }}
+                />
               </div>
               <p className="text-sm font-light text-gray-500 ">
                 Already have an account?{" "}

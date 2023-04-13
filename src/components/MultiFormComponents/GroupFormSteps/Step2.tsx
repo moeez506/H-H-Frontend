@@ -74,7 +74,7 @@ const Step2 = ({ currentStep, handleNextStep }: Step2Props) => {
             className="block text-gray-700 font-bold mb-2"
             htmlFor="groupName"
           >
-            Association/Group Name
+            Association/Group Name*
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -97,7 +97,7 @@ const Step2 = ({ currentStep, handleNextStep }: Step2Props) => {
             className="block text-gray-700 font-bold mb-2"
             htmlFor="registerdMembers"
           >
-            Number of Registered Members
+            Number of Registered Members*
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -120,7 +120,7 @@ const Step2 = ({ currentStep, handleNextStep }: Step2Props) => {
             className="block text-gray-700 font-bold mb-2"
             htmlFor="countryOfOperation"
           >
-            Country of Operation
+            Country of Operation*
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -146,7 +146,7 @@ const Step2 = ({ currentStep, handleNextStep }: Step2Props) => {
             className="block text-gray-700 font-bold mb-2"
             htmlFor="address"
           >
-            Address
+            Address*
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -169,7 +169,7 @@ const Step2 = ({ currentStep, handleNextStep }: Step2Props) => {
             className="block text-gray-700 font-bold mb-2"
             htmlFor="zipCode"
           >
-            Zip Code
+            Zip Code*
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -192,7 +192,7 @@ const Step2 = ({ currentStep, handleNextStep }: Step2Props) => {
             className="block text-gray-700 font-bold mb-2"
             htmlFor="cellNumber"
           >
-            Cell Number
+            Cell Number*
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -212,7 +212,7 @@ const Step2 = ({ currentStep, handleNextStep }: Step2Props) => {
         </div>
         <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2" htmlFor="email">
-            Email
+            Email*
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -235,7 +235,7 @@ const Step2 = ({ currentStep, handleNextStep }: Step2Props) => {
             className="block text-gray-700 font-bold mb-2"
             htmlFor="website"
           >
-            Website
+            Website*
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"

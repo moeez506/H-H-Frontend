@@ -10,6 +10,7 @@ import Loader from "../components/Loader";
 import ApiError from "../components/ApiError";
 import request from "../apis/request";
 import TermsAndConditions from "../components/TermsAndConditions";
+import Button from "../components/Button";
 
 interface LoginProp {
   email: string;
@@ -168,13 +169,19 @@ export default function Login() {
                     You must agree to the terms and conditions
                   </p>
                 ) : null}
-                <div className="flex justify-center items-center">
+                <div className="flex justify-around items-center">
                   <button
                     type="submit"
                     className="border-4 rounded-3xl text-white border-white bg-gradient-to-r from-orange to-yellow px-12 py-2 text-xl font-medium flex justify-center items-center"
                   >
                     Login
                   </button>
+                  <Button
+                    text="Go Back"
+                    onClick={() => {
+                      navigate("/home");
+                    }}
+                  />
                 </div>
 
                 <p className="text-sm font-light text-gray-500 ">

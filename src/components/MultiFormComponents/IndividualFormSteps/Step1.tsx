@@ -217,6 +217,7 @@ const Step1 = ({ currentStep, handleNextStep }: Step1Props) => {
         )}
 
         <Button text="Next" isForm />
+        <Button text="Go Back" isForm route="/onboarding-type" />
       </form>
     </div>
   );

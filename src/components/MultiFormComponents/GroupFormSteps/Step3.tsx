@@ -115,7 +115,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               className="block text-gray-700 font-bold mb-2"
               htmlFor="firstName"
             >
-              First Name
+              First Name*
             </label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -153,7 +153,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               className="block text-gray-700 font-bold mb-2"
               htmlFor="lastName"
             >
-              Last Name
+              Last Name*
             </label>
 
             <input
@@ -174,7 +174,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               className="block text-gray-700 font-bold mb-2"
               htmlFor="positionOccupied"
             >
-              Position Occupied in organization/group
+              Position Occupied in organization/group*
             </label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -186,18 +186,18 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               onChange={handleChange}
             />
             {errors.positionOccupied !== null &&
-              touched.positionOccupied !== null &&
-              Object.prototype.hasOwnProperty.call(errors, "positionOccupied") &&
-              Object.prototype.hasOwnProperty.call(
-                touched,
-                "positionOccupied"
-              ) ? (
+            touched.positionOccupied !== null &&
+            Object.prototype.hasOwnProperty.call(errors, "positionOccupied") &&
+            Object.prototype.hasOwnProperty.call(
+              touched,
+              "positionOccupied"
+            ) ? (
               <p className="text-[red]">{errors.positionOccupied}</p>
             ) : null}
           </div>
           <div className="mb-4">
             <label className="block text-gray-700 font-bold mb-2" htmlFor="dob">
-              Date of Birth
+              Date of Birth*
             </label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -209,9 +209,9 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               onChange={handleChange}
             />
             {errors.dob !== null &&
-              touched.dob !== null &&
-              Object.prototype.hasOwnProperty.call(errors, "dob") &&
-              Object.prototype.hasOwnProperty.call(touched, "dob") ? (
+            touched.dob !== null &&
+            Object.prototype.hasOwnProperty.call(errors, "dob") &&
+            Object.prototype.hasOwnProperty.call(touched, "dob") ? (
               <p className="text-[red]">{errors.dob}</p>
             ) : null}
           </div>
@@ -220,7 +220,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               className="block text-gray-700 font-bold mb-2"
               htmlFor="placeOfBirth"
             >
-              Place of Birth
+              Place of Birth*
             </label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -232,9 +232,9 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               onChange={handleChange}
             />
             {errors.placeOfBirth !== null &&
-              touched.placeOfBirth !== null &&
-              Object.prototype.hasOwnProperty.call(errors, "placeOfBirth") &&
-              Object.prototype.hasOwnProperty.call(touched, "placeOfBirth") ? (
+            touched.placeOfBirth !== null &&
+            Object.prototype.hasOwnProperty.call(errors, "placeOfBirth") &&
+            Object.prototype.hasOwnProperty.call(touched, "placeOfBirth") ? (
               <p className="text-[red]">{errors.placeOfBirth}</p>
             ) : null}
           </div>
@@ -243,7 +243,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               className="block text-gray-700 font-bold mb-2"
               htmlFor="nationality"
             >
-              Nationality
+              Nationality*
             </label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -255,9 +255,9 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               onChange={handleChange}
             />
             {errors.nationality !== null &&
-              touched.nationality !== null &&
-              Object.prototype.hasOwnProperty.call(errors, "nationality") &&
-              Object.prototype.hasOwnProperty.call(touched, "nationality") ? (
+            touched.nationality !== null &&
+            Object.prototype.hasOwnProperty.call(errors, "nationality") &&
+            Object.prototype.hasOwnProperty.call(touched, "nationality") ? (
               <p className="text-[red]">{errors.nationality}</p>
             ) : null}
           </div>
@@ -266,7 +266,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               className="block text-gray-700 font-bold mb-2"
               htmlFor="countryOfResidence"
             >
-              Country of Residence
+              Country of Residence*
             </label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -278,15 +278,15 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               onChange={handleChange}
             />
             {errors.countryOfResidence !== null &&
-              touched.countryOfResidence !== null &&
-              Object.prototype.hasOwnProperty.call(
-                errors,
-                "countryOfResidence"
-              ) &&
-              Object.prototype.hasOwnProperty.call(
-                touched,
-                "countryOfResidence"
-              ) ? (
+            touched.countryOfResidence !== null &&
+            Object.prototype.hasOwnProperty.call(
+              errors,
+              "countryOfResidence"
+            ) &&
+            Object.prototype.hasOwnProperty.call(
+              touched,
+              "countryOfResidence"
+            ) ? (
               <p className="text-[red]">{errors.countryOfResidence}</p>
             ) : null}
           </div>
@@ -295,7 +295,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               className="block text-gray-700 font-bold mb-2"
               htmlFor="address"
             >
-              Address
+              Address*
             </label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -307,9 +307,9 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               onChange={handleChange}
             />
             {errors.address !== null &&
-              touched.address !== null &&
-              Object.prototype.hasOwnProperty.call(errors, "address") &&
-              Object.prototype.hasOwnProperty.call(touched, "address") ? (
+            touched.address !== null &&
+            Object.prototype.hasOwnProperty.call(errors, "address") &&
+            Object.prototype.hasOwnProperty.call(touched, "address") ? (
               <p className="text-[red]">{errors.address}</p>
             ) : null}
           </div>
@@ -318,7 +318,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               className="block text-gray-700 font-bold mb-2"
               htmlFor="zipCode"
             >
-              Zip Code
+              Zip Code*
             </label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -330,9 +330,9 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               onChange={handleChange}
             />
             {errors.zipCode !== null &&
-              touched.zipCode !== null &&
-              Object.prototype.hasOwnProperty.call(errors, "zipCode") &&
-              Object.prototype.hasOwnProperty.call(touched, "zipCode") ? (
+            touched.zipCode !== null &&
+            Object.prototype.hasOwnProperty.call(errors, "zipCode") &&
+            Object.prototype.hasOwnProperty.call(touched, "zipCode") ? (
               <p className="text-[red]">{errors.zipCode}</p>
             ) : null}
           </div>
@@ -341,7 +341,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               className="block text-gray-700 font-bold mb-2"
               htmlFor="homePhoneNumber"
             >
-              Home Phone Number
+              Home Phone Number*
             </label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -353,9 +353,9 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               onChange={handleChange}
             />
             {errors.homePhoneNumber !== null &&
-              touched.homePhoneNumber !== null &&
-              Object.prototype.hasOwnProperty.call(errors, "homePhoneNumber") &&
-              Object.prototype.hasOwnProperty.call(touched, "homePhoneNumber") ? (
+            touched.homePhoneNumber !== null &&
+            Object.prototype.hasOwnProperty.call(errors, "homePhoneNumber") &&
+            Object.prototype.hasOwnProperty.call(touched, "homePhoneNumber") ? (
               <p className="text-[red]">{errors.homePhoneNumber}</p>
             ) : null}
           </div>
@@ -364,7 +364,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               className="block text-gray-700 font-bold mb-2"
               htmlFor="cellNumber"
             >
-              Cell Number
+              Cell Number*
             </label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -376,9 +376,9 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               onChange={handleChange}
             />
             {errors.cellNumber !== null &&
-              touched.cellNumber !== null &&
-              Object.prototype.hasOwnProperty.call(errors, "cellNumber") &&
-              Object.prototype.hasOwnProperty.call(touched, "cellNumber") ? (
+            touched.cellNumber !== null &&
+            Object.prototype.hasOwnProperty.call(errors, "cellNumber") &&
+            Object.prototype.hasOwnProperty.call(touched, "cellNumber") ? (
               <p className="text-[red]">{errors.cellNumber}</p>
             ) : null}
           </div>
@@ -387,7 +387,7 @@ const Step3 = ({ currentStep, handleNextStep }: Step3Props) => {
               className="block text-gray-700 font-bold mb-2"
               htmlFor="email"
             >
-              Email
+              Email*
             </label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
