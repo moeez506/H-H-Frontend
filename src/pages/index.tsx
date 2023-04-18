@@ -10,6 +10,11 @@ import Programs from "./Programs";
 import OnboardingType from "./OnboardingType";
 import VerificationScreen from "./VerifyEmail";
 import MarketPlace from "./MarketPlace";
+import IndividualProfile from "./IndividualDashboard/IndividualProfile";
+import IndividualMembers from "./IndividualDashboard/IndividualMembers";
+import IndividualSetting from "./IndividualDashboard/IndividualSetting";
+import IndividualPayments from "./IndividualDashboard/IndividualPayments";
+
 
 export {
   Login,
@@ -22,5 +27,9 @@ export {
   Programs,
   OnboardingType,
   VerificationScreen,
-  MarketPlace
+  MarketPlace,
+  IndividualProfile,
+  IndividualMembers,
+  IndividualSetting,
+  IndividualPayments,
 };
