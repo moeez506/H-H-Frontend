@@ -21,6 +21,8 @@ import {
 } from "../pages";
 import ProtectedRoutes from "./ProtectedRoutes";
 import PopUp from "../components/PopUp";
+import MembersTable from "../components/dashboard/Members";
+import PaymentDashBoard from "../components/dashboard/Payment";
 
 const RouterConfig = () => {
   const location = useLocation();
@@ -42,6 +44,8 @@ const RouterConfig = () => {
       <Routes>
         <Route path="/" element={<PopUp />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/dashboard-members" element={<MembersTable />} />
+        <Route path="/dashboard-payment" element={<PaymentDashBoard />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/programs" element={<Programs />} />
