@@ -63,8 +63,8 @@ const SideNav = ({children}: any) => {
                </div>
                {
                    menuItem.map((item, index)=>(
-                       <NavLink to={item.path} key={index} className="link" >
-                           <div className="icon">{item.icon}</div>
+                       <NavLink to={item.path} key={index} className={isOpen ? "link" : "w-0"} >
+                           <div className={isOpen ? "font-bold" : "hidden"}>{item.icon}</div>
                            <div style={{display: isOpen ? "block" : "none"}} className="link_text">{item.name}</div>
                        </NavLink>
                    ))
