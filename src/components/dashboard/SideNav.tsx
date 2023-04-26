@@ -54,7 +54,7 @@ const SideNav = ({children}: any) => {
 
       </div>
         <div className="container">
-           <div style={{width: isOpen ? "250px" : "0px"}} className="sidebar mobile:z-10" >
+           <div style={{width: isOpen ? "350px" : "0px"}} className="sidebar mobile:z-10" >
                <div className="top_section">
                <img src={logo} alt="no image found" className="h-16 w-16 laptop:hidden tablet:h-14 tablet:w-18" />
                    {/* <div style={{marginLeft: isOpen ? "50px" : "0px"}} className="bars"> */}

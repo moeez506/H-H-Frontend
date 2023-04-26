@@ -33,12 +33,12 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div className="bg-[#e6e4e443]">
       <QueryClientProvider client={queryClient}>
         <RouterConfig />
         <ToastContainer />
       </QueryClientProvider>
-    </>
+    </div>
   );
 }
 
