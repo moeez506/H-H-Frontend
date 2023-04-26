@@ -16,7 +16,7 @@ import logo from '../../assets/logo-2.png'
 
 
 const SideNav = ({children}: any) => {
-    const[isOpen ,setIsOpen] = useState(false);
+    const[isOpen ,setIsOpen] = useState(true);
     const toggle = () => setIsOpen (!isOpen);
     const menuItem=[
         {
@@ -49,7 +49,7 @@ const SideNav = ({children}: any) => {
         <>
         <div className='bg-white shadow-md h-16 flex items-center pl-5'>
         
-        <FaBars className='laptop:hidden text-3xl' onClick={toggle}/>
+        <FaBars className='laptop:hidden tabletOnly:hidden text-3xl' onClick={toggle}/>
         <img src={logo} alt="no image found" className="h-16 w-16 pt-3 mobile:hidden tablet:h-14 tablet:w-18" />
 
       </div>
