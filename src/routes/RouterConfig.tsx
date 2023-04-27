@@ -22,6 +22,7 @@ import {
   IndividualMembers,
   IndividualSetting,
   IndividualPayments,
+  IndividualMemberDetail,
 } from "../pages";
 import ProtectedRoutes from "./ProtectedRoutes";
 import PopUp from "../components/PopUp";
@@ -39,7 +40,7 @@ const RouterConfig = () => {
     "/market-place",
   ].includes(location.pathname);
 
-  const shouldRenderIndividualDashboard = ["/individual-Profile", "/individual-Members", "/individual-Setting", "/individual-Payments" ].includes(
+  const shouldRenderIndividualDashboard = ["/individual-Profile", "/individual-Members", "/individual-Setting", "/individual-Payments", "/individual-Detail" ].includes(
     location.pathname
   );
 
@@ -55,6 +56,7 @@ const RouterConfig = () => {
             <Route path="/individual-Members" element={<IndividualMembers />} />
             <Route path="/individual-Setting" element={<IndividualSetting />} />
             <Route path="/individual-Payments" element={<IndividualPayments />} />
+            <Route path="/individual-Detail" element={<IndividualMemberDetail />} />
           </Routes>
         </SideNav>
       )}

@@ -40,11 +40,12 @@ const SideNav = ({children}: any) => {
             icon:<FaShoppingBag/>
         },
         {
-            path:"/productList",
+            path:"/individual-Detail",
             name:"Logout",
             icon:<FaThList/>
         }
     ]
+
     return (
         <>
         <div className='bg-white shadow-md h-16 flex items-center pl-5'>
