@@ -40,7 +40,7 @@ const SideNav = ({children}: any) => {
             icon:<FaShoppingBag/>
         },
         {
-            path:"/individual-Detail",
+            path:"/individual-PaymentDetail",
             name:"Logout",
             icon:<FaThList/>
         }

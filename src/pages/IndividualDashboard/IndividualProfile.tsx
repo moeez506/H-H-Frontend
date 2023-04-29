@@ -1,14 +1,28 @@
 /* eslint-disable prettier/prettier */
 import React from "react";
-import "./Dashboard.css";
+import { useRepresentiveData } from "../../hooks/useRepresentativeData";
+import Loader from "../../components/Loader";
 
 const IndividualProfile = () => {
+
+  const { isLoading, data, isError, error }: any = useRepresentiveData();
+  console.log("🚀 ~ file: IndividualProfile.tsx:9 ~ IndividualProfile ~ data:", data)
+
+  if (isLoading) {
+    return <Loader />;
+  }
+  if (!isError && !isLoading) {
+    var { firstName, email, lastName } = data?.data?.user;
+  }
+
+  const name = firstName + ' ' + lastName;
+
   return (
     <div className="flex flex-col ml-20 mobile:ml-0 tabletOnly:ml-0">
       {/* <div className="h-full w-full bg-white rounded-xl shadow-inset shadow-2xl p-10 tabletOnly:w-full mobile:p-3"> */}
       <div>
         <h1 className="text-4xl font-semibold">
-          Hello, <span className="text-orange">Abdul Rehman</span>
+          Hello, <span className="text-orange">{name}</span>
         </h1>
       </div>
       <br></br>
