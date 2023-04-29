@@ -1,5 +1,8 @@
 /* eslint-disable prettier/prettier */
-//Hello world
+/* eslint-disable prettier/prettier */
+import MemberTable from "./Members";
 import SideNav from "./SideNav";
 
-export {SideNav}
+export { MemberTable, SideNav };
+
+

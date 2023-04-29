@@ -24,11 +24,13 @@ import {
   IndividualPayments,
   IndividualMemberDetail,
   IndividualPaymentDetail,
+  CreateIndividualMember,
 } from "../pages";
 import ProtectedRoutes from "./ProtectedRoutes";
 import PopUp from "../components/PopUp";
 // import IndividualProfile from "../components/dashboard/IndividualPages/IndividualProfile";
-import { SideNav } from "../components/dashboard";
+import { MemberTable, SideNav } from "../components/dashboard";
+import PaymentDashBoard from "../components/dashboard/Payment";
 // import IndividualInbox from "../components/dashboard/IndividualPages/IndividualInbox";
 
 const RouterConfig = () => {
@@ -41,7 +43,7 @@ const RouterConfig = () => {
     "/market-place",
   ].includes(location.pathname);
 
-  const shouldRenderIndividualDashboard = ["/individual-Profile", "/individual-Members", "/individual-Setting", "/individual-Payments", "/individual-Detail", "/individual-PaymentDetail" ].includes(
+  const shouldRenderIndividualDashboard = ["/individual-Profile", "/individual-Members", "/individual-Setting", "/individual-Payments", "/individual-Detail", "/individual-PaymentDetail", "/dashboard-members", "/dashboard-payment", "/individual-CreateMember" ].includes(
     location.pathname
   );
 
@@ -56,9 +58,12 @@ const RouterConfig = () => {
             <Route path="/individual-Profile" element={<IndividualProfile />} />
             <Route path="/individual-Members" element={<IndividualMembers />} />
             <Route path="/individual-Setting" element={<IndividualSetting />} />
+            <Route path="/dashboard-members" element={<MemberTable />} />
+            <Route path="/dashboard-payment" element={<PaymentDashBoard />} />
             <Route path="/individual-Payments" element={<IndividualPayments />} />
             <Route path="/individual-Detail" element={<IndividualMemberDetail />} />
             <Route path="/individual-PaymentDetail" element={<IndividualPaymentDetail />} />
+            <Route path="/individual-CreateMember" element={<CreateIndividualMember />} />
           </Routes>
         </SideNav>
       )}

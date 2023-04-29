@@ -16,6 +16,7 @@ import IndividualSetting from "./IndividualDashboard/IndividualSetting";
 import IndividualPayments from "./IndividualDashboard/IndividualPayments";
 import IndividualMemberDetail from "./IndividualDashboard/IndividualMemberDetail";
 import IndividualPaymentDetail from "./IndividualDashboard/IndividualPaymentDetail";
+import CreateIndividualMember from "./IndividualDashboard/CreateIndividualMember";
 
 
 export {
@@ -35,5 +36,6 @@ export {
   IndividualSetting,
   IndividualPayments,
   IndividualMemberDetail, 
-  IndividualPaymentDetail
+  IndividualPaymentDetail,
+  CreateIndividualMember
 };

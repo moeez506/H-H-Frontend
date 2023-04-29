@@ -25,7 +25,7 @@ const SideNav = ({children}: any) => {
             icon:<FaUserAlt/>
         },
         {
-            path:"/individual-Members",
+            path:"/dashboard-members",
             name:"Member",
             icon:<FaRegChartBar/>
         },
@@ -35,12 +35,12 @@ const SideNav = ({children}: any) => {
             icon:<FaCommentAlt/>
         },
         {
-            path:"/individual-Payments",
+            path:"/dashboard-payment",
             name:"Payment",
             icon:<FaShoppingBag/>
         },
         {
-            path:"/individual-PaymentDetail",
+            path:"/",
             name:"Logout",
             icon:<FaThList/>
         }

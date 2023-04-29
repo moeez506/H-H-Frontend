@@ -15,14 +15,14 @@ const IndividualProfile = () => {
     var { firstName, email, lastName } = data?.data?.user;
   }
 
-  const name = firstName + ' ' + lastName;
+  // const name = firstName + ' ' + lastName;
 
   return (
     <div className="flex flex-col ml-20 mobile:ml-0 tabletOnly:ml-0">
       {/* <div className="h-full w-full bg-white rounded-xl shadow-inset shadow-2xl p-10 tabletOnly:w-full mobile:p-3"> */}
       <div>
         <h1 className="text-4xl font-semibold">
-          Hello, <span className="text-orange">{name}</span>
+          Hello, <span className="text-orange">name</span>
         </h1>
       </div>
       <br></br>
@@ -39,7 +39,7 @@ const IndividualProfile = () => {
               </div>
               <div className="flex mt-2">
                 <h3 className="text-orange font-bold">Email:</h3>
-                <p className="pl-16">test@gmail.com</p>
+                <p className="pl-16">{email}</p>
               </div>
               <div className="flex mt-2">
                 <h3 className="text-orange font-bold">Contact:</h3>
