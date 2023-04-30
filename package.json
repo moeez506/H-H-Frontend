@@ -23,6 +23,7 @@
     "clsx": "^1.2.1",
     "fa": "^1.0.1",
     "formik": "^2.2.9",
+    "jwt-decode": "^3.1.2",
     "prettier": "^2.8.3",
     "react": "^18.2.0",
     "react-data-grid": "^7.0.0-beta.28",
