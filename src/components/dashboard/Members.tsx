@@ -12,6 +12,8 @@ import {
 import HeadAndSearch from "./components/HeadAndSearchMember";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
+import Loader from "../Loader";
+import { useMemberData } from "../../hooks/useRepresentativeData";
 interface Member {
   registrationNumber: string;
   name: string;
@@ -23,6 +25,12 @@ const getRowId = (member: Member) => member.registrationNumber;
 
 const MembersTable: React.FC = () => {
   const isSmallScreen = useMediaQuery("(max-width: 600px)"); // Adjust the breakpoint to your desired screen size
+  const { isLoading, data, isError, error }: any = useMemberData();
+  console.log("🚀 ~ file: Members.tsx:29 ~ data:", data?.data?.individualMembers)
+
+  if (isLoading) {
+    return <Loader />;
+  }
   const members: Member[] = [
     {
       registrationNumber: "001",
@@ -75,6 +83,8 @@ const MembersTable: React.FC = () => {
 
     // Add more member objects as needed
   ];
+
+
 
   const renderMember = ()=>{
     console.log("hello")

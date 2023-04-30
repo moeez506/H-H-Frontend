@@ -11,3 +11,11 @@ const representativeData = async () => {
 export const useRepresentiveData = () => {
   return useQuery("representative-data", representativeData);
 };
+
+const getIndividualMembers = async () => {
+  return await request.get(`group/invidual-members/642804d35e141e0c3f82479d`);
+};
+
+export const useMemberData = () => {
+  return useQuery("member-data", getIndividualMembers);
+};
