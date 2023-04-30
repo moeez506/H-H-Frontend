@@ -43,9 +43,17 @@ const RouterConfig = () => {
     "/market-place",
   ].includes(location.pathname);
 
-  const shouldRenderIndividualDashboard = ["/individual-Profile", "/individual-Members", "/individual-Setting", "/individual-Payments", "/individual-Detail", "/individual-PaymentDetail", "/dashboard-members", "/dashboard-payment", "/individual-CreateMember" ].includes(
-    location.pathname
-  );
+  const shouldRenderIndividualDashboard = [
+    "/individual-Profile",
+    "/individual-Members",
+    "/individual-Setting",
+    "/individual-Payments",
+    "/individual-Detail",
+    "/individual-PaymentDetail",
+    "/dashboard-members",
+    "/dashboard-payment",
+    "/individual-CreateMember",
+  ].includes(location.pathname);
 
   console.log(shouldRenderHeader);
 
@@ -60,10 +68,22 @@ const RouterConfig = () => {
             <Route path="/individual-Setting" element={<IndividualSetting />} />
             <Route path="/dashboard-members" element={<MemberTable />} />
             <Route path="/dashboard-payment" element={<PaymentDashBoard />} />
-            <Route path="/individual-Payments" element={<IndividualPayments />} />
-            <Route path="/individual-Detail" element={<IndividualMemberDetail />} />
-            <Route path="/individual-PaymentDetail" element={<IndividualPaymentDetail />} />
-            <Route path="/individual-CreateMember" element={<CreateIndividualMember />} />
+            <Route
+              path="/individual-Payments"
+              element={<IndividualPayments />}
+            />
+            <Route
+              path="/individual-Detail"
+              element={<IndividualMemberDetail />}
+            />
+            <Route
+              path="/individual-PaymentDetail"
+              element={<IndividualPaymentDetail />}
+            />
+            <Route
+              path="/individual-CreateMember"
+              element={<CreateIndividualMember />}
+            />
           </Routes>
         </SideNav>
       )}

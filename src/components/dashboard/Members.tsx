@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React from "react";
 import { DataGrid, GridCellParams } from "@mui/x-data-grid";
+
 import "./Members.css";
 import {
   BsCheckCircle,
@@ -12,6 +13,8 @@ import {
 import HeadAndSearch from "./components/HeadAndSearchMember";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
+import Loader from "../Loader";
+import { useDashboardMembers } from "../../hooks/useDashboardData";
 interface Member {
   registrationNumber: string;
   name: string;
@@ -22,6 +25,16 @@ interface Member {
 const getRowId = (member: Member) => member.registrationNumber;
 
 const MembersTable: React.FC = () => {
+  // const { isLoading, data, isError, error }: any = useDashboardMembers();
+  // console.log("🚀 ~ file: Members.tsx:29 ~ error:", error);
+  // console.log("🚀 ~ file: Members.tsx:29 ~ isLoading:", isError);
+
+  // if (isLoading) {
+  //   return <Loader />;
+  // }
+  // console.log(data);
+  // if (!isError && !isLoading) {
+  // }
   const isSmallScreen = useMediaQuery("(max-width: 600px)"); // Adjust the breakpoint to your desired screen size
   const members: Member[] = [
     {
@@ -76,9 +89,9 @@ const MembersTable: React.FC = () => {
     // Add more member objects as needed
   ];
 
-  const renderMember = ()=>{
-    console.log("hello")
-  }
+  const renderMember = () => {
+    console.log("hello");
+  };
 
   const columns = !isSmallScreen
     ? [
@@ -128,7 +141,7 @@ const MembersTable: React.FC = () => {
             const member = params.row as Member;
             return (
               <div className="flex justify-center items-center space-x-2">
-                <BsEye className="text-blue-500" onClick={renderMember}/>
+                <BsEye className="text-blue-500" onClick={renderMember} />
                 <BsPerson className="text-yellow-500" />
                 <BsTrash className="text-red-500" />
               </div>
