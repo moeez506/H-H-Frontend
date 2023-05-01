@@ -12,7 +12,7 @@ const IndividualProfile = () => {
     return <Loader />;
   }
   if (!isError && !isLoading) {
-    var { firstName, email, lastName } = data?.data?.user;
+    var { firstName, email, lastName, dateOfBirth, nationality, phoneNumbers, address, zipCode } = data?.data?.user;
   }
 
   // const name = firstName + ' ' + lastName;
@@ -43,7 +43,7 @@ const IndividualProfile = () => {
               </div>
               <div className="flex mt-2">
                 <h3 className="text-orange font-bold">Contact:</h3>
-                <p className="pl-12">555 555 555</p>
+                <p className="pl-12">{phoneNumbers.Cell}</p>
               </div>
               <div className="flex mt-2">
                 <h3 className="text-orange font-bold">Gender:</h3>
@@ -60,19 +60,19 @@ const IndividualProfile = () => {
             <div className="pl-8 pr-24 mobile:pr-8 tabletOnly:pr-8 mobile:pl-3">
               <div className="flex">
                 <h3 className="text-orange font-bold">Address:</h3>
-                <p className="pl-16">University of Education, Lahore</p>
+                <p className="pl-16">{address}</p>
               </div>
               <div className="flex mt-2">
                 <h3 className="text-orange font-bold">Zip Code:</h3>
-                <p className="pl-16">55555</p>
+                <p className="pl-16">{zipCode}</p>
               </div>
               <div className="flex mt-2">
                 <h3 className="text-orange font-bold">Nationality:</h3>
-                <p className="pl-10">Pakistani</p>
+                <p className="pl-10">{nationality}</p>
               </div>
               <div className="flex mt-2">
                 <h3 className="text-orange font-bold">Date of Birth:</h3>
-                <p className="pl-8">April 29, 1999</p>
+                <p className="pl-8">{dateOfBirth}</p>
               </div>
             </div>
           </div>

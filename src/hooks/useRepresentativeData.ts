@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/promise-function-async */
 
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import request from "../apis/request";
 
 const representativeData = async () => {
@@ -18,4 +18,12 @@ const getIndividualMembers = async () => {
 
 export const useMemberData = () => {
   return useQuery("member-data", getIndividualMembers);
+};
+
+const deleteIndividualMembers = async () => {
+  return await request.delete(`group/delete-individual-member/642db746470e8d8cbc48be46`);
+};
+
+export const useMemberDelete = () => {
+  return useMutation("delete-member", deleteIndividualMembers);
 };

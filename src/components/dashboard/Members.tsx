@@ -11,18 +11,19 @@ import {
   BsTrash,
 } from "react-icons/bs";
 import HeadAndSearch from "./components/HeadAndSearchMember";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
 import Loader from "../Loader";
-import { useMemberData } from "../../hooks/useRepresentativeData";
+import { useMemberData, useMemberDelete } from "../../hooks/useRepresentativeData";
+import { IndividualMemberDetail } from "../../pages";
 interface Member {
-  registrationNumber: string;
+  _id: string;
   name: string;
   email: string;
   status: string;
 }
 
-const getRowId = (member: Member) => member.registrationNumber;
+const getRowId = (memberData: Member) => memberData._id;
 
 const MembersTable: React.FC = () => {
   // const { isLoading, data, isError, error }: any = useDashboardMembers();
@@ -42,62 +43,77 @@ const MembersTable: React.FC = () => {
   if (isLoading) {
     return <Loader />;
   }
-  const members: Member[] = [
-    {
-      registrationNumber: "001",
-      name: "John Doe",
-      email: "john.doe@example.com",
-      status: "Active",
-    },
-    {
-      registrationNumber: "002",
-      name: "Jane Smith",
-      email: "jane.smith@example.com",
-      status: "Inactive",
-    },
-    {
-      registrationNumber: "002",
-      name: "Jane Smith",
-      email: "jane.smith@example.com",
-      status: "Inactive",
-    },
-    {
-      registrationNumber: "002",
-      name: "Jane Smith",
-      email: "jane.smith@example.com",
-      status: "Inactive",
-    },
-    {
-      registrationNumber: "002",
-      name: "Jane Smith",
-      email: "jane.smith@example.com",
-      status: "Inactive",
-    },
-    {
-      registrationNumber: "002",
-      name: "Jane Smith",
-      email: "jane.smith@example.com",
-      status: "Inactive",
-    },
-    {
-      registrationNumber: "002",
-      name: "Jane Smith",
-      email: "jane.smith@example.com",
-      status: "Inactive",
-    },
-    {
-      registrationNumber: "002",
-      name: "Jane Smith",
-      email: "jane.smith@example.com",
-      status: "Inactive",
-    },
+
+  const memberData = data?.data?.individualMembers;
+  // const { mutate }: any = useMemberDelete();
+  //   console.log("🚀 ~ file: Members.tsx:50 ~ deleteMember ~ error:", error)
+  //   console.log("🚀 ~ file: Members.tsx:50 ~ deleteMember ~ isError:", isError)
+  // console.log("🚀 ~ file: Members.tsx:29 ~ data:", data)
+
+  // if (isLoading) {
+  //   return <Loader />;
+  // }
+  // const deleteMember =() =>{
+  //   mutate()
+  // }
+  // const members: Member[] = [
+  //   {
+  //     registrationNumber: "001",
+  //     name: "John Doe",
+  //     email: "john.doe@example.com",
+  //     status: "Active",
+  //   },
+  //   {
+  //     registrationNumber: "002",
+  //     name: "Jane Smith",
+  //     email: "jane.smith@example.com",
+  //     status: "Inactive",
+  //   },
+  //   {
+  //     registrationNumber: "002",
+  //     name: "Jane Smith",
+  //     email: "jane.smith@example.com",
+  //     status: "Inactive",
+  //   },
+  //   {
+  //     registrationNumber: "002",
+  //     name: "Jane Smith",
+  //     email: "jane.smith@example.com",
+  //     status: "Inactive",
+  //   },
+  //   {
+  //     registrationNumber: "002",
+  //     name: "Jane Smith",
+  //     email: "jane.smith@example.com",
+  //     status: "Inactive",
+  //   },
+  //   {
+  //     registrationNumber: "002",
+  //     name: "Jane Smith",
+  //     email: "jane.smith@example.com",
+  //     status: "Inactive",
+  //   },
+  //   {
+  //     registrationNumber: "002",
+  //     name: "Jane Smith",
+  //     email: "jane.smith@example.com",
+  //     status: "Inactive",
+  //   },
+  //   {
+  //     registrationNumber: "002",
+  //     name: "Jane Smith",
+  //     email: "jane.smith@example.com",
+  //     status: "Inactive",
+  //   },
 
     // Add more member objects as needed
-  ];
+  // ];
 
 
 
   const renderMember = ()=>{
+    
+    <IndividualMemberDetail />
     console.log("hello")
   }
 
@@ -149,7 +165,10 @@ const MembersTable: React.FC = () => {
             const member = params.row as Member;
             return (
               <div className="flex justify-center items-center space-x-2">
-                <BsEye className="text-blue-500" onClick={renderMember} />
+                <NavLink to={'/'}>
+                <BsEye className="text-blue-500" />
+                </NavLink>
+                
                 <BsPerson className="text-yellow-500" />
                 <BsTrash className="text-red-500" />
               </div>
@@ -196,7 +215,7 @@ const MembersTable: React.FC = () => {
         <HeadAndSearch />
         <DataGrid
           columns={columns}
-          rows={members}
+          rows={memberData}
           getRowId={getRowId}
           autoHeight
           disableColumnMenu

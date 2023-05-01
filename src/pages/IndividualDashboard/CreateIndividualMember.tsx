@@ -84,12 +84,13 @@ const CreateIndividualMember = () => {
     });
 
   return (
-    <div className="bg-white shadow-md rounded-2xl px-8 pt-6 pb-8 mb-4 max-w-xl mx-auto desktop:text-2xl laptop:text-xl tabletOnly:text-lg mobile:text-base  w-full">
+    <div className=" desktop:text-xl laptop:text-xl tabletOnly:text-lg mobile:text-base">
       <h1 className="text-3xl font-bold mb-6 text-center">
         Next Of Kin / Successor information
       </h1>
 
       <form onSubmit={handleSubmit}>
+        <div className="flex justify-between tabletOnly:flex-wrap mobile:flex-wrap">
         <div className="mb-4">
           <label
             className="block text-gray-700 font-bold mb-2"
@@ -153,6 +154,8 @@ const CreateIndividualMember = () => {
             <p className="text-[red]">{errors.lastName}</p>
           ) : null}
         </div>
+        </div>
+        <div className="flex justify-between tabletOnly:flex-wrap mobile:flex-wrap">
         <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2" htmlFor="dob">
             Date of Birth*
@@ -219,6 +222,8 @@ const CreateIndividualMember = () => {
             <p className="text-[red]">{errors.nationality}</p>
           ) : null}
         </div>
+        </div>
+        <div className="flex justify-between tabletOnly:flex-wrap mobile:flex-wrap">
         <div className="mb-4">
           <label
             className="block text-gray-700 font-bold mb-2"
@@ -291,6 +296,8 @@ const CreateIndividualMember = () => {
             <p className="text-[red]">{errors.zipCode}</p>
           ) : null}
         </div>
+        </div>
+        <div className="flex justify-between tabletOnly:flex-wrap mobile:flex-wrap">
         <div className="mb-4">
           <label
             className="block text-gray-700 font-bold mb-2"
@@ -356,6 +363,7 @@ const CreateIndividualMember = () => {
           Object.prototype.hasOwnProperty.call(touched, "email") ? (
             <p className="text-[red]">{errors.email}</p>
           ) : null}
+        </div>
         </div>
         <div className="flex flex-col items-start">
           <label
