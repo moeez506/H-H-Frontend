@@ -73,7 +73,7 @@ const RouterConfig = () => {
               element={<IndividualPayments />}
             />
             <Route
-              path="/individual-Detail"
+              path="/individual-Detail/:id"
               element={<IndividualMemberDetail />}
             />
             <Route

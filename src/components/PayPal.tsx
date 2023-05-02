@@ -8,6 +8,7 @@ import type {
 import { useNavigate } from "react-router-dom";
 import {
   createGroupApi,
+  createPayment,
   createRepresentative,
   updateRepresentative,
 } from "../apis/groupOnboading";
@@ -67,9 +68,13 @@ export default function PayPal({ am, className, contextData }: PayPalProps) {
   const representativeTwoData = dataRepresentative(representativeTwo);
   const representativeThreeData = dataRepresentative(representativeThree);
 
-  async function addGroup() {
+  async function addGroup(paymentData: any) {
     createGroupApi(groupData).then(async (res) => {
       await Promise.all([
+        createPayment({
+          ...paymentData,
+          groupId: res.group._id,
+        }),
         updateRepresentative({
           ...representativeOneData,
           groupId: res.group._id,
@@ -89,8 +94,17 @@ export default function PayPal({ am, className, contextData }: PayPalProps) {
   }
 
 
-  async function addInvdividualMember() {
-    updateIndividualAdmin(individualAdmin);
+  async function addInvdividualMember(paymentData: any) {
+    updateIndividualAdmin(individualAdmin).then(async (res) =>{
+      await Promise.all([
+        createKin(kinInformation),
+        createPayment({
+          ...paymentData,
+          userId: res.user._id
+        })
+      ])
+
+    })
     createKin(kinInformation);
     navigate('/thank-you')
   }
@@ -136,11 +150,19 @@ export default function PayPal({ am, className, contextData }: PayPalProps) {
             return actions.order.capture().then((res: any) => {
               console.log("🚀 ~ file: PayPal.tsx:110 ~ returnactions.order.capture ~ res:", res)
               { res.status === "COMPLETED" ? setApiSuccess("Transaction Successful") : null }
-              // console.log(res);
+              const {id, payer, purchase_units } = res
+
+              const paymentData ={
+                transactionId: id,
+                amount: purchase_units[0].amount.value,
+                email: payer.email_address,
+                paymentReason: "Registration"
+              }
+              console.log("🚀 ~ file: PayPal.tsx:147 ~ returnactions.order.capture ~ paymentData:", paymentData)
               if (individualAdmin) {
-                addInvdividualMember()
+                addInvdividualMember(paymentData)
               } else if (createGroup) {
-                addGroup();
+                addGroup(paymentData);
               }
               return;
             });
