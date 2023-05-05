@@ -14,11 +14,12 @@ import HeadAndSearch from "./components/HeadAndSearchMember";
 import { Link, NavLink } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
 import Loader from "../Loader";
-import {
-  useMemberData,
-  useMemberDelete,
-} from "../../hooks/useRepresentativeData";
+// import {
+//   useMemberData,
+//   useMemberDelete,
+// } from "../../hooks/useRepresentativeData";
 import { IndividualMemberDetail } from "../../pages";
+import { useMemberData } from "../../hooks/useRepresentativeData";
 interface Member {
   _id: string;
   firstName: string;
@@ -41,10 +42,7 @@ const MembersTable: React.FC = () => {
   // }
   const isSmallScreen = useMediaQuery("(max-width: 600px)"); // Adjust the breakpoint to your desired screen size
   const { isLoading, data, isError, error }: any = useMemberData();
-  console.log(
-    "🚀 ~ file: Members.tsx:29 ~ data:",
-    data?.data?.individualMembers
-  );
+  console.log("🚀 ~ file: Members.tsx:45 ~ data:", data);
 
   if (isLoading) {
     return <Loader />;
@@ -115,11 +113,6 @@ const MembersTable: React.FC = () => {
   // Add more member objects as needed
   // ];
 
-  const renderMember = () => {
-    <IndividualMemberDetail />;
-    console.log("hello");
-  };
-
   const columns = !isSmallScreen
     ? [
         {
@@ -166,6 +159,7 @@ const MembersTable: React.FC = () => {
           flex: 1,
           renderCell: (params: GridCellParams) => {
             const member = params.row as Member;
+            const memberId = member._id;
 
             const handleViewClick = () => {};
 
@@ -176,7 +170,9 @@ const MembersTable: React.FC = () => {
             return (
               <div className="flex justify-center items-center space-x-2">
                 <button onClick={handleViewClick}>
-                  <BsEye className="text-blue-500" />
+                  <NavLink to={`/individual-Detail/${memberId}`}>
+                    <BsEye className="text-blue-500" />
+                  </NavLink>
                 </button>
 
                 <NavLink to={"/edit-screen"}>
@@ -196,7 +192,7 @@ const MembersTable: React.FC = () => {
       ]
     : [
         {
-          field: "name",
+          field: "firstName",
           headerName: "Name",
           flex: 1,
           headerClassName: "my-header-background my-header-text-color",
@@ -213,11 +209,25 @@ const MembersTable: React.FC = () => {
           headerName: "Actions",
           flex: 1,
           renderCell: (params: GridCellParams) => {
+            const member = params.row as Member;
+            const memberId = member._id;
             return (
               <div className="flex justify-center items-center space-x-2">
-                <BsEye className="text-blue-500" />
-                <BsPerson className="text-yellow-500" />
-                <BsTrash className="text-red-500" />
+                <button>
+                  <NavLink to={`/individual-Detail/${memberId}`}>
+                    <BsEye className="text-blue-500" />
+                  </NavLink>
+                </button>
+
+                <NavLink to={"/edit-screen"}>
+                  <button>
+                    <BsPerson className="text-yellow-500" />
+                  </button>
+                </NavLink>
+
+                <button>
+                  <BsTrash className="text-red-500" />
+                </button>
               </div>
             );
           },

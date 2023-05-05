@@ -13,7 +13,7 @@ export const useRepresentiveData = () => {
 };
 
 const getIndividualMembers = async () => {
-  return await request.get(`group/invidual-members/642804d35e141e0c3f82479d`);
+  return await request.get(`auth/invidual-members`);
 };
 
 export const useMemberData = () => {
