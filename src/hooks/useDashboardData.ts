@@ -28,3 +28,10 @@ export const useDashboardMembers = () => {
     return response.data;
   });
 };
+
+const dashboardPayment = async () => {
+  return await request.get(`/payment/individual-payment`);
+};
+export const useDashboardPayment = () => {
+  return useQuery("payment-data", dashboardPayment);
+};

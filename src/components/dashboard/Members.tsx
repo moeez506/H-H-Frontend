@@ -14,13 +14,17 @@ import HeadAndSearch from "./components/HeadAndSearchMember";
 import { Link, NavLink } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
 import Loader from "../Loader";
-import { useMemberData, useMemberDelete } from "../../hooks/useRepresentativeData";
+// import {
+//   useMemberData,
+//   useMemberDelete,
+// } from "../../hooks/useRepresentativeData";
 import { IndividualMemberDetail } from "../../pages";
+import { useMemberData } from "../../hooks/useRepresentativeData";
 interface Member {
   _id: string;
-  name: string;
+  firstName: string;
   email: string;
-  status: string;
+  accountStatus: string;
 }
 
 const getRowId = (memberData: Member) => memberData._id;
@@ -38,7 +42,7 @@ const MembersTable: React.FC = () => {
   // }
   const isSmallScreen = useMediaQuery("(max-width: 600px)"); // Adjust the breakpoint to your desired screen size
   const { isLoading, data, isError, error }: any = useMemberData();
-  console.log("🚀 ~ file: Members.tsx:29 ~ data:", data?.data?.individualMembers)
+  console.log("🚀 ~ file: Members.tsx:45 ~ data:", data);
 
   if (isLoading) {
     return <Loader />;
@@ -106,27 +110,19 @@ const MembersTable: React.FC = () => {
   //     status: "Inactive",
   //   },
 
-    // Add more member objects as needed
+  // Add more member objects as needed
   // ];
-
-
-
-  const renderMember = ()=>{
-    
-    <IndividualMemberDetail />
-    console.log("hello")
-  }
 
   const columns = !isSmallScreen
     ? [
         {
-          field: "registrationNumber",
+          field: "_id",
           headerName: "Registration Number",
           flex: 1,
           headerClassName: "my-header-background my-header-text-color",
         },
         {
-          field: "name",
+          field: "firstName",
           headerName: "Name",
           flex: 1,
           headerClassName: "my-header-background my-header-text-color",
@@ -138,23 +134,23 @@ const MembersTable: React.FC = () => {
           headerClassName: "my-header-background my-header-text-color",
         },
         {
-          field: "status",
+          field: "accountStatus",
           headerName: "Status",
           flex: 1,
           renderCell: (params: GridCellParams) => {
-            const member = params.row as Member;
+            const memberData = params.row;
+
             return (
               <div className="flex justify-center items-center space-x-2">
-                {member.status === "Active" ? (
+                {memberData.accountStatus === "active" ? (
                   <BsCheckCircle className="text-green-500" />
                 ) : (
                   <BsXCircle className="text-red-500" />
                 )}
-                <span>{member.status}</span>
+                <span>{memberData.accountStatus}</span>
               </div>
             );
           },
-
           headerClassName: "my-header-background my-header-text-color",
         },
         {
@@ -163,14 +159,31 @@ const MembersTable: React.FC = () => {
           flex: 1,
           renderCell: (params: GridCellParams) => {
             const member = params.row as Member;
+            const memberId = member._id;
+
+            const handleViewClick = () => {};
+
+            const handleEditClick = () => {};
+
+            const handleDeleteClick = () => {};
+
             return (
               <div className="flex justify-center items-center space-x-2">
-                <NavLink to={'/'}>
-                <BsEye className="text-blue-500" />
+                <button onClick={handleViewClick}>
+                  <NavLink to={`/individual-Detail/${memberId}`}>
+                    <BsEye className="text-blue-500" />
+                  </NavLink>
+                </button>
+
+                <NavLink to={"/edit-screen"}>
+                  <button onClick={handleEditClick}>
+                    <BsPerson className="text-yellow-500" />
+                  </button>
                 </NavLink>
-                
-                <BsPerson className="text-yellow-500" />
-                <BsTrash className="text-red-500" />
+
+                <button onClick={handleDeleteClick}>
+                  <BsTrash className="text-red-500" />
+                </button>
               </div>
             );
           },
@@ -179,7 +192,7 @@ const MembersTable: React.FC = () => {
       ]
     : [
         {
-          field: "name",
+          field: "firstName",
           headerName: "Name",
           flex: 1,
           headerClassName: "my-header-background my-header-text-color",
@@ -197,11 +210,24 @@ const MembersTable: React.FC = () => {
           flex: 1,
           renderCell: (params: GridCellParams) => {
             const member = params.row as Member;
+            const memberId = member._id;
             return (
               <div className="flex justify-center items-center space-x-2">
-                <BsEye className="text-blue-500" />
-                <BsPerson className="text-yellow-500" />
-                <BsTrash className="text-red-500" />
+                <button>
+                  <NavLink to={`/individual-Detail/${memberId}`}>
+                    <BsEye className="text-blue-500" />
+                  </NavLink>
+                </button>
+
+                <NavLink to={"/edit-screen"}>
+                  <button>
+                    <BsPerson className="text-yellow-500" />
+                  </button>
+                </NavLink>
+
+                <button>
+                  <BsTrash className="text-red-500" />
+                </button>
               </div>
             );
           },

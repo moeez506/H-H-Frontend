@@ -27,11 +27,11 @@ window.addEventListener("storage", (event) => {
 request.interceptors.request.use(
   function (config) {
     const token = localStorage.getItem("auth-token");
-    console.log("🚀 ~ file: request.ts:43 ~ token:", token);
+    // console.log("🚀 ~ file: request.ts:43 ~ token:", token);
     if (token !== null) {
       config.headers["Authorization"] = `Bearer ${token}`;
     }
-    console.log("🚀 ~ file: request.ts:49 ~ config:", config);
+    // console.log("🚀 ~ file: request.ts:49 ~ config:", config);
     return config;
   },
 
