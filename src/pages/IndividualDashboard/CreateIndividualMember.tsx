@@ -148,11 +148,26 @@ const CreateIndividualMember = () => {
   }
   return (
     <div className=" mx-auto h-auto desktop:text-xl laptop:text-xl tabletOnly:text-lg mobile:text-base">
-      <h1 className="text-3xl font-bold mb-6 text-center">
-        Next Of Kin / Successor information
-      </h1>
+      {/* <h1 className="text-3xl font-bold mb-6 text-center">
+        Create Member
+      </h1> */}
 
       <form onSubmit={handleSubmit}>
+        <div className="flex justify-between">
+      <h1 className="text-3xl font-bold mb-4 text-center">
+        Create Member
+      </h1>
+      <button
+          type="submit"
+          // eslint-disable-next-line @typescript-eslint/no-misused-promises
+          onClick={formSubmit}
+          className="border-2 rounded-xl text-white mb-4 border-white bg-gradient-to-r from-orange to-yellow px-8 py-0 text-xl font-medium"
+        >
+          Submit
+        </button>
+        </div>
+        <hr></hr>
+        <br></br>
         <div className="flex justify-between tabletOnly:flex-wrap mobile:flex-wrap">
           <div className="mb-4">
             <label
@@ -434,7 +449,7 @@ const CreateIndividualMember = () => {
             ) : null}
           </div>
         </div>
-        <div className="flex flex-col items-start">
+        {/* <div className="flex flex-col items-start">
           <label
             htmlFor="relationship"
             className="text-gray-800 font-bold mb-2"
@@ -496,11 +511,11 @@ const CreateIndividualMember = () => {
               ) : null}
             </div>
           )}
-        </div>
+        </div> */}
 
-        <h1 className="text-3xl font-bold mb-6 text-center">
+        {/* <h1 className="text-3xl font-bold mb-6 text-center">
           Your Identity Info
-        </h1>
+        </h1> */}
         <div className="mb-6">
           <p className="text-gray-800 font-bold mb-2">
             Which identity would you like to provide:
@@ -511,7 +526,7 @@ const CreateIndividualMember = () => {
           Object.prototype.hasOwnProperty.call(touched, "identityCheck") ? (
             <p className="text-[red]">{errors.identityCheck}</p>
           ) : null}
-
+          <div className="flex justify-between tabletOnly:flex-wrap mobile:flex-wrap">
           {options.map((option) => (
             <div key={option.value} className="flex items-center mb-2">
               <input
@@ -537,6 +552,7 @@ const CreateIndividualMember = () => {
               </label>
             </div>
           ))}
+          </div>
         </div>
         <div className="flex justify-between tabletOnly:flex-wrap mobile:flex-wrap">
           <div className="mb-4">
@@ -612,6 +628,7 @@ const CreateIndividualMember = () => {
             ) : null}
           </div>
         </div>
+        <div className="flex justify-between tabletOnly:flex-wrap mobile:flex-wrap">
         <div className="mb-4">
           <label
             className="block text-gray-700 font-bold mb-2"
@@ -658,15 +675,16 @@ const CreateIndividualMember = () => {
             <p className="text-[red]">{errors.expiryDate}</p>
           ) : null}
         </div>
+        </div>
 
-        <button
+        {/* <button
           type="submit"
           // eslint-disable-next-line @typescript-eslint/no-misused-promises
           onClick={formSubmit}
           className="w-full border-4 rounded-xl text-white border-white bg-gradient-to-r from-orange to-yellow px-8 py-2 text-xl font-medium"
         >
           Submit
-        </button>
+        </button> */}
       </form>
     </div>
   );

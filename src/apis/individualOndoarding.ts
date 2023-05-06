@@ -23,3 +23,14 @@ export const createKin = async (values: any) => {
     // throw new Error("Login failed. Please try again.");
   }
 };
+
+export const deleteMember = async (id: any) => {
+  try {
+    const { data } = await request.delete(`/auth/delete-individual-member/${id}`);
+    console.log("🚀 ~ file: individualOndoarding.ts:23 ~ createKin:", data);
+    return data;
+  } catch (error) {
+    console.error(error);
+    // throw new Error("Login failed. Please try again.");
+  }
+};

@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React from "react";
+import React, { useState } from "react";
 import { DataGrid, GridCellParams } from "@mui/x-data-grid";
 
 import "./Members.css";
@@ -20,6 +20,9 @@ import Loader from "../Loader";
 // } from "../../hooks/useRepresentativeData";
 import { IndividualMemberDetail } from "../../pages";
 import { useMemberData } from "../../hooks/useRepresentativeData";
+import { deleteMember } from "../../apis/individualOndoarding";
+import ApiSuccess from "../ApiSuccess";
+
 interface Member {
   _id: string;
   firstName: string;
@@ -40,26 +43,24 @@ const MembersTable: React.FC = () => {
   // console.log(data);
   // if (!isError && !isLoading) {
   // }
+  const [apiLoading, setApiLoading] = useState<boolean>(false);
+  console.log("🚀 ~ file: Members.tsx:47 ~ apiLoading:", apiLoading)
+  const [apiSuccess, setApiSuccess] = useState<string>();
+  console.log("🚀 ~ file: Members.tsx:49 ~ apiSuccess:", apiSuccess)
   const isSmallScreen = useMediaQuery("(max-width: 600px)"); // Adjust the breakpoint to your desired screen size
   const { isLoading, data, isError, error }: any = useMemberData();
   console.log("🚀 ~ file: Members.tsx:45 ~ data:", data);
 
-  if (isLoading) {
+  if (isLoading || apiLoading) {
+    console.log("calllells")
     return <Loader />;
   }
 
   const memberData = data?.data?.individualMembers;
-  // const { mutate }: any = useMemberDelete();
-  //   console.log("🚀 ~ file: Members.tsx:50 ~ deleteMember ~ error:", error)
-  //   console.log("🚀 ~ file: Members.tsx:50 ~ deleteMember ~ isError:", isError)
-  // console.log("🚀 ~ file: Members.tsx:29 ~ data:", data)
-
-  // if (isLoading) {
-  //   return <Loader />;
-  // }
-  // const deleteMember =() =>{
-  //   mutate()
-  // }
+  
+    // 
+  
+  
   // const members: Member[] = [
   //   {
   //     registrationNumber: "001",
@@ -112,7 +113,7 @@ const MembersTable: React.FC = () => {
 
   // Add more member objects as needed
   // ];
-
+  {apiSuccess ? <ApiSuccess success={apiSuccess} /> : null}
   const columns = !isSmallScreen
     ? [
         {
@@ -165,8 +166,14 @@ const MembersTable: React.FC = () => {
 
             const handleEditClick = () => {};
 
-            const handleDeleteClick = () => {};
-
+            const handleDeleteClick = async (memberId: any) => {
+              // setApiLoading(true)
+              await deleteMember(memberId)
+               .then((res) => {
+                setApiSuccess(res.message)
+                setApiLoading(false)
+              })
+            };
             return (
               <div className="flex justify-center items-center space-x-2">
                 <button onClick={handleViewClick}>
@@ -181,7 +188,11 @@ const MembersTable: React.FC = () => {
                   </button>
                 </NavLink>
 
-                <button onClick={handleDeleteClick}>
+                <button
+                  onClick={() => {
+                    handleDeleteClick(memberId);
+                  }}
+                >
                   <BsTrash className="text-red-500" />
                 </button>
               </div>
@@ -211,6 +222,9 @@ const MembersTable: React.FC = () => {
           renderCell: (params: GridCellParams) => {
             const member = params.row as Member;
             const memberId = member._id;
+            const handleDeleteClick = (memberId: any) => {
+              console.log("🚀 ~ file: Members.tsx:169 ~ memberId:", memberId);
+            };
             return (
               <div className="flex justify-center items-center space-x-2">
                 <button>
@@ -225,7 +239,11 @@ const MembersTable: React.FC = () => {
                   </button>
                 </NavLink>
 
-                <button>
+                <button
+                  onClick={() => {
+                    handleDeleteClick(memberId);
+                  }}
+                >
                   <BsTrash className="text-red-500" />
                 </button>
               </div>

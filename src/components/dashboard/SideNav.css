@@ -3,8 +3,15 @@
     padding:0;
     text-decoration: none;
 }
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
 .container{
     display:flex;
+    height: 100vh;
+    /* position: absolute; */
 }
 main{
     width: 100%;
@@ -17,7 +24,7 @@ main{
     width: 200px;
     position: relative;
     border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
+    border-bottom-right-radius: 20px;
     transition: all 300ms ease;
 }
 .top_section{
@@ -54,3 +61,10 @@ main{
 .icon, .link_text{
     font-size: 20px;
 }
+
+@media screen and (max-width: 485px) {
+    /* styles for screens smaller than 768px */
+    .sidebar {
+      width: 250px;
+    }
+  }

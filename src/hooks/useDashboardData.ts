@@ -9,7 +9,7 @@ interface TokenPayload extends JwtPayload {
 }
 
 const dashboardMembers = async (id: string) => {
-  const response = await request.get(`/group/invidual-members/${id}`);
+  const response = await request.get(`/auth/invidual-members`);
   return response.data;
 };
 

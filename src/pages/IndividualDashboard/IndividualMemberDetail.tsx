@@ -1,8 +1,23 @@
 /* eslint-disable prettier/prettier */
 import React from "react";
 import Button from "../../components/Button";
+import { useParams } from "react-router";
+import { useIndividualMemberDetail } from "../../hooks/useRepresentativeData";
+import Loader from "../../components/Loader";
 
 const IndividualMemberDetail = () => {
+  const params = useParams();
+  const memberId = params.id;
+  console.log("🚀 ~ file: IndividualMemberDetail.tsx:9 ~ IndividualMemberDetail ~ memberId:", memberId)
+ 
+  const { isLoading, data, isError, error }: any = useIndividualMemberDetail(memberId);
+  console.log("🚀 ~ file: IndividualMemberDetail.tsx:13 ~ IndividualMemberDetail ~ data:", data?.data?.member)
+  if(isLoading){
+    return <Loader />;
+  }
+
+  const {email, phoneNumbers} = data?.data?.member;
+
   return (
     <div className="ml-14 mobile:ml-0 tabletOnly:w-max">
       <div className="flex justify-between items-center">
@@ -22,11 +37,11 @@ const IndividualMemberDetail = () => {
           </div>
           <div className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8 mobile:flex mobile:justify-between mobile:mb-0">
             <h2 className="text-xl font-normal mb-2">Email:</h2>
-            <p className="text-gray-500 text-base mobile:pt-1">test@gmail.com</p>
+            <p className="text-gray-500 text-base mobile:pt-1">{email}</p>
           </div>
           <div className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8 mobile:flex mobile:justify-between mobile:mb-0">
             <h2 className="text-xl font-normal mb-2">Contact:</h2>
-            <p className="text-gray-500 text-base mobile:pt-1">555 555 555</p>
+            <p className="text-gray-500 text-base mobile:pt-1">{phoneNumbers.Cell}</p>
           </div>
         </div>
         <div className="flex flex-row mobile:flex-wrap tabletOnly:flex-wrap">

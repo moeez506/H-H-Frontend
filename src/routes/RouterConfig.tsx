@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 
 import React from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation, useParams } from "react-router-dom";
 import Header from "../components/Header";
 import { ThankYou } from "../components/MultiFormComponents/ThankYou";
 import { GroupProvider } from "../contexts/groupOnboardingContext";
@@ -35,6 +35,8 @@ import PaymentDashBoard from "../components/dashboard/Payment";
 
 const RouterConfig = () => {
   const location = useLocation();
+  const params = useParams()
+  console.log("🚀 ~ file: RouterConfig.tsx:39 ~ RouterConfig ~ id:", params)
   const shouldRenderHeader = [
     "/home",
     "/about",
@@ -48,30 +50,39 @@ const RouterConfig = () => {
     "/individual-Members",
     "/individual-Setting",
     "/individual-Payments",
-    "/individual-Detail",
+    // `/individual-Detail/`,
     "/individual-PaymentDetail",
     "/dashboard-members",
     "/dashboard-payment",
     "/individual-CreateMember",
-  ].includes(location.pathname);
+  ];
+  // console.log(location.pathname.startsWith("/individual-Detail/"),"//...")
+  const path = location.pathname.split('/')
+  const id = path[path.length - 1]
+  console.log("🚀 ~ file: RouterConfig.tsx:61 ~ RouterConfig ~ id:", id)
+  if (location.pathname.startsWith("/individual-Detail/")) {
+    shouldRenderIndividualDashboard.push(`/individual-Detail/${id}`);
+  }
+// console.log(location.pathname)
+  const shouldRenderSideber = shouldRenderIndividualDashboard.includes(location.pathname);
 
   console.log(shouldRenderHeader);
 
   return (
     <>
       {shouldRenderHeader && <Header />}
-      {shouldRenderIndividualDashboard && (
+      {shouldRenderSideber && (
         <SideNav className="">
           <Routes>
             <Route path="/individual-Profile" element={<IndividualProfile />} />
-            <Route path="/individual-Members" element={<IndividualMembers />} />
+            {/* <Route path="/individual-Members" element={<IndividualMembers />} /> */}
             <Route path="/individual-Setting" element={<IndividualSetting />} />
             <Route path="/dashboard-members" element={<MemberTable />} />
             <Route path="/dashboard-payment" element={<PaymentDashBoard />} />
-            <Route
+            {/* <Route
               path="/individual-Payments"
               element={<IndividualPayments />}
-            />
+            /> */}
             <Route
               path="/individual-Detail/:id"
               element={<IndividualMemberDetail />}
