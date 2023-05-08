@@ -147,7 +147,7 @@ const CreateIndividualMember = () => {
     // handleNextStep(6);
   }
   return (
-    <div className=" mx-auto h-auto desktop:text-xl laptop:text-xl tabletOnly:text-lg mobile:text-base">
+    <div className=" h-auto desktop:text-xl laptop:text-xl tabletOnly:text-lg mobile:text-base">
       {/* <h1 className="text-3xl font-bold mb-6 text-center">
         Create Member
       </h1> */}

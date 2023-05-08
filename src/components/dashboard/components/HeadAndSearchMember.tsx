@@ -4,9 +4,9 @@ import { Link, NavLink } from "react-router-dom";
 function HeadAndSearch() {
   return (
     <>
-      <div className="mt-24 ml-24 mr-24 mobile:ml-0 mobile:mr-0 ">
-        <div className="flex justify-between items-center mb-8 mr-8">
-          <a
+      <div className="">
+        {/* <div className="flex justify-between items-center mb-8 mr-8"> */}
+          {/* <a
             className={
               location.pathname === "/member"
                 ? "text-orange px-4 py-2 mr-20 border-b border-orange font-bold"
@@ -14,12 +14,12 @@ function HeadAndSearch() {
             }
           >
             <Link to={"/members"}>Members</Link>
-          </a>
+          </a> */}
           {/* <button className="bg-orange text-white px-4 py-2 ml-4"> */}
-            <NavLink to={"/individual-CreateMember"} className="bg-orange text-white px-4 py-2 ml-4">Add User</NavLink> 
+            {/* <NavLink to={"/individual-CreateMember"} className="bg-orange text-white px-4 py-2 ml-4">Add User</NavLink>  */}
           {/* </button>{" "} */}
-        </div>
-        <div className="relative mb-6 flex w-full flex-wrap items-stretch">
+        {/* </div> */}
+        <div className="relative mb-6 flex justify-between w-full flex-wrap items-stretch">
           <input
             type="search"
             className="rounded-2xl relative m-0 block w-[1px] min-w-0 flex-auto  border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
@@ -44,6 +44,7 @@ function HeadAndSearch() {
               />
             </svg>
           </span>
+          <NavLink to={"/individual-CreateMember"} className="bg-orange rounded-2xl text-white px-4 py-2 ml-4">Add User</NavLink>
         </div>
       </div>
     </>

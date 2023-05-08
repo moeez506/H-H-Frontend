@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React from "react";
+import './index.css'
 import { useRepresentiveData } from "../../hooks/useRepresentativeData";
 import Loader from "../../components/Loader";
 

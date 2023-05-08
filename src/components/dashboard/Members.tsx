@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DataGrid, GridCellParams } from "@mui/x-data-grid";
 
 import "./Members.css";
@@ -44,23 +44,28 @@ const MembersTable: React.FC = () => {
   // if (!isError && !isLoading) {
   // }
   const [apiLoading, setApiLoading] = useState<boolean>(false);
-  console.log("🚀 ~ file: Members.tsx:47 ~ apiLoading:", apiLoading)
+  console.log("🚀 ~ file: Members.tsx:47 ~ apiLoading:", apiLoading);
   const [apiSuccess, setApiSuccess] = useState<string>();
-  console.log("🚀 ~ file: Members.tsx:49 ~ apiSuccess:", apiSuccess)
+  console.log("🚀 ~ file: Members.tsx:49 ~ apiSuccess:", apiSuccess);
   const isSmallScreen = useMediaQuery("(max-width: 600px)"); // Adjust the breakpoint to your desired screen size
+
+  useEffect(() => {}, []);
+
   const { isLoading, data, isError, error }: any = useMemberData();
   console.log("🚀 ~ file: Members.tsx:45 ~ data:", data);
 
-  if (isLoading || apiLoading) {
-    console.log("calllells")
+  if (isLoading) {
+    console.log("calllells");
     return <Loader />;
   }
-
+  if (apiLoading) {
+    console.log("calllells");
+    return <Loader />;
+  }
   const memberData = data?.data?.individualMembers;
-  
-    // 
-  
-  
+
+  //
+
   // const members: Member[] = [
   //   {
   //     registrationNumber: "001",
@@ -113,7 +118,7 @@ const MembersTable: React.FC = () => {
 
   // Add more member objects as needed
   // ];
-  {apiSuccess ? <ApiSuccess success={apiSuccess} /> : null}
+  // {apiSuccess ? <ApiSuccess success={apiSuccess} /> : null}
   const columns = !isSmallScreen
     ? [
         {
@@ -167,12 +172,16 @@ const MembersTable: React.FC = () => {
             const handleEditClick = () => {};
 
             const handleDeleteClick = async (memberId: any) => {
-              // setApiLoading(true)
-              await deleteMember(memberId)
-               .then((res) => {
-                setApiSuccess(res.message)
-                setApiLoading(false)
-              })
+              setApiLoading(true);
+
+              try {
+                await deleteMember(memberId);
+                setApiSuccess("Member deleted successfully");
+              } catch (error) {
+                setApiSuccess("Failed to delete member");
+              }
+              setApiLoading(false);
+            
             };
             return (
               <div className="flex justify-center items-center space-x-2">
@@ -255,7 +264,12 @@ const MembersTable: React.FC = () => {
 
   return (
     <>
-      <div className="m-8">
+      <div className="ml-20">
+        {/* <div> */}
+        <h1 className="text-4xl font-semibold text-orange">Members</h1>
+        <br></br>
+        <hr></hr>
+        <br></br>
         <HeadAndSearch />
         <DataGrid
           columns={columns}
@@ -266,6 +280,7 @@ const MembersTable: React.FC = () => {
           // className=""
           disableRowSelectionOnClick
         />
+        {/* </div> */}
       </div>
     </>
   );

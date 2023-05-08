@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './SideNav.css'
 import {
     FaTh,
@@ -46,13 +46,14 @@ const SideNav = ({children}: any) => {
             icon:<FaThList/>
         }
     ]
+    const screenWidth = window.innerWidth; 
     
     const renderSmallScreen = () =>{
-        const isSmallScreen = useMediaQuery("(max-width: 485px)")
-        if (isSmallScreen) {
-            setIsOpen(!isOpen)
+        if (screenWidth < 485) {
+            setIsOpen(false)
+            console.log(screenWidth, "///......");
         }
-
+        // console.log(screenWidth, "///......");
     }
     return (
         <>
@@ -72,7 +73,7 @@ const SideNav = ({children}: any) => {
                </div>
                {
                    menuItem.map((item, index)=>(
-                       <NavLink to={item.path} key={index} className={isOpen ? "link" : "w-0"} >
+                       <NavLink to={item.path} key={index} className={isOpen ? "link" : "w-0"} onClick={renderSmallScreen} >
                            <div className={isOpen ? "font-bold" : "hidden"}>{item.icon}</div>
                            <div style={{display: isOpen ? "block" : "none"}} className="link_text">{item.name}</div>
                        </NavLink>
