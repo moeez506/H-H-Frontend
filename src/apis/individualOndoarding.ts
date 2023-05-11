@@ -22,9 +22,18 @@ export const createKin = async (values: any) => {
     console.error(error);
     // throw new Error("Login failed. Please try again.");
   }
+};export const createIndividualMember = async (values: any) => {
+  try {
+    const { data } = await request.post("/auth/create-member", values);
+    console.log("🚀 ~ file: individualOndoarding.ts:23 ~ createKin:", data);
+    return data;
+  } catch (error) {
+    console.error(error);
+    // throw new Error("Login failed. Please try again.");
+  }
 };
 
-export const deleteMember = async (id: any) => {
+export const deleteMember = async (id: string) => {
   try {
     const { data } = await request.delete(`/auth/delete-individual-member/${id}`);
     console.log("🚀 ~ file: individualOndoarding.ts:23 ~ createKin:", data);
