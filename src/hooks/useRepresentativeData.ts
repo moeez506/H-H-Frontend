@@ -21,17 +21,23 @@ export const useMemberData = () => {
 };
 
 export const deleteIndividualMembers = async () => {
-  return await request.delete(`group/delete-individual-member/642db746470e8d8cbc48be46`);
+  return await request.delete(
+    `group/delete-individual-member/642db746470e8d8cbc48be46`
+  );
 };
 
 // export const useMemberDelete = () => {
 //   return useMutation("delete-member", deleteIndividualMembers);
 // };
 
-const individualMemberDetail = async (id: string | undefined) => {
-  return await request.get(`/auth/member-detail/${id}`);
+const individualMemberDetail = async (id: any) => {
+  if (typeof id === "string") {
+    return await request.get(`/auth/member-detail/${id}`);
+  } else {
+    throw new Error(`Invalid id`);
+  }
 };
 
-export const useIndividualMemberDetail = (id: string | undefined) => {
+export const useIndividualMemberDetail = (id: any) => {
   return useQuery(["member-detail", id], () => individualMemberDetail(id));
 };

@@ -24,9 +24,11 @@ export const createKin = async (values: any) => {
   }
 };
 
-export const deleteMember = async (id: any) => {
+export const deleteMember = async (id: string) => {
   try {
-    const { data } = await request.delete(`/auth/delete-individual-member/${id}`);
+    const { data } = await request.delete(
+      `/auth/delete-individual-member/${id}`
+    );
     console.log("🚀 ~ file: individualOndoarding.ts:23 ~ createKin:", data);
     return data;
   } catch (error) {

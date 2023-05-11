@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 /* eslint-disable prettier/prettier */
 import React from "react";
 import Button from "../../components/Button";
@@ -5,18 +6,25 @@ import { useParams } from "react-router";
 import { useIndividualMemberDetail } from "../../hooks/useRepresentativeData";
 import Loader from "../../components/Loader";
 
+interface RouteParams {
+  id?: string;
+
+}
+
 const IndividualMemberDetail = () => {
-  const params = useParams();
-  const memberId = params.id;
+  const { id } = useParams() as RouteParams;
+  const memberId = id;
+
   console.log("🚀 ~ file: IndividualMemberDetail.tsx:9 ~ IndividualMemberDetail ~ memberId:", memberId)
- 
+
   const { isLoading, data, isError, error }: any = useIndividualMemberDetail(memberId);
   console.log("🚀 ~ file: IndividualMemberDetail.tsx:13 ~ IndividualMemberDetail ~ data:", data?.data?.member)
-  if(isLoading){
+  if (isLoading) {
     return <Loader />;
   }
 
-  const {email, phoneNumbers} = data?.data?.member;
+
+  const { email, phoneNumbers } = data?.data?.member;
 
   return (
     <div className="ml-14 mobile:ml-0 tabletOnly:w-max">
@@ -92,7 +100,7 @@ const IndividualMemberDetail = () => {
           </div>
         </div>
       </div>
-      
+
     </div>
   );
 };

@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable prettier/prettier */
 import React, { useEffect, useState } from "react";
 import { DataGrid, GridCellParams } from "@mui/x-data-grid";
@@ -49,7 +50,7 @@ const MembersTable: React.FC = () => {
   console.log("🚀 ~ file: Members.tsx:49 ~ apiSuccess:", apiSuccess);
   const isSmallScreen = useMediaQuery("(max-width: 600px)"); // Adjust the breakpoint to your desired screen size
 
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
 
   const { isLoading, data, isError, error }: any = useMemberData();
   console.log("🚀 ~ file: Members.tsx:45 ~ data:", data);
@@ -121,146 +122,146 @@ const MembersTable: React.FC = () => {
   // {apiSuccess ? <ApiSuccess success={apiSuccess} /> : null}
   const columns = !isSmallScreen
     ? [
-        {
-          field: "_id",
-          headerName: "Registration Number",
-          flex: 1,
-          headerClassName: "my-header-background my-header-text-color",
+      {
+        field: "_id",
+        headerName: "Registration Number",
+        flex: 1,
+        headerClassName: "my-header-background my-header-text-color",
+      },
+      {
+        field: "firstName",
+        headerName: "Name",
+        flex: 1,
+        headerClassName: "my-header-background my-header-text-color",
+      },
+      {
+        field: "email",
+        headerName: "Email",
+        flex: 1,
+        headerClassName: "my-header-background my-header-text-color",
+      },
+      {
+        field: "accountStatus",
+        headerName: "Status",
+        flex: 1,
+        renderCell: (params: GridCellParams) => {
+          const memberData = params.row;
+
+          return (
+            <div className="flex justify-center items-center space-x-2">
+              {memberData.accountStatus === "active" ? (
+                <BsCheckCircle className="text-green-500" />
+              ) : (
+                <BsXCircle className="text-red-500" />
+              )}
+              <span>{memberData.accountStatus}</span>
+            </div>
+          );
         },
-        {
-          field: "firstName",
-          headerName: "Name",
-          flex: 1,
-          headerClassName: "my-header-background my-header-text-color",
-        },
-        {
-          field: "email",
-          headerName: "Email",
-          flex: 1,
-          headerClassName: "my-header-background my-header-text-color",
-        },
-        {
-          field: "accountStatus",
-          headerName: "Status",
-          flex: 1,
-          renderCell: (params: GridCellParams) => {
-            const memberData = params.row;
+        headerClassName: "my-header-background my-header-text-color",
+      },
+      {
+        field: "actions",
+        headerName: "Actions",
+        flex: 1,
+        renderCell: (params: GridCellParams) => {
+          const member = params.row as Member;
+          const memberId = member._id;
 
-            return (
-              <div className="flex justify-center items-center space-x-2">
-                {memberData.accountStatus === "active" ? (
-                  <BsCheckCircle className="text-green-500" />
-                ) : (
-                  <BsXCircle className="text-red-500" />
-                )}
-                <span>{memberData.accountStatus}</span>
-              </div>
-            );
-          },
-          headerClassName: "my-header-background my-header-text-color",
-        },
-        {
-          field: "actions",
-          headerName: "Actions",
-          flex: 1,
-          renderCell: (params: GridCellParams) => {
-            const member = params.row as Member;
-            const memberId = member._id;
+          const handleViewClick = () => { };
 
-            const handleViewClick = () => {};
+          const handleEditClick = () => { };
 
-            const handleEditClick = () => {};
+          const handleDeleteClick = async (memberId: any) => {
+            setApiLoading(true);
 
-            const handleDeleteClick = async (memberId: any) => {
-              setApiLoading(true);
+            try {
+              await deleteMember(memberId);
+              setApiSuccess("Member deleted successfully");
+            } catch (error) {
+              setApiSuccess("Failed to delete member");
+            }
+            setApiLoading(false);
 
-              try {
-                await deleteMember(memberId);
-                setApiSuccess("Member deleted successfully");
-              } catch (error) {
-                setApiSuccess("Failed to delete member");
-              }
-              setApiLoading(false);
-            
-            };
-            return (
-              <div className="flex justify-center items-center space-x-2">
-                <button onClick={handleViewClick}>
-                  <NavLink to={`/individual-Detail/${memberId}`}>
-                    <BsEye className="text-blue-500" />
-                  </NavLink>
-                </button>
-
-                <NavLink to={"/edit-screen"}>
-                  <button onClick={handleEditClick}>
-                    <BsPerson className="text-yellow-500" />
-                  </button>
+          };
+          return (
+            <div className="flex justify-center items-center space-x-2">
+              <button onClick={handleViewClick}>
+                <NavLink to={`/individual-Detail/${memberId}`}>
+                  <BsEye className="text-blue-500" />
                 </NavLink>
+              </button>
 
-                <button
-                  onClick={() => {
-                    handleDeleteClick(memberId);
-                  }}
-                >
-                  <BsTrash className="text-red-500" />
+              <NavLink to={"/edit-screen"}>
+                <button onClick={handleEditClick}>
+                  <BsPerson className="text-yellow-500" />
                 </button>
-              </div>
-            );
-          },
-          headerClassName: "my-header-background my-header-text-color",
+              </NavLink>
+
+              <button
+                onClick={() => {
+                  void handleDeleteClick(memberId);
+                }}
+              >
+                <BsTrash className="text-red-500" />
+              </button>
+            </div>
+          );
         },
-      ]
+        headerClassName: "my-header-background my-header-text-color",
+      },
+    ]
     : [
-        {
-          field: "firstName",
-          headerName: "Name",
-          flex: 1,
-          headerClassName: "my-header-background my-header-text-color",
-        },
-        {
-          field: "email",
-          headerName: "Email",
-          flex: 1,
-          headerClassName: "my-header-background my-header-text-color",
-        },
+      {
+        field: "firstName",
+        headerName: "Name",
+        flex: 1,
+        headerClassName: "my-header-background my-header-text-color",
+      },
+      {
+        field: "email",
+        headerName: "Email",
+        flex: 1,
+        headerClassName: "my-header-background my-header-text-color",
+      },
 
-        {
-          field: "actions",
-          headerName: "Actions",
-          flex: 1,
-          renderCell: (params: GridCellParams) => {
-            const member = params.row as Member;
-            const memberId = member._id;
-            const handleDeleteClick = (memberId: any) => {
-              console.log("🚀 ~ file: Members.tsx:169 ~ memberId:", memberId);
-            };
-            return (
-              <div className="flex justify-center items-center space-x-2">
-                <button>
-                  <NavLink to={`/individual-Detail/${memberId}`}>
-                    <BsEye className="text-blue-500" />
-                  </NavLink>
-                </button>
-
-                <NavLink to={"/edit-screen"}>
-                  <button>
-                    <BsPerson className="text-yellow-500" />
-                  </button>
+      {
+        field: "actions",
+        headerName: "Actions",
+        flex: 1,
+        renderCell: (params: GridCellParams) => {
+          const member = params.row as Member;
+          const memberId = member._id;
+          const handleDeleteClick = (memberId: any) => {
+            console.log("🚀 ~ file: Members.tsx:169 ~ memberId:", memberId);
+          };
+          return (
+            <div className="flex justify-center items-center space-x-2">
+              <button>
+                <NavLink to={`/individual-Detail/${memberId}`}>
+                  <BsEye className="text-blue-500" />
                 </NavLink>
+              </button>
 
-                <button
-                  onClick={() => {
-                    handleDeleteClick(memberId);
-                  }}
-                >
-                  <BsTrash className="text-red-500" />
+              <NavLink to={"/edit-screen"}>
+                <button>
+                  <BsPerson className="text-yellow-500" />
                 </button>
-              </div>
-            );
-          },
-          headerClassName: "my-header-background my-header-text-color",
+              </NavLink>
+
+              <button
+                onClick={() => {
+                  handleDeleteClick(memberId);
+                }}
+              >
+                <BsTrash className="text-red-500" />
+              </button>
+            </div>
+          );
         },
-      ];
+        headerClassName: "my-header-background my-header-text-color",
+      },
+    ];
 
   return (
     <>
