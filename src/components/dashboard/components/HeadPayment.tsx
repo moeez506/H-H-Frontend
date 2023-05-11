@@ -15,7 +15,7 @@ function HeadPayment() {
 
   return (
     <>
-      <div className="flex justify-between pl-48 mobile:pl-4 tabletOnly:pl-4  py-4 border-b border-gray-300 bg-slate-300 rounded-2xl mb-4">
+      <div className="flex justify-between pl-48 mobile:pl-4 mobile:flex-col tabletOnly:pl-4  py-4 border-b border-gray-300 bg-slate-300 rounded-2xl mb-4">
         <div className="flex-1">
           <p className="font-bold text-orange">Total Amount</p>
           <p className="text-xl mt-2 mb-2">{totalAmt}</p>

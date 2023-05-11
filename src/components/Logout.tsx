@@ -7,7 +7,7 @@ const LogoutButton = () => {
   const navigate = useNavigate();
   function logout() {
     localStorage.removeItem("auth-token");
-    navigate("/");
+    navigate("/home");
     console.log("Logged Out");
   }
   return (

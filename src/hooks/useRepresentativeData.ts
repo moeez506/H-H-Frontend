@@ -35,3 +35,20 @@ const individualMemberDetail = async (id: string | undefined) => {
 export const useIndividualMemberDetail = (id: string | undefined) => {
   return useQuery(["member-detail", id], () => individualMemberDetail(id));
 };
+
+const getGroupDetail = async (id: string) => {
+  return await request.get(`/group/${id}`);
+};
+
+export const useGroupDetail = (id: string) => {
+  return useQuery(["group-detail", id], () => getGroupDetail(id));
+};
+
+const getGroupMember = async (id: string) => {
+  return await request.get(`/group/group-members/${id}`);
+};
+
+export const useGroupMember = (id: string) => {
+  return useQuery(["group-member", id], () => getGroupMember(id));
+};
+

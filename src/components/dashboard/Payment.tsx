@@ -98,7 +98,7 @@ const PaymentDashBoard: React.FC = () => {
       ];
   return (
     <>
-      <div className="m-8">
+      <div className="ml-20 mobile:ml-0">
         <HeadPayment />
         <DataGrid
           columns={columns}
