@@ -181,7 +181,6 @@ const MembersTable: React.FC = () => {
                 setApiSuccess("Failed to delete member");
               }
               setApiLoading(false);
-            
             };
             return (
               <div className="flex justify-center items-center space-x-2">
@@ -199,7 +198,7 @@ const MembersTable: React.FC = () => {
 
                 <button
                   onClick={() => {
-                    handleDeleteClick(memberId);
+                    void handleDeleteClick(memberId);
                   }}
                 >
                   <BsTrash className="text-red-500" />

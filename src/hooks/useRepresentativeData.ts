@@ -28,10 +28,10 @@ export const deleteIndividualMembers = async () => {
 //   return useMutation("delete-member", deleteIndividualMembers);
 // };
 
-const individualMemberDetail = async (id: string | undefined) => {
+const individualMemberDetail = async (id: string) => {
   return await request.get(`/auth/member-detail/${id}`);
 };
 
-export const useIndividualMemberDetail = (id: string | undefined) => {
+export const useIndividualMemberDetail = (id: string) => {
   return useQuery(["member-detail", id], () => individualMemberDetail(id));
 };
