@@ -19,8 +19,8 @@ import Loader from "../Loader";
 //   useMemberDelete,
 // } from "../../hooks/useRepresentativeData";
 import { IndividualMemberDetail } from "../../pages";
-import { useMemberData } from "../../hooks/useRepresentativeData";
-import { deleteMember } from "../../apis/individualOndoarding";
+import { useGroupMember, useMemberData } from "../../hooks/useRepresentativeData";
+import { deleteGroupMember, deleteMember } from "../../apis/individualOndoarding";
 import ApiSuccess from "../ApiSuccess";
 
 interface Member {
@@ -49,20 +49,33 @@ const MembersTable: React.FC = () => {
   console.log("🚀 ~ file: Members.tsx:49 ~ apiSuccess:", apiSuccess);
   const isSmallScreen = useMediaQuery("(max-width: 600px)"); // Adjust the breakpoint to your desired screen size
 
-  useEffect(() => {}, []);
+  const user = JSON.parse(localStorage.getItem('login-user') ?? '{}')
+   
+  if (user.isGroupAdmin) {
+    var { isLoading: isLoading1, data: data1, isError: isError1, error: error1 }: any = useGroupMember(user.groupId);
+    const groupMember = data1?.data?.groupUsers;
+    console.log("🚀 ~ file: Members.tsx:57 ~ groupMember:", groupMember)
+    if (groupMember) {
+      var memberData = groupMember.filter((member: any) => !member.isGroupRespresentative); 
+    console.log("🚀 ~ file: Members.tsx:59 ~ memberData:", memberData)
+    }
+    
+  }else{
+    var { isLoading, data, isError, error }: any = useMemberData();
+    var memberData = data?.data?.individualMembers; 
+  }
 
-  const { isLoading, data, isError, error }: any = useMemberData();
+  console.log("🚀 ~ file: Members.tsx:45 ~ data1:", data1);
+  
   console.log("🚀 ~ file: Members.tsx:45 ~ data:", data);
 
-  if (isLoading) {
-    console.log("calllells");
+  if (isLoading || isLoading1) {
     return <Loader />;
   }
   if (apiLoading) {
-    console.log("calllells");
     return <Loader />;
   }
-  const memberData = data?.data?.individualMembers;
+  
 
   //
 
@@ -173,14 +186,25 @@ const MembersTable: React.FC = () => {
 
             const handleDeleteClick = async (memberId: any) => {
               setApiLoading(true);
-
-              try {
-                await deleteMember(memberId);
-                setApiSuccess("Member deleted successfully");
-              } catch (error) {
-                setApiSuccess("Failed to delete member");
+              if (user.isGroupAdmin) {
+                try {
+                  console.log("check")
+                  await deleteGroupMember(memberId)
+                    // setApiSuccess("Member deleted successfully");
+                    // setApiLoading(false)
+                } catch (error) {
+                  setApiSuccess("Failed to delete member");
+                }
+              }else{
+                try {
+                  await deleteMember(memberId);
+                  setApiLoading(false)
+                  setApiSuccess("Member deleted successfully");
+                } catch (error) {
+                  setApiSuccess("Failed to delete member");
+                }
               }
-              setApiLoading(false);
+              
             };
             return (
               <div className="flex justify-center items-center space-x-2">
@@ -263,8 +287,8 @@ const MembersTable: React.FC = () => {
 
   return (
     <>
-      <div className="ml-20">
-        {/* <div> */}
+      <div className="ml-20 mobile:ml-0">
+        {apiSuccess ? <ApiSuccess success={apiSuccess} /> : null}
         <h1 className="text-4xl font-semibold text-orange">Members</h1>
         <br></br>
         <hr></hr>

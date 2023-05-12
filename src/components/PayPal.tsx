@@ -82,10 +82,12 @@ export default function PayPal({ am, className, contextData }: PayPalProps) {
         createRepresentative({
           ...representativeTwoData,
           groupId: res.group._id,
+          isGroupRespresentative: true,
         }),
         createRepresentative({
           ...representativeThreeData,
           groupId: res.group._id,
+          isGroupRespresentative: true,
         }),
       ]);
       navigate('/thank-you')

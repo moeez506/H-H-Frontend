@@ -52,3 +52,18 @@ export const useGroupMember = (id: string) => {
   return useQuery(["group-member", id], () => getGroupMember(id));
 };
 
+const getGroupPayment = async (id: string) => {
+  return await request.get(`/payment/group/${id}`);
+};
+
+export const useGroupPayment = (id: string) => {
+  return useQuery(["group-payment", id], () => getGroupPayment(id));
+};
+
+const getTotalPayment = async (id: string) => {
+  return await request.get(`/payment/total-amount/${id}`);
+};
+
+export const useTotalPayment = (id: string) => {
+  return useQuery(["total-payment", id], () => getTotalPayment(id));
+};

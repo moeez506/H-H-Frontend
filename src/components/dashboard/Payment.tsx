@@ -1,9 +1,11 @@
+/* eslint-disable prettier/prettier */
 import React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import HeadPayment from "./components/HeadPayment";
 import { useMediaQuery } from "@mui/material";
 import Loader from "../Loader";
 import { useDashboardPayment } from "../../hooks/useDashboardData";
+import { useGroupPayment } from "../../hooks/useRepresentativeData";
 interface Member {
   transactionId: string;
   // email: string;
@@ -14,14 +16,22 @@ const getRowId = (payment: Member) => payment.transactionId;
 
 const PaymentDashBoard: React.FC = () => {
   const isSmallScreen = useMediaQuery("(max-width: 600px)");
-  const { isLoading, data, isError, error }: any = useDashboardPayment();
-  console.log("🚀 ~ file: Payment.tsx:19 ~ data:", data?.data);
+  const user = JSON.parse(localStorage.getItem('login-user') ?? '{}')
+  if (user.isGroupAdmin) {
+    var { isLoading: isLoading1, data: data1, isError: isError1, error: error1 }: any = useGroupPayment(user.groupId);
+    var paymentData = data1?.data; 
+  }else{
+    var { isLoading, data, isError, error }: any = useDashboardPayment();
+    var paymentData = data?.data; 
+  }
+  
+  // console.log("🚀 ~ file: Payment.tsx:19 ~ data:", data?.data);
 
-  if (isLoading) {
+  if (isLoading || isLoading1) {
     return <Loader />;
   }
 
-  const paymentData = data?.data;
+  
   // const members: Member[] = [
   //   {
   //     paymentId: "001",

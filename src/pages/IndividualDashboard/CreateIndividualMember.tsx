@@ -8,6 +8,7 @@ import Button from "../../components/Button";
 import { createIndividualMember } from "../../apis/individualOndoarding";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { createRepresentative } from "../../apis/groupOnboading";
 interface Option {
   label: string;
   value: string;
@@ -17,7 +18,7 @@ interface Values {
   firstName: string;
   middleName: string;
   lastName: string;
-  dob: string;
+  dateOfBirth: string;
   placeOfBirth: string;
   nationality: string;
   countryOfResidence: string;
@@ -62,7 +63,7 @@ const CreateIndividualMember = () => {
     firstName: "",
     middleName: "",
     lastName: "",
-    dob: "",
+    dateOfBirth: "",
     placeOfBirth: "",
     nationality: "",
     countryOfResidence: "",
@@ -85,7 +86,7 @@ const CreateIndividualMember = () => {
     firstName: Yup.string().required("First Name is required"),
     middleName: Yup.string(),
     lastName: Yup.string().required("Last Name is required"),
-    dob: Yup.date().required("Date of Birth is required"),
+    dateOfBirth: Yup.date().required("Date of Birth is required"),
     placeOfBirth: Yup.string().required("Place of Birth is required"),
     nationality: Yup.string().required("Nationality is required"),
     countryOfResidence: Yup.string().required(
@@ -135,8 +136,18 @@ const CreateIndividualMember = () => {
   async function formSubmit(): Promise<void> {
     // setKinInformation(values);  TODO: Context state not working
     console.log("🚀 ~ file: Step5.tsx:70 ~ Step5 ~ values:", values);
+    const user = JSON.parse(localStorage.getItem('login-user') ?? '{}')
     try {
-      await createIndividualMember(values);
+      if (user.isGroupAdmin) {
+        console.log(user.groupId)
+        await createRepresentative({
+          ...values,
+          groupId: user.groupId,
+          isGroupRespresentative: false,
+        })
+      }else{
+        await createIndividualMember(values);
+      } 
       toast.success("Member Created successfully!", {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 3000,
@@ -237,23 +248,23 @@ const CreateIndividualMember = () => {
         </div>
         <div className="flex justify-between tabletOnly:flex-wrap mobile:flex-wrap">
           <div className="mb-4">
-            <label className="block text-gray-700 font-bold mb-2" htmlFor="dob">
+            <label className="block text-gray-700 font-bold mb-2" htmlFor="dateOfBirth">
               Date of Birth*
             </label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="dob"
+              id="dateOfBirth"
               type="text"
-              name="dob"
-              value={values.dob}
+              name="dateOfBirth"
+              value={values.dateOfBirth}
               onBlur={handleBlur}
               onChange={handleChange}
             />
-            {errors.dob !== null &&
-            touched.dob !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "dob") &&
-            Object.prototype.hasOwnProperty.call(touched, "dob") ? (
-              <p className="text-[red]">{errors.dob}</p>
+            {errors.dateOfBirth !== null &&
+            touched.dateOfBirth !== null &&
+            Object.prototype.hasOwnProperty.call(errors, "dateOfBirth") &&
+            Object.prototype.hasOwnProperty.call(touched, "dateOfBirth") ? (
+              <p className="text-[red]">{errors.dateOfBirth}</p>
             ) : null}
           </div>
           <div className="mb-4">

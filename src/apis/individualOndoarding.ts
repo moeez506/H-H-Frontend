@@ -43,3 +43,14 @@ export const deleteMember = async (id: string) => {
     // throw new Error("Login failed. Please try again.");
   }
 };
+
+export const deleteGroupMember = async (id: string) => {
+  try {
+    const { data } = await request.delete(`/group/delete-group-member/${id}`);
+    console.log("🚀 ~ file: individualOndoarding.ts:51 ~ deleteGroupMember ~ data:", data)
+    return data;
+  } catch (error) {
+    console.error(error);
+    // throw new Error("Login failed. Please try again.");
+  }
+};
