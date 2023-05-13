@@ -1,19 +1,30 @@
 /* eslint-disable prettier/prettier */
 import React from "react";
-import './index.css'
+import "./index.css";
 import { useRepresentiveData } from "../../hooks/useRepresentativeData";
 import Loader from "../../components/Loader";
 
 const IndividualProfile = () => {
-
   const { isLoading, data, isError, error }: any = useRepresentiveData();
-  console.log("🚀 ~ file: IndividualProfile.tsx:9 ~ IndividualProfile ~ data:", data)
+  console.log(
+    "🚀 ~ file: IndividualProfile.tsx:9 ~ IndividualProfile ~ data:",
+    data?.data?.user
+  );
 
   if (isLoading) {
     return <Loader />;
   }
   if (!isError && !isLoading) {
-    var { firstName, email, lastName, dateOfBirth, nationality, phoneNumbers, address, zipCode } = data?.data?.user;
+    var {
+      firstName,
+      email,
+      isVerified,
+      dateOfBirth,
+      nationality,
+      phoneNumbers,
+      address,
+      zipCode,
+    } = data?.data?.user;
   }
 
   // const name = firstName + ' ' + lastName;
@@ -36,7 +47,7 @@ const IndividualProfile = () => {
             <div className="pl-8 pr-24 mobile:pr-10 mobile:pl-3">
               <div className="flex">
                 <h3 className="text-orange font-bold">Name:</h3>
-                <p className="pl-16">Abdul Rehman</p>
+                <p className="pl-16">{firstName}</p>
               </div>
               <div className="flex mt-2">
                 <h3 className="text-orange font-bold">Email:</h3>
@@ -47,8 +58,8 @@ const IndividualProfile = () => {
                 <p className="pl-12">{phoneNumbers.Cell}</p>
               </div>
               <div className="flex mt-2">
-                <h3 className="text-orange font-bold">Gender:</h3>
-                <p className="pl-14">Male</p>
+                <h3 className="text-orange font-bold">Account Status:</h3>
+                <p className="pl-14">{isVerified ? "Verified" : "Pending"}</p>
               </div>
             </div>
           </div>

@@ -263,7 +263,7 @@ const MembersTable: React.FC = () => {
 
   return (
     <>
-      <div className="ml-20">
+      <div className="ml-20 ">
         {/* <div> */}
         <h1 className="text-4xl font-semibold text-orange">Members</h1>
         <br></br>
