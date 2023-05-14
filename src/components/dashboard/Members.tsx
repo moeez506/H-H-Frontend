@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable prettier/prettier */
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { DataGrid, GridCellParams } from "@mui/x-data-grid";
 
 import "./Members.css";
@@ -12,14 +12,14 @@ import {
   BsTrash,
 } from "react-icons/bs";
 import HeadAndSearch from "./components/HeadAndSearchMember";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
 import Loader from "../Loader";
 // import {
 //   useMemberData,
 //   useMemberDelete,
 // } from "../../hooks/useRepresentativeData";
-import { IndividualMemberDetail } from "../../pages";
+// import { IndividualMemberDetail } from "../../pages";
 import { useGroupMember, useMemberData } from "../../hooks/useRepresentativeData";
 import { deleteGroupMember, deleteMember } from "../../apis/individualOndoarding";
 import ApiSuccess from "../ApiSuccess";
@@ -76,6 +76,7 @@ const MembersTable: React.FC = () => {
   if (user.isGroupAdmin) {
     memberData = memberData?.filter((member: any) => !member.isGroupRespresentative);
   }
+  console.log("🚀 ~ file: Members.tsx:76 ~ memberData:", memberData)
 
   if (isLoading) {
     return <Loader />;
@@ -198,8 +199,8 @@ const MembersTable: React.FC = () => {
               try {
                 console.log("check")
                 await deleteGroupMember(memberId)
-                // setApiSuccess("Member deleted successfully");
-                // setApiLoading(false)
+                setApiSuccess("Member deleted successfully");
+                setApiLoading(false)
               } catch (error) {
                 setApiSuccess("Failed to delete member");
               }

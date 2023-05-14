@@ -7,19 +7,24 @@ import { NavLink } from 'react-router-dom';
 
 const GroupProfile = () => {
   const user = JSON.parse(localStorage.getItem('login-user') ?? '{}')
-  const { isLoading, data, isError, error }: any = useGroupDetail(user.groupId);
-  const { isLoading: isLoading1, data: data1, isError: isError1, error: error1 }: any = useGroupMember(user.groupId);
-  // console.log("🚀 ~ file: GroupProfile.tsx:10 ~ GroupProfile ~ error1:", error1)
-  console.log("🚀 ~ file: GroupProfile.tsx:10 ~ GroupProfile ~ data:", data)
-  console.log("🚀 ~ file: GroupProfile.tsx:8 ~ GroupProfile ~ data1:", data1)
-  if (isLoading1) {
-    return <Loader />
+  const { isLoading: isLoadingDetail, data: groupDetail, isError: isErrorDetail, error: errorDetail } = useGroupDetail(user.groupId);
+  const { isLoading: isLoadingMember, data: groupMember, isError: isErrorMember, error: errorMember } = useGroupMember(user.groupId);
+
+  if (isLoadingDetail || isLoadingMember) {
+    return <Loader />;
   }
-  const { address, associationName, country, email, registeredMembers, websiteLink, zipCode } = data?.data
-  const memberData = data1?.data?.groupUsers
-  console.log("🚀 ~ file: GroupProfile.tsx:18 ~ GroupProfile ~ memberData:", memberData)
+
+  if (isErrorDetail || isErrorMember) {
+    // Todo Error Handling
+    // return
+    // <div>Error: {errorDetail.message || errorMember.message}</div>;
+  }
+  const { address, associationName, country, email, registeredMembers, websiteLink, zipCode } = groupDetail?.data
+
+  const memberData = groupMember?.data?.groupUsers
   const representativeData = memberData.filter((member: any) => member.isGroupRespresentative);
-  console.log("🚀 ~ file: GroupProfile.tsx:19 ~ GroupProfile ~ representativeData:", representativeData)
+
+
   return (
     <div>
       <h1 className="text-4xl font-semibold">
@@ -33,15 +38,15 @@ const GroupProfile = () => {
         <br></br>
         <div className="flex flex-row mobile:flex-wrap tabletOnly:flex-wrap">
           <div className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8 mobile:flex mobile:justify-between mobile:mb-0">
-            <h2 className="text-orange text-xl font-semibold mb-2">Name:</h2>
-            <p className="text-gray-500 text-base mobile:pt-1">associationName</p>
+            <h2 className="text-orange text-xl font-semibold mb-2">Association Name</h2>
+            <p className="text-gray-500 text-base mobile:pt-1">{associationName}</p>
           </div>
           <div className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8 mobile:flex mobile:justify-between mobile:mb-0">
-            <h2 className="text-orange text-xl font-semibold mb-2">Email:</h2>
-            <p className="text-gray-500 text-base mobile:pt-1">test@gmail.com</p>
+            <h2 className="text-orange text-xl font-semibold mb-2">Email</h2>
+            <p className="text-gray-500 text-base mobile:pt-1">{email}</p>
           </div>
           <div className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8 mobile:flex mobile:justify-between mobile:mb-0">
-            <h2 className="text-orange text-xl font-semibold mb-2">Contact:</h2>
+            <h2 className="text-orange text-xl font-semibold mb-2">Country</h2>
             <p className="text-gray-500 text-base mobile:pt-1">555 555 555</p>
           </div>
         </div>
@@ -74,7 +79,7 @@ const GroupProfile = () => {
             <div className="flex flex-row mobile:flex-wrap tabletOnly:flex-wrap">
               <div className="w-full sm:w-1/2 lg:w-1/3 px-4 my-2 mobile:flex mobile:justify-between mobile:mb-0">
                 <h2 className="text-orange text-xl font-semibold mb-1">Name:</h2>
-                <p className="text-gray-500 text-base mobile:pt-1">{`${data.firstName} ${data.lastName}`}</p>
+                <p className="text-gray-500 text-base mobile:pt-1">{data.firstName} {data.lastName}</p>
               </div>
               <div className="w-full sm:w-1/2 lg:w-1/3 px-4 my-2 mobile:flex mobile:justify-between mobile:mb-0">
                 <h2 className="text-orange text-xl font-semibold mb-1">Email:</h2>

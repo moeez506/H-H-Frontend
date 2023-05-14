@@ -37,7 +37,6 @@ import PaymentDashBoard from "../components/dashboard/Payment";
 const RouterConfig = () => {
   const location = useLocation();
   const params = useParams()
-  console.log("🚀 ~ file: RouterConfig.tsx:39 ~ RouterConfig ~ id:", params)
   const shouldRenderHeader = [
     "/home",
     "/about",
@@ -65,7 +64,7 @@ const RouterConfig = () => {
   if (location.pathname.startsWith("/individual-Detail/")) {
     shouldRenderIndividualDashboard.push(`/individual-Detail/${id}`);
   }
-// console.log(location.pathname)
+  // console.log(location.pathname)
   const shouldRenderSideber = shouldRenderIndividualDashboard.includes(location.pathname);
 
   console.log(shouldRenderHeader);
@@ -77,7 +76,7 @@ const RouterConfig = () => {
         <SideNav className="">
           <Routes>
             <Route path="/individual-Profile" element={<IndividualProfile />} />
-            <Route path="/group-Profile" element={<GroupProfile /> } />
+            <Route path="/group-Profile" element={<GroupProfile />} />
             {/* <Route path="/individual-Members" element={<IndividualMembers />} /> */}
             <Route path="/individual-Setting" element={<IndividualSetting />} />
             <Route path="/dashboard-members" element={<MemberTable />} />

@@ -49,7 +49,10 @@ export const deleteMember = async (id: string) => {
 
 export const deleteGroupMember = async (id: string) => {
   try {
-    const { data } = await request.delete(`/group/delete-group-member/${id}`);
+    console.log(
+      "🚀 ~ file: individualOndoarding.ts:5 ~ deleteGroupMember ~ data:"
+    );
+    const data = await request.delete(`/group/delete-group-member/${id}`);
     console.log(
       "🚀 ~ file: individualOndoarding.ts:51 ~ deleteGroupMember ~ data:",
       data
