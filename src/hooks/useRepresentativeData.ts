@@ -30,14 +30,42 @@ export const deleteIndividualMembers = async () => {
 //   return useMutation("delete-member", deleteIndividualMembers);
 // };
 
-const individualMemberDetail = async (id: any) => {
-  if (typeof id === "string") {
-    return await request.get(`/auth/member-detail/${id}`);
-  } else {
-    throw new Error(`Invalid id`);
-  }
+const individualMemberDetail = async (id: string) => {
+  return await request.get(`/auth/member-detail/${id}`);
 };
 
-export const useIndividualMemberDetail = (id: any) => {
+export const useIndividualMemberDetail = (id: string) => {
   return useQuery(["member-detail", id], () => individualMemberDetail(id));
+};
+
+const getGroupDetail = async (id: string) => {
+  return await request.get(`/group/${id}`);
+};
+
+export const useGroupDetail = (id: string) => {
+  return useQuery(["group-detail", id], () => getGroupDetail(id));
+};
+
+const getGroupMember = async (id: string) => {
+  return await request.get(`/group/group-members/${id}`);
+};
+
+export const useGroupMember = (id: string) => {
+  return useQuery(["group-member", id], () => getGroupMember(id));
+};
+
+const getGroupPayment = async (id: string) => {
+  return await request.get(`/payment/group/${id}`);
+};
+
+export const useGroupPayment = (id: string) => {
+  return useQuery(["group-payment", id], () => getGroupPayment(id));
+};
+
+const getTotalPayment = async (id: string) => {
+  return await request.get(`/payment/total-amount/${id}`);
+};
+
+export const useTotalPayment = (id: string) => {
+  return useQuery(["total-payment", id], () => getTotalPayment(id));
 };

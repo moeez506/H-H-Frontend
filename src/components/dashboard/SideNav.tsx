@@ -17,8 +17,13 @@ import { useMediaQuery } from "@mui/material";
 
 
 const SideNav = ({children}: any) => {
+    // console.log("🚀 ~ file: SideNav.tsx:20 ~ SideNav ~ isGroup:", isGroup)
     const[isOpen ,setIsOpen] = useState(true);
     const toggle = () => setIsOpen (!isOpen);
+    const user = JSON.parse(localStorage.getItem('login-user') ?? '{}') 
+    // const storedObject = JSON.parse(user);
+    console.log("🚀 ~ file: SideNav.tsx:24 ~ SideNav ~ user:", user)
+    // const isGroup  = false;
     const menuItem=[
         {
             path:"/individual-Profile",
@@ -46,6 +51,15 @@ const SideNav = ({children}: any) => {
             icon:<FaThList/>
         }
     ]
+
+    if (user.isGroupAdmin) {
+        // Modify the 0th index of the copied array
+        menuItem[0] = {
+          path: "/group-Profile",
+          name:"Profile",
+          icon:<FaUserAlt/>
+        };
+      }
     const screenWidth = window.innerWidth; 
     
     const renderSmallScreen = () =>{

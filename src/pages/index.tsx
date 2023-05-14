@@ -17,6 +17,7 @@ import IndividualPayments from "./IndividualDashboard/IndividualPayments";
 import IndividualMemberDetail from "./IndividualDashboard/IndividualMemberDetail";
 import IndividualPaymentDetail from "./IndividualDashboard/IndividualPaymentDetail";
 import CreateIndividualMember from "./IndividualDashboard/CreateIndividualMember";
+import GroupProfile from "./IndividualDashboard/GroupProfile";
 
 
 export {
@@ -37,5 +38,6 @@ export {
   IndividualPayments,
   IndividualMemberDetail, 
   IndividualPaymentDetail,
-  CreateIndividualMember
+  CreateIndividualMember,
+  GroupProfile
 };

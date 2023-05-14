@@ -25,6 +25,7 @@ import {
   IndividualMemberDetail,
   IndividualPaymentDetail,
   CreateIndividualMember,
+  GroupProfile,
 } from "../pages";
 import ProtectedRoutes from "./ProtectedRoutes";
 import PopUp from "../components/PopUp";
@@ -55,6 +56,7 @@ const RouterConfig = () => {
     "/dashboard-members",
     "/dashboard-payment",
     "/individual-CreateMember",
+    "/group-Profile"
   ];
   // console.log(location.pathname.startsWith("/individual-Detail/"),"//...")
   const path = location.pathname.split('/')
@@ -75,6 +77,7 @@ const RouterConfig = () => {
         <SideNav className="">
           <Routes>
             <Route path="/individual-Profile" element={<IndividualProfile />} />
+            <Route path="/group-Profile" element={<GroupProfile /> } />
             {/* <Route path="/individual-Members" element={<IndividualMembers />} /> */}
             <Route path="/individual-Setting" element={<IndividualSetting />} />
             <Route path="/dashboard-members" element={<MemberTable />} />
@@ -98,6 +101,7 @@ const RouterConfig = () => {
           </Routes>
         </SideNav>
       )}
+
 
       <Routes>
         <Route path="/" element={<PopUp />} />

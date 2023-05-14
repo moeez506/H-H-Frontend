@@ -7,14 +7,18 @@ import Loader from "../../components/Loader";
 const IndividualProfile = () => {
 
   const { isLoading, data, isError, error }: any = useRepresentiveData();
-  console.log("🚀 ~ file: IndividualProfile.tsx:9 ~ IndividualProfile ~ data:", data)
+
 
   if (isLoading) {
     return <Loader />;
   }
-  if (!isError && !isLoading) {
-    var { firstName, email, lastName, dateOfBirth, nationality, phoneNumbers, address, zipCode } = data?.data?.user;
+
+  if (isError) {
+    return <div>Error: {error.message}</div>;
   }
+
+  const { firstName, email, lastName, dateOfBirth, nationality, phoneNumbers, address, zipCode } = data?.data?.user;
+
 
   // const name = firstName + ' ' + lastName;
 
@@ -23,7 +27,7 @@ const IndividualProfile = () => {
       {/* <div className="h-full w-full bg-white rounded-xl shadow-inset shadow-2xl p-10 tabletOnly:w-full mobile:p-3"> */}
       <div>
         <h1 className="text-4xl font-semibold">
-          Hello, <span className="text-orange">name</span>
+          Hello, <span className="text-orange">{firstName} {lastName}</span>
         </h1>
       </div>
       <br></br>
