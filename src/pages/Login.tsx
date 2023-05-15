@@ -56,7 +56,14 @@ export default function Login() {
                 } else {
                   localStorage.setItem("auth-token", res.data.token);
                   localStorage.setItem("login-user", JSON.stringify(res.data.user));
-                  navigate("/onboarding-type");
+                  if (res.data.user.isGroupAdmin) {
+                    navigate("/group-Profile");
+                  } else if(res.data.user.isIndividualAdmin) {
+                    navigate("/individual-Profile");
+                  }else{
+                    navigate("/onboarding-type");
+                  }
+                  
                 }
               })
               .catch((err) => {
