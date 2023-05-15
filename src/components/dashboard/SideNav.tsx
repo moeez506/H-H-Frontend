@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import './SideNav.css'
 import {
-    FaTh,
     FaBars,
     FaUserAlt,
     FaRegChartBar,
@@ -12,14 +11,14 @@ import {
 } from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/logo-2.png'
-import { useMediaQuery } from "@mui/material";
+// import { useMediaQuery } from "@mui/material";
 
 
 
 const SideNav = ({ children }: any) => {
     // console.log("🚀 ~ file: SideNav.tsx:20 ~ SideNav ~ isGroup:", isGroup)
     const [isOpen, setIsOpen] = useState(true);
-    const toggle = () => setIsOpen(!isOpen);
+    const toggle = () => { setIsOpen(!isOpen) }
     const user = JSON.parse(localStorage.getItem('login-user') ?? '{}')
     // const storedObject = JSON.parse(user);
     // const isGroup  = false;
@@ -64,19 +63,36 @@ const SideNav = ({ children }: any) => {
     const renderSmallScreen = () => {
         if (screenWidth < 485) {
             setIsOpen(false)
-            console.log(screenWidth, "///......");
+            // console.log(screenWidth, "///......");
         }
         // console.log(screenWidth, "///......");
     }
+
+    useEffect(() => {
+        const mediaQuery = window.matchMedia('(min-width: 1024px)');
+        setIsOpen(mediaQuery.matches);
+
+        const handleResize = () => {
+            setIsOpen(mediaQuery.matches);
+        };
+
+        mediaQuery.addEventListener('change', handleResize);
+
+        return () => {
+            mediaQuery.removeEventListener('change', handleResize);
+        };
+    }, []);
+
     return (
         <>
             <div className='bg-white shadow-md h-16 flex items-center pl-5'>
 
-                <FaBars className='laptop:hidden tabletOnly:hidden text-3xl' onClick={toggle} />
-                <img src={logo} alt="no image found" className="h-16 w-16 pt-3 mobile:hidden tablet:h-14 tablet:w-18" />
+                <FaBars className='laptop:hidden text-3xl' onClick={toggle} />
+                <img src={logo} alt="no image found" className="h-16 w-16 pt-3 mobile:hidden tabletOnly:hidden" />
 
             </div>
-            <div className="container">
+            <div className="container mr-10" style={{ position: "relative" }}
+            >
                 <div style={{ width: isOpen ? "350px" : "0px" }} className="sidebar mobile:z-10" >
                     <div className="top_section">
                         <img src={logo} alt="no image found" className="h-16 w-16 laptop:hidden tablet:h-14 tablet:w-18" />

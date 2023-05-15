@@ -211,7 +211,7 @@ const MembersTable: React.FC = () => {
 
           };
           return (
-            <div className="flex justify-center items-center space-x-2">
+            <div className="flex justify-center items-center space-x-5">
               <button onClick={handleViewClick}>
                 <NavLink to={`/individual-Detail/${memberId}`}>
                   <BsEye className="text-blue-500" />
@@ -291,7 +291,7 @@ const MembersTable: React.FC = () => {
 
   return (
     <>
-      <div className="ml-20 mobile:ml-0">
+      <div className="mobile:ml-0">
         {apiSuccess ? <ApiSuccess success={apiSuccess} /> : null}
         <h1 className="text-4xl font-semibold text-orange">Members</h1>
         <br></br>
