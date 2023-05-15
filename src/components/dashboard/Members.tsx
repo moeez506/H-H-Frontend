@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable prettier/prettier */
-import React, { useState } from "react";
-import { DataGrid, GridCellParams } from "@mui/x-data-grid";
+import React, { useContext, useEffect, useState } from "react";
+import { DataGrid, type GridCellParams } from "@mui/x-data-grid";
 
 import "./Members.css";
 import {
@@ -23,6 +23,7 @@ import Loader from "../Loader";
 import { useGroupMember, useMemberData } from "../../hooks/useRepresentativeData";
 import { deleteGroupMember, deleteMember } from "../../apis/individualOndoarding";
 import ApiSuccess from "../ApiSuccess";
+import { MemberDataContext } from "../../contexts/MemberDataContext";
 
 interface Member {
   _id: string;
@@ -50,37 +51,27 @@ const MembersTable: React.FC = () => {
   console.log("🚀 ~ file: Members.tsx:49 ~ apiSuccess:", apiSuccess);
   const isSmallScreen = useMediaQuery("(max-width: 600px)"); // Adjust the breakpoint to your desired screen size
 
-  //   const user = JSON.parse(localStorage.getItem('login-user') ?? '{}')
-  // let memberData
-  //   if (user.isGroupAdmin) {
-  //     var { isLoading: isLoading1, data: data1, isError: isError1, error: error1 }: any = useGroupMember(user.groupId);
-  //     const groupMember = data1?.data?.groupUsers;
-  //     console.log("🚀 ~ file: Members.tsx:57 ~ groupMember:", groupMember)
-  //     if (groupMember) {
-  //       memberData = groupMember.filter((member: any) => !member.isGroupRespresentative);
-  //       console.log("🚀 ~ file: Members.tsx:59 ~ memberData:", memberData)
-  //     }
-
-  //   } else {
-  //     var { isLoading, data, isError, error }: any = useMemberData();
-  //     memberData = data?.data?.individualMembers;
-  //   }
-
   const user = JSON.parse(localStorage.getItem('login-user') ?? '{}');
+
+  const { memberData, setMemberData } = useContext(MemberDataContext);
+  console.log("🚀 ~ file: Members.tsx:73 ~ memberData:", memberData)
 
   const { isLoading, data, isError, error } = user.isGroupAdmin
     ? useGroupMember(user.groupId)
     : useMemberData();
 
-  let memberData = data?.data?.[user.isGroupAdmin ? 'groupUsers' : 'individualMembers'];
-  if (user.isGroupAdmin) {
-    memberData = memberData?.filter((member: any) => !member.isGroupRespresentative);
-  }
-  console.log("🚀 ~ file: Members.tsx:76 ~ memberData:", memberData)
+  useEffect(() => {
+    let memberData = data?.data?.[user.isGroupAdmin ? 'groupUsers' : 'individualMembers'];
+    if (user.isGroupAdmin) {
+      memberData = memberData?.filter((member: any) => !member.isGroupRespresentative);
+    }
+    setMemberData(() => memberData);
+  }, [data, user.isGroupAdmin, setMemberData]);
 
-  if (isLoading) {
+  if (isLoading || memberData == null) {
     return <Loader />;
   }
+
   if (apiLoading) {
     return <Loader />;
   }
@@ -199,6 +190,10 @@ const MembersTable: React.FC = () => {
               try {
                 console.log("check")
                 await deleteGroupMember(memberId)
+                // Updating context 
+                const updatedMembers = memberData.filter((member: any) => member._id !== memberId);
+                setMemberData(updatedMembers);
+
                 setApiSuccess("Member deleted successfully");
                 setApiLoading(false)
               } catch (error) {

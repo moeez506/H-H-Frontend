@@ -32,6 +32,7 @@ import PopUp from "../components/PopUp";
 // import IndividualProfile from "../components/dashboard/IndividualPages/IndividualProfile";
 import { MemberTable, SideNav } from "../components/dashboard";
 import PaymentDashBoard from "../components/dashboard/Payment";
+import { MemberDataProvider } from "../contexts/MemberDataContext";
 // import IndividualInbox from "../components/dashboard/IndividualPages/IndividualInbox";
 
 const RouterConfig = () => {
@@ -79,7 +80,7 @@ const RouterConfig = () => {
             <Route path="/group-Profile" element={<GroupProfile />} />
             {/* <Route path="/individual-Members" element={<IndividualMembers />} /> */}
             <Route path="/individual-Setting" element={<IndividualSetting />} />
-            <Route path="/dashboard-members" element={<MemberTable />} />
+            <Route path="/dashboard-members" element={<MemberDataProvider><MemberTable /></MemberDataProvider>} />
             <Route path="/dashboard-payment" element={<PaymentDashBoard />} />
             {/* <Route
               path="/individual-Payments"
