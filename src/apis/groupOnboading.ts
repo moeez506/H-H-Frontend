@@ -43,3 +43,14 @@ export const checkUserEmail = async (email: any) => {
     return error.response.data.msg;
   }
 }
+
+export const createPayment = async (values: any) => {
+  try {
+    const { data } = await request.post("/payment/create-payment", values);
+    console.log("🚀 ~ file: groupOnboading.ts:38 ~ checkUserEmail ~ values:", data)
+    return data.message;
+  } catch (error: any) {
+    console.error(error);
+    return error.response.data.msg;
+  }
+}

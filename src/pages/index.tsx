@@ -10,6 +10,15 @@ import Programs from "./Programs";
 import OnboardingType from "./OnboardingType";
 import VerificationScreen from "./VerifyEmail";
 import MarketPlace from "./MarketPlace";
+import IndividualProfile from "./IndividualDashboard/IndividualProfile";
+import IndividualMembers from "./IndividualDashboard/IndividualMembers";
+import IndividualSetting from "./IndividualDashboard/IndividualSetting";
+import IndividualPayments from "./IndividualDashboard/IndividualPayments";
+import IndividualMemberDetail from "./IndividualDashboard/IndividualMemberDetail";
+import IndividualPaymentDetail from "./IndividualDashboard/IndividualPaymentDetail";
+import CreateIndividualMember from "./IndividualDashboard/CreateIndividualMember";
+import GroupProfile from "./IndividualDashboard/GroupProfile";
+
 
 export {
   Login,
@@ -22,5 +31,13 @@ export {
   Programs,
   OnboardingType,
   VerificationScreen,
-  MarketPlace
+  MarketPlace,
+  IndividualProfile,
+  IndividualMembers,
+  IndividualSetting,
+  IndividualPayments,
+  IndividualMemberDetail, 
+  IndividualPaymentDetail,
+  CreateIndividualMember,
+  GroupProfile
 };

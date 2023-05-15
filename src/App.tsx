@@ -4,7 +4,8 @@ import "./App.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 import RouterConfig from "./routes/RouterConfig";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; import "./window.d.ts";
+import "react-toastify/dist/ReactToastify.css";
+import "./window.d.ts";
 
 function App() {
   const queryClient = new QueryClient();
@@ -33,12 +34,12 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div>
       <QueryClientProvider client={queryClient}>
         <RouterConfig />
         <ToastContainer />
       </QueryClientProvider>
-    </>
+    </div>
   );
 }
 

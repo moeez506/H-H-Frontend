@@ -19,6 +19,13 @@ input[type=number]{
   pointer-events: none;
 }
 
+.Customshadow {
+  -webkit-box-shadow: 0 0 5px 2px #fff;
+  -moz-box-shadow: 0 0 5px 2px #fff;
+  box-shadow: 0 0 5px 2px #fff;
+  color: #000000;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

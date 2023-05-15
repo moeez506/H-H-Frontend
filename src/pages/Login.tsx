@@ -55,7 +55,15 @@ export default function Login() {
                   setApiError("PLease first verify your email");
                 } else {
                   localStorage.setItem("auth-token", res.data.token);
-                  navigate("/onboarding-type");
+                  localStorage.setItem("login-user", JSON.stringify(res.data.user));
+                  if (res.data.user.isGroupAdmin) {
+                    navigate("/group-Profile");
+                  } else if(res.data.user.isIndividualAdmin) {
+                    navigate("/individual-Profile");
+                  }else{
+                    navigate("/onboarding-type");
+                  }
+                  
                 }
               })
               .catch((err) => {

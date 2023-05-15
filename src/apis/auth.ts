@@ -9,7 +9,10 @@ interface LoginData {
 export const login = async (values: LoginData) => {
   try {
     const result = await request.post("/auth/login", values);
-    localStorage.setItem("auth-token", result.data.token);
+    
+    // localStorage.setItem("auth-token", result.data.token);
+    localStorage.setItem("login-user", result.data.user);
+    console.log("🚀 ~ file: auth.ts:12 ~ login ~ result:", result.data.user)
     return result;
   } catch (error: any) {
     console.log("🚀 ~ file: auth.ts:24 ~ login ~ error:", error);
