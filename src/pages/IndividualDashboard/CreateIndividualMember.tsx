@@ -9,6 +9,8 @@ import { createIndividualMember } from "../../apis/individualOndoarding";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { createRepresentative } from "../../apis/groupOnboading";
+import Loader from "../../components/Loader";
+import ApiSuccess from "../../components/ApiSuccess";
 interface Option {
   label: string;
   value: string;
@@ -58,6 +60,8 @@ const CreateIndividualMember = () => {
   // );
 
   const [identityCheck, setIdentityCheck] = useState("");
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [apiSuccess, setApiSuccess] = useState<string>("")
 
   const initialValues: Values = {
     firstName: "",
@@ -137,6 +141,7 @@ const CreateIndividualMember = () => {
     // setKinInformation(values);  TODO: Context state not working
     console.log("🚀 ~ file: Step5.tsx:70 ~ Step5 ~ values:", values);
     const user = JSON.parse(localStorage.getItem('login-user') ?? '{}')
+    setIsLoading(true)
     try {
       if (user.isGroupAdmin) {
         console.log(user.groupId)
@@ -145,31 +150,39 @@ const CreateIndividualMember = () => {
           groupId: user.groupId,
           isGroupRespresentative: false,
         })
+        .then((res) => {
+          console.log("🚀 ~ file: CreateIndividualMember.tsx:152 ~ .then ~ res:", res)
+          setIsLoading(false)
+          if (res.user) {
+            setApiSuccess("Member Created successfully!")
+          }
+        })
       }else{
         await createIndividualMember(values);
       } 
-      toast.success("Member Created successfully!", {
-        position: toast.POSITION.TOP_CENTER,
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      // toast.success("Member Created successfully!", {
+      //   position: toast.POSITION.TOP_CENTER,
+      //   autoClose: 3000,
+      //   hideProgressBar: false,
+      //   closeOnClick: true,
+      //   pauseOnHover: true,
+      //   draggable: true,
+      //   progress: undefined,
+      // });
     } catch (error) {
       console.log("Error:", error);
     }
   }
   return (
-    <div className=" h-auto desktop:text-xl laptop:text-xl tabletOnly:text-lg mobile:text-base">
+    <div className="bg-white shadow-md rounded-2xl px-8 pt-6 h-auto desktop:text-xl laptop:text-xl tabletOnly:text-lg mobile:text-base">
       {/* <h1 className="text-3xl font-bold mb-6 text-center">
         Create Member
       </h1> */}
-
+      {isLoading ? <Loader /> : null}
+      {apiSuccess ? <ApiSuccess success={apiSuccess} /> : null }
       <form onSubmit={handleSubmit}>
         <div className="flex justify-between">
-          <h1 className="text-3xl font-bold mb-4 text-center">Create Member</h1>
+          <h1 className="text-3xl font-bold mb-4 text-center mobile:text-xl tabletOnly:text-xl">Create Member</h1>
           <button
             type="submit"
             // eslint-disable-next-line @typescript-eslint/no-misused-promises

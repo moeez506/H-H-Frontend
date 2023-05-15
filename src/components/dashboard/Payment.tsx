@@ -17,21 +17,27 @@ const getRowId = (payment: Member) => payment.transactionId;
 const PaymentDashBoard: React.FC = () => {
   const isSmallScreen = useMediaQuery("(max-width: 600px)");
   const user = JSON.parse(localStorage.getItem('login-user') ?? '{}')
-  if (user.isGroupAdmin) {
-    var { isLoading: isLoading1, data: data1, isError: isError1, error: error1 }: any = useGroupPayment(user.groupId);
-    var paymentData = data1?.data; 
-  }else{
-    var { isLoading, data, isError, error }: any = useDashboardPayment();
-    var paymentData = data?.data; 
-  }
-  
-  // console.log("🚀 ~ file: Payment.tsx:19 ~ data:", data?.data);
 
-  if (isLoading || isLoading1) {
+  // if (user.isGroupAdmin) {
+  //   var { isLoading: isLoading1, data: data1, isError: isError1, error: error1 }: any = useGroupPayment(user.groupId);
+  //   var paymentData = data1?.data; 
+  // }else{
+  //   var { isLoading, data, isError, error }: any = useDashboardPayment();
+  //   var paymentData = data?.data; 
+  // }
+
+  const { isLoading, data, isError, error }: any = user.isGroupAdmin
+    ? useGroupPayment(user.groupId)
+    : useDashboardPayment();
+
+  const paymentData = data?.data;
+
+
+  if (isLoading) {
     return <Loader />;
   }
 
-  
+
   // const members: Member[] = [
   //   {
   //     paymentId: "001",
@@ -61,51 +67,51 @@ const PaymentDashBoard: React.FC = () => {
 
   const columns = !isSmallScreen
     ? [
-        {
-          field: "transactionId",
-          headerName: "Payment ID",
-          flex: 1,
-          headerClassName: "my-header-background my-header-text-color",
-        },
-        {
-          field: "transaction",
-          headerName: "Transaction",
-          flex: 1,
-          headerClassName: "my-header-background my-header-text-color",
-        },
-        {
-          field: "amount",
-          headerName: "Amount",
-          flex: 1,
-          headerClassName: "my-header-background my-header-text-color",
-        },
-        {
-          field: "dateTime",
-          headerName: "Date Time",
-          flex: 1,
-          headerClassName: "my-header-background my-header-text-color",
-        },
-      ]
+      {
+        field: "transactionId",
+        headerName: "Payment ID",
+        flex: 1,
+        headerClassName: "my-header-background my-header-text-color",
+      },
+      {
+        field: "transaction",
+        headerName: "Transaction",
+        flex: 1,
+        headerClassName: "my-header-background my-header-text-color",
+      },
+      {
+        field: "amount",
+        headerName: "Amount",
+        flex: 1,
+        headerClassName: "my-header-background my-header-text-color",
+      },
+      {
+        field: "dateTime",
+        headerName: "Date Time",
+        flex: 1,
+        headerClassName: "my-header-background my-header-text-color",
+      },
+    ]
     : [
-        {
-          field: "transactionId",
-          headerName: "Payment ID",
-          flex: 1,
-          headerClassName: "my-header-background my-header-text-color",
-        },
-        {
-          field: "amount",
-          headerName: "Amount",
-          flex: 1,
-          headerClassName: "my-header-background my-header-text-color",
-        },
-        {
-          field: "dateTime",
-          headerName: "Date Time",
-          flex: 1,
-          headerClassName: "my-header-background my-header-text-color",
-        },
-      ];
+      {
+        field: "transactionId",
+        headerName: "Payment ID",
+        flex: 1,
+        headerClassName: "my-header-background my-header-text-color",
+      },
+      {
+        field: "amount",
+        headerName: "Amount",
+        flex: 1,
+        headerClassName: "my-header-background my-header-text-color",
+      },
+      {
+        field: "dateTime",
+        headerName: "Date Time",
+        flex: 1,
+        headerClassName: "my-header-background my-header-text-color",
+      },
+    ];
   return (
     <>
       <div className="ml-20 mobile:ml-0">

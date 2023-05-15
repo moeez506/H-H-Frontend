@@ -32,7 +32,7 @@ module.exports = {
       smallMobile: { max: "350px" },
       mobile: { max: "480px" },
       tablet: { max: "1023px" },
-
+      tabletScreen: { max: "768px" },
       tabletOnly: { min: "481px", max: "1023px" },
       // => @media (min-width: 640px) { ... }
 

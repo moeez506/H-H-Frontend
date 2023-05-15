@@ -33,9 +33,9 @@ function HeadPayment() {
   const totalAmt = data?.data
   console.log("🚀 ~ file: HeadPayment.tsx:35 ~ HeadPayment ~ totalAmt:", data)
 
-  // if (isLoading) {
-  //   return <Loader />
-  // }
+  if (isLoading) {
+    return <Loader />
+  }
 
   return (
     <>
