@@ -39,7 +39,7 @@ const IndividualMemberDetail = () => {
     <div className="bg-white shadow-md rounded-2xl px-8 pt-6 h-auto ml-14 mobile:ml-0 tabletOnly:w-max">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold text-orange">Member Detail</h1>
-        <Button text="Edit" route="/" />
+        {/* <Button text="Edit" route="/" /> */}
       </div>
       <br></br>
       <hr></hr>

@@ -23,12 +23,13 @@ const GroupProfile = () => {
 
   const memberData = groupMember?.data?.groupUsers
   const representativeData = memberData.filter((member: any) => member.isGroupRespresentative);
+  console.log("🚀 ~ file: GroupProfile.tsx:26 ~ GroupProfile ~ representativeData:", representativeData)
 
 
   return (
     <div className='ml-28 mobile:ml-0 tabletOnly:ml-14 tabletOnly:w-max tabletScreen:ml-0'>
-      <h1 className="text-4xl font-semibold">
-        Hello, name
+      <h1 className="text-4xl font-semibold text-orange">
+       {associationName}
       </h1>
       <br></br>
       <div className='shadow-inset shadow-2xl rounded-xl w-full'>
@@ -47,21 +48,21 @@ const GroupProfile = () => {
           </div>
           <div className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8 mobile:flex mobile:justify-between mobile:mb-0">
             <h2 className="text-orange text-xl font-semibold mb-2">Country</h2>
-            <p className="text-gray-500 text-base mobile:pt-1">555 555 555</p>
+            <p className="text-gray-500 text-base mobile:pt-1">{country}</p>
           </div>
         </div>
         <div className="flex flex-row mobile:flex-wrap">
           <div className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8 mobile:flex mobile:justify-between mobile:mb-0">
-            <h2 className="text-orange text-xl font-semibold mb-2">Name:</h2>
-            <p className="text-gray-500 text-base mobile:pt-1">Abdul Rehman</p>
+            <h2 className="text-orange text-xl font-semibold mb-2">Address:</h2>
+            <p className="text-gray-500 text-base mobile:pt-1">{address}</p>
           </div>
           <div className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8 mobile:flex mobile:justify-between mobile:mb-0">
-            <h2 className="text-orange text-xl font-semibold mb-2">Email:</h2>
-            <p className="text-gray-500 text-base mobile:pt-1">test@gmail.com</p>
+            <h2 className="text-orange text-xl font-semibold mb-2">ZipCode:</h2>
+            <p className="text-gray-500 text-base mobile:pt-1">{zipCode}</p>
           </div>
           <div className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8 mobile:flex mobile:justify-between mobile:mb-0">
-            <h2 className="text-orange text-xl font-semibold mb-2">Contact:</h2>
-            <p className="text-gray-500 text-base mobile:pt-1">555 555 555</p>
+            <h2 className="text-orange text-xl font-semibold mb-2">Website:</h2>
+            <p className="text-gray-500 text-base mobile:pt-1">{websiteLink}</p>
           </div>
         </div>
       </div>
@@ -87,7 +88,7 @@ const GroupProfile = () => {
               </div>
               <div className="w-full sm:w-1/2 lg:w-1/3 px-4 my-2 mobile:flex mobile:justify-between mobile:mb-0">
                 <h2 className="text-orange text-xl font-semibold mb-1">Contact:</h2>
-                <p className="text-gray-500 text-base mobile:pt-1">555 555 555</p>
+                <p className="text-gray-500 text-base mobile:pt-1">{data.phoneNumbers.Cell}</p>
               </div>
             </div>
           </div>

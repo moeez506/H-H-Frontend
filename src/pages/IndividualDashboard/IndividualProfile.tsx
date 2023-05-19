@@ -6,6 +6,7 @@ import Loader from "../../components/Loader";
 
 const IndividualProfile = () => {
   const { isLoading, data, isError, error }: any = useRepresentiveData();
+  // console.log("🚀 ~ file: IndividualProfile.tsx:9 ~ IndividualProfile ~ data:", data)
 
 
   if (isLoading) {
@@ -16,7 +17,7 @@ const IndividualProfile = () => {
     return <div>Error: {error.message}</div>;
   }
 
-  const { firstName, email, lastName, dateOfBirth, nationality, phoneNumbers, address, zipCode, isVerified } = data?.data?.user;
+  const { firstName, email, lastName, dateOfBirth, nationality, phoneNumbers, address, zipCode, isVerified, countryOfResidence, identification, placeOfBirth } = data?.data?.user;
 
 
   // const name = firstName + ' ' + lastName;
@@ -85,16 +86,16 @@ const IndividualProfile = () => {
         <div className="flex ml-40 mobile:ml-0 mobile:mr-24 tabletOnly:ml-0 tabletOnly:hidden ">
           <div className="border-r-2 h-[350px]"></div>
           <div className="flex flex-col pl-4">
-            <h1 className="text-xl font-bold">Heading 1</h1>
-            <p className="text-lg mb-4">Some text after heading 1.</p>
-            <h2 className="text-xl font-bold ">Heading 2</h2>
-            <p className="text-lg mb-4">Some text after heading 2.</p>
-            <h3 className="text-xl font-bold ">Heading 3</h3>
-            <p className="text-lg mb-4">Some text after heading 3.</p>
-            <h4 className="text-xl font-bold ">Heading 4</h4>
-            <p className="text-lg mb-4">Some text after heading 4.</p>
-            <h5 className="text-xl font-bold ">Heading 5</h5>
-            <p className="text-lg">Some text after heading 5.</p>
+            <h1 className="text-xl font-bold text-orange">Country of Rsidence</h1>
+            <p className="text-lg mb-4">{countryOfResidence}</p>
+            <h2 className="text-xl font-bold text-orange">Country of Issuance</h2>
+            <p className="text-lg mb-4 ">{identification.countryOfIssuance}</p>
+            <h3 className="text-xl font-bold text-orange">Date of Issuance</h3>
+            <p className="text-lg mb-4">{identification.dateOfIssuance}</p>
+            <h4 className="text-xl font-bold text-orange">Place of Issuance</h4>
+            <p className="text-lg mb-4">{identification.placedIssuance}</p>
+            <h5 className="text-xl font-bold text-orange">Expiry Date</h5>
+            <p className="text-lg">{identification.expiryDate}</p>
           </div>
         </div>
       </div>

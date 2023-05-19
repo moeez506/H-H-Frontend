@@ -31,6 +31,7 @@ const PaymentDashBoard: React.FC = () => {
     : useDashboardPayment();
 
   const paymentData = data?.data;
+  console.log("🚀 ~ file: Payment.tsx:34 ~ paymentData:", paymentData)
 
 
   if (isLoading) {
@@ -74,8 +75,8 @@ const PaymentDashBoard: React.FC = () => {
         headerClassName: "my-header-background my-header-text-color",
       },
       {
-        field: "transaction",
-        headerName: "Transaction",
+        field: "paymentReason",
+        headerName: "Reason",
         flex: 1,
         headerClassName: "my-header-background my-header-text-color",
       },
@@ -86,8 +87,8 @@ const PaymentDashBoard: React.FC = () => {
         headerClassName: "my-header-background my-header-text-color",
       },
       {
-        field: "dateTime",
-        headerName: "Date Time",
+        field: "email",
+        headerName: "Payyer Mail",
         flex: 1,
         headerClassName: "my-header-background my-header-text-color",
       },
