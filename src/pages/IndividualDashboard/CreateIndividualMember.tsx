@@ -60,8 +60,8 @@ const CreateIndividualMember = () => {
   // );
 
   const [identityCheck, setIdentityCheck] = useState("");
-  const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [apiSuccess, setApiSuccess] = useState<string>("")
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [apiSuccess, setApiSuccess] = useState<string>("");
 
   const initialValues: Values = {
     firstName: "",
@@ -131,35 +131,41 @@ const CreateIndividualMember = () => {
     handleBlur,
     handleChange,
     handleSubmit,
+    resetForm,
   } = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: async (values) => {},
+    onSubmit: async (values) => {
+      void formSubmit();
+      resetForm();
+    },
   });
 
   async function formSubmit(): Promise<void> {
     // setKinInformation(values);  TODO: Context state not working
     console.log("🚀 ~ file: Step5.tsx:70 ~ Step5 ~ values:", values);
-    const user = JSON.parse(localStorage.getItem('login-user') ?? '{}')
-    setIsLoading(true)
+    const user = JSON.parse(localStorage.getItem("login-user") ?? "{}");
+    setIsLoading(true);
     try {
       if (user.isGroupAdmin) {
-        console.log(user.groupId)
+        console.log(user.groupId);
         await createRepresentative({
           ...values,
           groupId: user.groupId,
           isGroupRespresentative: false,
-        })
-        .then((res) => {
-          console.log("🚀 ~ file: CreateIndividualMember.tsx:152 ~ .then ~ res:", res)
-          setIsLoading(false)
+        }).then((res) => {
+          console.log(
+            "🚀 ~ file: CreateIndividualMember.tsx:152 ~ .then ~ res:",
+            res
+          );
+          setIsLoading(false);
           if (res.user) {
-            setApiSuccess("Member Created successfully!")
+            setApiSuccess("Member Created successfully!");
           }
-        })
-      }else{
+        });
+      } else {
         await createIndividualMember(values);
-      } 
+      }
       // toast.success("Member Created successfully!", {
       //   position: toast.POSITION.TOP_CENTER,
       //   autoClose: 3000,
@@ -179,14 +185,16 @@ const CreateIndividualMember = () => {
         Create Member
       </h1> */}
       {isLoading ? <Loader /> : null}
-      {apiSuccess ? <ApiSuccess success={apiSuccess} /> : null }
+      {apiSuccess ? <ApiSuccess success={apiSuccess} /> : null}
       <form onSubmit={handleSubmit}>
         <div className="flex justify-between">
-          <h1 className="text-3xl font-bold mb-4 text-center mobile:text-xl tabletOnly:text-xl">Create Member</h1>
+          <h1 className="text-3xl font-bold mb-4 text-center mobile:text-xl tabletOnly:text-xl">
+            Create Member
+          </h1>
           <button
             type="submit"
             // eslint-disable-next-line @typescript-eslint/no-misused-promises
-            onClick={formSubmit}
+            // onClick={handleSubmit}
             className="border-2 rounded-xl text-white mb-4 border-white bg-gradient-to-r from-orange to-yellow px-8 py-0 text-xl font-medium"
           >
             Submit
@@ -261,7 +269,10 @@ const CreateIndividualMember = () => {
         </div>
         <div className="flex justify-between tabletOnly:flex-wrap mobile:flex-wrap">
           <div className="mb-4">
-            <label className="block text-gray-700 font-bold mb-2" htmlFor="dateOfBirth">
+            <label
+              className="block text-gray-700 font-bold mb-2"
+              htmlFor="dateOfBirth"
+            >
               Date of Birth*
             </label>
             <input
