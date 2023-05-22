@@ -138,6 +138,7 @@ const CreateIndividualMember = () => {
     onSubmit: async (values) => {
       void formSubmit();
       resetForm();
+      setIdentityCheck("");
     },
   });
 
@@ -569,7 +570,7 @@ const CreateIndividualMember = () => {
                 <input
                   type="radio"
                   name="identityCheck"
-                  value={option.value}
+                  value={identityCheck}
                   checked={identityCheck === option.value}
                   onChange={() => {
                     setIdentityCheck(option.value);
