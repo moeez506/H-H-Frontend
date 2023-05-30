@@ -37,7 +37,7 @@ import { MemberDataProvider } from "../contexts/MemberDataContext";
 
 const RouterConfig = () => {
   const location = useLocation();
-  const params = useParams()
+  const params = useParams();
   const shouldRenderHeader = [
     "/home",
     "/about",
@@ -56,17 +56,19 @@ const RouterConfig = () => {
     "/dashboard-members",
     "/dashboard-payment",
     "/individual-CreateMember",
-    "/group-Profile"
+    "/group-Profile",
   ];
   // console.log(location.pathname.startsWith("/individual-Detail/"),"//...")
-  const path = location.pathname.split('/')
-  const id = path[path.length - 1]
-  console.log("🚀 ~ file: RouterConfig.tsx:61 ~ RouterConfig ~ id:", id)
+  const path = location.pathname.split("/");
+  const id = path[path.length - 1];
+  console.log("🚀 ~ file: RouterConfig.tsx:61 ~ RouterConfig ~ id:", id);
   if (location.pathname.startsWith("/individual-Detail/")) {
     shouldRenderIndividualDashboard.push(`/individual-Detail/${id}`);
   }
   // console.log(location.pathname)
-  const shouldRenderSideber = shouldRenderIndividualDashboard.includes(location.pathname);
+  const shouldRenderSideber = shouldRenderIndividualDashboard.includes(
+    location.pathname
+  );
 
   console.log(shouldRenderHeader);
 
@@ -80,7 +82,14 @@ const RouterConfig = () => {
             <Route path="/group-Profile" element={<GroupProfile />} />
             {/* <Route path="/individual-Members" element={<IndividualMembers />} /> */}
             <Route path="/individual-Setting" element={<IndividualSetting />} />
-            <Route path="/dashboard-members" element={<MemberDataProvider><MemberTable /></MemberDataProvider>} />
+            <Route
+              path="/dashboard-members"
+              element={
+                <MemberDataProvider>
+                  <MemberTable />
+                </MemberDataProvider>
+              }
+            />
             <Route path="/dashboard-payment" element={<PaymentDashBoard />} />
             {/* <Route
               path="/individual-Payments"
@@ -96,12 +105,15 @@ const RouterConfig = () => {
             />
             <Route
               path="/individual-CreateMember"
-              element={<CreateIndividualMember />}
+              element={
+                <MemberDataProvider>
+                  <CreateIndividualMember />
+                </MemberDataProvider>
+              }
             />
           </Routes>
         </SideNav>
       )}
-
 
       <Routes>
         <Route path="/" element={<PopUp />} />

@@ -3,7 +3,7 @@
 import React, { useContext, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { IndividualUserContext } from "../../contexts/individualOnboardingContext";
+import { MemberDataContext } from "../../contexts/MemberDataContext";
 import Button from "../../components/Button";
 import { createIndividualMember } from "../../apis/individualOndoarding";
 import { toast } from "react-toastify";
@@ -62,6 +62,12 @@ const CreateIndividualMember = () => {
   const [identityCheck, setIdentityCheck] = useState("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [apiSuccess, setApiSuccess] = useState<string>("");
+
+  const { memberData, setMemberData } = useContext(MemberDataContext);
+  console.log(
+    "🚀 ~ file: CreateIndividualMember.tsx:67 ~ CreateIndividualMember ~ memberData:",
+    memberData
+  );
 
   const initialValues: Values = {
     firstName: "",
@@ -144,7 +150,7 @@ const CreateIndividualMember = () => {
 
   async function formSubmit(): Promise<void> {
     // setKinInformation(values);  TODO: Context state not working
-    console.log("🚀 ~ file: Step5.tsx:70 ~ Step5 ~ values:", values);
+    // console.log("🚀 ~ file: Step5.tsx:70 ~ Step5 ~ values:", values);
     const user = JSON.parse(localStorage.getItem("login-user") ?? "{}");
     setIsLoading(true);
     try {
@@ -155,9 +161,10 @@ const CreateIndividualMember = () => {
           groupId: user.groupId,
           isGroupRespresentative: false,
         }).then((res) => {
+          setMemberData((prevMemberData: any) => [...prevMemberData, res.user]);
           console.log(
             "🚀 ~ file: CreateIndividualMember.tsx:152 ~ .then ~ res:",
-            res
+            res.user
           );
           setIsLoading(false);
           if (res.user) {
@@ -165,7 +172,9 @@ const CreateIndividualMember = () => {
           }
         });
       } else {
-        await createIndividualMember(values);
+        await createIndividualMember(values).then((res) => {
+          setMemberData((prevMemberData: any) => [...prevMemberData, res.user]);
+        });
       }
       // toast.success("Member Created successfully!", {
       //   position: toast.POSITION.TOP_CENTER,
