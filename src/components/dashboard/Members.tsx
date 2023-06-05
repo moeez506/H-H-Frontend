@@ -24,6 +24,7 @@ import { useGroupMember, useMemberData } from "../../hooks/useRepresentativeData
 import { deleteGroupMember, deleteMember } from "../../apis/individualOndoarding";
 import ApiSuccess from "../ApiSuccess";
 import { MemberDataContext } from "../../contexts/MemberDataContext";
+import { getUserFromLocalStorage } from "../../utils/getUserFromLocalStorage";
 
 interface Member {
   _id: string;
@@ -51,7 +52,7 @@ const MembersTable: React.FC = () => {
   console.log("🚀 ~ file: Members.tsx:49 ~ apiSuccess:", apiSuccess);
   const isSmallScreen = useMediaQuery("(max-width: 600px)"); // Adjust the breakpoint to your desired screen size
 
-  const user = JSON.parse(localStorage.getItem('login-user') ?? '{}');
+  const user = getUserFromLocalStorage();
 
   const { memberData, setMemberData } = useContext(MemberDataContext);
   console.log("🚀 ~ file: Members.tsx:73 ~ memberData:", memberData)
@@ -185,30 +186,31 @@ const MembersTable: React.FC = () => {
           const handleEditClick = () => { };
 
           const handleDeleteClick = async (memberId: any) => {
-            setApiLoading(true);
-            if (user.isGroupAdmin) {
-              try {
-                console.log("check")
-                await deleteGroupMember(memberId)
-                // Updating context 
-                const updatedMembers = memberData.filter((member: any) => member._id !== memberId);
-                setMemberData(updatedMembers);
+            if (window.confirm("Are you sure you want to delete?")) {
+              setApiLoading(true);
+              if (user.isGroupAdmin) {
+                try {
+                  console.log("check")
+                  await deleteGroupMember(memberId)
+                  // Updating context 
+                  const updatedMembers = memberData.filter((member: any) => member._id !== memberId);
+                  setMemberData(updatedMembers);
 
-                setApiSuccess("Member deleted successfully");
-                setApiLoading(false)
-              } catch (error) {
-                setApiSuccess("Failed to delete member");
-              }
-            } else {
-              try {
-                await deleteMember(memberId);
-                setApiLoading(false)
-                setApiSuccess("Member deleted successfully");
-              } catch (error) {
-                setApiSuccess("Failed to delete member");
+                  setApiSuccess("Member deleted successfully");
+                  setApiLoading(false)
+                } catch (error) {
+                  setApiSuccess("Failed to delete member");
+                }
+              } else {
+                try {
+                  await deleteMember(memberId);
+                  setApiLoading(false)
+                  setApiSuccess("Member deleted successfully");
+                } catch (error) {
+                  setApiSuccess("Failed to delete member");
+                }
               }
             }
-
           };
           return (
             <div className="flex justify-center items-center space-x-5">

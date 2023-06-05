@@ -4,9 +4,11 @@ import React from 'react'
 import { useGroupDetail, useGroupMember } from '../../hooks/useRepresentativeData';
 import Loader from '../../components/Loader';
 import { NavLink } from 'react-router-dom';
+import { getUserFromLocalStorage } from '../../utils/getUserFromLocalStorage';
 
 const GroupProfile = () => {
-  const user = JSON.parse(localStorage.getItem('login-user') ?? '{}')
+  const user = getUserFromLocalStorage();
+
   const { isLoading: isLoadingDetail, data: groupDetail, isError: isErrorDetail, error: errorDetail } = useGroupDetail(user.groupId);
   const { isLoading: isLoadingMember, data: groupMember, isError: isErrorMember, error: errorMember } = useGroupMember(user.groupId);
 
@@ -29,7 +31,7 @@ const GroupProfile = () => {
   return (
     <div className='ml-28 mobile:ml-0 tabletOnly:ml-14 tabletOnly:w-max tabletScreen:ml-0'>
       <h1 className="text-4xl font-semibold text-orange">
-       {associationName}
+        {associationName}
       </h1>
       <br></br>
       <div className='shadow-inset shadow-2xl rounded-xl w-full'>

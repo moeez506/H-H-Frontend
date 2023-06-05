@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { useTotalPayment } from "../../../hooks/useRepresentativeData";
 import Loader from "../../Loader";
+import { getUserFromLocalStorage } from "../../../utils/getUserFromLocalStorage";
 // import cx from "classnames";
 
 interface PaymentProps {
@@ -15,7 +16,8 @@ function HeadPayment() {
   const [duePayment, setDuePayment] = useState("$1400");
   const [referalBalance, setReferalBalance] = useState("1200");
 
-  const user = JSON.parse(localStorage.getItem('login-user') ?? '{}')
+  const user = getUserFromLocalStorage();
+
   // let totalAmt;
   // if (user.isGroupAdmin) {
   //   var { isLoading: isLoading1, data: data1, isError: isError1, error: error1 }: any = useTotalPayment(user.groupId);

@@ -11,6 +11,7 @@ import {
 } from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/logo-2.png'
+import { getUserFromLocalStorage } from '../../utils/getUserFromLocalStorage';
 // import { useMediaQuery } from "@mui/material";
 
 
@@ -19,7 +20,9 @@ const SideNav = ({ children }: any) => {
     // console.log("🚀 ~ file: SideNav.tsx:20 ~ SideNav ~ isGroup:", isGroup)
     const [isOpen, setIsOpen] = useState(true);
     const toggle = () => { setIsOpen(!isOpen) }
-    const user = JSON.parse(localStorage.getItem('login-user') ?? '{}')
+
+    const user = getUserFromLocalStorage();
+
     // const storedObject = JSON.parse(user);
     // const isGroup  = false;
     const menuItem = [

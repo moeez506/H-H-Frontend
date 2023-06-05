@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { createRepresentative } from "../../apis/groupOnboading";
 import Loader from "../../components/Loader";
 import ApiSuccess from "../../components/ApiSuccess";
+import { getUserFromLocalStorage } from "../../utils/getUserFromLocalStorage";
 interface Option {
   label: string;
   value: string;
@@ -134,13 +135,14 @@ const CreateIndividualMember = () => {
   } = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: async (values) => {},
+    onSubmit: async (values) => { },
   });
 
   async function formSubmit(): Promise<void> {
     // setKinInformation(values);  TODO: Context state not working
     console.log("🚀 ~ file: Step5.tsx:70 ~ Step5 ~ values:", values);
-    const user = JSON.parse(localStorage.getItem('login-user') ?? '{}')
+    const user = getUserFromLocalStorage();
+
     setIsLoading(true)
     try {
       if (user.isGroupAdmin) {
@@ -150,16 +152,16 @@ const CreateIndividualMember = () => {
           groupId: user.groupId,
           isGroupRespresentative: false,
         })
-        .then((res) => {
-          console.log("🚀 ~ file: CreateIndividualMember.tsx:152 ~ .then ~ res:", res)
-          setIsLoading(false)
-          if (res.user) {
-            setApiSuccess("Member Created successfully!")
-          }
-        })
-      }else{
+          .then((res) => {
+            console.log("🚀 ~ file: CreateIndividualMember.tsx:152 ~ .then ~ res:", res)
+            setIsLoading(false)
+            if (res.user) {
+              setApiSuccess("Member Created successfully!")
+            }
+          })
+      } else {
         await createIndividualMember(values);
-      } 
+      }
       // toast.success("Member Created successfully!", {
       //   position: toast.POSITION.TOP_CENTER,
       //   autoClose: 3000,
@@ -179,7 +181,7 @@ const CreateIndividualMember = () => {
         Create Member
       </h1> */}
       {isLoading ? <Loader /> : null}
-      {apiSuccess ? <ApiSuccess success={apiSuccess} /> : null }
+      {apiSuccess ? <ApiSuccess success={apiSuccess} /> : null}
       <form onSubmit={handleSubmit}>
         <div className="flex justify-between">
           <h1 className="text-3xl font-bold mb-4 text-center mobile:text-xl tabletOnly:text-xl">Create Member</h1>
@@ -212,9 +214,9 @@ const CreateIndividualMember = () => {
               onChange={handleChange}
             />
             {errors.firstName !== null &&
-            touched.firstName !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "firstName") &&
-            Object.prototype.hasOwnProperty.call(touched, "firstName") ? (
+              touched.firstName !== null &&
+              Object.prototype.hasOwnProperty.call(errors, "firstName") &&
+              Object.prototype.hasOwnProperty.call(touched, "firstName") ? (
               <p className="text-[red]">{errors.firstName}</p>
             ) : null}
           </div>
@@ -252,9 +254,9 @@ const CreateIndividualMember = () => {
               onChange={handleChange}
             />
             {errors.lastName !== null &&
-            touched.lastName !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "lastName") &&
-            Object.prototype.hasOwnProperty.call(touched, "lastName") ? (
+              touched.lastName !== null &&
+              Object.prototype.hasOwnProperty.call(errors, "lastName") &&
+              Object.prototype.hasOwnProperty.call(touched, "lastName") ? (
               <p className="text-[red]">{errors.lastName}</p>
             ) : null}
           </div>
@@ -274,9 +276,9 @@ const CreateIndividualMember = () => {
               onChange={handleChange}
             />
             {errors.dateOfBirth !== null &&
-            touched.dateOfBirth !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "dateOfBirth") &&
-            Object.prototype.hasOwnProperty.call(touched, "dateOfBirth") ? (
+              touched.dateOfBirth !== null &&
+              Object.prototype.hasOwnProperty.call(errors, "dateOfBirth") &&
+              Object.prototype.hasOwnProperty.call(touched, "dateOfBirth") ? (
               <p className="text-[red]">{errors.dateOfBirth}</p>
             ) : null}
           </div>
@@ -297,9 +299,9 @@ const CreateIndividualMember = () => {
               onChange={handleChange}
             />
             {errors.placeOfBirth !== null &&
-            touched.placeOfBirth !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "placeOfBirth") &&
-            Object.prototype.hasOwnProperty.call(touched, "placeOfBirth") ? (
+              touched.placeOfBirth !== null &&
+              Object.prototype.hasOwnProperty.call(errors, "placeOfBirth") &&
+              Object.prototype.hasOwnProperty.call(touched, "placeOfBirth") ? (
               <p className="text-[red]">{errors.placeOfBirth}</p>
             ) : null}
           </div>
@@ -320,9 +322,9 @@ const CreateIndividualMember = () => {
               onChange={handleChange}
             />
             {errors.nationality !== null &&
-            touched.nationality !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "nationality") &&
-            Object.prototype.hasOwnProperty.call(touched, "nationality") ? (
+              touched.nationality !== null &&
+              Object.prototype.hasOwnProperty.call(errors, "nationality") &&
+              Object.prototype.hasOwnProperty.call(touched, "nationality") ? (
               <p className="text-[red]">{errors.nationality}</p>
             ) : null}
           </div>
@@ -345,15 +347,15 @@ const CreateIndividualMember = () => {
               onChange={handleChange}
             />
             {errors.countryOfResidence !== null &&
-            touched.countryOfResidence !== null &&
-            Object.prototype.hasOwnProperty.call(
-              errors,
-              "countryOfResidence"
-            ) &&
-            Object.prototype.hasOwnProperty.call(
-              touched,
-              "countryOfResidence"
-            ) ? (
+              touched.countryOfResidence !== null &&
+              Object.prototype.hasOwnProperty.call(
+                errors,
+                "countryOfResidence"
+              ) &&
+              Object.prototype.hasOwnProperty.call(
+                touched,
+                "countryOfResidence"
+              ) ? (
               <p className="text-[red]">{errors.countryOfResidence}</p>
             ) : null}
           </div>
@@ -374,9 +376,9 @@ const CreateIndividualMember = () => {
               onChange={handleChange}
             />
             {errors.address !== null &&
-            touched.address !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "address") &&
-            Object.prototype.hasOwnProperty.call(touched, "address") ? (
+              touched.address !== null &&
+              Object.prototype.hasOwnProperty.call(errors, "address") &&
+              Object.prototype.hasOwnProperty.call(touched, "address") ? (
               <p className="text-[red]">{errors.address}</p>
             ) : null}
           </div>
@@ -397,9 +399,9 @@ const CreateIndividualMember = () => {
               onChange={handleChange}
             />
             {errors.zipCode !== null &&
-            touched.zipCode !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "zipCode") &&
-            Object.prototype.hasOwnProperty.call(touched, "zipCode") ? (
+              touched.zipCode !== null &&
+              Object.prototype.hasOwnProperty.call(errors, "zipCode") &&
+              Object.prototype.hasOwnProperty.call(touched, "zipCode") ? (
               <p className="text-[red]">{errors.zipCode}</p>
             ) : null}
           </div>
@@ -422,9 +424,9 @@ const CreateIndividualMember = () => {
               onChange={handleChange}
             />
             {errors.homePhoneNumber !== null &&
-            touched.homePhoneNumber !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "homePhoneNumber") &&
-            Object.prototype.hasOwnProperty.call(touched, "homePhoneNumber") ? (
+              touched.homePhoneNumber !== null &&
+              Object.prototype.hasOwnProperty.call(errors, "homePhoneNumber") &&
+              Object.prototype.hasOwnProperty.call(touched, "homePhoneNumber") ? (
               <p className="text-[red]">{errors.homePhoneNumber}</p>
             ) : null}
           </div>
@@ -445,9 +447,9 @@ const CreateIndividualMember = () => {
               onChange={handleChange}
             />
             {errors.cellNumber !== null &&
-            touched.cellNumber !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "cellNumber") &&
-            Object.prototype.hasOwnProperty.call(touched, "cellNumber") ? (
+              touched.cellNumber !== null &&
+              Object.prototype.hasOwnProperty.call(errors, "cellNumber") &&
+              Object.prototype.hasOwnProperty.call(touched, "cellNumber") ? (
               <p className="text-[red]">{errors.cellNumber}</p>
             ) : null}
           </div>
@@ -468,9 +470,9 @@ const CreateIndividualMember = () => {
               onChange={handleChange}
             />
             {errors.email !== null &&
-            touched.email !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "email") &&
-            Object.prototype.hasOwnProperty.call(touched, "email") ? (
+              touched.email !== null &&
+              Object.prototype.hasOwnProperty.call(errors, "email") &&
+              Object.prototype.hasOwnProperty.call(touched, "email") ? (
               <p className="text-[red]">{errors.email}</p>
             ) : null}
           </div>
@@ -547,9 +549,9 @@ const CreateIndividualMember = () => {
             Which identity would you like to provide:
           </p>
           {errors.identityCheck !== null &&
-          touched.identityCheck !== null &&
-          Object.prototype.hasOwnProperty.call(errors, "identityCheck") &&
-          Object.prototype.hasOwnProperty.call(touched, "identityCheck") ? (
+            touched.identityCheck !== null &&
+            Object.prototype.hasOwnProperty.call(errors, "identityCheck") &&
+            Object.prototype.hasOwnProperty.call(touched, "identityCheck") ? (
             <p className="text-[red]">{errors.identityCheck}</p>
           ) : null}
           <div className="flex justify-between tabletOnly:flex-wrap mobile:flex-wrap">
@@ -598,9 +600,9 @@ const CreateIndividualMember = () => {
               onChange={handleChange}
             />
             {errors.identity !== null &&
-            touched.identity !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "identity") &&
-            Object.prototype.hasOwnProperty.call(touched, "identity") ? (
+              touched.identity !== null &&
+              Object.prototype.hasOwnProperty.call(errors, "identity") &&
+              Object.prototype.hasOwnProperty.call(touched, "identity") ? (
               <p className="text-[red]">{errors.identity}</p>
             ) : null}
           </div>
@@ -621,12 +623,12 @@ const CreateIndividualMember = () => {
               onChange={handleChange}
             />
             {errors.countryOfIssuance !== null &&
-            touched.countryOfIssuance !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "countryOfIssuance") &&
-            Object.prototype.hasOwnProperty.call(
-              touched,
-              "countryOfIssuance"
-            ) ? (
+              touched.countryOfIssuance !== null &&
+              Object.prototype.hasOwnProperty.call(errors, "countryOfIssuance") &&
+              Object.prototype.hasOwnProperty.call(
+                touched,
+                "countryOfIssuance"
+              ) ? (
               <p className="text-[red]">{errors.countryOfIssuance}</p>
             ) : null}
           </div>
@@ -647,9 +649,9 @@ const CreateIndividualMember = () => {
               onChange={handleChange}
             />
             {errors.placedIssuance !== null &&
-            touched.placedIssuance !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "placedIssuance") &&
-            Object.prototype.hasOwnProperty.call(touched, "placedIssuance") ? (
+              touched.placedIssuance !== null &&
+              Object.prototype.hasOwnProperty.call(errors, "placedIssuance") &&
+              Object.prototype.hasOwnProperty.call(touched, "placedIssuance") ? (
               <p className="text-[red]">{errors.placedIssuance}</p>
             ) : null}
           </div>
@@ -672,9 +674,9 @@ const CreateIndividualMember = () => {
               onChange={handleChange}
             />
             {errors.dateOfIssuance !== null &&
-            touched.dateOfIssuance !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "dateOfIssuance") &&
-            Object.prototype.hasOwnProperty.call(touched, "dateOfIssuance") ? (
+              touched.dateOfIssuance !== null &&
+              Object.prototype.hasOwnProperty.call(errors, "dateOfIssuance") &&
+              Object.prototype.hasOwnProperty.call(touched, "dateOfIssuance") ? (
               <p className="text-[red]">{errors.dateOfIssuance}</p>
             ) : null}
           </div>
@@ -695,9 +697,9 @@ const CreateIndividualMember = () => {
               onChange={handleChange}
             />
             {errors.expiryDate !== null &&
-            touched.expiryDate !== null &&
-            Object.prototype.hasOwnProperty.call(errors, "expiryDate") &&
-            Object.prototype.hasOwnProperty.call(touched, "expiryDate") ? (
+              touched.expiryDate !== null &&
+              Object.prototype.hasOwnProperty.call(errors, "expiryDate") &&
+              Object.prototype.hasOwnProperty.call(touched, "expiryDate") ? (
               <p className="text-[red]">{errors.expiryDate}</p>
             ) : null}
           </div>

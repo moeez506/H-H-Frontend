@@ -42,4 +42,19 @@ request.interceptors.request.use(
   }
 );
 
+request.interceptors.response.use(
+  async (response) => response,
+  async (error) => {
+    if (!error.response) {
+      const Error = {
+        msg: "Server error: Something went wrong",
+      };
+      console.log("🚀 ~ file: request.ts:52 ~ Error:", Error);
+      const data = { response: { data: Error } };
+      return await Promise.reject(data);
+    }
+    return await Promise.reject(error);
+  }
+);
+
 export default request;

@@ -6,6 +6,7 @@ import { useMediaQuery } from "@mui/material";
 import Loader from "../Loader";
 import { useDashboardPayment } from "../../hooks/useDashboardData";
 import { useGroupPayment } from "../../hooks/useRepresentativeData";
+import { getUserFromLocalStorage } from "../../utils/getUserFromLocalStorage";
 interface Member {
   transactionId: string;
   // email: string;
@@ -16,7 +17,8 @@ const getRowId = (payment: Member) => payment.transactionId;
 
 const PaymentDashBoard: React.FC = () => {
   const isSmallScreen = useMediaQuery("(max-width: 600px)");
-  const user = JSON.parse(localStorage.getItem('login-user') ?? '{}')
+  const user = getUserFromLocalStorage();
+
 
   // if (user.isGroupAdmin) {
   //   var { isLoading: isLoading1, data: data1, isError: isError1, error: error1 }: any = useGroupPayment(user.groupId);

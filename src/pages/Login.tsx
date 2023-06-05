@@ -49,7 +49,6 @@ export default function Login() {
             await request
               .post("/auth/login", values)
               .then((res) => {
-                console.log(res.data);
                 setIsLoading(false);
                 if (!res.data.user.isVerified) {
                   setApiError("PLease first verify your email");
@@ -58,12 +57,12 @@ export default function Login() {
                   localStorage.setItem("login-user", JSON.stringify(res.data.user));
                   if (res.data.user.isGroupAdmin) {
                     navigate("/group-Profile");
-                  } else if(res.data.user.isIndividualAdmin) {
+                  } else if (res.data.user.isIndividualAdmin) {
                     navigate("/individual-Profile");
-                  }else{
+                  } else {
                     navigate("/onboarding-type");
                   }
-                  
+
                 }
               })
               .catch((err) => {
@@ -136,7 +135,7 @@ export default function Login() {
                     onBlur={handleBlur}
                   />
                   {errors.password !== undefined &&
-                  touched.password === true ? (
+                    touched.password === true ? (
                     <p className="text-red-500 text-sm ">{errors.password}</p>
                   ) : null}
                 </div>
