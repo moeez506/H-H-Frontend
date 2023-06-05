@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { IndividualUserContext } from "../../../contexts/individualOnboardingContext";
@@ -28,6 +28,7 @@ interface Values {
 }
 
 const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
+  const [relationship, setRelationship] = useState();
   const { kinInformation, setKinInformation } = useContext(
     IndividualUserContext
   );
@@ -71,10 +72,11 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
       .required("Cell Number is required"),
     email: Yup.string().email().required("Email is required"),
     relationship: Yup.string().required("Relatioship is required"),
-    otherRelationship: Yup.string().required("Other Relationship is required"),
+    otherRelationship:
+      relationship === "others"
+        ? Yup.string().required("This field is required")
+        : Yup.string().notRequired(),
   });
-
-  //TODO cell no validation and zip code
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
@@ -87,6 +89,11 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
       },
     });
 
+  const handleRelationship = (event: any) => {
+    const selectedValue = event.target.value;
+    handleChange(event);
+    setRelationship(selectedValue);
+  };
   return (
     <div className="bg-white shadow-md rounded-2xl px-8 pt-6 pb-8 mb-4 max-w-xl mx-auto desktop:text-2xl laptop:text-xl tabletOnly:text-lg mobile:text-base  w-full">
       <h1 className="text-3xl font-bold mb-6 text-center">
@@ -380,7 +387,7 @@ const Step5 = ({ currentStep, handleNextStep }: Step5Props) => {
             id="relationship"
             value={values.relationship}
             onBlur={handleBlur}
-            onChange={handleChange}
+            onChange={handleRelationship}
             className="w-full border rounded px-3 py-2 mb-4"
           >
             <option value="">Select Relationship</option>

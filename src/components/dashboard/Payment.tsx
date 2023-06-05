@@ -1,11 +1,12 @@
 /* eslint-disable prettier/prettier */
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import HeadPayment from "./components/HeadPayment";
 import { useMediaQuery } from "@mui/material";
 import Loader from "../Loader";
 import { useDashboardPayment } from "../../hooks/useDashboardData";
 import { useGroupPayment } from "../../hooks/useRepresentativeData";
+import { PaymentDataContext } from "../../contexts/PaymentDataContext";
 import { getUserFromLocalStorage } from "../../utils/getUserFromLocalStorage";
 interface Member {
   transactionId: string;
@@ -22,24 +23,29 @@ const PaymentDashBoard: React.FC = () => {
 
   // if (user.isGroupAdmin) {
   //   var { isLoading: isLoading1, data: data1, isError: isError1, error: error1 }: any = useGroupPayment(user.groupId);
-  //   var paymentData = data1?.data; 
+  //   var paymentData = data1?.data;
   // }else{
   //   var { isLoading, data, isError, error }: any = useDashboardPayment();
-  //   var paymentData = data?.data; 
+  //   var paymentData = data?.data;
   // }
+
+  const { paymentData, setPaymentData } = useContext(PaymentDataContext);
 
   const { isLoading, data, isError, error }: any = user.isGroupAdmin
     ? useGroupPayment(user.groupId)
     : useDashboardPayment();
 
-  const paymentData = data?.data;
-  console.log("🚀 ~ file: Payment.tsx:34 ~ paymentData:", paymentData)
+  useEffect(() => {
+    setPaymentData(data?.data);
+  }, [setPaymentData, data]);
 
+  console.log("🚀 ~ file: Payment.tsx:31 ~ paymentContextData:", paymentData);
+  const paymentInfo = data?.data;
+  console.log("🚀 ~ file: Payment.tsx:34 ~ paymentData:", paymentInfo);
 
   if (isLoading) {
     return <Loader />;
   }
-
 
   // const members: Member[] = [
   //   {
@@ -77,8 +83,8 @@ const PaymentDashBoard: React.FC = () => {
         headerClassName: "my-header-background my-header-text-color",
       },
       {
-        field: "paymentReason",
-        headerName: "Reason",
+        field: "transaction",
+        headerName: "Transaction",
         flex: 1,
         headerClassName: "my-header-background my-header-text-color",
       },
@@ -89,8 +95,8 @@ const PaymentDashBoard: React.FC = () => {
         headerClassName: "my-header-background my-header-text-color",
       },
       {
-        field: "email",
-        headerName: "Payyer Mail",
+        field: "dateTime",
+        headerName: "Date Time",
         flex: 1,
         headerClassName: "my-header-background my-header-text-color",
       },
@@ -121,7 +127,7 @@ const PaymentDashBoard: React.FC = () => {
         <HeadPayment />
         <DataGrid
           columns={columns}
-          rows={paymentData}
+          rows={paymentInfo}
           getRowId={getRowId}
           autoHeight
           disableColumnMenu

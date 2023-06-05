@@ -3,7 +3,7 @@
 import React, { useContext, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { IndividualUserContext } from "../../contexts/individualOnboardingContext";
+import { MemberDataContext } from "../../contexts/MemberDataContext";
 import Button from "../../components/Button";
 import { createIndividualMember } from "../../apis/individualOndoarding";
 import { toast } from "react-toastify";
@@ -61,8 +61,14 @@ const CreateIndividualMember = () => {
   // );
 
   const [identityCheck, setIdentityCheck] = useState("");
-  const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [apiSuccess, setApiSuccess] = useState<string>("")
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [apiSuccess, setApiSuccess] = useState<string>("");
+
+  const { memberData, setMemberData } = useContext(MemberDataContext);
+  console.log(
+    "🚀 ~ file: CreateIndividualMember.tsx:67 ~ CreateIndividualMember ~ memberData:",
+    memberData
+  );
 
   const initialValues: Values = {
     firstName: "",
@@ -132,10 +138,15 @@ const CreateIndividualMember = () => {
     handleBlur,
     handleChange,
     handleSubmit,
+    resetForm,
   } = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: async (values) => { },
+    onSubmit: async (values) => {
+      void formSubmit();
+      resetForm();
+      setIdentityCheck("");
+    },
   });
 
   async function formSubmit(): Promise<void> {
@@ -146,21 +157,26 @@ const CreateIndividualMember = () => {
     setIsLoading(true)
     try {
       if (user.isGroupAdmin) {
-        console.log(user.groupId)
+        console.log(user.groupId);
         await createRepresentative({
           ...values,
           groupId: user.groupId,
           isGroupRespresentative: false,
-        })
-          .then((res) => {
-            console.log("🚀 ~ file: CreateIndividualMember.tsx:152 ~ .then ~ res:", res)
-            setIsLoading(false)
-            if (res.user) {
-              setApiSuccess("Member Created successfully!")
-            }
-          })
+        }).then((res) => {
+          setMemberData((prevMemberData: any) => [...prevMemberData, res.user]);
+          console.log(
+            "🚀 ~ file: CreateIndividualMember.tsx:152 ~ .then ~ res:",
+            res.user
+          );
+          setIsLoading(false);
+          if (res.user) {
+            setApiSuccess("Member Created successfully!");
+          }
+        });
       } else {
-        await createIndividualMember(values);
+        await createIndividualMember(values).then((res) => {
+          setMemberData((prevMemberData: any) => [...prevMemberData, res.user]);
+        });
       }
       // toast.success("Member Created successfully!", {
       //   position: toast.POSITION.TOP_CENTER,
@@ -184,11 +200,13 @@ const CreateIndividualMember = () => {
       {apiSuccess ? <ApiSuccess success={apiSuccess} /> : null}
       <form onSubmit={handleSubmit}>
         <div className="flex justify-between">
-          <h1 className="text-3xl font-bold mb-4 text-center mobile:text-xl tabletOnly:text-xl">Create Member</h1>
+          <h1 className="text-3xl font-bold mb-4 text-center mobile:text-xl tabletOnly:text-xl">
+            Create Member
+          </h1>
           <button
             type="submit"
             // eslint-disable-next-line @typescript-eslint/no-misused-promises
-            onClick={formSubmit}
+            // onClick={handleSubmit}
             className="border-2 rounded-xl text-white mb-4 border-white bg-gradient-to-r from-orange to-yellow px-8 py-0 text-xl font-medium"
           >
             Submit
@@ -263,7 +281,10 @@ const CreateIndividualMember = () => {
         </div>
         <div className="flex justify-between tabletOnly:flex-wrap mobile:flex-wrap">
           <div className="mb-4">
-            <label className="block text-gray-700 font-bold mb-2" htmlFor="dateOfBirth">
+            <label
+              className="block text-gray-700 font-bold mb-2"
+              htmlFor="dateOfBirth"
+            >
               Date of Birth*
             </label>
             <input
@@ -560,7 +581,7 @@ const CreateIndividualMember = () => {
                 <input
                   type="radio"
                   name="identityCheck"
-                  value={option.value}
+                  value={identityCheck}
                   checked={identityCheck === option.value}
                   onChange={() => {
                     setIdentityCheck(option.value);
