@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import { GroupUserContext } from "../../../contexts/groupOnboardingContext";
 import PayPal from "../../PayPal";
 import TermsAndConditions from "../../TermsAndConditions";
+import BankDetails from "../../BankDetails";
 
 interface Step9Props {
   currentStep: number;
@@ -10,8 +11,9 @@ interface Step9Props {
 }
 
 export default function step9({ currentStep, handleNextStep }: Step9Props) {
-  const [isOpen, setIsOpen] = useState(false);
   const context = useContext(GroupUserContext);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenBank, setIsOpenBank] = useState(false);
 
   return (
     <div className="flex items-center justify-between h-full flex-col text-center mt-10 mx-auto">
@@ -43,8 +45,33 @@ export default function step9({ currentStep, handleNextStep }: Step9Props) {
           isPayment={true}
         />
       )}
+      {isOpenBank && (
+        <BankDetails isOpen={isOpenBank} setIsOpen={setIsOpenBank} />
+      )}
       <h3 className="text-xl">Click below to pay the dues</h3>
-      <PayPal className="" am="5000" contextData={context} />
+      <div className="flex flex-wrap mt-4">
+        <PayPal className="" am="5000" contextData={context} />
+        <button
+          type="submit"
+          // onClick={handleSubmit}
+          className={
+            " ml-2 border-[1px] w-52 rounded hover:bg-gray-200  text-black border-black bg-grey px-8 py-2 text-xl font-medium"
+          }
+        >
+          MTN/Orange
+        </button>
+        <button
+          type="submit"
+          onClick={() => {
+            setIsOpenBank(true);
+          }}
+          className={
+            "ml-2 border-[1px] w-52 rounded hover:bg-gray-200 text-black border-black bg-grey px-8 py-2 text-xl font-medium"
+          }
+        >
+          Bank Deposit
+        </button>
+      </div>
     </div>
   );
 }

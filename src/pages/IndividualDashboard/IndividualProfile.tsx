@@ -8,7 +8,6 @@ const IndividualProfile = () => {
   const { isLoading, data, isError, error }: any = useRepresentiveData();
   // console.log("🚀 ~ file: IndividualProfile.tsx:9 ~ IndividualProfile ~ data:", data)
 
-
   if (isLoading) {
     return <Loader />;
   }
@@ -17,8 +16,20 @@ const IndividualProfile = () => {
     return <div>Error: {error.message}</div>;
   }
 
-  const { firstName, email, lastName, dateOfBirth, nationality, phoneNumbers, address, zipCode, isVerified, countryOfResidence, identification, placeOfBirth } = data?.data?.user;
-
+  const {
+    firstName,
+    email,
+    lastName,
+    dateOfBirth,
+    nationality,
+    phoneNumbers,
+    address,
+    zipCode,
+    isVerified,
+    countryOfResidence,
+    identification,
+    placeOfBirth,
+  } = data?.data?.user;
 
   // const name = firstName + ' ' + lastName;
 
@@ -27,7 +38,10 @@ const IndividualProfile = () => {
       {/* <div className="h-full w-full bg-white rounded-xl shadow-inset shadow-2xl p-10 tabletOnly:w-full mobile:p-3"> */}
       <div>
         <h1 className="text-4xl font-semibold">
-          Hello, <span className="text-orange">{firstName} {lastName}</span>
+          Hello,{" "}
+          <span className="text-orange">
+            {firstName} {lastName}
+          </span>
         </h1>
       </div>
       <br></br>
@@ -86,9 +100,13 @@ const IndividualProfile = () => {
         <div className="flex ml-40 mobile:ml-0 mobile:mr-24 tabletOnly:ml-0 tabletOnly:hidden ">
           <div className="border-r-2 h-[350px]"></div>
           <div className="flex flex-col pl-4">
-            <h1 className="text-xl font-bold text-orange">Country of Rsidence</h1>
+            <h1 className="text-xl font-bold text-orange">
+              Country of Residence
+            </h1>
             <p className="text-lg mb-4">{countryOfResidence}</p>
-            <h2 className="text-xl font-bold text-orange">Country of Issuance</h2>
+            <h2 className="text-xl font-bold text-orange">
+              Country of Issuance
+            </h2>
             <p className="text-lg mb-4 ">{identification.countryOfIssuance}</p>
             <h3 className="text-xl font-bold text-orange">Date of Issuance</h3>
             <p className="text-lg mb-4">{identification.dateOfIssuance}</p>
@@ -99,8 +117,35 @@ const IndividualProfile = () => {
           </div>
         </div>
       </div>
-
-      {/* </div> */}
+      <h1 className="text-xl mt-4 font-semibold p-4">
+        Eligibility For Programs:
+      </h1>
+      <div className="flex flex-row mobile:flex-wrap">
+        <div className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8 mobile:flex mobile:justify-between mobile:mb-0">
+          <h2 className="text-orange text-xl font-semibold mb-2">
+            Death Relief Support Funding:
+          </h2>
+          <p className="text-gray-500 text-base mobile:pt-1">Eligible</p>
+        </div>
+        <div className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8 mobile:flex mobile:justify-between mobile:mb-0">
+          <h2 className="text-orange text-xl font-semibold mb-2">
+            Critical Health Support Funding:
+          </h2>
+          <p className="text-gray-500 text-base mobile:pt-1">Eligible</p>
+        </div>
+        <div className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8 mobile:flex mobile:justify-between mobile:mb-0">
+          <h2 className="text-orange text-xl font-semibold mb-2">
+            Educational Support Funding:
+          </h2>
+          <p className="text-gray-500 text-base mobile:pt-1">Eligible</p>
+        </div>
+        <div className=" w-full sm:w-1/2 lg:w-1/3 px-4 mb-8 mobile:flex mobile:justify-between mobile:mb-0">
+          <h2 className="text-orange text-xl font-semibold mb-2">
+            Market Place Listings Program:
+          </h2>
+          <p className="text-gray-500 text-base mobile:pt-1">Eligible</p>
+        </div>
+      </div>
     </div>
   );
 };

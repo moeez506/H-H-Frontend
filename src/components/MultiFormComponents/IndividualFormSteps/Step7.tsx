@@ -7,6 +7,8 @@ import {
 import { IndividualUserContext } from "../../../contexts/individualOnboardingContext";
 import PayPal from "../../PayPal";
 import TermsAndConditions from "../../TermsAndConditions";
+import Button from "../../Button";
+import BankDetails from "../../BankDetails";
 // import PayPal from "../../PayPal";
 
 interface Step7Props {
@@ -17,9 +19,7 @@ interface Step7Props {
 export default function Step7({ currentStep, handleNextStep }: Step7Props) {
   const context = useContext(IndividualUserContext);
   const [isOpen, setIsOpen] = useState(false);
-  const { kinInformation, individualAdmin } = context;
-
-  console.log("🚀 ~ file: Step7.tsx:13 ~ Step7 ~ context:", context);
+  const [isOpenBank, setIsOpenBank] = useState(false);
 
   return (
     <div className="flex items-center justify-between h-full flex-col text-center mt-10 mx-auto">
@@ -51,8 +51,33 @@ export default function Step7({ currentStep, handleNextStep }: Step7Props) {
           isPayment={true}
         />
       )}
-      <h3 className="text-xl mb-5">Click below to pay the dues</h3>
-      <PayPal className="" am="5000" contextData={context} />
+      {isOpenBank && (
+        <BankDetails isOpen={isOpenBank} setIsOpen={setIsOpenBank} />
+      )}
+      <h3 className="text-xl">Click below to pay the dues</h3>
+      <div className="flex flex-wrap mt-4">
+        <PayPal className="" am="5000" contextData={context} />
+        <button
+          type="submit"
+          // onClick={handleSubmit}
+          className={
+            " ml-2 border-[1px] w-52 rounded hover:bg-gray-200  text-black border-black bg-grey px-8 py-2 text-xl font-medium"
+          }
+        >
+          MTN/Orange
+        </button>
+        <button
+          type="submit"
+          onClick={() => {
+            setIsOpenBank(true);
+          }}
+          className={
+            "ml-2 border-[1px] w-52 rounded hover:bg-gray-200 text-black border-black bg-grey px-8 py-2 text-xl font-medium"
+          }
+        >
+          Bank Deposit
+        </button>
+      </div>
     </div>
   );
 }
