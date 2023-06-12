@@ -93,36 +93,9 @@ const GroupProfile = () => {
             <h2 className="text-orange text-xl font-semibold mb-2">Website:</h2>
             <p className="text-gray-500 text-base mobile:pt-1">{websiteLink}</p>
           </div>
-        </div>{" "}
-        <h1 className="text-xl font-semibold p-4">Eligibility For Programs:</h1>
-        <div className="flex flex-row mobile:flex-wrap">
-          <div className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8 mobile:flex mobile:justify-between mobile:mb-0">
-            <h2 className="text-orange text-xl font-semibold mb-2">
-              Death Relief Support Funding:
-            </h2>
-            <p className="text-gray-500 text-base mobile:pt-1">Eligible</p>
-          </div>
-          <div className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8 mobile:flex mobile:justify-between mobile:mb-0">
-            <h2 className="text-orange text-xl font-semibold mb-2">
-              Critical Health Support Funding:
-            </h2>
-            <p className="text-gray-500 text-base mobile:pt-1">Eligible</p>
-          </div>
-          <div className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8 mobile:flex mobile:justify-between mobile:mb-0">
-            <h2 className="text-orange text-xl font-semibold mb-2">
-              Educational Support Funding:
-            </h2>
-            <p className="text-gray-500 text-base mobile:pt-1">Eligible</p>
-          </div>
-          <div className=" w-full sm:w-1/2 lg:w-1/3 px-4 mb-8 mobile:flex mobile:justify-between mobile:mb-0">
-            <h2 className="text-orange text-xl font-semibold mb-2">
-              Market Place Listings Program:
-            </h2>
-            <p className="text-gray-500 text-base mobile:pt-1">Eligible</p>
-          </div>
-        </div>{" "}
+        </div>
       </div>
-      <br></br>
+
       {representativeData.map((data: any, index: any) => {
         return (
           <div
@@ -140,7 +113,6 @@ const GroupProfile = () => {
                 View Detail
               </NavLink>
             </div>
-
             <hr></hr>
             {/* <br></br> */}
             <div className="flex flex-row mobile:flex-wrap tabletOnly:flex-wrap">
@@ -172,6 +144,34 @@ const GroupProfile = () => {
           </div>
         );
       })}
+
+      <h1 className="text-xl font-semibold p-4">Eligibility For Programs:</h1>
+      <div className="flex flex-row mobile:flex-wrap">
+        <div className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8 mobile:flex mobile:justify-between mobile:mb-0">
+          <h2 className="text-orange text-xl font-semibold mb-2">
+            Death Relief Support Funding:
+          </h2>
+          <p className="text-gray-500 text-base mobile:pt-1">Eligible</p>
+        </div>
+        <div className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8 mobile:flex mobile:justify-between mobile:mb-0">
+          <h2 className="text-orange text-xl font-semibold mb-2">
+            Critical Health Support Funding:
+          </h2>
+          <p className="text-gray-500 text-base mobile:pt-1">Eligible</p>
+        </div>
+        <div className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8 mobile:flex mobile:justify-between mobile:mb-0">
+          <h2 className="text-orange text-xl font-semibold mb-2">
+            Educational Support Funding:
+          </h2>
+          <p className="text-gray-500 text-base mobile:pt-1">Eligible</p>
+        </div>
+        <div className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8 mobile:flex mobile:justify-between mobile:mb-0">
+          <h2 className="text-orange text-xl font-semibold mb-2">
+            Market Place Listings Program:
+          </h2>
+          <p className="text-gray-500 text-base mobile:pt-1">Eligible</p>
+        </div>
+      </div>
     </div>
   );
 };
