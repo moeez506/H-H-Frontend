@@ -100,6 +100,9 @@ export const Sidebar = ({ currentStep, handleNextStep }: SidebarProps) => {
                   : "text-white"
               )}
               key={step.step}
+              onClick={() => {
+                handleNextStep(step.step);
+              }}
             >
               <span
                 className={clsx(

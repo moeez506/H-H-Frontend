@@ -4,6 +4,8 @@ import { GroupUserContext } from "../../../contexts/groupOnboardingContext";
 import PayPal from "../../PayPal";
 import TermsAndConditions from "../../TermsAndConditions";
 import BankDetails from "../../BankDetails";
+import Square from "../../../assets/Square.png";
+import Orange from "../../../assets/Orange.png";
 
 interface Step9Props {
   currentStep: number;
@@ -58,7 +60,16 @@ export default function step9({ currentStep, handleNextStep }: Step9Props) {
             " ml-2 border-[1px] w-52 rounded hover:bg-gray-200  text-black border-black bg-grey px-8 py-2 text-xl font-medium"
           }
         >
-          MTN/Orange
+          <img src={Square} alt="Square" className="h-10 object-contain" />
+        </button>
+        <button
+          type="submit"
+          // onClick={handleSubmit}
+          className={
+            " ml-2 border-[1px] w-52 rounded hover:bg-gray-200  text-black border-black bg-grey px-8 py-2 text-xl font-medium"
+          }
+        >
+          <img src={Orange} alt="Orange" className="h-10 object-contain" />
         </button>
         <button
           type="submit"
