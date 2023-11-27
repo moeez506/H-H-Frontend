@@ -1,38 +1,45 @@
 /* eslint-disable prettier/prettier */
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
-import {
-  Routes,
-  Route
-} from "react-router-dom";
-import Contact from "./components/contact";
-import Footer from "./components/footer";
-import Header from "./components/header";
-import ContactUS from "./pages/Contact";
-
-import Programs from "./pages/Programs";
-import About from "./pages/about";
-import Home from "./pages/home";
-import Navbar from "./components/navbar/navbar";
-
+import { QueryClient, QueryClientProvider } from "react-query";
+import RouterConfig from "./routes/RouterConfig";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./window.d.ts";
 
 function App() {
+  const queryClient = new QueryClient();
+  const googleTranslateElementInit = () => {
+    if (window.google.translate !== null) {
+      // eslint-disable-next-line no-new
+      new window.google.translate.TranslateElement(
+        {
+          pageLanguage: "en",
+          includedLanguages: "en,fr",
+          autoDisplay: false,
+        },
+        "google_translate_element"
+      );
+    }
+  };
+
+  useEffect(() => {
+    const addScript = document.createElement("script");
+    addScript?.setAttribute(
+      "src",
+      "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+    );
+    document.body.appendChild(addScript);
+    window.googleTranslateElementInit = googleTranslateElementInit;
+  }, []);
+
   return (
-    <>
-      <Header />
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<ContactUS />} />
-        <Route path="/programs" element={<Programs />} />
-      </Routes>
-
-      <Contact />
-      <Footer />
-
-    </>
-
+    <div>
+      <QueryClientProvider client={queryClient}>
+        <RouterConfig />
+        <ToastContainer />
+      </QueryClientProvider>
+    </div>
   );
 }
 

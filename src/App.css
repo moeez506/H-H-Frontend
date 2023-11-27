@@ -1,3 +1,15 @@
+/* For chrome, Safari, Edge, Opera: */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* For firefox: */
+input[type=number]{
+    -moz-appearance: textfield;
+}
+
 .App {
   text-align: center;
 }
@@ -5,6 +17,13 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.Customshadow {
+  -webkit-box-shadow: 0 0 5px 2px #fff;
+  -moz-box-shadow: 0 0 5px 2px #fff;
+  box-shadow: 0 0 5px 2px #fff;
+  color: #000000;
 }
 
 @media (prefers-reduced-motion: no-preference) {

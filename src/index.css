@@ -1,3 +1,81 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#google_translate_element select {
+  background: #f6edfd;
+  color: #000000;
+  border: none;
+  border-radius: 3px;
+  padding: 10px 12px;
+  position: absolute;
+  top: 8px;
+  right: 50px;
+  font-size: medium;
+}
+goog-logo-link,
+.goog-te-gadget span {
+  display: none !important;
+}
+
+.goog-te-gadget {
+  color: transparent !important;
+  font-size: 0;
+}
+.goog-logo-link {
+  display: none !important;
+}
+
+.Customshadow {
+  -webkit-box-shadow: 0 0 5px 2px #fff;
+  -moz-box-shadow: 0 0 5px 2px #fff;
+  box-shadow: 0 0 5px 2px #fff;
+  color: #000000;
+}
+
+#goog-gt-tt,
+.goog-te-balloon-frame,
+div#goog-gt- {
+  display: none !important;
+}
+
+.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+.goog-te-gadget img {
+  display: none !important;
+}
+body > .skiptranslate {
+  display: none;
+}
+body {
+  top: 0px !important;
+}
+
+/* body {
+  margin: 0;
+  background-color: #f0f6ff;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  font-family: "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+}
+body > div {
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #f0f6ff;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  font-family: "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+}
+body > div {
+  width: 100%;
+} */

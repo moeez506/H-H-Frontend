@@ -23,13 +23,16 @@ module.exports = {
         program: "url('/src/assets/Rectangle 70.png')",
         criticalHealthBg: "url('/src/assets/Rectangle 72.png')",
         "program-hero": "url('/src/assets/program-hero.jpg')",
+        "program-hero-mobile": "url('/src/assets/program-hero-mobile.png')",
         contact: "url('/src/assets/Rectangle 52.png')",
+        home: "url('/src/assets/home.jpeg')",
       }),
     },
     screens: {
+      smallMobile: { max: "350px" },
       mobile: { max: "480px" },
       tablet: { max: "1023px" },
-
+      tabletScreen: { max: "768px" },
       tabletOnly: { min: "481px", max: "1023px" },
       // => @media (min-width: 640px) { ... }
 
